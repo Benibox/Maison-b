@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5F0EB"/>
+      <stop offset="100%" style="stop-color:#E8DFD4"/>
+    </linearGradient>
+    <linearGradient id="box" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C2821"/>
+      <stop offset="100%" style="stop-color:#4A3F33"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3D352B"/>
+      <stop offset="100%" style="stop-color:#5D4F3F"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C4B5A0"/>
+      <stop offset="100%" style="stop-color:#B0A08A"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8E2D9;stop-opacity:0.9"/>
+      <stop offset="50%" style="stop-color:#FAFAF8;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#D5C8B8;stop-opacity:0.8"/>
+    </linearGradient>
+    <linearGradient id="whisky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A855;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#8B6E4E"/>
+    </linearGradient>
+    <linearGradient id="leather" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B6E4E"/>
+      <stop offset="100%" style="stop-color:#6B5240"/>
+    </linearGradient>
+    <linearGradient id="ribbon" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C4A46C"/>
+      <stop offset="100%" style="stop-color:#D4B87C"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000" flood-opacity="0.12"/>
+    </filter>
+    <filter id="softshadow" x="-10%" y="-10%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <!-- Subtle pattern -->
+  <circle cx="650" cy="100" r="200" fill="#E0D5C8" opacity="0.3"/>
+  <circle cx="150" cy="500" r="150" fill="#D5C8B8" opacity="0.2"/>
+
+  <!-- Main box body -->
+  <g filter="url(#shadow)" transform="translate(180, 180)">
+    <!-- Box base -->
+    <rect x="0" y="80" width="440" height="240" rx="4" fill="url(#box)"/>
+    <!-- Box inner lining -->
+    <rect x="12" y="92" width="416" height="216" rx="2" fill="url(#inner)"/>
+
+    <!-- Lid (open, angled back) -->
+    <g transform="rotate(-35, 220, 80)">
+      <rect x="0" y="-160" width="440" height="160" rx="4" fill="url(#lid)"/>
+      <!-- Gold line on lid -->
+      <rect x="20" y="-140" width="400" height="1" fill="#C4A46C" opacity="0.5"/>
+      <rect x="20" y="-25" width="400" height="1" fill="#C4A46C" opacity="0.5"/>
+      <!-- Logo on lid -->
+      <text x="220" y="-75" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#C4A46C" opacity="0.6" letter-spacing="8">MAISON B</text>
+    </g>
+
+    <!-- Items inside box -->
+    <!-- Carafe -->
+    <g transform="translate(60, 110)">
+      <ellipse cx="40" cy="170" rx="32" ry="8" fill="#A09080" opacity="0.3"/>
+      <rect x="22" y="40" width="36" height="130" rx="4" fill="url(#glass)"/>
+      <rect x="30" y="0" width="20" height="50" rx="3" fill="url(#glass)"/>
+      <ellipse cx="40" cy="0" rx="14" ry="6" fill="url(#glass)" stroke="#D5C8B8" stroke-width="1"/>
+      <rect x="26" y="80" width="28" height="60" rx="2" fill="url(#whisky)" opacity="0.5"/>
+    </g>
+
+    <!-- Two glasses -->
+    <g transform="translate(160, 140)">
+      <ellipse cx="25" cy="140" rx="22" ry="6" fill="#A09080" opacity="0.3"/>
+      <path d="M5,40 L10,140 L40,140 L45,40 Z" fill="url(#glass)"/>
+      <rect x="20" y="140" width="10" height="15" rx="1" fill="url(#glass)"/>
+      <ellipse cx="25" cy="155" rx="18" ry="4" fill="url(#glass)" stroke="#D5C8B8" stroke-width="0.5"/>
+      <rect x="8" y="90" width="34" height="30" rx="2" fill="url(#whisky)" opacity="0.35"/>
+    </g>
+    <g transform="translate(220, 150)">
+      <ellipse cx="22" cy="120" rx="20" ry="5" fill="#A09080" opacity="0.3"/>
+      <path d="M4,35 L8,120 L36,120 L40,35 Z" fill="url(#glass)"/>
+      <rect x="17" y="120" width="9" height="13" rx="1" fill="url(#glass)"/>
+      <ellipse cx="22" cy="133" rx="16" ry="3.5" fill="url(#glass)" stroke="#D5C8B8" stroke-width="0.5"/>
+    </g>
+
+    <!-- Leather vide-poche -->
+    <g transform="translate(290, 170)">
+      <rect x="0" y="0" width="110" height="80" rx="6" fill="url(#leather)" filter="url(#softshadow)"/>
+      <rect x="8" y="8" width="94" height="64" rx="4" fill="#7A6050"/>
+      <!-- Embossed logo -->
+      <text x="55" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#9A8A7A" letter-spacing="3">LOGO</text>
+    </g>
+
+    <!-- Tissue paper -->
+    <path d="M20,100 Q60,85 120,95 Q180,80 250,92 Q320,82 400,95 L416,95 L416,108 L12,108 Z" fill="#F0EBE3" opacity="0.6"/>
+  </g>
+
+  <!-- Gold ribbon -->
+  <rect x="390" y="195" width="6" height="290" fill="url(#ribbon)" opacity="0.7" rx="1"/>
+
+  <!-- Decorative elements -->
+  <circle cx="680" cy="450" r="3" fill="#C4A46C" opacity="0.4"/>
+  <circle cx="700" cy="430" r="2" fill="#C4A46C" opacity="0.3"/>
+  <circle cx="120" cy="150" r="2" fill="#C4A46C" opacity="0.3"/>
+</svg>

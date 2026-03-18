@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison B — Configurateur de coffret</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --noir: #1A1A1A; --blanc: #FAFAF8; --gris: #6B6B6B; --gris-clair: #E8E6E1;
+  --tabac: #6B5D4F; --sable: #C4B5A0; --creme: #E8E2D9; --brun: #2C2821; --or: #8C7851;
+  --beige: #F5F4F0; --dore: #8C7851;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+}
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--sans); background: var(--beige); color: var(--noir); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ===== SCROLL PROGRESS ===== */
+.scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--or), var(--dore)); z-index: 200; width: 0%; transition: width 0.1s linear; }
+
+/* ===== NAV ===== */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 clamp(24px, 5vw, 70px); height: 72px; display: flex; align-items: center; justify-content: space-between; transition: background 0.4s, box-shadow 0.4s, transform 0.4s; background: rgba(245,244,240,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; }
+.nav.scrolled { background: rgba(250,250,248,0.97); border-bottom-color: var(--gris-clair); box-shadow: 0 1px 20px rgba(0,0,0,0.04); }
+.nav-back { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); transition: color 0.3s, transform 0.3s; display: flex; align-items: center; gap: 8px; }
+.nav-back:hover { color: var(--noir); transform: translateX(-4px); }
+.nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: var(--noir); position: absolute; left: 50%; transform: translateX(-50%); }
+
+/* ===== CONFIGURATEUR ===== */
+.config-wrapper { max-width: 960px; margin: 0 auto; padding: 120px 24px 80px; }
+.config-header { text-align: center; margin-bottom: 48px; opacity: 0; animation: fadeUp 0.8s 0.2s cubic-bezier(0.22,1,0.36,1) forwards; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.config-header h1 { font-family: var(--serif); font-size: clamp(30px, 4vw, 44px); font-weight: 300; color: var(--noir); margin-bottom: 10px; }
+.config-header p { font-size: 15px; color: var(--gris); }
+
+/* Progress bar */
+.progress-bar { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 48px; opacity: 0; animation: fadeUp 0.8s 0.4s cubic-bezier(0.22,1,0.36,1) forwards; }
+.progress-step { display: flex; align-items: center; gap: 0; }
+.progress-dot { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--gris-clair); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: var(--gris); transition: all 0.5s cubic-bezier(0.22,1,0.36,1); position: relative; }
+.progress-dot.active { border-color: var(--dore); background: var(--dore); color: var(--blanc); transform: scale(1.1); box-shadow: 0 4px 15px rgba(140,120,81,0.3); }
+.progress-dot.done { border-color: var(--dore); background: var(--dore); color: var(--blanc); }
+.progress-line { width: 60px; height: 2px; background: var(--gris-clair); transition: background 0.5s; }
+.progress-line.done { background: var(--dore); }
+.progress-label { position: absolute; top: 44px; white-space: nowrap; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gris); }
+
+/* Step panels */
+.step-panel { display: none; opacity: 0; transform: translateY(30px); }
+.step-panel.active { display: block; animation: panelIn 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
+@keyframes panelIn { to { opacity: 1; transform: translateY(0); } }
+
+/* ===== UNIVERS PHOTO CARDS ===== */
+.univers-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.univers-photo-card { position: relative; aspect-ratio: 3/4; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px 24px; border-radius: 12px; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s; }
+.univers-photo-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.02) 100%); z-index: 1; transition: opacity 0.5s; border-radius: 12px; }
+.univers-photo-card:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(0,0,0,0.15); }
+.univers-photo-card:hover::before { opacity: 0.95; }
+.univers-photo-card .card-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; border-radius: 12px; transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.univers-photo-card:hover .card-bg { transform: scale(1.06); }
+.univers-photo-card h3 { font-family: var(--serif); font-size: clamp(22px, 2.5vw, 28px); font-weight: 400; color: var(--blanc); position: relative; z-index: 2; margin-bottom: 4px; }
+.univers-photo-card .card-price { font-size: 13px; color: var(--sable); font-weight: 500; position: relative; z-index: 2; margin-bottom: 6px; letter-spacing: 0.5px; }
+.univers-photo-card p { font-size: 12px; color: rgba(255,255,255,0.55); position: relative; z-index: 2; line-height: 1.6; transform: translateY(8px); opacity: 0; transition: all 0.4s; }
+.univers-photo-card:hover p { transform: translateY(0); opacity: 1; }
+.univers-photo-card .card-arrow { position: absolute; top: 20px; right: 20px; font-size: 20px; color: rgba(255,255,255,0.25); z-index: 2; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), color 0.3s; }
+.univers-photo-card:hover .card-arrow { transform: translateX(6px); color: rgba(255,255,255,0.8); }
+.univers-photo-card.selected { box-shadow: 0 0 0 3px var(--dore), 0 24px 60px rgba(0,0,0,0.15); }
+.univers-photo-card.selected::after { content: ''; position: absolute; top: 16px; left: 16px; width: 28px; height: 28px; border-radius: 50%; background: var(--dore); z-index: 3; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; }
+
+/* ===== GAMME CARDS WITH PRODUCT IMAGES ===== */
+.gamme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.gamme-card { background: var(--blanc); border: 2px solid var(--gris-clair); border-radius: 14px; cursor: pointer; transition: all 0.4s cubic-bezier(0.22,1,0.36,1); position: relative; overflow: hidden; }
+.gamme-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--or), var(--dore)); transform: scaleX(0); transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); transform-origin: left; z-index: 2; }
+.gamme-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); border-color: var(--sable); }
+.gamme-card.selected { border-color: var(--dore); box-shadow: 0 8px 30px rgba(140,120,81,0.15); }
+.gamme-card.selected::before { transform: scaleX(1); }
+.gamme-card-img { width: 100%; height: 160px; object-fit: cover; }
+.gamme-card-body { padding: 24px 20px; text-align: center; }
+.gamme-card-body h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; margin-bottom: 6px; }
+.gamme-card-body .card-price { font-size: 13px; color: var(--or); font-weight: 500; margin-bottom: 12px; }
+.gamme-card-body .card-items { font-size: 12px; color: var(--gris); line-height: 1.6; }
+.gamme-tag { position: absolute; top: 12px; right: 12px; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--blanc); background: var(--dore); padding: 4px 10px; border-radius: 3px; z-index: 2; }
+/* Product thumbnails row inside gamme card */
+.gamme-products { display: flex; gap: 6px; padding: 0 20px 16px; justify-content: center; }
+.gamme-product-thumb { width: 48px; height: 48px; border-radius: 8px; overflow: hidden; border: 1px solid var(--gris-clair); }
+.gamme-product-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ===== SUMMARY WITH PRODUCT IMAGES ===== */
+.summary-card { background: var(--blanc); border-radius: 14px; padding: 32px; box-shadow: 0 4px 30px rgba(0,0,0,0.04); margin-bottom: 24px; }
+.summary-title { font-family: var(--serif); font-size: 26px; font-weight: 400; margin-bottom: 20px; }
+.summary-item { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--gris-clair); }
+.summary-item:last-child { border-bottom: none; }
+.summary-item-img { width: 56px; height: 56px; border-radius: 10px; overflow: hidden; flex-shrink: 0; background: var(--beige); }
+.summary-item-img img { width: 100%; height: 100%; object-fit: cover; }
+.summary-item-text { flex: 1; font-size: 14px; }
+.summary-item-check { color: var(--dore); font-size: 16px; }
+
+/* ===== ADDON OPTIONS WITH PREVIEW ===== */
+.addon-list { display: flex; flex-direction: column; gap: 12px; }
+.addon-item { background: var(--blanc); border: 2px solid var(--gris-clair); border-radius: 12px; cursor: pointer; transition: all 0.4s cubic-bezier(0.22,1,0.36,1); overflow: hidden; }
+.addon-item:hover { border-color: var(--sable); }
+.addon-item.selected { border-color: var(--dore); background: rgba(140,120,81,0.02); }
+.addon-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; }
+.addon-left { display: flex; align-items: center; gap: 14px; }
+.addon-check { width: 22px; height: 22px; border: 2px solid var(--gris-clair); border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; flex-shrink: 0; font-size: 12px; color: transparent; }
+.addon-item.selected .addon-check { border-color: var(--dore); background: var(--dore); color: var(--blanc); }
+.addon-name { font-size: 14px; font-weight: 500; }
+.addon-price { font-size: 13px; color: var(--or); font-weight: 500; }
+/* Addon preview image - slides down on select */
+.addon-preview { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.22,1,0.36,1), opacity 0.4s; opacity: 0; }
+.addon-item.selected .addon-preview { max-height: 250px; opacity: 1; }
+.addon-preview-inner { padding: 0 22px 18px; }
+.addon-preview-inner img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; }
+.addon-preview-inner p { font-size: 12px; color: var(--gris); margin-top: 8px; line-height: 1.5; }
+
+/* Form */
+.form-card { background: var(--blanc); border-radius: 12px; padding: 32px; box-shadow: 0 4px 30px rgba(0,0,0,0.04); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-field { margin-bottom: 16px; }
+.form-field label { display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gris); margin-bottom: 6px; }
+.form-field input, .form-field textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--gris-clair); background: var(--blanc); font-family: var(--sans); font-size: 14px; color: var(--noir); transition: border-color 0.3s, box-shadow 0.3s; outline: none; border-radius: 6px; }
+.form-field input:focus, .form-field textarea:focus { border-color: var(--or); box-shadow: 0 0 0 3px rgba(140,120,81,0.1); }
+.form-field textarea { height: 80px; resize: vertical; }
+
+/* ===== PREMIUM BUTTONS ===== */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 40px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; transition: all 0.4s cubic-bezier(0.22,1,0.36,1); border-radius: 0; position: relative; overflow: hidden; }
+.btn::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent); transition: left 0.6s; }
+.btn:hover::after { left: 100%; }
+.btn-primary { background: var(--noir); color: var(--blanc); border: 1px solid var(--noir); }
+.btn-primary:hover { background: var(--brun); border-color: var(--brun); box-shadow: 0 8px 24px rgba(44,40,33,0.25); transform: translateY(-2px); }
+.btn-ghost { border: 1px solid var(--gris-clair); color: var(--gris); background: transparent; }
+.btn-ghost:hover { border-color: var(--noir); color: var(--noir); transform: translateY(-2px); }
+.btn-row { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; }
+.magnetic { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1); }
+
+/* Success */
+.success-panel { display: none; text-align: center; padding: 60px 20px; }
+.success-panel .check { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--or), var(--dore)); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; animation: popIn 0.6s cubic-bezier(0.22,1,0.36,1); }
+.success-panel .check svg { width: 32px; height: 32px; stroke: var(--blanc); fill: none; stroke-width: 2.5; }
+@keyframes popIn { 0% { transform: scale(0); opacity: 0; } 60% { transform: scale(1.2); } 100% { transform: scale(1); opacity: 1; } }
+.success-panel h2 { font-family: var(--serif); font-size: 32px; font-weight: 300; margin-bottom: 12px; }
+.success-panel p { font-size: 15px; color: var(--gris); margin-bottom: 32px; }
+
+/* Footer */
+.footer { background: var(--noir); padding: clamp(40px, 5vw, 60px) clamp(24px, 5vw, 70px); text-align: center; margin-top: 60px; }
+.footer-logo { font-family: var(--serif); font-size: 18px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: rgba(250,250,248,0.7); margin-bottom: 8px; }
+.footer-copy { font-size: 12px; color: rgba(250,250,248,0.25); letter-spacing: 1px; }
+
+@media (max-width: 768px) {
+  .nav-logo { position: static; transform: none; }
+  .univers-grid { grid-template-columns: 1fr; }
+  .univers-photo-card { aspect-ratio: 16/9; }
+  .gamme-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .progress-line { width: 30px; }
+  .btn-row { flex-direction: column; gap: 12px; }
+  .addon-preview-inner img { height: 120px; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-back">← Retour</a>
+  <a href="index.html" class="nav-logo">Maison B</a>
+  <div></div>
+</nav>
+
+<div class="config-wrapper">
+  <div class="config-header">
+    <h1>Configurez votre coffret</h1>
+    <p>Choisissez votre univers, votre gamme et vos options en quelques clics.</p>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-bar">
+    <div class="progress-step">
+      <div class="progress-dot active" id="dot1">1<span class="progress-label">Univers</span></div>
+    </div>
+    <div class="progress-line" id="line1"></div>
+    <div class="progress-step">
+      <div class="progress-dot" id="dot2">2<span class="progress-label">Gamme</span></div>
+    </div>
+    <div class="progress-line" id="line2"></div>
+    <div class="progress-step">
+      <div class="progress-dot" id="dot3">3<span class="progress-label">Options</span></div>
+    </div>
+  </div>
+
+  <!-- STEP 1: Univers -->
+  <div class="step-panel active" id="step1">
+    <div class="univers-grid">
+      <div class="univers-photo-card" onclick="selectUnivers('whisky', this)">
+        <img class="card-bg" src="https://images.unsplash.com/photo-1576611693052-c822b18673ff?w=600&h=800&fit=crop&q=80" alt="Coffret Whisky">
+        <span class="card-arrow">→</span>
+        <h3>Whisky</h3>
+        <div class="card-price">À partir de 80 €</div>
+        <p>Single malt, chocolats et verres gravés</p>
+      </div>
+      <div class="univers-photo-card" onclick="selectUnivers('the', this)">
+        <img class="card-bg" src="https://images.unsplash.com/photo-1582966953353-0b54fb3062e6?w=600&h=800&fit=crop&q=80" alt="Coffret Thé">
+        <span class="card-arrow">→</span>
+        <h3>Thé</h3>
+        <div class="card-price">À partir de 70 €</div>
+        <p>Thés d'exception, céramique et biscuits fins</p>
+      </div>
+      <div class="univers-photo-card" onclick="selectUnivers('senteur', this)">
+        <img class="card-bg" src="https://images.unsplash.com/photo-1760804876257-f073f77f2bcf?w=600&h=800&fit=crop&q=80" alt="Coffret Senteur">
+        <span class="card-arrow">→</span>
+        <h3>Senteur</h3>
+        <div class="card-price">À partir de 70 €</div>
+        <p>Bougie, diffuseur et porte-bougie laiton</p>
+      </div>
+      <div class="univers-photo-card" onclick="selectUnivers('jeux', this)">
+        <img class="card-bg" src="https://images.unsplash.com/photo-1628924172947-113fb23621b3?w=600&h=800&fit=crop&q=80" alt="Coffret Jeux">
+        <span class="card-arrow">→</span>
+        <h3>Jeux</h3>
+        <div class="card-price">À partir de 60 €</div>
+        <p>Backgammon cuir, cartes et carnet</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: Gamme -->
+  <div class="step-panel" id="step2">
+    <div class="gamme-grid" id="gammeGrid"></div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="goStep(1)">← Retour</button>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- STEP 3: Options + Form -->
+  <div class="step-panel" id="step3">
+    <div class="summary-card" id="summaryCard"></div>
+
+    <h3 style="font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:16px;">Options supplémentaires</h3>
+    <div class="addon-list">
+
+      <div class="addon-item" onclick="toggleAddon(this, 'gravure', 8)">
+        <div class="addon-header">
+          <div class="addon-left"><div class="addon-check">✓</div><span class="addon-name">Gravure personnalisée</span></div>
+          <span class="addon-price">+ 8 € / coffret</span>
+        </div>
+        <div class="addon-preview">
+          <div class="addon-preview-inner">
+            <img src="https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=600&h=300&fit=crop&q=80" alt="Gravure personnalisée sur verre">
+            <p>Gravure de votre logo ou initiales sur les verres, carafes ou objets du coffret. Finition artisanale au laser.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="addon-item" onclick="toggleAddon(this, 'carte', 3)">
+        <div class="addon-header">
+          <div class="addon-left"><div class="addon-check">✓</div><span class="addon-name">Carte message personnalisée</span></div>
+          <span class="addon-price">+ 3 € / coffret</span>
+        </div>
+        <div class="addon-preview">
+          <div class="addon-preview-inner">
+            <img src="https://images.unsplash.com/photo-1579541814924-49fef17c5be5?w=600&h=300&fit=crop&q=80" alt="Carte message élégante personnalisée">
+            <p>Carte épaisse au toucher velouté, imprimée avec votre message. Glissée dans chaque coffret.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="addon-item" onclick="toggleAddon(this, 'ruban', 4)">
+        <div class="addon-header">
+          <div class="addon-left"><div class="addon-check">✓</div><span class="addon-name">Ruban satin logotypé</span></div>
+          <span class="addon-price">+ 4 € / coffret</span>
+        </div>
+        <div class="addon-preview">
+          <div class="addon-preview-inner">
+            <img src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=600&h=300&fit=crop&q=80" alt="Ruban satin sur coffret cadeau">
+            <p>Ruban satin couleur au choix avec votre logo imprimé en dorure à chaud. Finition premium.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="addon-item" onclick="toggleAddon(this, 'livraison', 6)">
+        <div class="addon-header">
+          <div class="addon-left"><div class="addon-check">✓</div><span class="addon-name">Livraison express (J+2)</span></div>
+          <span class="addon-price">+ 6 € / coffret</span>
+        </div>
+        <div class="addon-preview">
+          <div class="addon-preview-inner">
+            <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=600&h=300&fit=crop&q=80" alt="Livraison express coffret cadeau">
+            <p>Livraison garantie en 48h partout en France métropolitaine. Emballage sécurisé et suivi en temps réel.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="totalRow" style="display:flex;justify-content:space-between;align-items:center;margin:24px 0 32px;padding:16px 0;border-top:2px solid var(--dore);">
+      <span style="font-size:16px;font-weight:500;">Total estimé par coffret</span>
+      <span id="totalPrice" style="font-family:var(--serif);font-size:28px;color:var(--dore);font-weight:600;"></span>
+    </div>
+
+    <h3 style="font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:16px;">Vos coordonnées</h3>
+    <form class="form-card" id="devisForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-field"><label>Prénom</label><input type="text" required placeholder="Jean"></div>
+        <div class="form-field"><label>Nom</label><input type="text" required placeholder="Dupont"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>Email</label><input type="email" required placeholder="jean@entreprise.com"></div>
+        <div class="form-field"><label>Entreprise</label><input type="text" placeholder="Nom de l'entreprise"></div>
+      </div>
+      <div class="form-field"><label>Quantité souhaitée</label><input type="number" min="1" value="50" placeholder="50"></div>
+      <div class="form-field"><label>Message (optionnel)</label><textarea placeholder="Précisez vos besoins..."></textarea></div>
+      <div class="btn-row">
+        <button type="button" class="btn btn-ghost" onclick="goStep(2)">← Retour</button>
+        <button type="submit" class="btn btn-primary magnetic">Demander un devis →</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Success -->
+  <div class="success-panel" id="successPanel">
+    <div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+    <h2>Demande envoyée !</h2>
+    <p>Nous revenons vers vous sous 24 heures avec un devis personnalisé.</p>
+    <a href="index.html" class="btn btn-primary magnetic">Retour à l'accueil →</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">Maison B</div>
+  <div class="footer-copy">© 2026 Maison B — Tous droits réservés</div>
+</footer>
+
+<script>
+/* ===== STATE ===== */
+const state = { univers: null, gamme: null, options: {}, step: 1, basePrice: 0 };
+
+/* ===== PRODUCT IMAGES DATABASE ===== */
+const productImages = {
+  whisky: {
+    essentiel: {
+      hero: 'https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=600&h=320&fit=crop&q=80',
+      items: [
+        { name: 'Mignonnettes whisky (2×5cl)', img: 'https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=120&h=120&fit=crop&q=80' },
+        { name: 'Chocolats noirs assortis', img: 'https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=120&h=120&fit=crop&q=80' },
+        { name: 'Carnet de dégustation', img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=120&h=120&fit=crop&q=80' },
+        { name: 'Verres gravés (×2)', img: 'https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=120&h=120&fit=crop&q=80' },
+        { name: 'Coffret kraft', img: 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=120&h=120&fit=crop&q=80' }
+      ]
+    },
+    signature: {
+      hero: 'https://images.unsplash.com/photo-1602081115068-30ff5ee1ddba?w=600&h=320&fit=crop&q=80',
+      items: [
+        { name: 'Bouteille single malt 70cl', img: 'https://images.unsplash.com/photo-1602081115068-30ff5ee1ddba?w=120&h=120&fit=crop&q=80' },
+        { name: 'Chocolats grand cru', img: 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=120&h=120&fit=crop&q=80' },
+        { name: 'Carnet relié cuir', img: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=120&h=120&fit=crop&q=80' },
+        { name: 'Verres cristal gravés (×2)', img: 'https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=120&h=120&fit=crop&q=80' },
+        { name: 'Coffret bois teinté', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=120&h=120&fit=crop&q=80' }
+      ]
+    },
+    prestige: {
+      hero: 'https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=600&h=320&fit=crop&q=80',
+      items: [
+        { name: 'Whisky 15+ ans d\'âge', img: 'https://images.unsplash.com/photo-1602081115068-30ff5ee1ddba?w=120&h=120&fit=crop&q=80' },
+        { name: 'Chocolats artisanaux', img: 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=120&h=120&fit=crop&q=80' },
+        { name: 'Carnet cuir numéroté', img: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=120&h=120&fit=crop&q=80' },
+        { name: 'Verres cristal Bohême (×2)', img: 'https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=120&h=120&fit=crop&q=80' },
+        { name: 'Coffret bois noble', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=120&h=120&fit=crop&q=80' }
+      ]
+    }
+  },
+  the: {
+    essentiel: {
+      hero: 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600&h=320&fit=crop&q=80',
+      items: [
+        { name: 'Thés en vrac (3 variétés)', img: 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=120&h=120&fit=crop&q=80' },
+        { name: 'Duo tasses céramique', img: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=120&h=120&fit=crop&q=80' },
+        { name: 'Biscuits artisanaux', img: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=120&h=120&fit=crop&q=80' },
+        { name: 'Plateau bois gravé', img: 'https://images.unsplash.com/photo-1584589167171-541ce45f1eea?w=120&h=120&fit=crop&q=80' },
+        { name: 'Coffret kraft', img: 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=120&h=120&fit=crop&q=80' }
+      ]
+    },
+    signature: {
+      hero: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&h=320&fit=crop&q=80',
+      items: [
+        { name: 'Thés premium (5 variétés)', img: 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=120&h=120&fit=crop&q=80' },
+        { name: 'Tasses porcelaine', img: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=120&h=120&fit=crop&q=80' },
+        { name: 'Pâtisseries fines', img: 'https://images.unsplash.com/photo-1558326567-98ae2405596b?w=120&h=120&fit=crop&q=80' },
+        { name: 'Plateau noyer gravé', img: 'https://images.unsplash.com/photo-1584589167171-541ce45f1eea?w=120&h=120&fit=crop&q=80' },
+        { name: 'Coffret bois teinté', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=120&h=120&fit=crop&q=80' }
+      ]
+    },
+    prestige: {
+      hero: 'https://images.unsplash.com/photo-1558326567-98ae2405596b?w=600&h=320&fit=crop&q=80',
+      items: [
+        { name: 'Thés grands crus', img: 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=120&h=120&fit=crop&q=80' },
+        { name: 'Service à thé numéroté', img: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=120&h=120&fit=crop&q=80' },
+        { name: 'Douceurs personnalisées', img: 'https://images.unsplash.com/photo-1558326567-98ae2405596b?w=120&h=120&fit=crop&q=80' },
+        { name: 'Plateau noyer premium', img: 'https://images.unsplash.com/photo-1584589167171-541ce45f1eea?w=120&h=120&fit=crop&q=80' },
+        { name: 'Coffret bois noble', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=120&h=120&fit=crop&q=80' }
+      ]
+    }
+  },
+  senteur: {
+    essentiel: {
+      hero: 'https://images.unsplash.com/photo-1602607685172-b95cd8e5a1db?w=600&h=320&fit=crop&q=80',
+      items: [
+        { name: 'Bougie 180g', img: 'https://images.unsplash.com/photo-1602607685172-b95cd8e5a1db?w=120&h=120&fit=crop&q=80' },
+        { name: 'Mini diffuseur 100ml', img: 'https://images.unsplash.com/photo-1595535873420-a599195b3f4a?w=120&h=120&fit=crop&q=80' },
+        { name: 'Allumettes personnalisées', img: 'https://images.unsplash.com/photo-1550411294-875ba64b1911?w=120&h=120&fit=crop&q=80' },
+        { name: 'Porte-bougie laiton', img: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?w=120&h=120&fit=crop&q=80' },
+        { name: 'Coffret kraft', img: 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=120&h=120&fit=crop&q=80' }
+      ]
+    },
+    signature: {
+      hero: 'https://images.unsplash.com/photo-1595535873420-a599195b3f4a?w=600&h=320&fit=crop&q=80',
+      items: [
+        { name: 'Bougie 3 mèches 350g', img: 'https://images.unsplash.com/photo-1602607685172-b95cd8e5a1db?w=120&h=120&fit=crop&q=80' },
+        { name: 'Diffuseur 200ml', img: 'https://images.unsplash.com/photo-1595535873420-a599195b3f4a?w=120&h=120&fit=crop&q=80' },
+        { name: 'Allumettes coffret', img: 'https://images.unsplash.com/photo-1550411294-875ba64b1911?w=120&h=120&fit=crop&q=80' },
+        { name: 'Porte-bougie gravé', img: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?w=120&h=120&fit=crop&q=80' },
+        { name: 'Coffret bois teinté', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=120&h=120&fit=crop&q=80' }
+      ]
+    },
+    prestige: {
+      hero: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?w=600&h=320&fit=crop&q=80',
+      items: [
+        { name: 'Bougie parfum exclusif', img: 'https://images.unsplash.com/photo-1602607685172-b95cd8e5a1db?w=120&h=120&fit=crop&q=80' },
+        { name: 'Diffuseur verre soufflé', img: 'https://images.unsplash.com/photo-1595535873420-a599195b3f4a?w=120&h=120&fit=crop&q=80' },
+        { name: 'Allumettes cuir', img: 'https://images.unsplash.com/photo-1550411294-875ba64b1911?w=120&h=120&fit=crop&q=80' },
+        { name: 'Porte-bougie premium', img: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?w=120&h=120&fit=crop&q=80' },
+        { name: 'Coffret bois noble', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=120&h=120&fit=crop&q=80' }
+      ]
+    }
+  },
+  jeux: {
+    essentiel: {
+      hero: 'https://images.pexels.com/photos/29159942/pexels-photo-29159942.jpeg?auto=compress&cs=tinysrgb&w=600&h=320&fit=crop',
+      items: [
+        { name: 'Mini backgammon voyage', img: 'https://images.pexels.com/photos/29159942/pexels-photo-29159942.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop' },
+        { name: 'Cartes personnalisées', img: 'https://images.pexels.com/photos/279009/pexels-photo-279009.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop' },
+        { name: 'Carnet de scores', img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=120&h=120&fit=crop&q=80' },
+        { name: 'Backgammon logotypé', img: 'https://images.pexels.com/photos/28680371/pexels-photo-28680371.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop' },
+        { name: 'Coffret kraft', img: 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=120&h=120&fit=crop&q=80' }
+      ]
+    },
+    signature: {
+      hero: 'https://images.pexels.com/photos/6345770/pexels-photo-6345770.jpeg?auto=compress&cs=tinysrgb&w=600&h=320&fit=crop',
+      items: [
+        { name: 'Backgammon cuir pleine fleur', img: 'https://images.pexels.com/photos/6345770/pexels-photo-6345770.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop' },
+        { name: 'Double jeu cartes', img: 'https://images.pexels.com/photos/4253888/pexels-photo-4253888.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop' },
+        { name: 'Carnet cuir relié', img: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=120&h=120&fit=crop&q=80' },
+        { name: 'Backgammon gravé', img: 'https://images.pexels.com/photos/10129682/pexels-photo-10129682.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop' },
+        { name: 'Coffret bois teinté', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=120&h=120&fit=crop&q=80' }
+      ]
+    },
+    prestige: {
+      hero: 'https://images.pexels.com/photos/6345756/pexels-photo-6345756.jpeg?auto=compress&cs=tinysrgb&w=600&h=320&fit=crop',
+      items: [
+        { name: 'Backgammon cuir d\'exception', img: 'https://images.pexels.com/photos/6345756/pexels-photo-6345756.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop' },
+        { name: 'Cartes artisanales', img: 'https://images.pexels.com/photos/6844385/pexels-photo-6844385.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop' },
+        { name: 'Carnet cuir numéroté', img: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=120&h=120&fit=crop&q=80' },
+        { name: 'Backgammon édition limitée', img: 'https://images.pexels.com/photos/10129682/pexels-photo-10129682.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop' },
+        { name: 'Coffret bois noble', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=120&h=120&fit=crop&q=80' }
+      ]
+    }
+  }
+};
+
+const gammeData = {
+  whisky: {
+    essentiel: { price: '80 — 120', base: 100 },
+    signature: { price: '120 — 200', base: 160 },
+    prestige: { price: '200 — 350', base: 275 }
+  },
+  the: {
+    essentiel: { price: '70 — 100', base: 85 },
+    signature: { price: '100 — 160', base: 130 },
+    prestige: { price: '160 — 260', base: 210 }
+  },
+  senteur: {
+    essentiel: { price: '70 — 110', base: 90 },
+    signature: { price: '110 — 170', base: 140 },
+    prestige: { price: '170 — 280', base: 225 }
+  },
+  jeux: {
+    essentiel: { price: '60 — 100', base: 80 },
+    signature: { price: '100 — 160', base: 130 },
+    prestige: { price: '160 — 280', base: 220 }
+  }
+};
+
+const universNames = { whisky: 'Whisky', the: 'Thé', senteur: 'Senteur', jeux: 'Jeux' };
+const gammeNames = { essentiel: 'Essentiel', signature: 'Signature', prestige: 'Prestige' };
+
+/* URL params */
+(function() {
+  const p = new URLSearchParams(window.location.search);
+  const u = p.get('univers');
+  if (u && gammeData[u]) { selectUnivers(u); }
+})();
+
+function selectUnivers(u, el) {
+  state.univers = u;
+  document.querySelectorAll('#step1 .univers-photo-card').forEach(c => c.classList.remove('selected'));
+  if (el) el.classList.add('selected');
+  buildGammeGrid();
+  setTimeout(() => goStep(2), 400);
+}
+
+function buildGammeGrid() {
+  const grid = document.getElementById('gammeGrid');
+  const d = gammeData[state.univers];
+  const imgs = productImages[state.univers];
+  grid.innerHTML = '';
+
+  ['essentiel', 'signature', 'prestige'].forEach((g) => {
+    const card = document.createElement('div');
+    card.className = 'gamme-card';
+    card.onclick = function() { selectGamme(g, this); };
+
+    let html = '';
+    if (g === 'signature') html += '<div class="gamme-tag">Populaire</div>';
+    html += '<img class="gamme-card-img" src="' + imgs[g].hero + '" alt="Gamme ' + gammeNames[g] + '">';
+    html += '<div class="gamme-card-body">';
+    html += '<h3>' + gammeNames[g] + '</h3>';
+    html += '<div class="card-price">' + d[g].price + ' €</div>';
+    html += '<div class="card-items">' + imgs[g].items.slice(0, 3).map(i => i.name).join(', ') + '</div>';
+    html += '</div>';
+    // Product thumbnail strip
+    html += '<div class="gamme-products">';
+    imgs[g].items.slice(0, 4).forEach(item => {
+      html += '<div class="gamme-product-thumb"><img src="' + item.img + '" alt="' + item.name + '"></div>';
+    });
+    html += '</div>';
+
+    card.innerHTML = html;
+    grid.appendChild(card);
+  });
+}
+
+function selectGamme(g, el) {
+  state.gamme = g;
+  state.basePrice = gammeData[state.univers][g].base;
+  state.options = {};
+  document.querySelectorAll('#step2 .gamme-card').forEach(c => c.classList.remove('selected'));
+  if (el) el.classList.add('selected');
+  buildSummary();
+  setTimeout(() => goStep(3), 300);
+}
+
+function buildSummary() {
+  const items = productImages[state.univers][state.gamme].items;
+  let html = '<div class="summary-title">Coffret ' + universNames[state.univers] + ' — ' + gammeNames[state.gamme] + '</div>';
+  items.forEach(item => {
+    html += '<div class="summary-item">';
+    html += '<div class="summary-item-img"><img src="' + item.img + '" alt="' + item.name + '"></div>';
+    html += '<span class="summary-item-text">' + item.name + '</span>';
+    html += '<span class="summary-item-check">✓</span>';
+    html += '</div>';
+  });
+  document.getElementById('summaryCard').innerHTML = html;
+  updateTotal();
+}
+
+function toggleAddon(el, name, price) {
+  el.classList.toggle('selected');
+  if (state.options[name]) delete state.options[name];
+  else state.options[name] = price;
+  updateTotal();
+}
+
+function updateTotal() {
+  let total = state.basePrice;
+  Object.values(state.options).forEach(p => total += p);
+  document.getElementById('totalPrice').textContent = total + ' €';
+}
+
+function goStep(n) {
+  state.step = n;
+  document.querySelectorAll('.step-panel').forEach(p => { p.classList.remove('active'); });
+  document.getElementById('step' + n).classList.add('active');
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById('dot' + i);
+    dot.classList.remove('active', 'done');
+    if (i < n) dot.classList.add('done');
+    if (i === n) dot.classList.add('active');
+  }
+  document.getElementById('line1').classList.toggle('done', n >= 2);
+  document.getElementById('line2').classList.toggle('done', n >= 3);
+  if (n < 3) {
+    document.querySelectorAll('.addon-item').forEach(a => a.classList.remove('selected'));
+    state.options = {};
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector('.progress-bar').style.display = 'none';
+  document.getElementById('successPanel').style.display = 'block';
+}
+
+/* ===== NAV SCROLL ===== */
+const nav = document.getElementById('nav');
+const progressBar = document.getElementById('scrollProgress');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const st = window.scrollY;
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  if (docH > 0) progressBar.style.width = (st / docH * 100) + '%';
+  if (st > 60) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  lastScroll = st;
+});
+
+/* ===== MAGNETIC ===== */
+document.querySelectorAll('.magnetic').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = 'translate(' + (x * 0.15) + 'px,' + (y * 0.15) + 'px)';
+  });
+  btn.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0,0)'; });
+});
+</script>
+</body>
+</html>

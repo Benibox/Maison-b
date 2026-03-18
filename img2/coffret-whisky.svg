@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FAF7F3"/>
+      <stop offset="100%" style="stop-color:#EDE5DA"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A855"/>
+      <stop offset="100%" style="stop-color:#8B6E4E"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5F0EB;stop-opacity:0.95"/>
+      <stop offset="50%" style="stop-color:#FFF;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#E0D5C8;stop-opacity:0.85"/>
+    </linearGradient>
+    <linearGradient id="bottle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C2821"/>
+      <stop offset="100%" style="stop-color:#4A3F33"/>
+    </linearGradient>
+    <linearGradient id="leather" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B6E4E"/>
+      <stop offset="100%" style="stop-color:#6B5240"/>
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000" flood-opacity="0.1"/></filter>
+    <filter id="sm"><feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000" flood-opacity="0.08"/></filter>
+  </defs>
+  <rect width="600" height="500" fill="url(#bg)"/>
+  <circle cx="500" cy="100" r="180" fill="#E8DFD4" opacity="0.4"/>
+  <circle cx="80" cy="420" r="120" fill="#D5C8B8" opacity="0.25"/>
+
+  <!-- Whisky bottle -->
+  <g filter="url(#shadow)" transform="translate(100, 40)">
+    <rect x="35" y="80" width="50" height="300" rx="6" fill="url(#bottle)"/>
+    <rect x="42" y="0" width="36" height="90" rx="4" fill="url(#bottle)"/>
+    <ellipse cx="60" cy="0" rx="12" ry="5" fill="#3D352B"/>
+    <!-- Label -->
+    <rect x="40" y="160" width="40" height="80" rx="2" fill="#E8DFD4"/>
+    <rect x="44" y="168" width="32" height="1" fill="#C4A46C" opacity="0.5"/>
+    <rect x="44" y="228" width="32" height="1" fill="#C4A46C" opacity="0.5"/>
+    <text x="60" y="200" text-anchor="middle" font-family="Georgia" font-size="7" fill="#6B5D4F" letter-spacing="1">JAPANESE</text>
+    <text x="60" y="212" text-anchor="middle" font-family="Georgia" font-size="9" fill="#2C2821" letter-spacing="2">WHISKY</text>
+    <!-- Amber liquid visible -->
+    <rect x="40" y="250" width="40" height="120" rx="3" fill="url(#amber)" opacity="0.4"/>
+    <ellipse cx="60" cy="380" rx="28" ry="6" fill="#3D2E1A" opacity="0.2"/>
+  </g>
+
+  <!-- Carafe -->
+  <g filter="url(#shadow)" transform="translate(230, 100)">
+    <ellipse cx="55" cy="340" rx="50" ry="10" fill="#B0A08A" opacity="0.25"/>
+    <path d="M20,120 Q15,200 18,330 Q20,340 55,340 Q90,340 92,330 Q95,200 90,120 Z" fill="url(#glass)" stroke="#D5C8B8" stroke-width="0.5"/>
+    <rect x="38" y="40" width="34" height="85" rx="5" fill="url(#glass)" stroke="#D5C8B8" stroke-width="0.5"/>
+    <ellipse cx="55" cy="40" rx="20" ry="10" fill="url(#glass)" stroke="#D5C8B8" stroke-width="0.5"/>
+    <!-- Stopper -->
+    <ellipse cx="55" cy="35" rx="14" ry="7" fill="#E8E2D9"/>
+    <rect x="47" y="15" width="16" height="22" rx="8" fill="#E0D5C8"/>
+    <!-- Whisky inside -->
+    <path d="M22,220 Q20,280 22,330 Q24,338 55,338 Q86,338 88,330 Q90,280 88,220 Z" fill="url(#amber)" opacity="0.35"/>
+  </g>
+
+  <!-- Two glasses -->
+  <g filter="url(#sm)" transform="translate(380, 220)">
+    <ellipse cx="40" cy="210" rx="35" ry="7" fill="#B0A08A" opacity="0.2"/>
+    <path d="M8,50 L14,200 L66,200 L72,50 Z" fill="url(#glass)" stroke="#D5C8B8" stroke-width="0.5"/>
+    <rect x="32" y="200" width="16" height="20" rx="2" fill="url(#glass)"/>
+    <ellipse cx="40" cy="220" rx="28" ry="5" fill="url(#glass)" stroke="#D5C8B8" stroke-width="0.5"/>
+    <!-- Whisky in glass -->
+    <path d="M20,140 L22,198 L58,198 L60,140 Z" fill="url(#amber)" opacity="0.3"/>
+  </g>
+  <g filter="url(#sm)" transform="translate(460, 250)">
+    <ellipse cx="35" cy="180" rx="30" ry="6" fill="#B0A08A" opacity="0.2"/>
+    <path d="M7,45 L12,172 L58,172 L63,45 Z" fill="url(#glass)" stroke="#D5C8B8" stroke-width="0.5"/>
+    <rect x="28" y="172" width="14" height="17" rx="2" fill="url(#glass)"/>
+    <ellipse cx="35" cy="189" rx="24" ry="4.5" fill="url(#glass)" stroke="#D5C8B8" stroke-width="0.5"/>
+  </g>
+
+  <!-- Leather vide-poche -->
+  <g filter="url(#sm)" transform="translate(350, 100)">
+    <rect x="0" y="0" width="130" height="90" rx="8" fill="url(#leather)"/>
+    <rect x="8" y="8" width="114" height="74" rx="5" fill="#7A6050"/>
+    <text x="65" y="52" text-anchor="middle" font-family="Georgia" font-size="10" fill="#9A8A7A" letter-spacing="3" opacity="0.7">VOTRE LOGO</text>
+    <rect x="25" y="60" width="80" height="0.5" fill="#9A8A7A" opacity="0.3"/>
+  </g>
+
+  <!-- Decorative dots -->
+  <circle cx="540" cy="80" r="3" fill="#C4A46C" opacity="0.3"/>
+  <circle cx="555" cy="95" r="2" fill="#C4A46C" opacity="0.2"/>
+  <circle cx="50" cy="60" r="2" fill="#C4A46C" opacity="0.25"/>
+</svg>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison B — L'Univers Jeux</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --noir: #2C2C2C; --blanc: #FFFFFF; --gris: #8A8A8A; --gris-clair: #F0EDE8;
+  --tabac: #9A8470; --sable: #D4C5B0; --creme: #F5F1EC; --brun: #6B5D4F; --or: #B09868;
+  --rose: #F8F0EB; --beige: #FAF7F3; --dore: #C4A87C;
+  --accent: #9A9ABE; --accent-deep: #6A6A8E; --accent-light: #F5F3F8;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+}
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--sans); background: var(--blanc); color: var(--noir); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+.scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-deep)); z-index: 200; width: 0%; transition: width 0.1s linear; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 clamp(24px, 5vw, 70px); height: 72px; display: flex; align-items: center; justify-content: space-between; transition: background 0.4s, box-shadow 0.4s, border-color 0.4s, transform 0.4s; border-bottom: 1px solid transparent; background: rgba(255,255,255,0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.nav.scrolled { background: rgba(255,255,255,0.97); border-bottom-color: var(--gris-clair); box-shadow: 0 1px 20px rgba(0,0,0,0.04); }
+.nav.hidden { transform: translateY(-100%); }
+.nav-back { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); transition: color 0.3s, transform 0.3s; display: flex; align-items: center; gap: 8px; }
+.nav-back:hover { color: var(--noir); transform: translateX(-4px); }
+.nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: var(--noir); position: absolute; left: 50%; transform: translateX(-50%); }
+.nav-cta { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; padding: 10px 24px; background: var(--noir); color: var(--blanc); transition: all 0.3s; border: 1px solid var(--noir); }
+.nav-cta:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+
+.hero { min-height: 85vh; display: flex; position: relative; overflow: hidden; background: linear-gradient(135deg, #F8F7FA 0%, var(--accent-light) 50%, #EEEAF3 100%); }
+.hero-content { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 clamp(32px, 6vw, 80px); max-width: 55%; z-index: 2; }
+.hero-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; opacity: 0; animation: fadeUp 0.8s 0.2s cubic-bezier(0.22,1,0.36,1) forwards; }
+.hero h1 { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; color: var(--noir); line-height: 1.15; margin-bottom: 20px; }
+.hero h1 em { font-style: italic; color: var(--accent-deep); }
+.hero h1 .word { display: inline-block; opacity: 0; transform: translateY(40px) rotateX(15deg); animation: wordReveal 0.8s cubic-bezier(0.22,1,0.36,1) forwards; }
+@keyframes wordReveal { to { opacity: 1; transform: translateY(0) rotateX(0deg); } }
+.hero-sub { font-size: clamp(14px, 1.1vw, 16px); color: var(--gris); line-height: 1.75; max-width: 440px; margin-bottom: 36px; opacity: 0; animation: fadeUp 0.8s 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.hero-price { display: inline-block; font-size: 13px; letter-spacing: 1px; color: var(--accent-deep); padding: 8px 20px; border: 1px solid var(--accent); border-radius: 30px; opacity: 0; animation: fadeUp 0.8s 0.8s cubic-bezier(0.22,1,0.36,1) forwards; }
+.hero-image { position: absolute; right: 0; top: 0; bottom: 0; width: 50%; z-index: 1; overflow: hidden; }
+.hero-image::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 200px; background: linear-gradient(90deg, var(--accent-light), transparent); z-index: 2; }
+.hero-image img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.1); transition: transform 8s ease-out; }
+.hero-image img.loaded { transform: scale(1.0); }
+
+.section { padding: clamp(60px, 8vw, 120px) clamp(24px, 5vw, 70px); }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.section-heading { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300; line-height: 1.2; margin-bottom: 16px; color: var(--noir); }
+.section-sub { font-size: 15px; color: var(--gris); max-width: 520px; line-height: 1.75; }
+.section-header { text-align: center; margin-bottom: clamp(40px, 5vw, 60px); }
+.section-header .section-sub { margin: 0 auto; }
+
+.reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-60px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(60px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+.reveal-scale { opacity: 0; transform: scale(0.85); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
+.reveal-rotate { opacity: 0; transform: translateY(40px) rotate(3deg); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+.reveal-rotate.visible { opacity: 1; transform: translateY(0) rotate(0deg); }
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+
+.section-divider { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); margin: 0 auto; opacity: 0; transform: scaleX(0); transition: opacity 0.8s, transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+.section-divider.visible { opacity: 1; transform: scaleX(1); }
+
+.compo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.compo-card { background: var(--blanc); padding: 36px 28px; text-align: center; border: 1px solid var(--gris-clair); border-radius: 12px; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s, border-color 0.4s; }
+.compo-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.07); border-color: var(--accent); }
+.compo-icon { font-size: 40px; margin-bottom: 16px; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+.compo-card:hover .compo-icon { transform: scale(1.15) rotate(-5deg); }
+.compo-card h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 10px; }
+.compo-card p { font-size: 13px; color: var(--gris); line-height: 1.7; }
+
+.objet { background: var(--accent-light); }
+.objet-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.objet-img { border-radius: 12px; overflow: hidden; }
+.objet-img img { width: 100%; height: 360px; object-fit: cover; transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.objet-img:hover img { transform: scale(1.05); }
+.objet-text h3 { font-family: var(--serif); font-size: clamp(24px, 2.5vw, 34px); font-weight: 300; margin-bottom: 16px; }
+.objet-text p { font-size: 14px; color: var(--gris); line-height: 1.8; margin-bottom: 20px; }
+.objet-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--accent-deep); padding: 8px 16px; background: rgba(154,154,190,0.12); border-radius: 6px; }
+
+.gammes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.gamme-card { background: var(--blanc); border: 1px solid var(--gris-clair); border-radius: 12px; padding: 36px 28px; text-align: center; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s, border-color 0.4s; position: relative; overflow: hidden; }
+.gamme-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-deep)); transform: scaleX(0); transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); transform-origin: left; }
+.gamme-card:hover::before { transform: scaleX(1); }
+.gamme-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.07); border-color: var(--accent); }
+.gamme-card.featured { border-color: var(--accent); }
+.gamme-card.featured::before { transform: scaleX(1); }
+.gamme-name { font-family: var(--serif); font-size: 26px; font-weight: 400; margin-bottom: 6px; }
+.gamme-price { font-size: 14px; color: var(--accent-deep); margin-bottom: 20px; font-weight: 500; }
+.gamme-list { list-style: none; text-align: left; }
+.gamme-list li { font-size: 13px; color: var(--gris); padding: 8px 0; border-bottom: 1px solid var(--gris-clair); display: flex; align-items: center; gap: 10px; }
+.gamme-list li:last-child { border-bottom: none; }
+.gamme-list li::before { content: '◆'; font-size: 6px; color: var(--accent); flex-shrink: 0; }
+.gamme-tag { position: absolute; top: 16px; right: 16px; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--blanc); background: var(--accent-deep); padding: 4px 10px; border-radius: 3px; }
+
+.cta-section { background: linear-gradient(135deg, var(--accent-light) 0%, #EEEAF3 100%); text-align: center; padding: clamp(80px, 10vw, 130px) clamp(24px, 5vw, 70px); position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at center, rgba(154,154,190,0.08) 0%, transparent 60%); animation: gentlePulse 8s ease-in-out infinite; pointer-events: none; }
+@keyframes gentlePulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } }
+.cta-section h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; color: var(--noir); max-width: 700px; margin: 0 auto 16px; line-height: 1.3; }
+.cta-section p { font-size: 15px; color: var(--gris); max-width: 480px; margin: 0 auto 36px; line-height: 1.75; }
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 15px 36px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s; border-radius: 4px; }
+.btn-primary { background: var(--noir); color: var(--blanc); border: 1px solid var(--noir); }
+.btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+.btn-ghost { border: 1px solid var(--sable); color: var(--noir); background: rgba(255,255,255,0.6); }
+.btn-ghost:hover { background: var(--blanc); }
+.cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.magnetic { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1); }
+
+.footer { background: var(--creme); padding: clamp(40px, 5vw, 60px) clamp(24px, 5vw, 70px); text-align: center; }
+.footer-logo { font-family: var(--serif); font-size: 18px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: var(--noir); margin-bottom: 8px; }
+.footer-copy { font-size: 12px; color: var(--sable); letter-spacing: 1px; }
+
+@media (max-width: 768px) {
+  .nav-logo { position: static; transform: none; }
+  .hero { flex-direction: column; min-height: auto; padding-top: 80px; }
+  .hero-content { max-width: 100%; padding: 40px 28px; }
+  .hero-image { position: relative; width: 100%; height: 300px; }
+  .hero-image::before { background: linear-gradient(180deg, var(--accent-light), transparent); width: 100%; height: 80px; bottom: auto; }
+  .compo-grid { grid-template-columns: 1fr; }
+  .objet-layout { grid-template-columns: 1fr; gap: 30px; }
+  .gammes-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-back">← Retour</a>
+  <a href="index.html" class="nav-logo">Maison B</a>
+  <a href="configurateur.html?univers=jeux" class="nav-cta magnetic">Configurer</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">L'univers</div>
+    <h1 id="heroTitle">Le coffret <em>Jeux</em></h1>
+    <p class="hero-sub">L'art du jeu comme vecteur de lien. Backgammon en cuir, cartes personnalisées et carnet de scores pour des moments de convivialité mémorables.</p>
+    <div class="hero-price">À partir de 60 €</div>
+  </div>
+  <div class="hero-image">
+    <img id="heroImg" src="https://images.unsplash.com/photo-1628924172947-113fb23621b3?w=900&h=1000&fit=crop&q=80" alt="Coffret Jeux Maison B">
+  </div>
+</section>
+
+<div class="section-divider"></div>
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label">Composition</div>
+      <h2 class="section-heading">Trois éléments d'exception</h2>
+      <p class="section-sub">Un ensemble ludique et raffiné, conçu pour créer des moments de partage et de convivialité entre collaborateurs.</p>
+    </div>
+    <div class="compo-grid">
+      <div class="compo-card reveal reveal-delay-1">
+        <div class="compo-icon">🎲</div>
+        <h3>Backgammon cuir</h3>
+        <p>Plateau de backgammon de voyage en cuir pleine fleur, pions en bois d'olivier et dés artisanaux.</p>
+      </div>
+      <div class="compo-card reveal reveal-delay-2">
+        <div class="compo-icon">🃏</div>
+        <h3>Cartes personnalisées</h3>
+        <p>Jeu de 54 cartes imprimé sur carton premium, dos personnalisé au logo et aux couleurs de votre entreprise.</p>
+      </div>
+      <div class="compo-card reveal reveal-delay-3">
+        <div class="compo-icon">📓</div>
+        <h3>Carnet en cuir</h3>
+        <p>Carnet de scores relié cuir avec pages numérotées. Parfait pour garder la trace de vos parties entre collègues.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+<section class="section objet">
+  <div class="section-inner">
+    <div class="objet-layout">
+      <div class="objet-img reveal-left">
+        <img src="https://images.unsplash.com/photo-1611891487122-207579d67d98?w=600&h=400&fit=crop&q=80" alt="Backgammon cuir logotypé">
+      </div>
+      <div class="objet-text reveal-right">
+        <div class="section-label">L'objet pérenne</div>
+        <h3>Un backgammon en cuir logotypé</h3>
+        <p>Plateau de backgammon de voyage en cuir pleine fleur, gravé au logo de votre entreprise. Un objet de bureau élégant qui invite au jeu et à la pause — un rappel subtil de votre marque dans les moments de détente.</p>
+        <div class="objet-badge">◆ Gravure laser personnalisée incluse</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label">Les gammes</div>
+      <h2 class="section-heading">Trois niveaux de raffinement</h2>
+      <p class="section-sub">Du cadeau ludique au geste d'exception, trouvez le coffret qui incarne votre esprit d'équipe.</p>
+    </div>
+    <div class="gammes-grid">
+      <div class="gamme-card reveal-scale reveal-delay-1">
+        <div class="gamme-name">Essentiel</div>
+        <div class="gamme-price">60 — 100 €</div>
+        <ul class="gamme-list">
+          <li>Mini backgammon voyage</li>
+          <li>Jeu de cartes personnalisé</li>
+          <li>Carnet de scores</li>
+          <li>Backgammon cuir logotypé</li>
+          <li>Coffret kraft sérigraphié</li>
+        </ul>
+      </div>
+      <div class="gamme-card featured reveal-scale reveal-delay-2">
+        <div class="gamme-tag">Populaire</div>
+        <div class="gamme-name">Signature</div>
+        <div class="gamme-price">100 — 160 €</div>
+        <ul class="gamme-list">
+          <li>Backgammon cuir pleine fleur</li>
+          <li>Double jeu de cartes premium</li>
+          <li>Carnet cuir relié</li>
+          <li>Backgammon gravé logotypé</li>
+          <li>Coffret bois teinté</li>
+        </ul>
+      </div>
+      <div class="gamme-card reveal-scale reveal-delay-3">
+        <div class="gamme-name">Prestige</div>
+        <div class="gamme-price">160 — 280 €</div>
+        <ul class="gamme-list">
+          <li>Backgammon cuir d'exception</li>
+          <li>Cartes artisanales numérotées</li>
+          <li>Carnet cuir premium numéroté</li>
+          <li>Backgammon gravé édition limitée</li>
+          <li>Coffret bois noble logotypé</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="reveal">
+    <h2>Créez votre coffret <em style="font-family:var(--serif);font-style:italic;color:var(--accent-deep)">Jeux</em></h2>
+    <p>Configurez votre coffret en quelques clics et recevez un devis personnalisé sous 24 heures.</p>
+    <div class="cta-buttons">
+      <a href="configurateur.html?univers=jeux" class="btn btn-primary magnetic">Configurer mon coffret</a>
+      <a href="index.html#devis" class="btn btn-ghost magnetic">Demander un devis</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">Maison B</div>
+  <div class="footer-copy">© 2026 Maison B — Tous droits réservés</div>
+</footer>
+
+<script>
+(function() {
+  const el = document.getElementById('heroTitle');
+  if (!el) return;
+  const html = el.innerHTML;
+  let delay = 0.1;
+  el.innerHTML = html.replace(/(<[^>]+>)|(\S+)/g, (m, tag, word) => {
+    if (tag) return tag;
+    delay += 0.08;
+    return '<span class="word" style="animation-delay:' + delay + 's">' + word + '</span>';
+  });
+})();
+window.addEventListener('load', () => { setTimeout(() => document.getElementById('heroImg').classList.add('loaded'), 300); });
+const progressBar = document.getElementById('scrollProgress');
+const nav = document.getElementById('nav');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const st = window.scrollY;
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (st / docH * 100) + '%';
+  if (st > 80) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  if (st > lastScroll && st > 400) nav.classList.add('hidden'); else nav.classList.remove('hidden');
+  lastScroll = st;
+});
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-rotate, .section-divider');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+document.querySelectorAll('.magnetic').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = 'translate(' + (x * 0.15) + 'px,' + (y * 0.15) + 'px)';
+  });
+  btn.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0,0)'; });
+});
+</script>
+</body>
+</html>
