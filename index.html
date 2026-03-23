@@ -33,7 +33,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: var(--blanc); transition: color 0.4s; }
 .nav.scrolled .nav-logo { color: var(--noir); }
 .nav-links { display: flex; align-items: center; gap: 36px; }
-.nav-link { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(250,250,248,0.55); transition: color 0.3s; }
+.nav-link { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(250,250,248,0.75); transition: color 0.3s; }
 .nav-link:hover { color: var(--blanc); }
 .nav.scrolled .nav-link { color: var(--gris); }
 .nav.scrolled .nav-link:hover { color: var(--noir); }
@@ -56,7 +56,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero h1 em { font-style: italic; color: var(--sable); }
 .hero h1 .word { display: inline-block; opacity: 0; transform: translateY(40px) rotateX(15deg); animation: wordReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 @keyframes wordReveal { to { opacity: 1; transform: translateY(0) rotateX(0deg); } }
-.hero-sub { font-size: clamp(14px, 1.1vw, 16px); color: rgba(250,250,248,0.45); line-height: 1.75; max-width: 480px; margin-bottom: 16px; opacity: 0; animation: fadeUp 0.8s 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.hero-sub { font-size: clamp(14px, 1.1vw, 16px); color: rgba(250,250,248,0.7); line-height: 1.75; max-width: 480px; margin-bottom: 16px; opacity: 0; animation: fadeUp 0.8s 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 .hero-cta-wrap { opacity: 0; animation: fadeUp 0.8s 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 .hero-cta-btn { display: inline-flex; align-items: center; gap: 14px; padding: 18px 44px; font-size: 12px; letter-spacing: 3.5px; text-transform: uppercase; font-weight: 500; color: var(--blanc); border: 1px solid rgba(250,250,248,0.35); background: rgba(250,250,248,0.06); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
 .hero-cta-btn:hover { background: rgba(250,250,248,0.14); border-color: rgba(250,250,248,0.6); box-shadow: 0 8px 40px rgba(0,0,0,0.2); transform: translateY(-2px); letter-spacing: 4.5px; }
@@ -108,6 +108,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .reveal-delay-3 { transition-delay: 0.36s; }
 .reveal-delay-4 { transition-delay: 0.48s; }
 
+/* ===== SOCIAL PROOF BAR ===== */
+.social-proof { background: var(--noir); padding: 20px clamp(24px, 5vw, 70px); overflow: hidden; }
+.social-proof-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: clamp(24px, 4vw, 56px); flex-wrap: wrap; }
+.social-proof-item { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.social-proof-num { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--or); }
+.social-proof-text { font-size: 12px; letter-spacing: 1px; color: rgba(250,250,248,0.5); text-transform: uppercase; }
+.social-proof-sep { width: 1px; height: 24px; background: rgba(250,250,248,0.1); }
+
 /* ===== UNIVERS GRID ===== */
 .univers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .univers-card { position: relative; aspect-ratio: 3/4; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 2vw, 28px); transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s; border-radius: 8px; }
@@ -117,10 +125,32 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .univers-card h3 { font-family: var(--serif); font-size: clamp(22px, 2vw, 28px); font-weight: 400; color: var(--blanc); position: relative; z-index: 2; margin-bottom: 4px; }
 .univers-card p { font-size: 12px; color: rgba(255,255,255,0.6); position: relative; z-index: 2; line-height: 1.6; transform: translateY(8px); opacity: 0; transition: all 0.4s; }
 .univers-card:hover p { transform: translateY(0); opacity: 1; }
+.univers-card .card-price { font-size: 13px; font-weight: 500; color: var(--blanc); position: relative; z-index: 2; margin-bottom: 6px; letter-spacing: 0.5px; opacity: 0.85; }
 .univers-card .card-arrow { position: absolute; top: 20px; right: 20px; font-size: 20px; color: rgba(255,255,255,0.3); z-index: 2; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s; }
 .univers-card:hover .card-arrow { transform: translateX(6px); color: rgba(255,255,255,0.8); }
 .univers-card .card-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; border-radius: 8px; transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
 .univers-card:hover .card-bg { transform: scale(1.08); }
+.univers-card .card-badge { position: absolute; top: 16px; left: 16px; background: var(--or); color: var(--blanc); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; z-index: 2; font-weight: 500; border-radius: 3px; }
+
+/* ===== COFFRETS POPULAIRES ===== */
+.coffrets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+.coffret-card { background: var(--blanc); border-radius: 10px; overflow: hidden; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s; cursor: pointer; border: 1px solid rgba(0,0,0,0.06); text-decoration: none; color: inherit; display: block; }
+.coffret-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+.coffret-card-img { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+.coffret-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+.coffret-card:hover .coffret-card-img img { transform: scale(1.06); }
+.coffret-card-img .coffret-tag { position: absolute; top: 12px; left: 12px; background: rgba(26,26,26,0.85); color: var(--blanc); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; backdrop-filter: blur(6px); border-radius: 3px; }
+.coffret-card-body { padding: 20px 22px 24px; }
+.coffret-card-body h3 { font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 6px; color: var(--noir); }
+.coffret-card-body .coffret-desc { font-size: 13px; color: var(--gris); line-height: 1.6; margin-bottom: 14px; }
+.coffret-card-body .coffret-price-row { display: flex; align-items: center; justify-content: space-between; }
+.coffret-card-body .coffret-price { font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--noir); }
+.coffret-card-body .coffret-price small { font-size: 12px; font-weight: 400; color: var(--gris); margin-left: 2px; }
+.coffret-card-body .coffret-cta { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--or); font-weight: 500; transition: color 0.3s; }
+.coffret-card:hover .coffret-cta { color: var(--noir); }
+.coffrets-see-all { text-align: center; }
+.coffrets-see-all a { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--noir); font-weight: 500; padding: 14px 36px; border: 1px solid var(--noir); transition: all 0.4s; }
+.coffrets-see-all a:hover { background: var(--noir); color: var(--blanc); }
 
 /* ===== PROMESSE ===== */
 .promesse { background: linear-gradient(135deg, #4A3728 0%, #33261C 40%, #221A12 100%); text-align: center; padding: clamp(80px, 10vw, 140px) clamp(24px, 5vw, 70px); position: relative; overflow: hidden; }
@@ -285,6 +315,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .univers-grid { grid-template-columns: 1fr 1fr; }
+  .coffrets-grid { grid-template-columns: 1fr 1fr; }
   .galerie-grid { grid-template-columns: 1fr 1fr; }
   .galerie-item.featured { grid-column: span 2; grid-row: span 1; aspect-ratio: 16/9; }
   .occasions-grid { grid-template-columns: 1fr 1fr; }
@@ -365,7 +396,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero h1 em { color: var(--or); }
 
   .hero-sub {
-    color: rgba(26, 26, 26, 0.6);
+    color: rgba(26, 26, 26, 0.75);
     font-size: 14px;
     margin-bottom: 28px;
     max-width: 100%;
@@ -406,6 +437,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     z-index: 3;
   }
 
+  /* Social proof mobile */
+  .social-proof-inner { gap: 16px; }
+  .social-proof-sep { display: none; }
+  .social-proof-item { flex-direction: column; gap: 2px; text-align: center; }
+  .social-proof-num { font-size: 20px; }
+  .social-proof-text { font-size: 9px; }
+
+  /* Coffrets grid mobile */
+  .coffrets-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .coffret-card-body { padding: 14px 16px 18px; }
+  .coffret-card-body h3 { font-size: 17px; }
+  .coffret-card-body .coffret-desc { font-size: 12px; margin-bottom: 10px; }
+  .coffret-card-body .coffret-price { font-size: 15px; }
+
   /* Other mobile overrides */
   .univers-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .galerie-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -427,6 +472,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 @media (max-width: 480px) {
   .univers-grid { grid-template-columns: 1fr; }
   .univers-card { aspect-ratio: 16/9; }
+  .coffrets-grid { grid-template-columns: 1fr; gap: 16px; }
   .galerie-grid { grid-template-columns: 1fr; }
   .occasions-grid { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; }
@@ -441,19 +487,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <nav class="nav" id="nav">
   <a href="#" class="nav-logo">MAISON B</a>
   <div class="nav-links">
-    <a href="#univers" class="nav-link">Nos univers</a>
+    <a href="#coffrets" class="nav-link">Nos coffrets</a>
+    <a href="#univers" class="nav-link">Univers</a>
     <a href="#inspirations" class="nav-link">Réalisations</a>
-    <a href="#sur-mesure" class="nav-link">Sur mesure</a>
-    <a href="#approche" class="nav-link">Notre approche</a>
+    <a href="#devis" class="nav-link">Devis gratuit</a>
   </div>
   <a href="configurateur.html" class="nav-cta magnetic">Composer mon coffret</a>
   <div class="nav-burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
+  <a href="#coffrets" onclick="toggleMenu()">Nos coffrets</a>
   <a href="#univers" onclick="toggleMenu()">Univers</a>
   <a href="#inspirations" onclick="toggleMenu()">Réalisations</a>
-  <a href="#sur-mesure" onclick="toggleMenu()">Sur mesure</a>
-  <a href="#approche" onclick="toggleMenu()">Approche</a>
+  <a href="#devis" onclick="toggleMenu()">Devis gratuit</a>
   <a href="configurateur.html" class="mobile-cta" onclick="toggleMenu()">Composer mon coffret</a>
 </div>
 
@@ -475,87 +521,163 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   <div class="hero-scroll"><span>Découvrir</span><span>↓</span></div>
 </section>
 
-<div class="section-divider" style="margin-top: -1px;"></div>
+<!-- ===== SOCIAL PROOF BAR ===== -->
+<div class="social-proof">
+  <div class="social-proof-inner">
+    <div class="social-proof-item"><span class="social-proof-num">500+</span><span class="social-proof-text">Coffrets livrés</span></div>
+    <div class="social-proof-sep"></div>
+    <div class="social-proof-item"><span class="social-proof-num">150+</span><span class="social-proof-text">Entreprises clientes</span></div>
+    <div class="social-proof-sep"></div>
+    <div class="social-proof-item"><span class="social-proof-num">100%</span><span class="social-proof-text">Sur mesure</span></div>
+    <div class="social-proof-sep"></div>
+    <div class="social-proof-item"><span class="social-proof-num">48h</span><span class="social-proof-text">Proposition offerte</span></div>
+  </div>
+</div>
+
+<!-- ===== NOS COFFRETS POPULAIRES ===== -->
+<section class="section" id="coffrets" style="background: var(--beige);">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label">Nos coffrets</div>
+      <h2 class="section-heading">Les coffrets les plus demandés</h2>
+      <p class="section-sub">Des compositions prêtes à personnaliser. Choisissez, ajoutez votre touche, on s'occupe du reste.</p>
+    </div>
+    <div class="coffrets-grid">
+      <a href="whisky.html" class="coffret-card reveal reveal-delay-1">
+        <div class="coffret-card-img">
+          <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=600&h=450&fit=crop&q=80" alt="Coffret Whisky Signature">
+          <span class="coffret-tag">Best-seller</span>
+        </div>
+        <div class="coffret-card-body">
+          <h3>Coffret Whisky Signature</h3>
+          <div class="coffret-desc">Carafe en cristal, 2 verres gravés, whisky japonais 70cl, vide-poche cuir</div>
+          <div class="coffret-price-row">
+            <span class="coffret-price">145 €<small> / coffret</small></span>
+            <span class="coffret-cta">Découvrir →</span>
+          </div>
+        </div>
+      </a>
+      <a href="senteur.html" class="coffret-card reveal reveal-delay-2">
+        <div class="coffret-card-img">
+          <img src="https://images.unsplash.com/photo-1602928321679-560bb453f190?w=600&h=450&fit=crop&q=80" alt="Coffret Senteur Prestige">
+          <span class="coffret-tag">Nouveau</span>
+        </div>
+        <div class="coffret-card-body">
+          <h3>Coffret Senteur Prestige</h3>
+          <div class="coffret-desc">Bougie parfumée 300g, diffuseur bâtonnets bois, savon artisanal, allumettes</div>
+          <div class="coffret-price-row">
+            <span class="coffret-price">135 €<small> / coffret</small></span>
+            <span class="coffret-cta">Découvrir →</span>
+          </div>
+        </div>
+      </a>
+      <a href="the.html" class="coffret-card reveal reveal-delay-3">
+        <div class="coffret-card-img">
+          <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&h=450&fit=crop&q=80" alt="Coffret Thé Essentiel">
+        </div>
+        <div class="coffret-card-body">
+          <h3>Coffret Thé Essentiel</h3>
+          <div class="coffret-desc">Boîte à thé artisanale, 3 thés premium, tasse en porcelaine, biscuits sablés</div>
+          <div class="coffret-price-row">
+            <span class="coffret-price">95 €<small> / coffret</small></span>
+            <span class="coffret-cta">Découvrir →</span>
+          </div>
+        </div>
+      </a>
+      <a href="jeux.html" class="coffret-card reveal reveal-delay-1">
+        <div class="coffret-card-img">
+          <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=600&h=450&fit=crop&q=80" alt="Coffret Jeux Signature">
+        </div>
+        <div class="coffret-card-body">
+          <h3>Coffret Jeux Signature</h3>
+          <div class="coffret-desc">Backgammon de voyage cuir, jeu de cartes personnalisé, carnet cousu</div>
+          <div class="coffret-price-row">
+            <span class="coffret-price">125 €<small> / coffret</small></span>
+            <span class="coffret-cta">Découvrir →</span>
+          </div>
+        </div>
+      </a>
+      <a href="whisky.html" class="coffret-card reveal reveal-delay-2">
+        <div class="coffret-card-img">
+          <img src="https://images.unsplash.com/photo-1547595628-c61a29f496f0?w=600&h=450&fit=crop&q=80" alt="Coffret Whisky Prestige">
+          <span class="coffret-tag">Premium</span>
+        </div>
+        <div class="coffret-card-body">
+          <h3>Coffret Whisky Prestige</h3>
+          <div class="coffret-desc">Whisky single malt 18 ans, carafe gravée, 4 verres, pierres à whisky, étui cuir</div>
+          <div class="coffret-price-row">
+            <span class="coffret-price">285 €<small> / coffret</small></span>
+            <span class="coffret-cta">Découvrir →</span>
+          </div>
+        </div>
+      </a>
+      <a href="configurateur.html" class="coffret-card reveal reveal-delay-3" style="border: 2px dashed var(--gris-clair); background: transparent;">
+        <div class="coffret-card-img" style="background: linear-gradient(135deg, rgba(140,120,81,0.05), rgba(140,120,81,0.12)); display: flex; align-items: center; justify-content: center;">
+          <div style="text-align: center; padding: 20px;">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(140,120,81,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+            <div style="font-family: var(--serif); font-size: 18px; color: var(--noir); margin-bottom: 6px;">Coffret sur mesure</div>
+            <div style="font-size: 12px; color: var(--gris);">Composez le vôtre</div>
+          </div>
+        </div>
+        <div class="coffret-card-body">
+          <h3>Votre coffret unique</h3>
+          <div class="coffret-desc">Mélangez les univers, choisissez vos produits, personnalisez le packaging</div>
+          <div class="coffret-price-row">
+            <span class="coffret-price">Sur devis</span>
+            <span class="coffret-cta">Composer →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="coffrets-see-all">
+      <a href="configurateur.html" class="magnetic">Voir tous les coffrets →</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
 
 <!-- ===== NOS UNIVERS ===== -->
 <section class="section" id="univers">
   <div class="section-inner">
     <div class="section-header reveal">
       <div class="section-label">Nos univers</div>
-      <h2 class="section-heading">Quatre univers, une promesse</h2>
-      <p class="section-sub">Chaque coffret mêle plaisir éphémère et objet que l'on garde. Tous personnalisés à votre image, avec une carte et un message de votre choix.</p>
+      <h2 class="section-heading">Explorez nos quatre univers</h2>
+      <p class="section-sub">Chaque univers propose des coffrets uniques, personnalisés à votre image. À partir de 65 € par coffret, carte manuscrite incluse.</p>
     </div>
     <div class="univers-grid">
       <a href="whisky.html" class="univers-card reveal-scale reveal-delay-1">
         <img class="card-bg" src="https://images.unsplash.com/photo-1576611693052-c822b18673ff?w=600&h=800&fit=crop&q=80" alt="Coffret Whisky">
+        <span class="card-badge">Populaire</span>
         <span class="card-arrow">&rarr;</span>
+        <div class="card-price">À partir de 80 €</div>
         <h3>Whisky</h3>
         <p>Carafe, verres, whisky japonais, vide-poche en cuir logotypé</p>
       </a>
       <a href="the.html" class="univers-card reveal-scale reveal-delay-2">
         <img class="card-bg" src="https://images.unsplash.com/photo-1582966953353-0b54fb3062e6?w=600&h=800&fit=crop&q=80" alt="Coffret Thé">
         <span class="card-arrow">&rarr;</span>
+        <div class="card-price">À partir de 65 €</div>
         <h3>Thé</h3>
         <p>Boîte à thé, tasses artisanales, biscuits, pince à thé, plateau</p>
       </a>
       <a href="senteur.html" class="univers-card reveal-scale reveal-delay-3">
         <img class="card-bg" src="https://images.unsplash.com/photo-1760804876257-f073f77f2bcf?w=600&h=800&fit=crop&q=80" alt="Coffret Senteur">
+        <span class="card-badge">Nouveau</span>
         <span class="card-arrow">&rarr;</span>
+        <div class="card-price">À partir de 70 €</div>
         <h3>Senteur</h3>
         <p>Bougie parfumée premium, diffuseur bâtonnets bois, allumettes</p>
       </a>
       <a href="jeux.html" class="univers-card reveal-scale reveal-delay-4">
         <img class="card-bg" src="https://images.unsplash.com/photo-1628924172947-113fb23621b3?w=600&h=800&fit=crop&q=80" alt="Coffret Jeux">
         <span class="card-arrow">&rarr;</span>
+        <div class="card-price">À partir de 75 €</div>
         <h3>Jeux</h3>
         <p>Backgammon de voyage, jeux de cartes personnalisés, carnet</p>
       </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PROMESSE ===== -->
-<section class="promesse">
-  <div class="reveal">
-    <h2>Un coffret Maison B, c'est un cadeau qu'on ouvre une fois — et qu'on garde des années.</h2>
-    <p>Chaque coffret contient au moins un objet pérenne, personnalisé à l'image de votre entreprise ou à votre nom. Coffret, packaging, et carte avec votre message personnel — tout est sur mesure.</p>
-    <div class="promesse-buttons">
-      <a href="#inspirations" class="btn btn-outline magnetic">Voir nos réalisations</a>
-      <a href="configurateur.html" class="btn btn-outline magnetic">Composer mon coffret</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PERSONNALISATION ===== -->
-<section class="section perso-banner" id="personnalisation">
-  <div class="section-inner">
-    <div class="perso-inner">
-      <div class="perso-visual reveal-left">
-        <img class="perso-img" src="img/photos/IMG_F8B5700C6BAC-1.jpeg" alt="Coffret personnalisé Maison B avec carte">
-        <div class="perso-floating-card">
-          <div class="pfc-label">Carte incluse</div>
-          <div class="pfc-text">&laquo; Merci pour cette année exceptionnelle. À bientôt. &raquo;</div>
-        </div>
-      </div>
-      <div class="perso-text reveal-right">
-        <h2>Chaque coffret est <em>unique</em>, comme votre message</h2>
-        <p>Votre coffret est entièrement personnalisé — du contenu au packaging — et accompagné d'une carte élégante avec le message de votre choix.</p>
-        <div class="perso-features">
-          <div class="perso-feature">
-            <div class="perso-feature-icon"><svg viewBox="0 0 24 24"><path d="M20 12V22H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/></svg></div>
-            <div><h4>Coffret personnalisé</h4><p>Packaging à votre image : logo, couleurs, identité visuelle intégrés au coffret.</p></div>
-          </div>
-          <div class="perso-feature">
-            <div class="perso-feature-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-            <div><h4>Carte avec votre message</h4><p>Une carte élégante glissée dans chaque coffret, avec le texte que vous choisissez.</p></div>
-          </div>
-          <div class="perso-feature">
-            <div class="perso-feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
-            <div><h4>Composition sur mesure</h4><p>Gourmandises, objets, senteurs — chaque produit est sélectionné selon vos envies.</p></div>
-          </div>
-        </div>
-        <a href="configurateur.html" class="btn btn-solid magnetic">Personnaliser mon coffret</a>
-      </div>
     </div>
   </div>
 </section>
@@ -652,41 +774,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   </div>
 </section>
 
-<!-- ===== OCCASIONS ===== -->
-<section class="section occasions" id="occasions">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <div class="section-label">Pour chaque occasion</div>
-      <h2 class="section-heading">Un beau cadeau, quelle que soit l'occasion</h2>
-      <p class="section-sub">Idéal pour vos cadeaux d'entreprise — et tout aussi parfait pour les moments qui comptent dans la vie.</p>
-    </div>
-    <div class="occasions-grid">
-      <div class="occasion-card reveal reveal-delay-1"><div class="occasion-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div><h3>Cadeaux clients</h3><p>Fin d'année, remerciements, fidélisation — marquez les esprits de vos meilleurs clients.</p></div>
-      <div class="occasion-card reveal reveal-delay-2"><div class="occasion-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><h3>Team & onboarding</h3><p>Accueillez vos nouveaux collaborateurs ou célébrez vos équipes avec un coffret mémorable.</p></div>
-      <div class="occasion-card reveal reveal-delay-3"><div class="occasion-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h3>Occasions personnelles</h3><p>Anniversaires, mariages, pendaisons de crémaillère — un cadeau élégant pour chaque moment.</p></div>
-      <div class="occasion-card reveal reveal-delay-4"><div class="occasion-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Événements & séminaires</h3><p>Conférences, galas, lancements de produits — offrez une expérience premium à vos invités.</p></div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ===== APPROCHE ===== -->
-<section class="section" id="approche">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <div class="section-label">Notre approche</div>
-      <h2 class="section-heading">Comment ça marche</h2>
-      <p class="section-sub">Du sur-mesure, sans la complexité.</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step reveal reveal-delay-1"><div class="step-num">01</div><h3>Vous nous décrivez</h3><p>Votre budget, l'occasion, le nombre de coffrets, et l'image que vous voulez transmettre. En 2 minutes, on a tout ce qu'il faut.</p><div class="step-line"></div></div>
-      <div class="step reveal reveal-delay-2"><div class="step-num">02</div><h3>On vous propose</h3><p>Sous 48h, on revient avec une proposition de coffret sur mesure — composition, objets, packaging, carte personnalisée. Vous validez, on ajuste.</p><div class="step-line"></div></div>
-      <div class="step reveal reveal-delay-3"><div class="step-num">03</div><h3>On livre</h3><p>Production, personnalisation, emballage, livraison. On gère tout. Vous recevez des coffrets prêts à offrir, avec carte et message personnalisés.</p><div class="step-line"></div></div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== DEVIS ===== -->
 <section class="section devis" id="devis">
   <div class="section-inner">
@@ -706,12 +793,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <div class="form-card reveal-right reveal-delay-2">
         <div class="form-title">Votre demande</div>
         <form id="devisForm" onsubmit="handleSubmit(event)">
-          <div class="form-row"><div class="form-field"><label>Votre nom</label><input type="text" name="name" placeholder="Marie Dupont" required></div><div class="form-field"><label>Entreprise (optionnel)</label><input type="text" name="company" placeholder="Cabinet Dupont & Associés"></div></div>
-          <div class="form-field"><label>Email</label><input type="email" name="email" placeholder="marie@dupont-associes.fr" required></div>
-          <div class="form-row"><div class="form-field"><label>Occasion</label><select name="occasion"><option value="">Choisir...</option><option>Fin d'année</option><option>Remerciement clients</option><option>Séminaire / événement</option><option>Onboarding collaborateurs</option><option>Anniversaire / mariage</option><option>Autre occasion</option></select></div><div class="form-field"><label>Nombre de coffrets</label><input type="number" name="quantity" placeholder="50" min="1"></div></div>
-          <div class="form-row"><div class="form-field"><label>Budget par coffret</label><select name="budget"><option value="">Choisir...</option><option>50 - 80 EUR</option><option>80 - 120 EUR</option><option>120 - 180 EUR</option><option>180 - 300 EUR</option><option>Budget sur mesure</option></select></div><div class="form-field"><label>Univers préféré</label><select name="univers"><option value="">Pas encore décidé</option><option>Whisky</option><option>Thé</option><option>Senteur</option><option>Jeux</option><option>Mélange / Sur mesure</option></select></div></div>
-          <div class="form-field"><label>Un mot sur votre projet</label><textarea name="message" placeholder="On cherche un cadeau pour nos 50 meilleurs clients, quelque chose qui sorte de l'ordinaire..."></textarea></div>
-          <button type="submit" class="form-submit magnetic">Envoyer ma demande</button>
+          <div class="form-row"><div class="form-field"><label>Votre nom</label><input type="text" name="name" placeholder="Marie Dupont" required></div><div class="form-field"><label>Email</label><input type="email" name="email" placeholder="marie@dupont-associes.fr" required></div></div>
+          <div class="form-field"><label>Décrivez votre projet en quelques mots</label><textarea name="message" placeholder="On cherche un cadeau pour nos 50 meilleurs clients pour les fêtes de fin d'année, budget autour de 100-150€ par coffret..."></textarea></div>
+          <button type="submit" class="form-submit magnetic">Recevoir une proposition sous 48h →</button>
         </form>
         <div id="formSuccess" style="display:none; text-align:center; padding: 40px 20px;">
           <div style="font-family: var(--serif); font-size: 28px; font-weight: 300; margin-bottom: 12px;">Merci !</div>
@@ -727,7 +811,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   <div class="footer-inner">
     <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Coffrets & cadeaux sur mesure,<br>personnalisés, depuis Paris.</p></div>
     <div><h5>Nos univers</h5><div class="footer-links"><a href="whisky.html">Whisky</a><a href="the.html">Thé</a><a href="senteur.html">Senteur</a><a href="jeux.html">Jeux</a></div></div>
-    <div><h5>Explorer</h5><div class="footer-links"><a href="configurateur.html">Sur mesure</a><a href="#approche">Notre approche</a><a href="#inspirations">Nos réalisations</a><a href="#devis">Demander un devis</a></div></div>
+    <div><h5>Explorer</h5><div class="footer-links"><a href="configurateur.html">Configurateur</a><a href="#coffrets">Nos coffrets</a><a href="#inspirations">Nos réalisations</a><a href="#devis">Demander un devis</a></div></div>
     <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@maisonb.fr">contact@maisonb.fr</a><a href="tel:+33100000000">+33 1 XX XX XX XX</a><a>Paris, France</a></div></div>
     <div><h5>Suivez-nous</h5><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div>
   </div>

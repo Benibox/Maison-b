@@ -1,308 +1,1414 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maison B — L'Univers Jeux</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --noir: #2C2C2C; --blanc: #FFFFFF; --gris: #8A8A8A; --gris-clair: #F0EDE8;
-  --tabac: #9A8470; --sable: #D4C5B0; --creme: #F5F1EC; --brun: #6B5D4F; --or: #B09868;
-  --rose: #F8F0EB; --beige: #FAF7F3; --dore: #C4A87C;
-  --accent: #9A9ABE; --accent-deep: #6A6A8E; --accent-light: #F5F3F8;
-  --serif: 'Cormorant Garamond', Georgia, serif;
-  --sans: 'DM Sans', -apple-system, sans-serif;
-}
-html { scroll-behavior: smooth; font-size: 16px; }
-body { font-family: var(--sans); background: var(--blanc); color: var(--noir); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-a { color: inherit; text-decoration: none; }
-img { max-width: 100%; display: block; }
-button { cursor: pointer; border: none; background: none; font-family: inherit; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Coffret Jeux Personnalisé - Maison B</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
-.scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-deep)); z-index: 200; width: 0%; transition: width 0.1s linear; }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 clamp(24px, 5vw, 70px); height: 72px; display: flex; align-items: center; justify-content: space-between; transition: background 0.4s, box-shadow 0.4s, border-color 0.4s, transform 0.4s; border-bottom: 1px solid transparent; background: rgba(255,255,255,0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-.nav.scrolled { background: rgba(255,255,255,0.97); border-bottom-color: var(--gris-clair); box-shadow: 0 1px 20px rgba(0,0,0,0.04); }
-.nav.hidden { transform: translateY(-100%); }
-.nav-back { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); transition: color 0.3s, transform 0.3s; display: flex; align-items: center; gap: 8px; }
-.nav-back:hover { color: var(--noir); transform: translateX(-4px); }
-.nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: var(--noir); position: absolute; left: 50%; transform: translateX(-50%); }
-.nav-cta { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; padding: 10px 24px; background: var(--noir); color: var(--blanc); transition: all 0.3s; border: 1px solid var(--noir); }
-.nav-cta:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+    :root {
+      --noir: #1A1A1A;
+      --blanc: #FAFAF8;
+      --gris: #6B6B6B;
+      --gris-clair: #E8E6E1;
+      --tabac: #6B5D4F;
+      --sable: #C4B5A0;
+      --creme: #E8E2D9;
+      --brun: #2C2821;
+      --or: #8C7851;
+      --beige: #F5F4F0;
+      --dore: #8C7851;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', -apple-system, sans-serif;
+    }
 
-.hero { min-height: 85vh; display: flex; position: relative; overflow: hidden; background: linear-gradient(135deg, #F8F7FA 0%, var(--accent-light) 50%, #EEEAF3 100%); }
-.hero-content { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 clamp(32px, 6vw, 80px); max-width: 55%; z-index: 2; }
-.hero-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; opacity: 0; animation: fadeUp 0.8s 0.2s cubic-bezier(0.22,1,0.36,1) forwards; }
-.hero h1 { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; color: var(--noir); line-height: 1.15; margin-bottom: 20px; }
-.hero h1 em { font-style: italic; color: var(--accent-deep); }
-.hero h1 .word { display: inline-block; opacity: 0; transform: translateY(40px) rotateX(15deg); animation: wordReveal 0.8s cubic-bezier(0.22,1,0.36,1) forwards; }
-@keyframes wordReveal { to { opacity: 1; transform: translateY(0) rotateX(0deg); } }
-.hero-sub { font-size: clamp(14px, 1.1vw, 16px); color: var(--gris); line-height: 1.75; max-width: 440px; margin-bottom: 36px; opacity: 0; animation: fadeUp 0.8s 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-.hero-price { display: inline-block; font-size: 13px; letter-spacing: 1px; color: var(--accent-deep); padding: 8px 20px; border: 1px solid var(--accent); border-radius: 30px; opacity: 0; animation: fadeUp 0.8s 0.8s cubic-bezier(0.22,1,0.36,1) forwards; }
-.hero-image { position: absolute; right: 0; top: 0; bottom: 0; width: 50%; z-index: 1; overflow: hidden; }
-.hero-image::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 200px; background: linear-gradient(90deg, var(--accent-light), transparent); z-index: 2; }
-.hero-image img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.1); transition: transform 8s ease-out; }
-.hero-image img.loaded { transform: scale(1.0); }
+    html {
+      scroll-behavior: smooth;
+    }
 
-.section { padding: clamp(60px, 8vw, 120px) clamp(24px, 5vw, 70px); }
-.section-inner { max-width: 1100px; margin: 0 auto; }
-.section-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-.section-heading { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300; line-height: 1.2; margin-bottom: 16px; color: var(--noir); }
-.section-sub { font-size: 15px; color: var(--gris); max-width: 520px; line-height: 1.75; }
-.section-header { text-align: center; margin-bottom: clamp(40px, 5vw, 60px); }
-.section-header .section-sub { margin: 0 auto; }
+    body {
+      font-family: var(--sans);
+      color: var(--noir);
+      background-color: var(--blanc);
+      line-height: 1.6;
+    }
 
-.reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-left { opacity: 0; transform: translateX(-60px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
-.reveal-left.visible { opacity: 1; transform: translateX(0); }
-.reveal-right { opacity: 0; transform: translateX(60px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
-.reveal-right.visible { opacity: 1; transform: translateX(0); }
-.reveal-scale { opacity: 0; transform: scale(0.85); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
-.reveal-scale.visible { opacity: 1; transform: scale(1); }
-.reveal-rotate { opacity: 0; transform: translateY(40px) rotate(3deg); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
-.reveal-rotate.visible { opacity: 1; transform: translateY(0) rotate(0deg); }
-.reveal-delay-1 { transition-delay: 0.12s; }
-.reveal-delay-2 { transition-delay: 0.24s; }
-.reveal-delay-3 { transition-delay: 0.36s; }
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      background-color: transparent;
+      z-index: 1000;
+      transition: all 0.4s ease;
+    }
 
-.section-divider { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); margin: 0 auto; opacity: 0; transform: scaleX(0); transition: opacity 0.8s, transform 0.8s cubic-bezier(0.22,1,0.36,1); }
-.section-divider.visible { opacity: 1; transform: scaleX(1); }
+    nav.scrolled {
+      background-color: white;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
 
-.compo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.compo-card { background: var(--blanc); padding: 36px 28px; text-align: center; border: 1px solid var(--gris-clair); border-radius: 12px; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s, border-color 0.4s; }
-.compo-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.07); border-color: var(--accent); }
-.compo-icon { font-size: 40px; margin-bottom: 16px; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
-.compo-card:hover .compo-icon { transform: scale(1.15) rotate(-5deg); }
-.compo-card h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 10px; }
-.compo-card p { font-size: 13px; color: var(--gris); line-height: 1.7; }
+    .nav-back {
+      font-size: 14px;
+      font-family: var(--sans);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--noir);
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      text-decoration: none;
+    }
 
-.objet { background: var(--accent-light); }
-.objet-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-.objet-img { border-radius: 12px; overflow: hidden; }
-.objet-img img { width: 100%; height: 360px; object-fit: cover; transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
-.objet-img:hover img { transform: scale(1.05); }
-.objet-text h3 { font-family: var(--serif); font-size: clamp(24px, 2.5vw, 34px); font-weight: 300; margin-bottom: 16px; }
-.objet-text p { font-size: 14px; color: var(--gris); line-height: 1.8; margin-bottom: 20px; }
-.objet-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--accent-deep); padding: 8px 16px; background: rgba(154,154,190,0.12); border-radius: 6px; }
+    .nav-back:hover {
+      opacity: 0.6;
+    }
 
-.gammes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.gamme-card { background: var(--blanc); border: 1px solid var(--gris-clair); border-radius: 12px; padding: 36px 28px; text-align: center; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s, border-color 0.4s; position: relative; overflow: hidden; }
-.gamme-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-deep)); transform: scaleX(0); transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); transform-origin: left; }
-.gamme-card:hover::before { transform: scaleX(1); }
-.gamme-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.07); border-color: var(--accent); }
-.gamme-card.featured { border-color: var(--accent); }
-.gamme-card.featured::before { transform: scaleX(1); }
-.gamme-name { font-family: var(--serif); font-size: 26px; font-weight: 400; margin-bottom: 6px; }
-.gamme-price { font-size: 14px; color: var(--accent-deep); margin-bottom: 20px; font-weight: 500; }
-.gamme-list { list-style: none; text-align: left; }
-.gamme-list li { font-size: 13px; color: var(--gris); padding: 8px 0; border-bottom: 1px solid var(--gris-clair); display: flex; align-items: center; gap: 10px; }
-.gamme-list li:last-child { border-bottom: none; }
-.gamme-list li::before { content: '◆'; font-size: 6px; color: var(--accent); flex-shrink: 0; }
-.gamme-tag { position: absolute; top: 16px; right: 16px; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--blanc); background: var(--accent-deep); padding: 4px 10px; border-radius: 3px; }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--noir);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      letter-spacing: 3px;
+    }
 
-.cta-section { background: linear-gradient(135deg, var(--accent-light) 0%, #EEEAF3 100%); text-align: center; padding: clamp(80px, 10vw, 130px) clamp(24px, 5vw, 70px); position: relative; overflow: hidden; }
-.cta-section::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at center, rgba(154,154,190,0.08) 0%, transparent 60%); animation: gentlePulse 8s ease-in-out infinite; pointer-events: none; }
-@keyframes gentlePulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } }
-.cta-section h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; color: var(--noir); max-width: 700px; margin: 0 auto 16px; line-height: 1.3; }
-.cta-section p { font-size: 15px; color: var(--gris); max-width: 480px; margin: 0 auto 36px; line-height: 1.75; }
-.btn { display: inline-flex; align-items: center; justify-content: center; padding: 15px 36px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s; border-radius: 4px; }
-.btn-primary { background: var(--noir); color: var(--blanc); border: 1px solid var(--noir); }
-.btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
-.btn-ghost { border: 1px solid var(--sable); color: var(--noir); background: rgba(255,255,255,0.6); }
-.btn-ghost:hover { background: var(--blanc); }
-.cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.magnetic { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1); }
+    .nav-cta {
+      font-size: 12px;
+      font-family: var(--sans);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--noir);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
 
-.footer { background: var(--creme); padding: clamp(40px, 5vw, 60px) clamp(24px, 5vw, 70px); text-align: center; }
-.footer-logo { font-family: var(--serif); font-size: 18px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: var(--noir); margin-bottom: 8px; }
-.footer-copy { font-size: 12px; color: var(--sable); letter-spacing: 1px; }
+    .nav-cta::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: var(--dore);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
 
-@media (max-width: 768px) {
-  .nav-logo { position: static; transform: none; }
-  .hero { flex-direction: column; min-height: auto; padding-top: 80px; }
-  .hero-content { max-width: 100%; padding: 40px 28px; }
-  .hero-image { position: relative; width: 100%; height: 300px; }
-  .hero-image::before { background: linear-gradient(180deg, var(--accent-light), transparent); width: 100%; height: 80px; bottom: auto; }
-  .compo-grid { grid-template-columns: 1fr; }
-  .objet-layout { grid-template-columns: 1fr; gap: 30px; }
-  .gammes-grid { grid-template-columns: 1fr; }
-}
-</style>
+    .nav-cta:hover::after {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 20px;
+        height: 60px;
+      }
+      .nav-logo {
+        font-size: 18px;
+        letter-spacing: 2px;
+      }
+      .nav-back {
+        font-size: 12px;
+      }
+      .nav-cta {
+        font-size: 11px;
+      }
+    }
+
+    /* ===== HERO CAROUSEL ===== */
+    .hero {
+      margin-top: 70px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+      padding: 60px 40px;
+      min-height: 100vh;
+    }
+
+    .carousel-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .carousel-main {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      overflow: hidden;
+      background-color: var(--beige);
+    }
+
+    .carousel-slides {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--noir);
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .carousel-nav:hover {
+      background-color: var(--dore);
+      color: white;
+    }
+
+    .carousel-nav.prev {
+      left: 20px;
+    }
+
+    .carousel-nav.next {
+      right: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-nav {
+        display: none;
+      }
+    }
+
+    .carousel-thumbnails {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 0 2px;
+    }
+
+    .carousel-thumbnails::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .carousel-thumbnails::-webkit-scrollbar-track {
+      background: var(--gris-clair);
+    }
+
+    .carousel-thumbnails::-webkit-scrollbar-thumb {
+      background: var(--dore);
+    }
+
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+      cursor: pointer;
+      border: 2px solid transparent;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background-color: var(--beige);
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thumbnail.active {
+      border-color: var(--dore);
+    }
+
+    .thumbnail:hover {
+      border-color: var(--tabac);
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      padding: 0 20px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--gris-clair);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      background-color: var(--dore);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    /* ===== PRODUCT INFO ===== */
+    .product-info {
+      padding-top: 60px;
+    }
+
+    .product-label {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gris);
+      margin-bottom: 16px;
+      font-family: var(--sans);
+      font-weight: 500;
+    }
+
+    .product-title {
+      font-family: var(--serif);
+      font-size: 52px;
+      font-weight: 500;
+      color: var(--noir);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .product-price {
+      font-family: var(--serif);
+      font-size: 28px;
+      color: var(--dore);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .product-description {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--gris);
+      margin-bottom: 24px;
+      max-width: 400px;
+    }
+
+    .product-meta {
+      font-size: 12px;
+      color: var(--gris);
+      letter-spacing: 0.5px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .product-meta::before {
+      content: '';
+      width: 1px;
+      height: 16px;
+      background-color: var(--gris-clair);
+      display: block;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--noir);
+      color: white;
+      padding: 16px 32px;
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .cta-button:hover::before {
+      left: 100%;
+    }
+
+    .cta-button:hover {
+      background-color: var(--dore);
+      letter-spacing: 4px;
+    }
+
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 30px;
+      }
+
+      .carousel-main {
+        height: 50vh;
+      }
+
+      .product-info {
+        padding-top: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 30px 20px;
+        min-height: auto;
+      }
+
+      .carousel-main {
+        height: 50vh;
+        margin: 0 -20px;
+        width: calc(100% + 40px);
+      }
+
+      .carousel-thumbnails {
+        padding: 0 20px;
+      }
+
+      .product-info {
+        padding-top: 0;
+      }
+
+      .product-title {
+        font-size: 36px;
+      }
+
+      .product-price {
+        font-size: 24px;
+      }
+
+      .product-description {
+        font-size: 14px;
+      }
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 80px 40px;
+    }
+
+    section h2 {
+      font-family: var(--serif);
+      font-size: 42px;
+      color: var(--noir);
+      margin-bottom: 60px;
+      text-align: center;
+      font-weight: 500;
+      letter-spacing: -1px;
+    }
+
+    /* ===== WHAT'S INSIDE ===== */
+    .what-inside {
+      background-color: var(--blanc);
+    }
+
+    .grid-5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 30px;
+    }
+
+    .product-card {
+      text-align: center;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .product-card:nth-child(1) { animation-delay: 0.1s; }
+    .product-card:nth-child(2) { animation-delay: 0.2s; }
+    .product-card:nth-child(3) { animation-delay: 0.3s; }
+    .product-card:nth-child(4) { animation-delay: 0.4s; }
+    .product-card:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .product-card-image {
+      width: 100%;
+      aspect-ratio: 1;
+      background-color: var(--beige);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .product-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .product-card-image img {
+      transform: scale(1.05);
+    }
+
+    .product-card-name {
+      font-family: var(--serif);
+      font-size: 18px;
+      color: var(--noir);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .product-card-desc {
+      font-size: 13px;
+      color: var(--gris);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1024px) {
+      .grid-5 {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .grid-5 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .product-card:nth-child(4) { animation-delay: 0.4s; }
+      .product-card:nth-child(5) { animation-delay: 0.4s; }
+
+      section {
+        padding: 60px 20px;
+      }
+
+      section h2 {
+        font-size: 32px;
+        margin-bottom: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid-5 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== THREE TIERS ===== */
+    .three-tiers {
+      background-color: var(--beige);
+    }
+
+    .tiers-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tier-card {
+      background-color: white;
+      padding: 0;
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .tier-card:nth-child(1) { animation-delay: 0.1s; }
+    .tier-card:nth-child(2) { animation-delay: 0.2s; }
+    .tier-card:nth-child(3) { animation-delay: 0.3s; }
+
+    .tier-card.featured {
+      transform: scale(1.05);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    @media (max-width: 1024px) {
+      .tier-card.featured {
+        transform: scale(1.02);
+      }
+    }
+
+    .tier-image {
+      width: 100%;
+      height: 280px;
+      background-color: var(--beige);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tier-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tier-tag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background-color: var(--dore);
+      color: white;
+      padding: 6px 12px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: var(--sans);
+      font-weight: 600;
+    }
+
+    .tier-content {
+      padding: 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tier-name {
+      font-family: var(--serif);
+      font-size: 24px;
+      color: var(--noir);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .tier-price {
+      font-family: var(--serif);
+      font-size: 20px;
+      color: var(--dore);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .tier-items {
+      font-size: 13px;
+      color: var(--gris);
+      margin-bottom: 32px;
+      flex: 1;
+      line-height: 1.8;
+    }
+
+    .tier-items li {
+      list-style: none;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .tier-items li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--dore);
+      font-weight: bold;
+    }
+
+    .tier-button {
+      display: block;
+      background-color: var(--noir);
+      color: white;
+      padding: 14px 24px;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .tier-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .tier-button:hover::before {
+      left: 100%;
+    }
+
+    .tier-button:hover {
+      background-color: var(--dore);
+      letter-spacing: 3px;
+    }
+
+    @media (max-width: 1024px) {
+      .tiers-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .tier-card.featured {
+        transform: scale(1);
+      }
+    }
+
+    /* ===== CUSTOMIZATION ===== */
+    .customization {
+      background-color: var(--blanc);
+    }
+
+    .customization-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .customization-text {
+      font-size: 15px;
+      color: var(--gris);
+      line-height: 1.8;
+      margin-bottom: 50px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .customization-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .customization-item {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .customization-item:nth-child(1) { animation-delay: 0.1s; }
+    .customization-item:nth-child(2) { animation-delay: 0.2s; }
+    .customization-item:nth-child(3) { animation-delay: 0.3s; }
+
+    .customization-image {
+      width: 100%;
+      aspect-ratio: 1;
+      background-color: var(--beige);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .customization-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .customization-label {
+      font-family: var(--serif);
+      font-size: 16px;
+      color: var(--noir);
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .customization-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .customization-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background-color: var(--noir);
+      color: white;
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .cta-banner h2 {
+      font-family: var(--serif);
+      font-size: 42px;
+      color: white;
+      margin-bottom: 32px;
+      font-weight: 500;
+      letter-spacing: -1px;
+    }
+
+    .cta-banner-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-banner-button {
+      padding: 16px 40px;
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      font-weight: 600;
+    }
+
+    .cta-banner-button.primary {
+      background-color: var(--dore);
+      color: white;
+    }
+
+    .cta-banner-button.secondary {
+      background-color: transparent;
+      color: white;
+      border: 1px solid white;
+    }
+
+    .cta-banner-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .cta-banner-button:hover::before {
+      left: 100%;
+    }
+
+    .cta-banner-button.primary:hover {
+      background-color: var(--sable);
+      letter-spacing: 3px;
+    }
+
+    .cta-banner-button.secondary:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      letter-spacing: 3px;
+    }
+
+    @media (max-width: 768px) {
+      .cta-banner {
+        padding: 40px 20px;
+      }
+
+      .cta-banner h2 {
+        font-size: 32px;
+      }
+
+      .cta-banner-buttons {
+        flex-direction: column;
+      }
+
+      .cta-banner-button {
+        width: 100%;
+      }
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: var(--noir);
+      color: var(--blanc);
+      padding: 60px 40px 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 40px;
+      margin-bottom: 40px;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-column h4 {
+      font-family: var(--serif);
+      font-size: 16px;
+      margin-bottom: 20px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 12px;
+    }
+
+    .footer-column a {
+      color: var(--gris-clair);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.3s ease;
+      font-family: var(--sans);
+    }
+
+    .footer-column a:hover {
+      color: var(--dore);
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 20px;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    .footer-brand-desc {
+      font-size: 13px;
+      color: var(--gris-clair);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--gris-clair);
+      color: var(--gris-clair);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .footer-social a:hover {
+      background-color: var(--dore);
+      border-color: var(--dore);
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--gris-clair);
+      padding-top: 30px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--gris-clair);
+    }
+
+    @media (max-width: 1024px) {
+      .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+
+      footer {
+        padding: 40px 20px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    /* ===== MOBILE STICKY CTA ===== */
+    .mobile-sticky-cta {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-sticky-cta {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        border-top: 1px solid var(--gris-clair);
+        padding: 12px 20px;
+        z-index: 500;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .mobile-sticky-cta button {
+        width: 100%;
+        padding: 12px 16px;
+        background-color: var(--noir);
+        color: white;
+        font-family: var(--sans);
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+      }
+
+      .mobile-sticky-cta button:active {
+        background-color: var(--dore);
+      }
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-back">← Retour</a>
+    <div class="nav-logo">MAISON B</div>
+    <div class="nav-cta" id="navCta">Composer</div>
+  </nav>
 
-<div class="scroll-progress" id="scrollProgress"></div>
-
-<nav class="nav" id="nav">
-  <a href="index.html" class="nav-back">← Retour</a>
-  <a href="index.html" class="nav-logo">Maison B</a>
-  <a href="configurateur.html?univers=jeux" class="nav-cta magnetic">Configurer</a>
-</nav>
-
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-label">L'univers</div>
-    <h1 id="heroTitle">Le coffret <em>Jeux</em></h1>
-    <p class="hero-sub">L'art du jeu comme vecteur de lien. Backgammon en cuir, cartes personnalisées et carnet de scores pour des moments de convivialité mémorables.</p>
-    <div class="hero-price">À partir de 60 €</div>
-  </div>
-  <div class="hero-image">
-    <img id="heroImg" src="https://images.unsplash.com/photo-1628924172947-113fb23621b3?w=900&h=1000&fit=crop&q=80" alt="Coffret Jeux Maison B">
-  </div>
-</section>
-
-<div class="section-divider"></div>
-<section class="section">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <div class="section-label">Composition</div>
-      <h2 class="section-heading">Trois éléments d'exception</h2>
-      <p class="section-sub">Un ensemble ludique et raffiné, conçu pour créer des moments de partage et de convivialité entre collaborateurs.</p>
-    </div>
-    <div class="compo-grid">
-      <div class="compo-card reveal reveal-delay-1">
-        <div class="compo-icon">🎲</div>
-        <h3>Backgammon cuir</h3>
-        <p>Plateau de backgammon de voyage en cuir pleine fleur, pions en bois d'olivier et dés artisanaux.</p>
+  <!-- HERO SECTION WITH CAROUSEL -->
+  <section class="hero" id="heroSection">
+    <div class="carousel-container">
+      <!-- Main Carousel -->
+      <div class="carousel-main" id="carouselMain">
+        <div class="carousel-slides" id="carouselSlides">
+          <div class="carousel-slide active">
+            <img src="https://images.unsplash.com/photo-1628924172947-113fb23621b3?w=900&h=1000&fit=crop&q=80" alt="Board Game">
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1606503153255-59d8b8e0328e?w=900&h=1000&fit=crop&q=80" alt="Playing Cards">
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1611371805429-8b5c1b2c34ba?w=900&h=1000&fit=crop&q=80" alt="Chess">
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1612404459571-e4e4b45e3e6d?w=900&h=1000&fit=crop&q=80" alt="Dice">
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1519744346361-7a029ee9b381?w=900&h=1000&fit=crop&q=80" alt="Game Night">
+          </div>
+        </div>
+        <button class="carousel-nav prev" id="carouselPrev">&#10094;</button>
+        <button class="carousel-nav next" id="carouselNext">&#10095;</button>
       </div>
-      <div class="compo-card reveal reveal-delay-2">
-        <div class="compo-icon">🃏</div>
-        <h3>Cartes personnalisées</h3>
-        <p>Jeu de 54 cartes imprimé sur carton premium, dos personnalisé au logo et aux couleurs de votre entreprise.</p>
-      </div>
-      <div class="compo-card reveal reveal-delay-3">
-        <div class="compo-icon">📓</div>
-        <h3>Carnet en cuir</h3>
-        <p>Carnet de scores relié cuir avec pages numérotées. Parfait pour garder la trace de vos parties entre collègues.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<div class="section-divider"></div>
-<section class="section objet">
-  <div class="section-inner">
-    <div class="objet-layout">
-      <div class="objet-img reveal-left">
-        <img src="https://images.unsplash.com/photo-1611891487122-207579d67d98?w=600&h=400&fit=crop&q=80" alt="Backgammon cuir logotypé">
+      <!-- Thumbnails -->
+      <div class="carousel-thumbnails" id="carouselThumbnails">
+        <div class="thumbnail active" data-index="0">
+          <img src="https://images.unsplash.com/photo-1628924172947-113fb23621b3?w=200&h=200&fit=crop&q=80" alt="Thumb 1">
+        </div>
+        <div class="thumbnail" data-index="1">
+          <img src="https://images.unsplash.com/photo-1606503153255-59d8b8e0328e?w=200&h=200&fit=crop&q=80" alt="Thumb 2">
+        </div>
+        <div class="thumbnail" data-index="2">
+          <img src="https://images.unsplash.com/photo-1611371805429-8b5c1b2c34ba?w=200&h=200&fit=crop&q=80" alt="Thumb 3">
+        </div>
+        <div class="thumbnail" data-index="3">
+          <img src="https://images.unsplash.com/photo-1612404459571-e4e4b45e3e6d?w=900&h=1000&fit=crop&q=80" alt="Thumb 4">
+        </div>
+        <div class="thumbnail" data-index="4">
+          <img src="https://images.unsplash.com/photo-1519744346361-7a029ee9b381?w=200&h=200&fit=crop&q=80" alt="Thumb 5">
+        </div>
       </div>
-      <div class="objet-text reveal-right">
-        <div class="section-label">L'objet pérenne</div>
-        <h3>Un backgammon en cuir logotypé</h3>
-        <p>Plateau de backgammon de voyage en cuir pleine fleur, gravé au logo de votre entreprise. Un objet de bureau élégant qui invite au jeu et à la pause — un rappel subtil de votre marque dans les moments de détente.</p>
-        <div class="objet-badge">◆ Gravure laser personnalisée incluse</div>
+
+      <!-- Dots -->
+      <div class="carousel-dots" id="carouselDots">
+        <div class="dot active" data-index="0"></div>
+        <div class="dot" data-index="1"></div>
+        <div class="dot" data-index="2"></div>
+        <div class="dot" data-index="3"></div>
+        <div class="dot" data-index="4"></div>
       </div>
     </div>
-  </div>
-</section>
 
-<div class="section-divider"></div>
-<section class="section">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <div class="section-label">Les gammes</div>
-      <h2 class="section-heading">Trois niveaux de raffinement</h2>
-      <p class="section-sub">Du cadeau ludique au geste d'exception, trouvez le coffret qui incarne votre esprit d'équipe.</p>
-    </div>
-    <div class="gammes-grid">
-      <div class="gamme-card reveal-scale reveal-delay-1">
-        <div class="gamme-name">Essentiel</div>
-        <div class="gamme-price">60 — 100 €</div>
-        <ul class="gamme-list">
-          <li>Mini backgammon voyage</li>
-          <li>Jeu de cartes personnalisé</li>
-          <li>Carnet de scores</li>
-          <li>Backgammon cuir logotypé</li>
-          <li>Coffret kraft sérigraphié</li>
-        </ul>
+    <!-- PRODUCT INFO -->
+    <div class="product-info">
+      <div class="product-label">L'UNIVERS JEUX</div>
+      <h1 class="product-title">Le Coffret Jeux</h1>
+      <div class="product-price">À partir de 75 €</div>
+      <p class="product-description">
+        Le cadeau qui rassemble. Jeux de société premium, cartes personnalisées et accessoires de jeu d'exception pour créer des moments de partage inoubliables.
+      </p>
+      <div class="product-meta">
+        Personnalisation complète · Carte manuscrite incluse
       </div>
-      <div class="gamme-card featured reveal-scale reveal-delay-2">
-        <div class="gamme-tag">Populaire</div>
-        <div class="gamme-name">Signature</div>
-        <div class="gamme-price">100 — 160 €</div>
-        <ul class="gamme-list">
-          <li>Backgammon cuir pleine fleur</li>
-          <li>Double jeu de cartes premium</li>
-          <li>Carnet cuir relié</li>
-          <li>Backgammon gravé logotypé</li>
-          <li>Coffret bois teinté</li>
-        </ul>
+      <button class="cta-button" id="ctaPrimary">COMPOSER MON COFFRET →</button>
+    </div>
+  </section>
+
+  <!-- WHAT'S INSIDE -->
+  <section class="what-inside">
+    <h2>Ce que contient le coffret</h2>
+    <div class="grid-5">
+      <div class="product-card">
+        <div class="product-card-image">
+          <img src="https://images.unsplash.com/photo-1628924172947-113fb23621b3?w=400&h=400&fit=crop&q=80" alt="Backgammon">
+        </div>
+        <h3 class="product-card-name">Backgammon de Voyage</h3>
+        <p class="product-card-desc">Plateau en cuir véritable, pions en bois d'olivier. Format compact pour emmener partout.</p>
       </div>
-      <div class="gamme-card reveal-scale reveal-delay-3">
-        <div class="gamme-name">Prestige</div>
-        <div class="gamme-price">160 — 280 €</div>
-        <ul class="gamme-list">
-          <li>Backgammon cuir d'exception</li>
-          <li>Cartes artisanales numérotées</li>
-          <li>Carnet cuir premium numéroté</li>
-          <li>Backgammon gravé édition limitée</li>
-          <li>Coffret bois noble logotypé</li>
-        </ul>
+      <div class="product-card">
+        <div class="product-card-image">
+          <img src="https://images.unsplash.com/photo-1606503153255-59d8b8e0328e?w=400&h=400&fit=crop&q=80" alt="Cartes">
+        </div>
+        <h3 class="product-card-name">Jeu de Cartes Premium</h3>
+        <p class="product-card-desc">Double jeu de cartes en papier vélin, personnalisé au logo de votre entreprise.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-card-image">
+          <img src="https://images.unsplash.com/photo-1611371805429-8b5c1b2c34ba?w=400&h=400&fit=crop&q=80" alt="Échiquier">
+        </div>
+        <h3 class="product-card-name">Échiquier Artisanal</h3>
+        <p class="product-card-desc">Échiquier pliant en bois noble avec pièces sculptées à la main.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-card-image">
+          <img src="https://images.unsplash.com/photo-1612404459571-e4e4b45e3e6d?w=400&h=400&fit=crop&q=80" alt="Dés">
+        </div>
+        <h3 class="product-card-name">Set de Dés</h3>
+        <p class="product-card-desc">Coffret de 5 dés en bois massif, gravés et vernis à la main.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-card-image">
+          <img src="https://images.unsplash.com/photo-1519744346361-7a029ee9b381?w=400&h=400&fit=crop&q=80" alt="Carnet">
+        </div>
+        <h3 class="product-card-name">Carnet de Scores</h3>
+        <p class="product-card-desc">Carnet relié cuir avec pages numérotées et marque-page en tissu.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="cta-section">
-  <div class="reveal">
-    <h2>Créez votre coffret <em style="font-family:var(--serif);font-style:italic;color:var(--accent-deep)">Jeux</em></h2>
-    <p>Configurez votre coffret en quelques clics et recevez un devis personnalisé sous 24 heures.</p>
-    <div class="cta-buttons">
-      <a href="configurateur.html?univers=jeux" class="btn btn-primary magnetic">Configurer mon coffret</a>
-      <a href="index.html#devis" class="btn btn-ghost magnetic">Demander un devis</a>
+  <!-- THREE TIERS -->
+  <section class="three-tiers">
+    <h2>3 gammes au choix</h2>
+    <div class="tiers-container">
+      <!-- Essentiel -->
+      <div class="tier-card">
+        <div class="tier-image">
+          <img src="https://images.unsplash.com/photo-1628924172947-113fb23621b3?w=500&h=400&fit=crop&q=80" alt="Coffret Essentiel">
+        </div>
+        <div class="tier-content">
+          <h3 class="tier-name">Essentiel</h3>
+          <p class="tier-price">75 € - 120 €</p>
+          <ul class="tier-items">
+            <li>Jeu de cartes personnalisé (×2)</li>
+            <li>Set de dés artisanaux</li>
+            <li>Carnet de scores</li>
+            <li>Sac de rangement</li>
+            <li>Coffret carton sérigraphié</li>
+          </ul>
+          <button class="tier-button">Découvrir</button>
+        </div>
+      </div>
+
+      <!-- Signature (Featured) -->
+      <div class="tier-card featured">
+        <div class="tier-image">
+          <img src="https://images.unsplash.com/photo-1606503153255-59d8b8e0328e?w=500&h=400&fit=crop&q=80" alt="Coffret Signature">
+          <div class="tier-tag">Populaire</div>
+        </div>
+        <div class="tier-content">
+          <h3 class="tier-name">Signature</h3>
+          <p class="tier-price">120 € - 200 €</p>
+          <ul class="tier-items">
+            <li>Backgammon cuir voyage</li>
+            <li>Jeu de cartes premium</li>
+            <li>Carnet relié cuir</li>
+            <li>Plateau de jeu pliable</li>
+            <li>Coffret bois teinté</li>
+          </ul>
+          <button class="tier-button">Découvrir</button>
+        </div>
+      </div>
+
+      <!-- Prestige -->
+      <div class="tier-card">
+        <div class="tier-image">
+          <img src="https://images.unsplash.com/photo-1611371805429-8b5c1b2c34ba?w=500&h=400&fit=crop&q=80" alt="Coffret Prestige">
+        </div>
+        <div class="tier-content">
+          <h3 class="tier-name">Prestige</h3>
+          <p class="tier-price">200 € - 380 €</p>
+          <ul class="tier-items">
+            <li>Échiquier bois noble</li>
+            <li>Backgammon cuir pleine fleur</li>
+            <li>Set de jeux complet</li>
+            <li>Carnet cuir numéroté</li>
+            <li>Coffret laqué logotypé</li>
+          </ul>
+          <button class="tier-button">Découvrir</button>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- CUSTOMIZATION -->
+  <section class="customization">
+    <h2>Personnalisation</h2>
+    <div class="customization-content">
+      <p class="customization-text">
+        Rendez votre coffret unique avec nos options de personnalisation. Gravure sur le coffret bois, carte manuscrite avec votre message personnel, ou logo de votre marque. Chaque détail compte pour créer un présent inoubliable.
+      </p>
+      <div class="customization-grid">
+        <div class="customization-item">
+          <div class="customization-image">
+            <img src="https://images.unsplash.com/photo-1590869033100-9f60a05a3014?w=400&h=400&fit=crop&q=80" alt="Gravure Personnalisée">
+          </div>
+          <p class="customization-label">Gravure Personnalisée</p>
+        </div>
+        <div class="customization-item">
+          <div class="customization-image">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop&q=80" alt="Carte Manuscrite">
+          </div>
+          <p class="customization-label">Carte Manuscrite</p>
+        </div>
+        <div class="customization-item">
+          <div class="customization-image">
+            <img src="https://images.unsplash.com/photo-1585951237318-9ea5e175b891?w=400&h=400&fit=crop&q=80" alt="Emballage Premium">
+          </div>
+          <p class="customization-label">Emballage Premium</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <h2>Créez votre coffret Jeux</h2>
+    <div class="cta-banner-buttons">
+      <button class="cta-banner-button primary" id="bannerCtaPrimary">Composer Maintenant</button>
+      <button class="cta-banner-button secondary">Découvrir les Collections</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Coffrets & cadeaux sur mesure,<br>personnalisés, depuis Paris.</p></div>
+      <div><h5>Nos univers</h5><div class="footer-links"><a href="whisky.html">Whisky</a><a href="the.html">Thé</a><a href="senteur.html">Senteur</a><a href="jeux.html">Jeux</a></div></div>
+      <div><h5>Explorer</h5><div class="footer-links"><a href="configurateur.html">Sur mesure</a><a href="index.html#approche">Notre approche</a><a href="index.html#inspirations">Nos réalisations</a><a href="index.html#devis">Demander un devis</a></div></div>
+      <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@maisonb.fr">contact@maisonb.fr</a><a href="tel:+33100000000">+33 1 XX XX XX XX</a><a>Paris, France</a></div></div>
+      <div><h5>Suivez-nous</h5><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 Maison B — Tous droits réservés</span><span>Ethan Benamram</span></div>
+  </footer>
+
+  <!-- MOBILE STICKY CTA -->
+  <div class="mobile-sticky-cta" id="mobileStickyCtA">
+    <button>COMPOSER MON COFFRET</button>
   </div>
-</section>
 
-<footer class="footer">
-  <div class="footer-logo">Maison B</div>
-  <div class="footer-copy">© 2026 Maison B — Tous droits réservés</div>
-</footer>
+  <script>
+    // ===== CAROUSEL FUNCTIONALITY =====
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const totalSlides = slides.length;
 
-<script>
-(function() {
-  const el = document.getElementById('heroTitle');
-  if (!el) return;
-  const html = el.innerHTML;
-  let delay = 0.1;
-  el.innerHTML = html.replace(/(<[^>]+>)|(\S+)/g, (m, tag, word) => {
-    if (tag) return tag;
-    delay += 0.08;
-    return '<span class="word" style="animation-delay:' + delay + 's">' + word + '</span>';
-  });
-})();
-window.addEventListener('load', () => { setTimeout(() => document.getElementById('heroImg').classList.add('loaded'), 300); });
-const progressBar = document.getElementById('scrollProgress');
-const nav = document.getElementById('nav');
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-  const st = window.scrollY;
-  const docH = document.documentElement.scrollHeight - window.innerHeight;
-  progressBar.style.width = (st / docH * 100) + '%';
-  if (st > 80) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
-  if (st > lastScroll && st > 400) nav.classList.add('hidden'); else nav.classList.remove('hidden');
-  lastScroll = st;
-});
-const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-rotate, .section-divider');
-const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-revealEls.forEach(el => revealObs.observe(el));
-document.querySelectorAll('.magnetic').forEach(btn => {
-  btn.addEventListener('mousemove', e => {
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    btn.style.transform = 'translate(' + (x * 0.15) + 'px,' + (y * 0.15) + 'px)';
-  });
-  btn.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0,0)'; });
-});
-</script>
+    function showSlide(index) {
+      if (index >= totalSlides) currentSlide = 0;
+      if (index < 0) currentSlide = totalSlides - 1;
+
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      thumbnails.forEach(thumb => thumb.classList.remove('active'));
+
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+      thumbnails[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+      currentSlide++;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide--;
+      showSlide(currentSlide);
+    }
+
+    document.getElementById('carouselNext').addEventListener('click', nextSlide);
+    document.getElementById('carouselPrev').addEventListener('click', prevSlide);
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', (e) => {
+        currentSlide = parseInt(e.target.dataset.index);
+        showSlide(currentSlide);
+      });
+    });
+
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener('click', (e) => {
+        currentSlide = parseInt(e.target.parentElement.dataset.index);
+        showSlide(currentSlide);
+      });
+    });
+
+    // Touch/Swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const carousel = document.getElementById('carouselMain');
+    carousel.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    carousel.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) {
+        nextSlide();
+      } else if (touchEndX - touchStartX > 50) {
+        prevSlide();
+      }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    // ===== NAVBAR SCROLL EFFECT =====
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // ===== CTA BUTTON HANDLERS =====
+    const ctaPrimary = document.getElementById('ctaPrimary');
+    const navCta = document.getElementById('navCta');
+    const mobileStickyCtaBtn = document.querySelector('.mobile-sticky-cta button');
+    const bannerCtaPrimary = document.getElementById('bannerCtaPrimary');
+
+    function handleCtaClick() {
+      // Scroll to tier section smoothly
+      document.querySelector('.three-tiers').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    ctaPrimary.addEventListener('click', handleCtaClick);
+    navCta.addEventListener('click', handleCtaClick);
+    mobileStickyCtaBtn.addEventListener('click', handleCtaClick);
+    bannerCtaPrimary.addEventListener('click', handleCtaClick);
+
+    // ===== SCROLL REVEAL ANIMATION =====
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.product-card, .tier-card, .customization-item').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+
+    // ===== AUTO-ADVANCE CAROUSEL (OPTIONAL) =====
+    // Uncomment to enable auto-advance every 8 seconds
+    /*
+    setInterval(() => {
+      nextSlide();
+    }, 8000);
+    */
+  </script>
 </body>
 </html>
