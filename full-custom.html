@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison B — Full custom · Coffret entièrement sur mesure</title>
+<meta name="description" content="Créez un coffret 100% sur mesure : choix des produits, packaging personnalisé, carte manuscrite. De la conception à la livraison, on s'occupe de tout.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --noir: #1A1A1A; --blanc: #FAFAF8; --gris: #6B6B6B; --gris-clair: #E8E6E1;
+  --tabac: #6B5D4F; --sable: #C4B5A0; --creme: #E8E2D9; --brun: #2C2821; --or: #8C7851;
+  --beige: #F5F4F0; --dore: #8C7851;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+}
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--sans); background: var(--blanc); color: var(--noir); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ===== SCROLL PROGRESS ===== */
+.scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--or), var(--dore)); z-index: 200; width: 0%; transition: width 0.1s linear; }
+
+/* ===== NAV ===== */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 clamp(24px, 5vw, 70px); height: 72px; display: flex; align-items: center; justify-content: space-between; transition: background 0.4s, box-shadow 0.4s, border-color 0.4s, transform 0.4s; border-bottom: 1px solid transparent; background: rgba(250,250,248,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--gris-clair); box-shadow: 0 1px 20px rgba(0,0,0,0.04); }
+.nav.hidden { transform: translateY(-100%); }
+.nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: var(--noir); }
+.nav-links { display: flex; align-items: center; gap: 36px; }
+.nav-link { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); transition: color 0.3s; }
+.nav-link:hover { color: var(--noir); }
+.nav-link.active { color: var(--noir); font-weight: 500; }
+.nav-cta-nav { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; padding: 10px 24px; background: var(--noir); border: 1px solid var(--noir); color: var(--blanc); transition: all 0.3s; }
+.nav-cta-nav:hover { background: var(--brun); }
+.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 110; }
+.nav-burger span { display: block; width: 24px; height: 1.5px; background: var(--noir); transition: all 0.3s; }
+.mobile-menu { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--noir); z-index: 105; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
+.mobile-menu.open { opacity: 1; pointer-events: all; }
+.mobile-menu a { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--blanc); letter-spacing: 4px; text-transform: uppercase; }
+.mobile-menu .mobile-cta { margin-top: 20px; padding: 14px 36px; border: 1px solid rgba(250,250,248,0.2); font-family: var(--sans); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--blanc); }
+
+/* ===== HERO ===== */
+.fc-hero { padding: 180px clamp(24px, 5vw, 70px) 80px; text-align: center; background: var(--blanc); }
+.fc-hero-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--or); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.8s 0.2s cubic-bezier(0.22,1,0.36,1) forwards; }
+.fc-hero h1 { font-family: var(--serif); font-size: clamp(40px, 6vw, 68px); font-weight: 300; line-height: 1.08; color: var(--noir); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.8s 0.35s cubic-bezier(0.22,1,0.36,1) forwards; }
+.fc-hero h1 em { font-style: italic; color: var(--or); }
+.fc-hero-sub { font-size: 17px; color: var(--gris); max-width: 600px; margin: 0 auto; line-height: 1.85; opacity: 0; animation: fadeUp 0.8s 0.5s cubic-bezier(0.22,1,0.36,1) forwards; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== HOW IT WORKS ===== */
+.fc-explain { padding: clamp(40px, 5vw, 80px) clamp(24px, 5vw, 70px) clamp(60px, 8vw, 100px); }
+.fc-explain-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+.fc-explain h2 { font-family: var(--serif); font-size: clamp(24px, 3vw, 36px); font-weight: 300; color: var(--noir); margin-bottom: 12px; }
+.fc-explain h2 em { font-style: italic; color: var(--or); }
+.fc-explain > p { font-size: 15px; color: var(--gris); line-height: 1.85; margin-bottom: 16px; max-width: 620px; margin-left: auto; margin-right: auto; }
+.fc-explain .fc-divider { width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--sable), transparent); margin: 36px auto; }
+
+/* ===== DIFFERENCE BLOCK ===== */
+.fc-diff { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; text-align: left; }
+.fc-diff-card { background: var(--beige); border-radius: 14px; padding: 32px 28px; position: relative; overflow: hidden; }
+.fc-diff-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--or), var(--dore)); transform: scaleX(0); transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); transform-origin: left; }
+.fc-diff-card:hover::before { transform: scaleX(1); }
+.fc-diff-card .diff-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--or); margin-bottom: 12px; }
+.fc-diff-card h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 12px; color: var(--noir); }
+.fc-diff-card p { font-size: 14px; color: var(--gris); line-height: 1.75; }
+.fc-diff-card ul { list-style: none; margin-top: 14px; }
+.fc-diff-card ul li { font-size: 13px; color: var(--gris); line-height: 1.7; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.fc-diff-card ul li::before { content: '◆'; position: absolute; left: 0; font-size: 7px; color: var(--or); top: 5px; }
+
+/* ===== STEPS ===== */
+.fc-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; text-align: center; }
+.fc-step { }
+.fc-step-num { font-family: var(--serif); font-size: 44px; font-weight: 300; color: var(--dore); opacity: 0.35; margin-bottom: 12px; line-height: 1; }
+.fc-step h4 { font-size: 14px; font-weight: 500; margin-bottom: 6px; color: var(--noir); }
+.fc-step p { font-size: 13px; color: var(--gris); line-height: 1.7; }
+
+/* ===== CTA BUTTON ===== */
+.fc-cta-wrap { text-align: center; padding: clamp(40px, 5vw, 60px) clamp(24px, 5vw, 70px); }
+.fc-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 20px 56px; font-size: 12px; letter-spacing: 3.5px; text-transform: uppercase; font-weight: 600; color: var(--blanc); background: var(--or); border: none; cursor: pointer; transition: all 0.5s cubic-bezier(0.22,1,0.36,1); position: relative; overflow: hidden; }
+.fc-cta-btn::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); transition: left 0.7s; }
+.fc-cta-btn:hover::after { left: 100%; }
+.fc-cta-btn:hover { background: var(--tabac); box-shadow: 0 12px 40px rgba(107,93,79,0.3); transform: translateY(-3px); letter-spacing: 4px; }
+.fc-cta-sub { font-size: 12px; color: var(--gris); margin-top: 14px; }
+
+/* ===== MODAL OVERLAY ===== */
+.modal-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1); padding: 24px; }
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal { background: var(--blanc); border-radius: 16px; max-width: 580px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 0; position: relative; transform: translateY(30px) scale(0.97); transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); box-shadow: 0 30px 80px rgba(0,0,0,0.2); }
+.modal-overlay.open .modal { transform: translateY(0) scale(1); }
+.modal-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 50%; background: var(--beige); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.3s, transform 0.3s; z-index: 2; }
+.modal-close:hover { background: var(--gris-clair); transform: rotate(90deg); }
+.modal-close svg { width: 16px; height: 16px; stroke: var(--noir); fill: none; stroke-width: 2; }
+.modal-header { padding: 40px 40px 0; }
+.modal-header .modal-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--or); margin-bottom: 10px; }
+.modal-header h2 { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--noir); margin-bottom: 6px; }
+.modal-header p { font-size: 14px; color: var(--gris); line-height: 1.7; }
+.modal-body { padding: 28px 40px 40px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-field { margin-bottom: 18px; }
+.form-field label { display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gris); margin-bottom: 7px; font-weight: 500; }
+.form-field input, .form-field select, .form-field textarea { width: 100%; padding: 13px 16px; border: 1px solid var(--gris-clair); background: var(--blanc); font-family: var(--sans); font-size: 14px; color: var(--noir); transition: border-color 0.3s, box-shadow 0.3s; outline: none; -webkit-appearance: none; border-radius: 8px; }
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--or); box-shadow: 0 0 0 3px rgba(140,120,81,0.08); }
+.form-field input::placeholder, .form-field textarea::placeholder { color: #C4C0B8; }
+.form-field select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C4C0B8'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+.form-field textarea { height: 100px; resize: vertical; }
+.form-submit { width: 100%; padding: 18px; background: var(--noir); color: var(--blanc); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; border: none; cursor: pointer; transition: all 0.4s cubic-bezier(0.22,1,0.36,1); border-radius: 8px; position: relative; overflow: hidden; }
+.form-submit::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent); transition: left 0.6s; }
+.form-submit:hover::after { left: 100%; }
+.form-submit:hover { background: var(--brun); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(44,40,33,0.25); }
+.form-success { display: none; text-align: center; padding: 48px 40px; }
+.form-success-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(76,175,80,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+.form-success-icon svg { width: 28px; height: 28px; stroke: #4CAF50; fill: none; stroke-width: 2; }
+.form-success h3 { font-family: var(--serif); font-size: 26px; font-weight: 300; margin-bottom: 10px; }
+.form-success p { font-size: 14px; color: var(--gris); line-height: 1.7; }
+
+/* ===== PHOTOS ROW ===== */
+.fc-photos { padding: 0 clamp(24px, 5vw, 70px) clamp(60px, 8vw, 100px); }
+.fc-photos-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.fc-photo { border-radius: 12px; overflow: hidden; aspect-ratio: 4/5; }
+.fc-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+.fc-photo:hover img { transform: scale(1.04); }
+
+/* ===== FOOTER ===== */
+.footer { background: var(--noir); padding: clamp(40px, 5vw, 70px) clamp(24px, 5vw, 70px); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 40px; color: rgba(250,250,248,0.4); font-size: 13px; }
+.footer-logo { font-family: var(--serif); font-size: 22px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: rgba(250,250,248,0.7); margin-bottom: 12px; }
+.footer-tagline { line-height: 1.7; }
+.footer h5 { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(250,250,248,0.2); margin-bottom: 16px; font-weight: 500; }
+.footer-links a { display: block; padding: 4px 0; transition: color 0.3s, transform 0.3s; }
+.footer-links a:hover { color: rgba(250,250,248,0.7); transform: translateX(4px); }
+.footer-bottom { max-width: 1200px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(250,250,248,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: rgba(250,250,248,0.15); letter-spacing: 1px; }
+
+/* ===== REVEAL ===== */
+.reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-4 { transition-delay: 0.48s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .fc-steps { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-cta-nav { display: none; }
+  .nav-burger { display: flex; }
+  .fc-hero { padding: 140px 24px 60px; }
+  .fc-hero h1 { font-size: clamp(34px, 10vw, 52px); }
+  .fc-diff { grid-template-columns: 1fr; }
+  .fc-steps { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .fc-photos-inner { grid-template-columns: 1fr; gap: 12px; }
+  .fc-photo { aspect-ratio: 16/9; }
+  .modal-header, .modal-body { padding-left: 24px; padding-right: 24px; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .fc-steps { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">MAISON B</a>
+  <div class="nav-links">
+    <a href="about.html" class="nav-link">About us</a>
+    <a href="semi-custom.html" class="nav-link">Semi custom</a>
+    <a href="full-custom.html" class="nav-link active">Full custom</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+  <a href="full-custom.html" class="nav-cta-nav">Composer mon coffret</a>
+  <div class="nav-burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html" onclick="toggleMenu()">About us</a>
+  <a href="semi-custom.html" onclick="toggleMenu()">Semi custom</a>
+  <a href="full-custom.html" onclick="toggleMenu()">Full custom</a>
+  <a href="contact.html" onclick="toggleMenu()">Contact</a>
+  <a href="full-custom.html" class="mobile-cta" onclick="toggleMenu()">Composer mon coffret</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="fc-hero">
+  <div class="fc-hero-label">Full custom</div>
+  <h1>Votre coffret,<br>de A à <em>Z</em></h1>
+  <p class="fc-hero-sub">Contrairement à nos coffrets semi-custom, ici tout est créé sur mesure pour vous. Choix des produits, design du packaging, composition unique — sans aucune limite.</p>
+</section>
+
+<!-- ===== EXPLICATION ===== -->
+<section class="fc-explain reveal">
+  <div class="fc-explain-inner">
+    <h2>Comment ça <em>marche</em></h2>
+    <p>Nos coffrets semi-custom sont des compositions prêtes à personnaliser avec votre logo et vos couleurs. Le full custom, c'est autre chose : on part d'une page blanche.</p>
+    <p>Vous nous décrivez votre projet — pour qui, pour quand, quel budget, quelle ambiance — et notre studio crée un coffret entièrement unique. Sélection de produits artisanaux sur mesure, packaging dessiné pour vous, carte manuscrite avec votre message.</p>
+
+    <div class="fc-divider"></div>
+
+    <!-- Différences Semi vs Full -->
+    <div class="fc-diff">
+      <div class="fc-diff-card reveal reveal-delay-1">
+        <div class="diff-label">Semi custom</div>
+        <h3>Prêt à personnaliser</h3>
+        <p>Vous choisissez parmi nos 8 coffrets pré-composés et on y ajoute votre identité.</p>
+        <ul>
+          <li>Coffrets déjà composés</li>
+          <li>Ajout de votre logo & couleurs</li>
+          <li>Carte manuscrite incluse</li>
+          <li>Expédition sous 5 jours</li>
+          <li>Idéal pour 1 à 30 coffrets</li>
+        </ul>
+      </div>
+      <div class="fc-diff-card reveal reveal-delay-2">
+        <div class="diff-label">Full custom</div>
+        <h3>Créé de zéro pour vous</h3>
+        <p>On part de votre brief pour créer un coffret qui n'existe nulle part ailleurs.</p>
+        <ul>
+          <li>Produits sélectionnés sur mesure</li>
+          <li>Packaging dessiné pour vous</li>
+          <li>Carte & finitions personnalisées</li>
+          <li>Accompagnement dédié</li>
+          <li>Idéal pour les grands volumes</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4 étapes -->
+    <div class="fc-steps">
+      <div class="fc-step reveal reveal-delay-1">
+        <div class="fc-step-num">01</div>
+        <h4>Votre brief</h4>
+        <p>Décrivez-nous votre projet, votre budget, vos destinataires</p>
+      </div>
+      <div class="fc-step reveal reveal-delay-2">
+        <div class="fc-step-num">02</div>
+        <h4>Notre proposition</h4>
+        <p>On vous envoie une composition unique sous 48h</p>
+      </div>
+      <div class="fc-step reveal reveal-delay-3">
+        <div class="fc-step-num">03</div>
+        <h4>Validation</h4>
+        <p>On ajuste ensemble jusqu'à ce que ce soit parfait</p>
+      </div>
+      <div class="fc-step reveal reveal-delay-4">
+        <div class="fc-step-num">04</div>
+        <h4>Livraison</h4>
+        <p>Production, emballage, livraison clé en main</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BUTTON ===== -->
+<div class="fc-cta-wrap reveal">
+  <button class="fc-cta-btn" id="openFormBtn" onclick="openModal()">Demander un devis full custom</button>
+  <p class="fc-cta-sub">Proposition sous 48h · Aucun engagement</p>
+</div>
+
+<!-- ===== PHOTOS ===== -->
+<section class="fc-photos reveal">
+  <div class="fc-photos-inner">
+    <div class="fc-photo"><img src="img/photos/IMG_6112A3E81A11-1.jpeg" alt="Coffret Maison B — composition artisanale" loading="lazy"></div>
+    <div class="fc-photo"><img src="img/photos/IMG_C0595F288949-1.jpeg" alt="Coffret Maison B — bien-être" loading="lazy"></div>
+    <div class="fc-photo"><img src="img/photos/IMG_F8B5700C6BAC-1.jpeg" alt="Coffret Maison B — corporate" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ===== MODAL FORM ===== -->
+<div class="modal-overlay" id="formModal">
+  <div class="modal">
+    <div class="modal-close" onclick="closeModal()">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </div>
+
+    <div id="modalFormContent">
+      <div class="modal-header">
+        <div class="modal-label">Full custom</div>
+        <h2>Décrivez-nous votre projet</h2>
+        <p>On vous revient avec une proposition sur mesure sous 48h. Aucun engagement.</p>
+      </div>
+      <div class="modal-body">
+        <form id="fullCustomForm" onsubmit="handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Votre nom</label>
+              <input type="text" name="name" placeholder="Marie Dupont" required>
+            </div>
+            <div class="form-field">
+              <label>Entreprise</label>
+              <input type="text" name="company" placeholder="Dupont & Associés">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="marie@dupont-associes.fr" required>
+            </div>
+            <div class="form-field">
+              <label>Téléphone</label>
+              <input type="tel" name="phone" placeholder="+33 6 12 34 56 78">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Nombre de coffrets</label>
+              <select name="quantity">
+                <option value="">Sélectionner</option>
+                <option value="1-10">1 à 10</option>
+                <option value="10-30">10 à 30</option>
+                <option value="30-100">30 à 100</option>
+                <option value="100-500">100 à 500</option>
+                <option value="500+">500+</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Budget par coffret</label>
+              <select name="budget">
+                <option value="">Sélectionner</option>
+                <option value="50-100">50 € — 100 €</option>
+                <option value="100-150">100 € — 150 €</option>
+                <option value="150-250">150 € — 250 €</option>
+                <option value="250+">250 € et plus</option>
+                <option value="open">Ouvert à vos suggestions</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Décrivez votre projet</label>
+            <textarea name="message" placeholder="On cherche un cadeau pour nos 50 meilleurs clients pour les fêtes de fin d'année. On aimerait quelque chose d'élégant avec des produits du terroir français..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Envoyer ma demande &rarr;</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="form-success" id="formSuccess">
+      <div class="form-success-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Merci !</h3>
+      <p>Votre demande a bien été envoyée.<br>On vous revient avec une proposition sous 48h.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Coffrets & cadeaux sur mesure,<br>personnalisés, depuis Paris.</p></div>
+    <div><h5>Nos univers</h5><div class="footer-links"><a href="whisky.html">Whisky</a><a href="the.html">Thé</a><a href="senteur.html">Senteur</a><a href="jeux.html">Jeux</a></div></div>
+    <div><h5>Explorer</h5><div class="footer-links"><a href="about.html">About us</a><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="contact.html">Contact</a></div></div>
+    <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@maisonb.fr">contact@maisonb.fr</a><a href="tel:+33100000000">+33 1 XX XX XX XX</a><a>Paris, France</a></div></div>
+    <div><h5>Suivez-nous</h5><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2026 Maison B — Tous droits réservés</span><span>Ethan Benamram</span></div>
+</footer>
+
+<script>
+/* Scroll & nav */
+var progressBar = document.getElementById('scrollProgress');
+var nav = document.getElementById('nav');
+var lastScroll = 0;
+window.addEventListener('scroll', function() {
+  var st = window.scrollY;
+  var docH = document.documentElement.scrollHeight - window.innerHeight;
+  if (docH > 0) progressBar.style.width = (st/docH*100)+'%';
+  if(st>lastScroll && st>400) nav.classList.add('hidden'); else nav.classList.remove('hidden');
+  lastScroll = st;
+});
+
+function toggleMenu() {
+  var m = document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+  document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+}
+
+/* Modal */
+function openModal() {
+  document.getElementById('formModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('formModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('formModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+/* Form submit */
+function handleFormSubmit(e) {
+  e.preventDefault();
+  document.getElementById('modalFormContent').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
+/* Reveal */
+var revealEls = document.querySelectorAll('.reveal');
+var revealObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+revealEls.forEach(function(el) { revealObs.observe(el); });
+</script>
+</body>
+</html>

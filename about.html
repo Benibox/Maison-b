@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison B — About us</title>
+<meta name="description" content="Découvrez Maison B : née de 25 ans de savoir-faire Bubble's Paris en création sur mesure. Coffrets cadeaux personnalisés pour entreprises, pensés et réalisés depuis Paris.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --noir: #1A1A1A; --blanc: #FAFAF8; --gris: #6B6B6B; --gris-clair: #E8E6E1;
+  --tabac: #6B5D4F; --sable: #C4B5A0; --creme: #E8E2D9; --brun: #2C2821; --or: #8C7851;
+  --beige: #F5F4F0; --dore: #8C7851;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+}
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--sans); background: var(--blanc); color: var(--noir); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ===== SCROLL PROGRESS ===== */
+.scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--or), var(--dore)); z-index: 200; width: 0%; transition: width 0.1s linear; }
+
+/* ===== NAV ===== */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 clamp(24px, 5vw, 70px); height: 72px; display: flex; align-items: center; justify-content: space-between; transition: background 0.4s, box-shadow 0.4s, border-color 0.4s, transform 0.4s; border-bottom: 1px solid transparent; background: rgba(250,250,248,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--gris-clair); box-shadow: 0 1px 20px rgba(0,0,0,0.04); }
+.nav.hidden { transform: translateY(-100%); }
+.nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: var(--noir); }
+.nav-links { display: flex; align-items: center; gap: 36px; }
+.nav-link { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); transition: color 0.3s; }
+.nav-link:hover { color: var(--noir); }
+.nav-link.active { color: var(--noir); font-weight: 500; }
+.nav-cta { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; padding: 10px 24px; background: var(--noir); border: 1px solid var(--noir); color: var(--blanc); transition: all 0.3s; }
+.nav-cta:hover { background: var(--brun); }
+.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 110; }
+.nav-burger span { display: block; width: 24px; height: 1.5px; background: var(--noir); transition: all 0.3s; }
+.mobile-menu { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--noir); z-index: 105; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
+.mobile-menu.open { opacity: 1; pointer-events: all; }
+.mobile-menu a { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--blanc); letter-spacing: 4px; text-transform: uppercase; }
+.mobile-menu .mobile-cta { margin-top: 20px; padding: 14px 36px; border: 1px solid rgba(250,250,248,0.2); font-family: var(--sans); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--blanc); }
+
+/* ===== HERO — compact with Bubble's heritage ===== */
+.about-hero { padding: 150px clamp(24px, 5vw, 70px) 60px; text-align: center; background: var(--blanc); }
+.about-hero-inner { max-width: 640px; margin: 0 auto; }
+.about-hero-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--or); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.8s 0.2s cubic-bezier(0.22,1,0.36,1) forwards; }
+.about-hero h1 { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; color: var(--noir); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.8s 0.3s cubic-bezier(0.22,1,0.36,1) forwards; }
+.about-hero h1 em { font-style: italic; color: var(--or); }
+.about-hero-sub { font-size: 15px; color: var(--gris); line-height: 1.85; margin-bottom: 8px; opacity: 0; animation: fadeUp 0.8s 0.45s cubic-bezier(0.22,1,0.36,1) forwards; }
+.about-hero-sub strong { color: var(--tabac); font-weight: 500; }
+.about-hero-quote { font-family: var(--serif); font-size: clamp(18px, 2vw, 22px); font-weight: 300; font-style: italic; color: var(--tabac); line-height: 1.45; margin-top: 28px; padding: 24px 0; border-top: 1px solid var(--gris-clair); border-bottom: 1px solid var(--gris-clair); opacity: 0; animation: fadeUp 0.8s 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
+.about-hero-logos { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 20px; opacity: 0; animation: fadeUp 0.8s 0.7s cubic-bezier(0.22,1,0.36,1) forwards; }
+.about-hero-logos span { font-family: var(--serif); font-size: 14px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: var(--noir); opacity: 0.35; }
+.about-logo-sep { width: 32px; height: 1px; background: var(--gris-clair); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== STORY SECTION — image + texte côte à côte ===== */
+.story { padding: clamp(60px, 8vw, 120px) clamp(24px, 5vw, 70px); }
+.story-inner { max-width: 1200px; margin: 0 auto; }
+.story-block { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 5vw, 80px); align-items: center; margin-bottom: clamp(80px, 8vw, 140px); }
+.story-block:last-child { margin-bottom: 0; }
+.story-block.reverse .story-img { order: 2; }
+.story-block.reverse .story-text { order: 1; }
+.story-img { position: relative; border-radius: 12px; overflow: hidden; }
+.story-img img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+.story-img:hover img { transform: scale(1.03); }
+.story-img-caption { position: absolute; bottom: 16px; left: 16px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.6); background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 6px 14px; border-radius: 100px; }
+.story-text .story-label { font-size: 10px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--or); margin-bottom: 16px; }
+.story-text h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; line-height: 1.15; margin-bottom: 20px; color: var(--noir); }
+.story-text h2 em { font-style: italic; color: var(--or); }
+.story-text p { font-size: 15px; color: var(--gris); line-height: 1.85; margin-bottom: 16px; }
+.story-text .story-highlight { font-family: var(--serif); font-size: 20px; font-weight: 400; font-style: italic; color: var(--tabac); line-height: 1.5; padding-left: 20px; border-left: 2px solid var(--or); margin: 28px 0; }
+
+/* ===== VALEURS — 3 colonnes ===== */
+.values { padding: clamp(60px, 8vw, 120px) clamp(24px, 5vw, 70px); background: var(--beige); }
+.values-inner { max-width: 1200px; margin: 0 auto; }
+.values-header { text-align: center; margin-bottom: clamp(40px, 5vw, 60px); }
+.values-header .values-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--or); margin-bottom: 12px; }
+.values-header h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; line-height: 1.2; color: var(--noir); }
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.value-card { background: var(--blanc); border-radius: 14px; padding: 36px 28px; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s; }
+.value-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.06); }
+.value-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(140,120,81,0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.value-icon svg { width: 24px; height: 24px; stroke: var(--or); fill: none; stroke-width: 1.5; }
+.value-card h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 12px; color: var(--noir); }
+.value-card p { font-size: 14px; color: var(--gris); line-height: 1.8; }
+
+
+/* ===== CTA SECTION ===== */
+.about-cta { background: linear-gradient(135deg, #4A3728 0%, #33261C 40%, #221A12 100%); text-align: center; padding: clamp(80px, 10vw, 140px) clamp(24px, 5vw, 70px); position: relative; overflow: hidden; }
+.about-cta::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at center, rgba(140,120,81,0.06) 0%, transparent 60%); animation: gentlePulse 8s ease-in-out infinite; pointer-events: none; }
+@keyframes gentlePulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } }
+.about-cta h2 { font-family: var(--serif); font-size: clamp(26px, 3.5vw, 44px); font-weight: 300; color: var(--blanc); max-width: 700px; margin: 0 auto 24px; line-height: 1.3; position: relative; z-index: 1; }
+.about-cta p { font-size: 15px; color: rgba(250,250,248,0.45); max-width: 480px; margin: 0 auto 40px; line-height: 1.75; position: relative; z-index: 1; }
+.about-cta-btn { display: inline-flex; align-items: center; gap: 12px; padding: 18px 44px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; color: var(--blanc); border: 1px solid rgba(250,250,248,0.25); background: rgba(250,250,248,0.04); backdrop-filter: blur(6px); transition: all 0.5s cubic-bezier(0.22,1,0.36,1); position: relative; z-index: 1; }
+.about-cta-btn:hover { background: rgba(250,250,248,0.12); border-color: rgba(250,250,248,0.5); box-shadow: 0 8px 36px rgba(0,0,0,0.3); transform: translateY(-2px); }
+
+/* ===== FOOTER ===== */
+.footer { background: var(--noir); padding: clamp(40px, 5vw, 70px) clamp(24px, 5vw, 70px); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 40px; color: rgba(250,250,248,0.4); font-size: 13px; }
+.footer-logo { font-family: var(--serif); font-size: 22px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: rgba(250,250,248,0.7); margin-bottom: 12px; }
+.footer-tagline { line-height: 1.7; }
+.footer h5 { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(250,250,248,0.2); margin-bottom: 16px; font-weight: 500; }
+.footer-links a { display: block; padding: 4px 0; transition: color 0.3s, transform 0.3s; }
+.footer-links a:hover { color: rgba(250,250,248,0.7); transform: translateX(4px); }
+.footer-bottom { max-width: 1200px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(250,250,248,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: rgba(250,250,248,0.15); letter-spacing: 1px; }
+
+/* ===== REVEAL ===== */
+.reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-60px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(60px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .story-block { grid-template-columns: 1fr; gap: 40px; }
+  .story-block.reverse .story-img { order: 0; }
+  .story-block.reverse .story-text { order: 0; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-burger { display: flex; }
+  .about-hero { padding: 120px 24px 48px; }
+  .about-hero h1 { font-size: clamp(30px, 9vw, 44px); }
+  .values-grid { grid-template-columns: 1fr; }
+  .key-figures-inner { gap: 32px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">MAISON B</a>
+  <div class="nav-links">
+    <a href="about.html" class="nav-link active">About us</a>
+    <a href="semi-custom.html" class="nav-link">Semi custom</a>
+    <a href="full-custom.html" class="nav-link">Full custom</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+  <a href="full-custom.html" class="nav-cta">Composer mon coffret</a>
+  <div class="nav-burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html" onclick="toggleMenu()">About us</a>
+  <a href="semi-custom.html" onclick="toggleMenu()">Semi custom</a>
+  <a href="full-custom.html" onclick="toggleMenu()">Full custom</a>
+  <a href="contact.html" onclick="toggleMenu()">Contact</a>
+  <a href="full-custom.html" class="mobile-cta" onclick="toggleMenu()">Composer mon coffret</a>
+</div>
+
+<!-- ===== HERO — compact, avec héritage Bubble's intégré ===== -->
+<section class="about-hero">
+  <div class="about-hero-inner">
+    <div class="about-hero-label">About us</div>
+    <h1>L'art d'offrir,<br><em>réinventé</em></h1>
+    <p class="about-hero-sub">Maison B est née au sein de <strong>Bubble's Paris</strong>, une agence fondée il y a plus de 25 ans et dirigée par Yaël Hazan — spécialisée dans la création de faire-part, de cadeaux personnalisés et de décoration événementielle.</p>
+    <p class="about-hero-sub">C'est de cette expertise en personnalisation — le choix des matières, l'assemblage, le souci du détail — qu'est née Maison B : une marque dédiée exclusivement au coffret cadeau d'entreprise, avec la même exigence de qualité et de créativité.</p>
+    <div class="about-hero-quote">« 25 ans de savoir-faire en création sur mesure. Des coffrets pensés pour des dirigeants, par des gens qui connaissent leurs exigences. »</div>
+    <div class="about-hero-logos">
+      <span>Bubble's Paris</span>
+      <span class="about-logo-sep"></span>
+      <span>Maison B</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NOTRE SAVOIR-FAIRE — 2 blocs photos + texte ===== -->
+<section class="story">
+  <div class="story-inner">
+
+    <div class="story-block reveal-left">
+      <div class="story-img">
+        <img src="img/photos/IMG_6112A3E81A11-1.jpeg" alt="Coffret cadeau Maison B" loading="lazy">
+      </div>
+      <div class="story-text reveal-right">
+        <div class="story-label">Notre savoir-faire</div>
+        <h2>Sélection, composition, <em>personnalisation</em></h2>
+        <p>Produits artisanaux d'exception, packaging sur mesure, carte manuscrite — chaque coffret est créé de zéro pour vous. Pas de catalogue, pas de choix par défaut.</p>
+      </div>
+    </div>
+
+    <div class="story-block reverse">
+      <div class="story-img reveal-right">
+        <img src="img/photos/IMG_7B487668FEB7-1.jpeg" alt="Coffret provençal Maison B" loading="lazy">
+      </div>
+      <div class="story-text reveal-left">
+        <div class="story-label">Notre approche</div>
+        <h2>Vous nous donnez une envie,<br>on crée un <em>coffret</em></h2>
+        <p>Pour qui, pour quand, quel budget — on vous envoie une proposition sous 48h. Restrictions alimentaires, livraison multi-adresses : on gère tout.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== NOS VALEURS ===== -->
+<section class="values">
+  <div class="values-inner">
+    <div class="values-header reveal">
+      <div class="values-label">Nos valeurs</div>
+      <h2>Ce qui nous guide</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Le sur-mesure, toujours</h3>
+        <p>Chaque proposition est créée spécifiquement pour vous. C'est plus de travail, mais c'est ce qui fait la différence.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+        </div>
+        <h3>L'artisanat d'exception</h3>
+        <p>Chocolatiers, maroquiniers, parfumeurs — des savoir-faire français qui donnent de la valeur à chaque coffret.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-3">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>L'attention au détail</h3>
+        <p>Le grain du cuir, le papier de la carte, le noeud du ruban — les détails qui transforment un cadeau en souvenir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="about-cta">
+  <h2>Prêt à offrir quelque chose qui <em style="font-style:italic;color:var(--sable);">compte</em> ?</h2>
+  <p>Décrivez-nous votre projet — on vous envoie une proposition sous 48h. Aucun engagement.</p>
+  <a href="contact.html" class="about-cta-btn">Parlons de votre projet &rarr;</a>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Coffrets & cadeaux sur mesure,<br>personnalisés, depuis Paris.</p></div>
+    <div><h5>Nos univers</h5><div class="footer-links"><a href="whisky.html">Whisky</a><a href="the.html">Thé</a><a href="senteur.html">Senteur</a><a href="jeux.html">Jeux</a></div></div>
+    <div><h5>Explorer</h5><div class="footer-links"><a href="about.html">About us</a><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="contact.html">Contact</a></div></div>
+    <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@maisonb.fr">contact@maisonb.fr</a><a href="tel:+33100000000">+33 1 XX XX XX XX</a><a>Paris, France</a></div></div>
+    <div><h5>Suivez-nous</h5><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2026 Maison B — Tous droits réservés</span><span>Ethan Benamram</span></div>
+</footer>
+
+<script>
+var progressBar = document.getElementById('scrollProgress');
+var nav = document.getElementById('nav');
+var lastScroll = 0;
+window.addEventListener('scroll', function() {
+  var st = window.scrollY;
+  var docH = document.documentElement.scrollHeight - window.innerHeight;
+  if (docH > 0) progressBar.style.width = (st/docH*100)+'%';
+  if(st>lastScroll && st>400) nav.classList.add('hidden'); else nav.classList.remove('hidden');
+  lastScroll = st;
+});
+
+function toggleMenu() {
+  var m = document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+  document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+}
+
+var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+var revealObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+revealEls.forEach(function(el) { revealObs.observe(el); });
+</script>
+</body>
+</html>
