@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maison B — Semi custom · Nos coffrets prêts à personnaliser</title>
 <meta name="description" content="Nos coffrets semi-custom : 8 compositions prêtes à offrir, personnalisables avec votre logo, vos couleurs et votre carte manuscrite. Expédition sous 5 jours.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maisonb.fr/semi-custom.html">
+<meta property="og:title" content="Maison B — Nos coffrets prêts à personnaliser">
+<meta property="og:description" content="8 coffrets prêts à offrir, personnalisables avec votre logo et carte manuscrite. Expédition sous 5 jours.">
+<meta property="og:image" content="https://maisonb.fr/img/photos/IMG_6112A3E81A11-1.jpeg">
+<meta property="og:locale" content="fr_FR">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -65,7 +71,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ===== COFFRETS GRID ===== */
 .coffrets-section { padding: clamp(48px, 6vw, 80px) clamp(24px, 5vw, 70px) clamp(60px, 8vw, 120px); }
 .coffrets-section-inner { max-width: 1200px; margin: 0 auto; }
-.coffrets-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.coffrets-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .coffret-card { background: var(--blanc); border-radius: 12px; overflow: hidden; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s; cursor: pointer; border: 1px solid rgba(0,0,0,0.06); text-decoration: none; color: inherit; display: flex; flex-direction: column; }
 .coffret-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
 .coffret-card-img { position: relative; aspect-ratio: 4/3; overflow: hidden; }
@@ -74,6 +80,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .coffret-tag { position: absolute; top: 12px; left: 12px; background: rgba(26,26,26,0.85); color: var(--blanc); font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; backdrop-filter: blur(6px); border-radius: 100px; font-weight: 500; }
 .coffret-tag.tag-popular { background: var(--or); }
 .coffret-tag.tag-new { background: rgba(76,175,80,0.9); }
+.coffret-tag.tag-ready { background: rgba(76,175,80,0.9); bottom: 12px; left: 12px; top: auto; display: inline-flex; align-items: center; gap: 6px; }
+.coffret-tag.tag-ready::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #fff; }
 .coffret-univers-tag { position: absolute; bottom: 12px; right: 12px; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.35); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 4px 12px; border-radius: 100px; }
 .coffret-card-body { padding: 20px 22px 24px; flex: 1; display: flex; flex-direction: column; }
 .coffret-card-body h3 { font-family: var(--serif); font-size: 21px; font-weight: 400; margin-bottom: 8px; color: var(--noir); }
@@ -126,7 +134,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .coffrets-grid { grid-template-columns: repeat(3, 1fr); }
   .inclus-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
@@ -149,7 +156,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .footer-inner { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
+/* ===== COOKIE BANNER ===== */
+.cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: var(--noir); padding: 16px clamp(24px, 5vw, 70px); transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+.cookie-banner.visible { transform: translateY(0); }
+.cookie-banner-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.cookie-banner-inner p { font-size: 13px; color: rgba(250,250,248,0.6); line-height: 1.6; }
+.cookie-banner-inner a { color: var(--sable); text-decoration: underline; text-underline-offset: 3px; }
+.cookie-accept { padding: 10px 28px; background: rgba(250,250,248,0.1); border: 1px solid rgba(250,250,248,0.2); color: var(--blanc); font-family: var(--sans); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
+.cookie-accept:hover { background: rgba(250,250,248,0.2); border-color: rgba(250,250,248,0.4); }
+@media (max-width: 768px) { .cookie-banner-inner { flex-direction: column; text-align: center; gap: 12px; } }
 </style>
+<!-- Google Analytics — replace UA-XXXXXXXX with your tracking ID
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','UA-XXXXXXXX');</script>
+-->
 </head>
 <body>
 
@@ -200,11 +220,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     <div class="coffrets-grid">
 
       <!-- 1 — Whisky Signature -->
-      <a href="whisky.html" class="coffret-card reveal reveal-delay-1">
+      <a href="#" class="coffret-card reveal reveal-delay-1">
         <div class="coffret-card-img">
           <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=600&h=450&fit=crop&q=80" alt="Coffret Whisky Signature" loading="lazy">
           <span class="coffret-tag tag-popular">Best-seller</span>
           <span class="coffret-univers-tag">Whisky</span>
+          <span class="coffret-tag tag-ready">Ready to ship</span>
         </div>
         <div class="coffret-card-body">
           <h3>Coffret Whisky Signature</h3>
@@ -217,11 +238,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       </a>
 
       <!-- 2 — Senteur Prestige -->
-      <a href="senteur.html" class="coffret-card reveal reveal-delay-2">
+      <a href="#" class="coffret-card reveal reveal-delay-2">
         <div class="coffret-card-img">
           <img src="https://images.unsplash.com/photo-1602928321679-560bb453f190?w=600&h=450&fit=crop&q=80" alt="Coffret Senteur" loading="lazy">
           <span class="coffret-tag tag-new">Nouveau</span>
           <span class="coffret-univers-tag">Senteur</span>
+          <span class="coffret-tag tag-ready">Ready to ship</span>
         </div>
         <div class="coffret-card-body">
           <h3>Coffret Senteur</h3>
@@ -234,10 +256,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       </a>
 
       <!-- 3 — Thé -->
-      <a href="the.html" class="coffret-card reveal reveal-delay-3">
+      <a href="#" class="coffret-card reveal reveal-delay-3">
         <div class="coffret-card-img">
           <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&h=450&fit=crop&q=80" alt="Coffret Thé" loading="lazy">
           <span class="coffret-univers-tag">Thé</span>
+          <span class="coffret-tag tag-ready">Ready to ship</span>
         </div>
         <div class="coffret-card-body">
           <h3>Coffret Thé</h3>
@@ -250,10 +273,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       </a>
 
       <!-- 4 — Jeux -->
-      <a href="jeux.html" class="coffret-card reveal reveal-delay-4">
+      <a href="#" class="coffret-card reveal reveal-delay-4">
         <div class="coffret-card-img">
           <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=600&h=450&fit=crop&q=80" alt="Coffret Jeux" loading="lazy">
           <span class="coffret-univers-tag">Jeux</span>
+          <span class="coffret-tag tag-ready">Ready to ship</span>
         </div>
         <div class="coffret-card-body">
           <h3>Coffret Jeux</h3>
@@ -266,11 +290,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       </a>
 
       <!-- 5 — Gourmand -->
-      <a href="whisky.html" class="coffret-card reveal reveal-delay-1">
+      <a href="#" class="coffret-card reveal reveal-delay-1">
         <div class="coffret-card-img">
           <img src="img/photos/IMG_6112A3E81A11-1.jpeg" alt="Coffret Gourmand" loading="lazy">
           <span class="coffret-tag tag-popular">Populaire</span>
           <span class="coffret-univers-tag">Gourmand</span>
+          <span class="coffret-tag tag-ready">Ready to ship</span>
         </div>
         <div class="coffret-card-body">
           <h3>Coffret Gourmand</h3>
@@ -283,10 +308,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       </a>
 
       <!-- 6 — Provençal -->
-      <a href="senteur.html" class="coffret-card reveal reveal-delay-2">
+      <a href="#" class="coffret-card reveal reveal-delay-2">
         <div class="coffret-card-img">
           <img src="img/photos/IMG_7B487668FEB7-1.jpeg" alt="Coffret Provençal" loading="lazy">
           <span class="coffret-univers-tag">Terroir</span>
+          <span class="coffret-tag tag-ready">Ready to ship</span>
         </div>
         <div class="coffret-card-body">
           <h3>Coffret Provençal</h3>
@@ -299,10 +325,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       </a>
 
       <!-- 7 — Bien-être -->
-      <a href="senteur.html" class="coffret-card reveal reveal-delay-3">
+      <a href="#" class="coffret-card reveal reveal-delay-3">
         <div class="coffret-card-img">
           <img src="img/photos/IMG_9E75D411269E-1.jpeg" alt="Coffret Bien-être" loading="lazy">
           <span class="coffret-univers-tag">Bien-être</span>
+          <span class="coffret-tag tag-ready">Ready to ship</span>
         </div>
         <div class="coffret-card-body">
           <h3>Coffret Bien-être</h3>
@@ -315,10 +342,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       </a>
 
       <!-- 8 — Corporate -->
-      <a href="whisky.html" class="coffret-card reveal reveal-delay-4">
+      <a href="#" class="coffret-card reveal reveal-delay-4">
         <div class="coffret-card-img">
           <img src="img/photos/IMG_F8B5700C6BAC-1.jpeg" alt="Coffret Corporate" loading="lazy">
           <span class="coffret-univers-tag">Corporate</span>
+          <span class="coffret-tag tag-ready">Ready to ship</span>
         </div>
         <div class="coffret-card-body">
           <h3>Coffret Corporate</h3>
@@ -382,7 +410,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <footer class="footer">
   <div class="footer-inner">
     <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Coffrets & cadeaux sur mesure,<br>personnalisés, depuis Paris.</p></div>
-    <div><h5>Nos univers</h5><div class="footer-links"><a href="whisky.html">Whisky</a><a href="the.html">Thé</a><a href="senteur.html">Senteur</a><a href="jeux.html">Jeux</a></div></div>
+    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="semi-custom.html">Catalogue</a></div></div>
     <div><h5>Explorer</h5><div class="footer-links"><a href="about.html">About us</a><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="contact.html">Contact</a></div></div>
     <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@maisonb.fr">contact@maisonb.fr</a><a href="tel:+33100000000">+33 1 XX XX XX XX</a><a>Paris, France</a></div></div>
     <div><h5>Suivez-nous</h5><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div>
@@ -413,6 +441,19 @@ var revealObs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 revealEls.forEach(function(el) { revealObs.observe(el); });
+
+/* Cookie banner */
+if (!localStorage.getItem('cookiesAccepted')) { setTimeout(function() { document.getElementById('cookieBanner').classList.add('visible'); }, 1500); }
+function acceptCookies() { localStorage.setItem('cookiesAccepted', '1'); document.getElementById('cookieBanner').classList.remove('visible'); }
 </script>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>Ce site utilise des cookies techniques nécessaires à son fonctionnement. <a href="mentions-legales.html#cookies">En savoir plus</a></p>
+    <button class="cookie-accept" onclick="acceptCookies()">Accepter</button>
+  </div>
+</div>
+
 </body>
 </html>

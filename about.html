@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maison B — About us</title>
 <meta name="description" content="Découvrez Maison B : née de 25 ans de savoir-faire Bubble's Paris en création sur mesure. Coffrets cadeaux personnalisés pour entreprises, pensés et réalisés depuis Paris.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maisonb.fr/about.html">
+<meta property="og:title" content="Maison B — About us">
+<meta property="og:description" content="Découvrez Maison B : née de 25 ans de savoir-faire Bubble's Paris. Coffrets cadeaux personnalisés pour entreprises.">
+<meta property="og:image" content="https://maisonb.fr/img/photos/IMG_6112A3E81A11-1.jpeg">
+<meta property="og:locale" content="fr_FR">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -139,7 +145,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .footer-inner { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
+/* ===== COOKIE BANNER ===== */
+.cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: var(--noir); padding: 16px clamp(24px, 5vw, 70px); transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+.cookie-banner.visible { transform: translateY(0); }
+.cookie-banner-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.cookie-banner-inner p { font-size: 13px; color: rgba(250,250,248,0.6); line-height: 1.6; }
+.cookie-banner-inner a { color: var(--sable); text-decoration: underline; text-underline-offset: 3px; }
+.cookie-accept { padding: 10px 28px; background: rgba(250,250,248,0.1); border: 1px solid rgba(250,250,248,0.2); color: var(--blanc); font-family: var(--sans); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
+.cookie-accept:hover { background: rgba(250,250,248,0.2); border-color: rgba(250,250,248,0.4); }
+@media (max-width: 768px) { .cookie-banner-inner { flex-direction: column; text-align: center; gap: 12px; } }
 </style>
+<!-- Google Analytics — replace UA-XXXXXXXX with your tracking ID
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','UA-XXXXXXXX');</script>
+-->
 </head>
 <body>
 
@@ -253,7 +272,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <footer class="footer">
   <div class="footer-inner">
     <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Coffrets & cadeaux sur mesure,<br>personnalisés, depuis Paris.</p></div>
-    <div><h5>Nos univers</h5><div class="footer-links"><a href="whisky.html">Whisky</a><a href="the.html">Thé</a><a href="senteur.html">Senteur</a><a href="jeux.html">Jeux</a></div></div>
+    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="semi-custom.html">Catalogue</a></div></div>
     <div><h5>Explorer</h5><div class="footer-links"><a href="about.html">About us</a><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="contact.html">Contact</a></div></div>
     <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@maisonb.fr">contact@maisonb.fr</a><a href="tel:+33100000000">+33 1 XX XX XX XX</a><a>Paris, France</a></div></div>
     <div><h5>Suivez-nous</h5><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div>
@@ -284,6 +303,19 @@ var revealObs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 revealEls.forEach(function(el) { revealObs.observe(el); });
+
+/* Cookie banner */
+if (!localStorage.getItem('cookiesAccepted')) { setTimeout(function() { document.getElementById('cookieBanner').classList.add('visible'); }, 1500); }
+function acceptCookies() { localStorage.setItem('cookiesAccepted', '1'); document.getElementById('cookieBanner').classList.remove('visible'); }
 </script>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>Ce site utilise des cookies techniques nécessaires à son fonctionnement. <a href="mentions-legales.html#cookies">En savoir plus</a></p>
+    <button class="cookie-accept" onclick="acceptCookies()">Accepter</button>
+  </div>
+</div>
+
 </body>
 </html>

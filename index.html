@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maison B — Coffrets & cadeaux sur mesure, personnalisés</title>
 <meta name="description" content="Coffrets cadeaux sur mesure : personnalisation du coffret et carte manuscrite incluse. Idéal pour vos cadeaux d'entreprise, événements, ou toute occasion spéciale.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maisonb.fr/">
+<meta property="og:title" content="Maison B — Coffrets cadeaux sur mesure pour entreprises">
+<meta property="og:description" content="Coffrets cadeaux personnalisés : logo, carte manuscrite, packaging sur mesure. Idéal pour vos cadeaux d'entreprise.">
+<meta property="og:image" content="https://maisonb.fr/img/photos/IMG_6112A3E81A11-1.jpeg">
+<meta property="og:locale" content="fr_FR">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -422,7 +428,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .footer-inner { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
+/* ===== COOKIE BANNER ===== */
+.cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: var(--noir); padding: 16px clamp(24px, 5vw, 70px); transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+.cookie-banner.visible { transform: translateY(0); }
+.cookie-banner-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.cookie-banner-inner p { font-size: 13px; color: rgba(250,250,248,0.6); line-height: 1.6; }
+.cookie-banner-inner a { color: var(--sable); text-decoration: underline; text-underline-offset: 3px; }
+.cookie-accept { padding: 10px 28px; background: rgba(250,250,248,0.1); border: 1px solid rgba(250,250,248,0.2); color: var(--blanc); font-family: var(--sans); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
+.cookie-accept:hover { background: rgba(250,250,248,0.2); border-color: rgba(250,250,248,0.4); }
+@media (max-width: 768px) { .cookie-banner-inner { flex-direction: column; text-align: center; gap: 12px; } }
 </style>
+<!-- Google Analytics — replace UA-XXXXXXXX with your tracking ID
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','UA-XXXXXXXX');</script>
+-->
 </head>
 <body>
 
@@ -485,7 +504,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <div class="hero-slide-text">
         <div class="hero-slide-label">Sur mesure</div>
         <h1 class="hero-slide-title">Votre coffret,<br><em>votre</em> identité</h1>
-        <p class="hero-slide-desc">Logo, couleurs, choix des produits — composez un coffret unique en quelques clics avec notre configurateur.</p>
+        <p class="hero-slide-desc">Logo, couleurs, choix des produits — composez un coffret unique en quelques clics.</p>
         <a href="full-custom.html" class="hero-slide-cta">Composer mon coffret <span class="cta-arrow">&rarr;</span></a>
       </div>
     </div>
@@ -512,7 +531,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
         <div class="hero-slide-label">Bien-être & senteurs</div>
         <h1 class="hero-slide-title">Des coffrets<br>qui éveillent les <em>sens</em></h1>
         <p class="hero-slide-desc">Bougies artisanales, parfums d'ambiance, douceurs — des univers à découvrir et à offrir.</p>
-        <a href="#univers" class="hero-slide-cta">Explorer les univers <span class="cta-arrow">&rarr;</span></a>
+        <a href="#coffrets" class="hero-slide-cta">Découvrir nos coffrets <span class="cta-arrow">&rarr;</span></a>
       </div>
     </div>
 
@@ -537,13 +556,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 </section>
 
 
-<!-- ===== NOS 4 UNIVERS (première section après hero) ===== -->
-<section class="section univers-section" id="univers">
+<!-- ===== NOS COFFRETS VITRINE (4 coffrets prêts à offrir) ===== -->
+<section class="section univers-section" id="coffrets">
   <div class="section-inner">
     <div class="section-header reveal">
-      <div class="section-label">Nos univers</div>
-      <h2 class="section-heading">Explorez nos quatre univers</h2>
-      <p class="section-sub">Chaque univers propose des coffrets uniques, personnalisés à votre image. À partir de 65 € par coffret, carte manuscrite incluse.</p>
+      <div class="section-label">Nos coffrets</div>
+      <h2 class="section-heading">Découvrez nos coffrets prêts à offrir</h2>
+      <p class="section-sub">Des compositions prêtes à personnaliser avec votre logo. Carte manuscrite incluse dans chaque coffret.</p>
       <div class="ready-badge reveal reveal-delay-2">
         <span class="ready-badge-dot"></span>
         <span class="ready-badge-text">Ready to ship</span>
@@ -552,35 +571,36 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       </div>
     </div>
     <div class="univers-grid">
-      <a href="whisky.html" class="univers-card reveal-scale reveal-delay-1">
-        <img class="card-bg" src="https://images.unsplash.com/photo-1576611693052-c822b18673ff?w=600&h=800&fit=crop&q=80" alt="Coffret Whisky" loading="lazy">
-        <span class="card-badge">Populaire</span>
+      <a href="semi-custom.html" class="univers-card reveal-scale reveal-delay-1">
+        <img class="card-bg" src="img/photos/IMG_6112A3E81A11-1.jpeg" alt="Coffret Gourmand" loading="lazy">
+        <span class="card-badge">Best-seller</span>
         <span class="card-arrow">&rarr;</span>
-        <div class="card-price">À partir de 80 €</div>
-        <h3>Whisky</h3>
-        <p>Carafe, verres, whisky japonais, vide-poche en cuir logotypé</p>
+        <div class="card-price">À partir de 120 €</div>
+        <h3>Coffret Gourmand</h3>
+        <p>Macarons, crème de pistache, chocolats Angelina Paris, carte manuscrite</p>
       </a>
-      <a href="the.html" class="univers-card reveal-scale reveal-delay-2">
-        <img class="card-bg" src="https://images.unsplash.com/photo-1582966953353-0b54fb3062e6?w=600&h=800&fit=crop&q=80" alt="Coffret Thé" loading="lazy">
-        <span class="card-arrow">&rarr;</span>
-        <div class="card-price">À partir de 65 €</div>
-        <h3>Thé</h3>
-        <p>Boîte à thé, tasses artisanales, biscuits, pince à thé, plateau</p>
-      </a>
-      <a href="senteur.html" class="univers-card reveal-scale reveal-delay-3">
-        <img class="card-bg" src="https://images.unsplash.com/photo-1760804876257-f073f77f2bcf?w=600&h=800&fit=crop&q=80" alt="Coffret Senteur" loading="lazy">
+      <a href="semi-custom.html" class="univers-card reveal-scale reveal-delay-2">
+        <img class="card-bg" src="img/photos/IMG_C0595F288949-1.jpeg" alt="Coffret Senteur" loading="lazy">
         <span class="card-badge">Nouveau</span>
         <span class="card-arrow">&rarr;</span>
-        <div class="card-price">À partir de 70 €</div>
-        <h3>Senteur</h3>
-        <p>Bougie parfumée premium, diffuseur bâtonnets bois, allumettes</p>
+        <div class="card-price">À partir de 135 €</div>
+        <h3>Coffret Senteur</h3>
+        <p>Bougie parfumée, diffuseur bâtonnets bois, douceurs artisanales</p>
       </a>
-      <a href="jeux.html" class="univers-card reveal-scale reveal-delay-4">
-        <img class="card-bg" src="https://images.unsplash.com/photo-1628924172947-113fb23621b3?w=600&h=800&fit=crop&q=80" alt="Coffret Jeux" loading="lazy">
+      <a href="semi-custom.html" class="univers-card reveal-scale reveal-delay-3">
+        <img class="card-bg" src="img/photos/IMG_9E75D411269E-1.jpeg" alt="Coffret Thé" loading="lazy">
         <span class="card-arrow">&rarr;</span>
-        <div class="card-price">À partir de 75 €</div>
-        <h3>Jeux</h3>
-        <p>Backgammon de voyage, jeux de cartes personnalisés, carnet</p>
+        <div class="card-price">À partir de 95 €</div>
+        <h3>Coffret Thé</h3>
+        <p>Boîte à thé artisanale, thés premium, tasse en porcelaine, biscuits sablés</p>
+      </a>
+      <a href="semi-custom.html" class="univers-card reveal-scale reveal-delay-4">
+        <img class="card-bg" src="img/photos/IMG_F8B5700C6BAC-1.jpeg" alt="Coffret Corporate" loading="lazy">
+        <span class="card-badge">Populaire</span>
+        <span class="card-arrow">&rarr;</span>
+        <div class="card-price">À partir de 155 €</div>
+        <h3>Coffret Corporate</h3>
+        <p>Chocolats, carte personnalisée, vide-poche cuir, packaging aux couleurs de votre marque</p>
       </a>
     </div>
   </div>
@@ -588,105 +608,76 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 <div class="section-divider"></div>
 
+<!-- ===== PREUVE SOCIALE / COLLABORATIONS ===== -->
+<section class="social-proof" style="padding: clamp(48px, 6vw, 80px) clamp(24px, 5vw, 70px);">
+  <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+    <h2 style="font-family: var(--serif); font-size: clamp(24px, 3vw, 36px); font-weight: 300; color: var(--blanc); margin-bottom: 28px;">Ils nous ont fait confiance</h2>
+    <div style="display: flex; align-items: center; justify-content: center; gap: clamp(28px, 5vw, 64px); flex-wrap: wrap; margin-bottom: 24px;">
+      <span style="font-family: var(--serif); font-size: clamp(16px, 1.8vw, 22px); color: rgba(250,250,248,0.55); letter-spacing: 3px; text-transform: uppercase;">FILLMED</span>
+      <span style="font-family: var(--serif); font-size: clamp(16px, 1.8vw, 22px); color: rgba(250,250,248,0.55); letter-spacing: 3px; text-transform: uppercase;">HaddadBrands</span>
+      <span style="font-family: var(--serif); font-size: clamp(16px, 1.8vw, 22px); color: rgba(250,250,248,0.55); letter-spacing: 3px; text-transform: uppercase;">Angelina Paris</span>
+      <span style="font-family: var(--serif); font-size: clamp(16px, 1.8vw, 22px); color: rgba(250,250,248,0.55); letter-spacing: 3px; text-transform: uppercase;">FormalSup</span>
+      <span style="font-family: var(--serif); font-size: clamp(16px, 1.8vw, 22px); color: rgba(250,250,248,0.55); letter-spacing: 3px; text-transform: uppercase;">Sweet Home</span>
+    </div>
+    <p style="font-size: 13px; color: rgba(250,250,248,0.35); letter-spacing: 1px;">Entreprises, agences, dirigeants — plus de 200 coffrets livrés</p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
 <!-- ===== NOS COFFRETS POPULAIRES ===== -->
-<section class="section" id="coffrets" style="background: var(--beige);">
+<section class="section" id="populaires" style="background: var(--beige);">
   <div class="section-inner">
     <div class="section-header reveal">
-      <div class="section-label">Nos coffrets</div>
+      <div class="section-label">Les plus demandés</div>
       <h2 class="section-heading">Les coffrets les plus demandés</h2>
       <p class="section-sub">Des compositions prêtes à personnaliser. Choisissez, ajoutez votre touche, on s'occupe du reste.</p>
     </div>
     <div class="coffrets-grid">
-      <a href="whisky.html" class="coffret-card reveal reveal-delay-1">
+      <a href="semi-custom.html" class="coffret-card reveal reveal-delay-1">
         <div class="coffret-card-img">
-          <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=600&h=450&fit=crop&q=80" alt="Coffret Whisky Signature">
+          <img src="img/photos/IMG_6112A3E81A11-1.jpeg" alt="Coffret Grand Gourmand">
           <span class="coffret-tag">Best-seller</span>
         </div>
         <div class="coffret-card-body">
-          <h3>Coffret Whisky Signature</h3>
-          <div class="coffret-desc">Carafe en cristal, 2 verres gravés, whisky japonais 70cl, vide-poche cuir</div>
+          <h3>Coffret Grand Gourmand</h3>
+          <div class="coffret-desc">Macarons, crème de pistache de Sicile, chocolats Angelina Paris, carte manuscrite</div>
           <div class="coffret-price-row">
-            <span class="coffret-price">145 €<small> / coffret</small></span>
+            <span class="coffret-price">120 €<small> / coffret</small></span>
             <span class="coffret-cta">Découvrir →</span>
           </div>
         </div>
       </a>
-      <a href="senteur.html" class="coffret-card reveal reveal-delay-2">
+      <a href="semi-custom.html" class="coffret-card reveal reveal-delay-2">
         <div class="coffret-card-img">
-          <img src="https://images.unsplash.com/photo-1602928321679-560bb453f190?w=600&h=450&fit=crop&q=80" alt="Coffret Senteur Prestige">
+          <img src="img/photos/IMG_7B487668FEB7-1.jpeg" alt="Coffret Provençal">
           <span class="coffret-tag">Nouveau</span>
         </div>
         <div class="coffret-card-body">
-          <h3>Coffret Senteur Prestige</h3>
-          <div class="coffret-desc">Bougie parfumée 300g, diffuseur bâtonnets bois, savon artisanal, allumettes</div>
+          <h3>Coffret Provençal</h3>
+          <div class="coffret-desc">Tapenade, huile d'olive extra vierge Koroneiki, chocolats aux olives de Provence</div>
+          <div class="coffret-price-row">
+            <span class="coffret-price">110 €<small> / coffret</small></span>
+            <span class="coffret-cta">Découvrir →</span>
+          </div>
+        </div>
+      </a>
+      <a href="semi-custom.html" class="coffret-card reveal reveal-delay-3">
+        <div class="coffret-card-img">
+          <img src="img/photos/IMG_C0595F288949-1.jpeg" alt="Coffret Bien-être">
+        </div>
+        <div class="coffret-card-body">
+          <h3>Coffret Bien-être</h3>
+          <div class="coffret-desc">Miel artisanal, parfum d'ambiance, douceurs, bougie — carte personnalisée incluse</div>
           <div class="coffret-price-row">
             <span class="coffret-price">135 €<small> / coffret</small></span>
             <span class="coffret-cta">Découvrir →</span>
           </div>
         </div>
       </a>
-      <a href="the.html" class="coffret-card reveal reveal-delay-3">
-        <div class="coffret-card-img">
-          <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&h=450&fit=crop&q=80" alt="Coffret Thé Essentiel">
-        </div>
-        <div class="coffret-card-body">
-          <h3>Coffret Thé Essentiel</h3>
-          <div class="coffret-desc">Boîte à thé artisanale, 3 thés premium, tasse en porcelaine, biscuits sablés</div>
-          <div class="coffret-price-row">
-            <span class="coffret-price">95 €<small> / coffret</small></span>
-            <span class="coffret-cta">Découvrir →</span>
-          </div>
-        </div>
-      </a>
-      <a href="jeux.html" class="coffret-card reveal reveal-delay-1">
-        <div class="coffret-card-img">
-          <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=600&h=450&fit=crop&q=80" alt="Coffret Jeux Signature">
-        </div>
-        <div class="coffret-card-body">
-          <h3>Coffret Jeux Signature</h3>
-          <div class="coffret-desc">Backgammon de voyage cuir, jeu de cartes personnalisé, carnet cousu</div>
-          <div class="coffret-price-row">
-            <span class="coffret-price">125 €<small> / coffret</small></span>
-            <span class="coffret-cta">Découvrir →</span>
-          </div>
-        </div>
-      </a>
-      <a href="whisky.html" class="coffret-card reveal reveal-delay-2">
-        <div class="coffret-card-img">
-          <img src="https://images.unsplash.com/photo-1547595628-c61a29f496f0?w=600&h=450&fit=crop&q=80" alt="Coffret Whisky Prestige">
-          <span class="coffret-tag">Premium</span>
-        </div>
-        <div class="coffret-card-body">
-          <h3>Coffret Whisky Prestige</h3>
-          <div class="coffret-desc">Whisky single malt 18 ans, carafe gravée, 4 verres, pierres à whisky, étui cuir</div>
-          <div class="coffret-price-row">
-            <span class="coffret-price">285 €<small> / coffret</small></span>
-            <span class="coffret-cta">Découvrir →</span>
-          </div>
-        </div>
-      </a>
-      <a href="configurateur.html" class="coffret-card reveal reveal-delay-3" style="border: 2px dashed var(--gris-clair); background: transparent;">
-        <div class="coffret-card-img" style="background: linear-gradient(135deg, rgba(140,120,81,0.05), rgba(140,120,81,0.12)); display: flex; align-items: center; justify-content: center;">
-          <div style="text-align: center; padding: 20px;">
-            <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(140,120,81,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </div>
-            <div style="font-family: var(--serif); font-size: 18px; color: var(--noir); margin-bottom: 6px;">Coffret sur mesure</div>
-            <div style="font-size: 12px; color: var(--gris);">Composez le vôtre</div>
-          </div>
-        </div>
-        <div class="coffret-card-body">
-          <h3>Votre coffret unique</h3>
-          <div class="coffret-desc">Mélangez les univers, choisissez vos produits, personnalisez le packaging</div>
-          <div class="coffret-price-row">
-            <span class="coffret-price">Sur devis</span>
-            <span class="coffret-cta">Composer →</span>
-          </div>
-        </div>
-      </a>
     </div>
     <div class="coffrets-see-all">
-      <a href="configurateur.html" class="magnetic">Voir tous les coffrets →</a>
+      <a href="semi-custom.html" class="magnetic">Voir tous les coffrets →</a>
     </div>
   </div>
 </section>
@@ -759,16 +750,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <div class="sm-left reveal-left">
         <div class="section-label">Sur mesure</div>
         <h2>Créez <em>votre</em> coffret en quelques clics</h2>
-        <p>Pas besoin de tout imaginer. Choisissez un univers, dites-nous vos envies, et on compose un coffret unique — personnalisé avec votre logo, vos couleurs, et votre message.</p>
+        <p>Pas besoin de tout imaginer. Dites-nous vos envies, et on compose un coffret unique — personnalisé avec votre logo, vos couleurs, et votre message.</p>
         <div class="mini-config">
           <div class="mini-config-title">Comment ça marche</div>
           <div class="mc-steps">
-            <div class="mc-step active" onmouseenter="activateStep(this)"><div class="mc-step-num">1</div><div><h4>Choisissez votre univers</h4><p>Whisky, Thé, Senteur, Jeux — ou mélangez-les</p></div></div>
-            <div class="mc-step" onmouseenter="activateStep(this)"><div class="mc-step-num">2</div><div><h4>Personnalisez le contenu</h4><p>Produits, packaging, logo, couleurs du coffret</p></div></div>
-            <div class="mc-step" onmouseenter="activateStep(this)"><div class="mc-step-num">3</div><div><h4>Ajoutez votre message</h4><p>Carte personnalisée glissée dans chaque coffret</p></div></div>
-            <div class="mc-step" onmouseenter="activateStep(this)"><div class="mc-step-num">4</div><div><h4>On s'occupe de tout</h4><p>Production, emballage, livraison — coffrets prêts à offrir</p></div></div>
+            <div class="mc-step active" onmouseenter="activateStep(this)"><div class="mc-step-num">1</div><div><h4>Décrivez votre projet</h4><p>Pour qui, combien, quel budget</p></div></div>
+            <div class="mc-step" onmouseenter="activateStep(this)"><div class="mc-step-num">2</div><div><h4>Personnalisez le contenu</h4><p>Produits, packaging, logo, couleurs</p></div></div>
+            <div class="mc-step" onmouseenter="activateStep(this)"><div class="mc-step-num">3</div><div><h4>Ajoutez votre message</h4><p>Carte personnalisée dans chaque coffret</p></div></div>
+            <div class="mc-step" onmouseenter="activateStep(this)"><div class="mc-step-num">4</div><div><h4>On s'occupe de tout</h4><p>Production, emballage, livraison</p></div></div>
           </div>
-          <a href="configurateur.html" class="mc-cta magnetic">Lancer mon coffret sur mesure &rarr;</a>
+          <a href="full-custom.html" class="mc-cta magnetic">Demander un devis sur mesure &rarr;</a>
         </div>
       </div>
       <div class="sm-right reveal-right reveal-delay-2">
@@ -801,7 +792,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       </div>
       <div class="form-card reveal-right reveal-delay-2">
         <div class="form-title">Votre demande</div>
-        <form id="devisForm" onsubmit="handleSubmit(event)">
+        <!-- Replace YOUR_FORM_ID with your Formspree form ID from https://formspree.io -->
+        <form id="devisForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input type="hidden" name="_subject" value="Nouvelle demande de devis — Maison B">
+          <input type="hidden" name="_next" value="https://maisonb.fr/index.html?sent=1">
           <div class="form-row"><div class="form-field"><label>Votre nom</label><input type="text" name="name" placeholder="Marie Dupont" required></div><div class="form-field"><label>Email</label><input type="email" name="email" placeholder="marie@dupont-associes.fr" required></div></div>
           <div class="form-field"><label>Décrivez votre projet en quelques mots</label><textarea name="message" placeholder="On cherche un cadeau pour nos 50 meilleurs clients pour les fêtes de fin d'année, budget autour de 100-150€ par coffret..."></textarea></div>
           <button type="submit" class="form-submit magnetic">Recevoir une proposition sous 48h →</button>
@@ -819,7 +813,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <footer class="footer">
   <div class="footer-inner">
     <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Coffrets & cadeaux sur mesure,<br>personnalisés, depuis Paris.</p></div>
-    <div><h5>Nos univers</h5><div class="footer-links"><a href="whisky.html">Whisky</a><a href="the.html">Thé</a><a href="senteur.html">Senteur</a><a href="jeux.html">Jeux</a></div></div>
+    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="semi-custom.html">Catalogue</a></div></div>
     <div><h5>Explorer</h5><div class="footer-links"><a href="about.html">About us</a><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="contact.html">Contact</a></div></div>
     <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@maisonb.fr">contact@maisonb.fr</a><a href="tel:+33100000000">+33 1 XX XX XX XX</a><a>Paris, France</a></div></div>
     <div><h5>Suivez-nous</h5><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div>
@@ -984,7 +978,27 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
   a.addEventListener('click', function(e) { var h=this.getAttribute('href'); if(h==='#') return; e.preventDefault(); var t=document.querySelector(h); if(t) window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-72, behavior:'smooth'}); });
 });
 
-function handleSubmit(e) { e.preventDefault(); document.getElementById('devisForm').style.display='none'; document.querySelector('.form-title').style.display='none'; document.getElementById('formSuccess').style.display='block'; }
+if (window.location.search.includes('sent=1')) {
+  var f = document.getElementById('devisForm');
+  var t = document.querySelector('.form-title');
+  var s = document.getElementById('formSuccess');
+  if (f) f.style.display = 'none';
+  if (t) t.style.display = 'none';
+  if (s) s.style.display = 'block';
+}
+
+/* Cookie banner */
+if (!localStorage.getItem('cookiesAccepted')) { setTimeout(function() { document.getElementById('cookieBanner').classList.add('visible'); }, 1500); }
+function acceptCookies() { localStorage.setItem('cookiesAccepted', '1'); document.getElementById('cookieBanner').classList.remove('visible'); }
 </script>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>Ce site utilise des cookies techniques nécessaires à son fonctionnement. <a href="mentions-legales.html#cookies">En savoir plus</a></p>
+    <button class="cookie-accept" onclick="acceptCookies()">Accepter</button>
+  </div>
+</div>
+
 </body>
 </html>
