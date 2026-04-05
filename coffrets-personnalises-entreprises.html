@@ -53,6 +53,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav-link.active { color: var(--noir); font-weight: 500; }
 .nav-cta-nav { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; padding: 10px 24px; background: var(--noir); border: 1px solid var(--noir); color: var(--blanc); transition: all 0.3s; }
 .nav-cta-nav:hover { background: var(--brun); }
+.nav-cta-short { display: none; }
 .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 110; }
 .nav-burger span { display: block; width: 24px; height: 1.5px; background: var(--noir); transition: all 0.3s; }
 .mobile-menu { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--noir); z-index: 105; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
@@ -128,7 +129,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .form-field { margin-bottom: 18px; }
 .form-field label { display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gris); margin-bottom: 7px; font-weight: 500; }
-.form-field input, .form-field select, .form-field textarea { width: 100%; padding: 13px 16px; border: 1px solid var(--gris-clair); background: var(--blanc); font-family: var(--sans); font-size: 14px; color: var(--noir); transition: border-color 0.3s, box-shadow 0.3s; outline: none; -webkit-appearance: none; border-radius: 8px; }
+.form-field input, .form-field select, .form-field textarea { width: 100%; padding: 13px 16px; border: 1px solid var(--gris-clair); background: var(--blanc); font-family: var(--sans); font-size: 16px; color: var(--noir); transition: border-color 0.3s, box-shadow 0.3s; outline: none; -webkit-appearance: none; border-radius: 8px; }
 .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--or); box-shadow: 0 0 0 3px rgba(140,120,81,0.08); }
 .form-field input::placeholder, .form-field textarea::placeholder { color: #C4C0B8; }
 .form-field select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C4C0B8'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
@@ -180,7 +181,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .fc-steps { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .nav-links, .nav-cta-nav { display: none; }
+  .nav-links { display: none; }
+  .nav-cta-nav { padding: 9px 14px; font-size: 10px; letter-spacing: 1.5px; margin-left: auto; margin-right: 12px; }
+  .nav-cta-long { display: none; }
+  .nav-cta-short { display: inline; }
   .nav-burger { display: flex; }
   .fc-hero { padding: 140px 24px 60px; }
   .fc-hero h1 { font-size: clamp(34px, 10vw, 52px); }
@@ -224,7 +228,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     <a href="a-propos.html" class="nav-link">About us</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
-  <a href="coffrets-personnalises-entreprises.html" class="nav-cta-nav">Composer mon coffret</a>
+  <a href="coffrets-personnalises-entreprises.html" class="nav-cta-nav"><span class="nav-cta-long">Composer mon coffret</span><span class="nav-cta-short">Devis</span></a>
   <div class="nav-burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">

@@ -54,6 +54,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav-link.active { color: var(--noir); font-weight: 500; }
 .nav-cta { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; padding: 10px 24px; background: var(--noir); border: 1px solid var(--noir); color: var(--blanc); transition: all 0.3s; }
 .nav-cta:hover { background: var(--brun); }
+.nav-cta-short { display: none; }
 .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 110; }
 .nav-burger span { display: block; width: 24px; height: 1.5px; background: var(--noir); transition: all 0.3s; }
 .mobile-menu { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--noir); z-index: 105; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
@@ -149,7 +150,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .inclus-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .nav-links, .nav-cta { display: none; }
+  .nav-links { display: none; }
+  .nav-cta { padding: 9px 14px; font-size: 10px; letter-spacing: 1.5px; margin-left: auto; margin-right: 12px; }
+  .nav-cta-long { display: none; }
+  .nav-cta-short { display: inline; }
   .nav-burger { display: flex; }
   .page-hero { padding: 130px 24px 48px; }
   .page-hero h1 { font-size: clamp(30px, 9vw, 48px); }
@@ -183,9 +187,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ===== PRODUCT OVERLAY (fiche coffret) ===== */
 .product-overlay { position: fixed; inset: 0; z-index: 1001; background: var(--blanc); opacity: 0; pointer-events: none; transition: opacity 0.5s cubic-bezier(0.22,1,0.36,1); overflow-y: auto; }
 .product-overlay.open { opacity: 1; pointer-events: all; }
-.product-grid { display: grid; grid-template-columns: 1.15fr 1fr; min-height: 100vh; }
+.product-grid { display: grid; grid-template-columns: 1.15fr 1fr; min-height: 100dvh; }
 .product-img-col { position: relative; background: var(--beige); overflow: hidden; }
-.product-img-col img { width: 100%; height: 100%; object-fit: cover; min-height: 100vh; display: block; }
+.product-img-col img { width: 100%; height: 100%; object-fit: cover; min-height: 100dvh; display: block; }
 .product-info-col { padding: clamp(32px, 4vw, 64px) clamp(28px, 5vw, 72px) clamp(32px, 4vw, 56px); display: flex; flex-direction: column; position: relative; }
 .product-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: clamp(28px, 4vw, 48px); }
 .product-back { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); font-weight: 500; cursor: pointer; transition: color 0.3s, transform 0.3s; background: none; border: none; padding: 0; font-family: inherit; }
@@ -225,13 +229,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .product-overlay.open .product-img-col img { animation: prodImgZoom 1.4s cubic-bezier(0.22,1,0.36,1) backwards; }
 @keyframes prodFade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes prodImgZoom { from { transform: scale(1.06); } to { transform: scale(1); } }
+.product-sticky-cta { display: none; }
 @media (max-width: 900px) {
   .product-grid { grid-template-columns: 1fr; min-height: auto; }
   .product-img-col { aspect-ratio: 4/3; min-height: auto; }
   .product-img-col img { min-height: auto; height: 100%; }
-  .product-info-col { padding: 24px 20px 40px; }
+  .product-info-col { padding: 24px 20px 100px; }
   .product-topbar { margin-bottom: 22px; }
   .product-divider { margin: 22px 0; }
+  .product-cta, .product-cta-sub { display: none; }
+  .product-sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); background: var(--blanc); border-top: 1px solid var(--gris-clair); box-shadow: 0 -4px 20px rgba(0,0,0,0.06); z-index: 5; }
+  .product-sticky-price { font-family: var(--sans); font-size: 17px; font-weight: 600; color: var(--noir); line-height: 1.2; }
+  .product-sticky-price small { font-size: 11px; font-weight: 400; color: var(--gris); margin-left: 4px; }
+  .product-sticky-btn { flex: 1; max-width: 200px; padding: 14px 20px; background: var(--noir); color: var(--blanc); border: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; border-radius: 8px; cursor: pointer; transition: background 0.3s; font-family: var(--sans); }
+  .product-sticky-btn:active { background: var(--brun); }
 }
 @media (max-width: 600px) {
   .product-title { font-size: clamp(26px, 7vw, 34px); }
@@ -298,7 +309,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .tunnel-upload-filename { font-size: 13px; color: var(--noir); font-weight: 500; word-break: break-all; flex: 1; }
 .tunnel-form-field { margin-bottom: 16px; }
 .tunnel-form-field label { display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gris); margin-bottom: 7px; font-weight: 500; }
-.tunnel-form-field input, .tunnel-form-field textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--gris-clair); background: var(--blanc); font-family: var(--sans); font-size: 14px; color: var(--noir); transition: border-color 0.3s, box-shadow 0.3s; outline: none; border-radius: 8px; }
+.tunnel-form-field input, .tunnel-form-field textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--gris-clair); background: var(--blanc); font-family: var(--sans); font-size: 16px; color: var(--noir); transition: border-color 0.3s, box-shadow 0.3s; outline: none; border-radius: 8px; }
 .tunnel-form-field input:focus, .tunnel-form-field textarea:focus { border-color: var(--or); box-shadow: 0 0 0 3px rgba(140,120,81,0.08); }
 .tunnel-form-field input::placeholder, .tunnel-form-field textarea::placeholder { color: #C4C0B8; }
 .tunnel-form-field textarea { height: 80px; resize: vertical; font-family: var(--sans); line-height: 1.5; }
@@ -348,6 +359,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .tunnel-stepper { padding: 18px 16px 12px; }
   .tunnel-stepper::before { left: 36px; right: 36px; top: 31px; }
   .tunnel-step-label { display: none; }
+  .tunnel-step-item.active .tunnel-step-label { display: block; position: absolute; top: 38px; left: 50%; transform: translateX(-50%); font-size: 9px; letter-spacing: 1.2px; color: var(--noir); font-weight: 600; white-space: nowrap; }
+  .tunnel-stepper { padding-bottom: 32px; }
   .tunnel-body { padding: 22px 20px; }
   .tunnel-footer { padding: 14px 20px 20px; }
   .tunnel-coffret { flex-direction: row; gap: 10px; padding: 10px; }
@@ -377,7 +390,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     <a href="a-propos.html" class="nav-link">About us</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
-  <a href="coffrets-personnalises-entreprises.html" class="nav-cta">Composer mon coffret</a>
+  <a href="coffrets-personnalises-entreprises.html" class="nav-cta"><span class="nav-cta-long">Composer mon coffret</span><span class="nav-cta-short">Devis</span></a>
   <div class="nav-burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
@@ -664,6 +677,7 @@ function openCoffret(slug) {
   document.getElementById('prod-univers').textContent = c.univers;
   document.getElementById('prod-title').textContent = c.name;
   document.getElementById('prod-price').innerHTML = c.price + ' €<small>/ coffret</small>';
+  document.getElementById('prod-sticky-price').textContent = c.price + ' €';
   document.getElementById('prod-desc').textContent = c.desc;
   document.getElementById('prod-items').innerHTML = c.items.map(function(i) { return '<li>' + i + '</li>'; }).join('');
   document.getElementById('productOverlay').classList.add('open');
@@ -935,6 +949,11 @@ window.addEventListener('load', function() {
       <button class="product-cta" onclick="startOrder()" type="button">Composer ma commande <span class="product-cta-arrow">&rarr;</span></button>
       <p class="product-cta-sub">Devis sous 48h · Aucun engagement</p>
     </div>
+  </div>
+  <!-- Sticky CTA mobile uniquement -->
+  <div class="product-sticky-cta">
+    <div class="product-sticky-price"><span id="prod-sticky-price">—</span> <small>/ coffret</small></div>
+    <button class="product-sticky-btn" onclick="startOrder()" type="button">Composer →</button>
   </div>
 </div>
 
