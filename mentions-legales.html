@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maison B — Mentions légales & Politique de confidentialité</title>
-<meta name="description" content="Mentions légales et politique de confidentialité du site Maison B. Informations sur l'éditeur, la protection des données et les cookies.">
+<title>Mentions légales et confidentialité | Maison B</title>
+<meta name="description" content="Mentions légales, politique de confidentialité et gestion des cookies du site Maison B.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://maisonb.fr/mentions-legales">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Maison B">
+<meta property="og:url" content="https://maisonb.fr/mentions-legales">
+<meta property="og:title" content="Mentions légales | Maison B">
+<meta property="og:description" content="Mentions légales, politique de confidentialité et cookies.">
+<meta property="og:locale" content="fr_FR">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -114,20 +122,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">MAISON B</a>
   <div class="nav-links">
-    <a href="about.html" class="nav-link">About us</a>
-    <a href="semi-custom.html" class="nav-link">Semi custom</a>
-    <a href="full-custom.html" class="nav-link">Full custom</a>
+    <a href="coffrets-semi-custom.html" class="nav-link">Semi custom</a>
+    <a href="coffrets-personnalises-entreprises.html" class="nav-link">Full custom</a>
+    <a href="a-propos.html" class="nav-link">About us</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
-  <a href="full-custom.html" class="nav-cta">Composer mon coffret</a>
+  <a href="coffrets-personnalises-entreprises.html" class="nav-cta">Composer mon coffret</a>
   <div class="nav-burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="about.html" onclick="toggleMenu()">About us</a>
-  <a href="semi-custom.html" onclick="toggleMenu()">Semi custom</a>
-  <a href="full-custom.html" onclick="toggleMenu()">Full custom</a>
+  <a href="coffrets-semi-custom.html" onclick="toggleMenu()">Semi custom</a>
+  <a href="coffrets-personnalises-entreprises.html" onclick="toggleMenu()">Full custom</a>
+  <a href="a-propos.html" onclick="toggleMenu()">About us</a>
   <a href="contact.html" onclick="toggleMenu()">Contact</a>
-  <a href="full-custom.html" class="mobile-cta" onclick="toggleMenu()">Composer mon coffret</a>
+  <a href="coffrets-personnalises-entreprises.html" class="mobile-cta" onclick="toggleMenu()">Composer mon coffret</a>
 </div>
 
 <!-- ===== PAGE HERO ===== -->
@@ -238,8 +246,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <footer class="footer">
   <div class="footer-inner">
     <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Coffrets & cadeaux sur mesure,<br>personnalis&eacute;s, depuis Paris.</p></div>
-    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="semi-custom.html">Catalogue</a></div></div>
-    <div><h5>Explorer</h5><div class="footer-links"><a href="about.html">About us</a><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="contact.html">Contact</a><a href="mentions-legales.html">Mentions l&eacute;gales</a></div></div>
+    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="coffrets-semi-custom.html">Semi custom</a><a href="coffrets-personnalises-entreprises.html">Full custom</a><a href="coffrets-semi-custom.html">Catalogue</a></div></div>
+    <div><h5>Explorer</h5><div class="footer-links"><a href="a-propos.html">About us</a><a href="coffrets-semi-custom.html">Semi custom</a><a href="coffrets-personnalises-entreprises.html">Full custom</a><a href="contact.html">Contact</a><a href="mentions-legales.html">Mentions l&eacute;gales</a></div></div>
     <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@maisonb.fr">contact@maisonb.fr</a><a href="tel:+33100000000">+33 1 XX XX XX XX</a><a>Paris, France</a></div></div>
     <div><h5>Suivez-nous</h5><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div>
   </div>
@@ -255,7 +263,7 @@ window.addEventListener('scroll', function() {
   var st = window.scrollY;
   var docH = document.documentElement.scrollHeight - window.innerHeight;
   if (docH > 0) progressBar.style.width = (st/docH*100)+'%';
-  if(st>lastScroll && st>400) nav.classList.add('hidden'); else nav.classList.remove('hidden');
+  nav.classList.remove('hidden');
   lastScroll = st;
 });
 

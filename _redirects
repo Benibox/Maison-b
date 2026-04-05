@@ -1,0 +1,18 @@
+# Cloudflare Pages — redirects & rewrites
+
+# 301 : anciennes URLs .html → URLs propres
+/semi-custom                                     /coffrets-semi-custom                    301
+/semi-custom.html                                /coffrets-semi-custom                    301
+/full-custom                                     /coffrets-personnalises-entreprises      301
+/full-custom.html                                /coffrets-personnalises-entreprises      301
+/about                                           /a-propos                                 301
+/about.html                                      /a-propos                                 301
+
+# 301 : forcer URL canonique sans .html
+/index.html                                      /                                         301
+/coffrets-semi-custom.html                       /coffrets-semi-custom                    301
+/coffrets-personnalises-entreprises.html         /coffrets-personnalises-entreprises      301
+/a-propos.html                                   /a-propos                                 301
+/contact.html                                    /contact                                  301
+/mentions-legales.html                           /mentions-legales                         301
+/commande-confirmee.html                         /commande-confirmee                      301

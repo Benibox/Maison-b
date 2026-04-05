@@ -3,14 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maison B — Contact</title>
-<meta name="description" content="Contactez Maison B pour vos coffrets cadeaux sur mesure. Proposition sous 48h, aucun engagement.">
+<title>Contact — Devis coffret cadeau entreprise sous 48h | Maison B</title>
+<meta name="description" content="Contactez Maison B pour vos coffrets cadeaux d'entreprise personnalisés. Devis sur-mesure sous 48h, aucun engagement. Paris & toute la France.">
+<meta name="keywords" content="devis coffret cadeau entreprise, contact Maison B, coffret cadeau corporate France">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Maison B">
+<link rel="canonical" href="https://maisonb.fr/contact">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://maisonb.fr/contact.html">
-<meta property="og:title" content="Maison B — Contact">
-<meta property="og:description" content="Contactez Maison B pour vos coffrets cadeaux sur mesure. Proposition sous 48h, aucun engagement.">
+<meta property="og:site_name" content="Maison B">
+<meta property="og:url" content="https://maisonb.fr/contact">
+<meta property="og:title" content="Contact — Devis coffret cadeau entreprise sous 48h">
+<meta property="og:description" content="Devis sur-mesure sous 48h pour vos coffrets cadeaux d'entreprise personnalisés. Aucun engagement.">
 <meta property="og:image" content="https://maisonb.fr/img/photos/IMG_6112A3E81A11-1.jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact — Devis coffret cadeau entreprise sous 48h">
+<meta name="twitter:description" content="Devis sur-mesure sous 48h pour vos coffrets cadeaux d'entreprise. Aucun engagement.">
+<meta name="twitter:image" content="https://maisonb.fr/img/photos/IMG_6112A3E81A11-1.jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -148,9 +159,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .cookie-accept:hover { background: rgba(250,250,248,0.2); border-color: rgba(250,250,248,0.4); }
 @media (max-width: 768px) { .cookie-banner-inner { flex-direction: column; text-align: center; gap: 12px; } }
 </style>
-<!-- Google Analytics — replace UA-XXXXXXXX with your tracking ID
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','UA-XXXXXXXX');</script>
+<!-- Google Analytics 4 — remplacer G-XXXXXXXXXX par votre Measurement ID GA4
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 -->
 </head>
 <body>
@@ -160,20 +171,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">MAISON B</a>
   <div class="nav-links">
-    <a href="about.html" class="nav-link">About us</a>
-    <a href="semi-custom.html" class="nav-link">Semi custom</a>
-    <a href="full-custom.html" class="nav-link">Full custom</a>
+    <a href="coffrets-semi-custom.html" class="nav-link">Semi custom</a>
+    <a href="coffrets-personnalises-entreprises.html" class="nav-link">Full custom</a>
+    <a href="a-propos.html" class="nav-link">About us</a>
     <a href="contact.html" class="nav-link active">Contact</a>
   </div>
-  <a href="full-custom.html" class="nav-cta">Composer mon coffret</a>
+  <a href="coffrets-personnalises-entreprises.html" class="nav-cta">Composer mon coffret</a>
   <div class="nav-burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="about.html" onclick="toggleMenu()">About us</a>
-  <a href="semi-custom.html" onclick="toggleMenu()">Semi custom</a>
-  <a href="full-custom.html" onclick="toggleMenu()">Full custom</a>
+  <a href="coffrets-semi-custom.html" onclick="toggleMenu()">Semi custom</a>
+  <a href="coffrets-personnalises-entreprises.html" onclick="toggleMenu()">Full custom</a>
+  <a href="a-propos.html" onclick="toggleMenu()">About us</a>
   <a href="contact.html" onclick="toggleMenu()">Contact</a>
-  <a href="full-custom.html" class="mobile-cta" onclick="toggleMenu()">Composer mon coffret</a>
+  <a href="coffrets-personnalises-entreprises.html" class="mobile-cta" onclick="toggleMenu()">Composer mon coffret</a>
 </div>
 
 <!-- ===== PAGE HERO ===== -->
@@ -238,10 +249,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <div id="contactFormContent">
         <div class="contact-form-title">Envoyez-nous un message</div>
         <p class="contact-form-sub">Décrivez-nous votre projet, on revient vers vous rapidement.</p>
-        <!-- Replace YOUR_FORM_ID with your Formspree form ID from https://formspree.io -->
-        <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form id="contactForm" action="https://formspree.io/f/xqegwzkk" method="POST">
           <input type="hidden" name="_subject" value="Nouveau message de contact — Maison B">
-          <input type="hidden" name="_next" value="https://maisonb.fr/contact.html?sent=1">
+          <input type="hidden" name="_next" value="https://maisonb.fr/contact?sent=1">
+          <input type="hidden" name="_autoresponse" value="Bonjour, merci pour votre message — nous l'avons bien reçu chez Maison B. On revient vers vous sous 48h.&#10;&#10;À très vite,&#10;L'équipe Maison B&#10;contact@maisonb.fr">
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-row">
             <div class="form-field">
               <label>Nom</label>
@@ -280,8 +292,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <footer class="footer">
   <div class="footer-inner">
     <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Coffrets & cadeaux sur mesure,<br>personnalisés, depuis Paris.</p></div>
-    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="semi-custom.html">Catalogue</a></div></div>
-    <div><h5>Explorer</h5><div class="footer-links"><a href="about.html">About us</a><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="contact.html">Contact</a></div></div>
+    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="coffrets-semi-custom.html">Semi custom</a><a href="coffrets-personnalises-entreprises.html">Full custom</a><a href="coffrets-semi-custom.html">Catalogue</a></div></div>
+    <div><h5>Explorer</h5><div class="footer-links"><a href="a-propos.html">About us</a><a href="coffrets-semi-custom.html">Semi custom</a><a href="coffrets-personnalises-entreprises.html">Full custom</a><a href="contact.html">Contact</a></div></div>
     <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@maisonb.fr">contact@maisonb.fr</a><a href="tel:+33100000000">+33 1 XX XX XX XX</a><a>Paris, France</a></div></div>
     <div><h5>Suivez-nous</h5><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div>
   </div>
@@ -297,7 +309,7 @@ window.addEventListener('scroll', function() {
   var st = window.scrollY;
   var docH = document.documentElement.scrollHeight - window.innerHeight;
   if (docH > 0) progressBar.style.width = (st/docH*100)+'%';
-  if(st>lastScroll && st>400) nav.classList.add('hidden'); else nav.classList.remove('hidden');
+  nav.classList.remove('hidden');
   lastScroll = st;
 });
 

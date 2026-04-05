@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commande confirmée | Maison B</title>
+<meta name="description" content="Votre commande a bien été reçue. On revient vers vous sous 48h.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://maisonb.fr/commande-confirmee">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --noir: #1A1A1A; --blanc: #FAFAF8; --gris: #6B6B6B; --gris-clair: #E8E6E1;
+  --tabac: #6B5D4F; --sable: #C4B5A0; --creme: #E8E2D9; --brun: #2C2821; --or: #8C7851;
+  --beige: #F5F4F0; --dore: #8C7851;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+}
+html, body { height: 100%; }
+body { font-family: var(--sans); background: var(--blanc); color: var(--noir); line-height: 1.7; -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
+a { color: inherit; text-decoration: none; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 clamp(24px, 5vw, 70px); height: 72px; display: flex; align-items: center; justify-content: center; background: rgba(250,250,248,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--gris-clair); }
+.nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: var(--noir); }
+
+.confirm-main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 140px 24px 80px; }
+.confirm-card { max-width: 560px; text-align: center; }
+.confirm-icon { width: 72px; height: 72px; border-radius: 50%; background: rgba(76,175,80,0.12); display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; animation: pop 0.6s cubic-bezier(0.22,1,0.36,1); }
+.confirm-icon svg { width: 32px; height: 32px; stroke: #4CAF50; fill: none; stroke-width: 2.5; }
+@keyframes pop { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.confirm-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--or); margin-bottom: 14px; font-weight: 500; }
+.confirm-title { font-family: var(--serif); font-size: clamp(32px, 4vw, 48px); font-weight: 300; line-height: 1.15; color: var(--noir); margin-bottom: 20px; }
+.confirm-title em { font-style: italic; color: var(--or); }
+.confirm-text { font-size: 15px; color: var(--gris); line-height: 1.85; max-width: 480px; margin: 0 auto 12px; }
+.confirm-ref { font-size: 12px; color: var(--gris); letter-spacing: 0.5px; background: var(--beige); display: inline-block; padding: 8px 16px; border-radius: 6px; margin: 20px 0 32px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.confirm-next { margin-top: 20px; padding: 24px; background: var(--beige); border-radius: 10px; text-align: left; }
+.confirm-next-title { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--or); font-weight: 500; margin-bottom: 14px; }
+.confirm-next-list { list-style: none; }
+.confirm-next-list li { font-size: 13.5px; color: var(--gris); line-height: 1.75; padding: 7px 0 7px 24px; position: relative; }
+.confirm-next-list li::before { content: '◆'; position: absolute; left: 0; top: 10px; font-size: 7px; color: var(--or); }
+.confirm-cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; padding: 14px 32px; background: var(--noir); color: var(--blanc); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; border-radius: 8px; transition: all 0.3s; }
+.confirm-cta:hover { background: var(--brun); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(44,40,33,0.25); }
+
+.footer { background: var(--noir); padding: 28px clamp(24px, 5vw, 70px); text-align: center; font-size: 11px; color: rgba(250,250,248,0.4); letter-spacing: 1px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">MAISON B</a>
+</nav>
+
+<main class="confirm-main">
+  <div class="confirm-card">
+    <div class="confirm-icon">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="confirm-label">Paiement confirmé</div>
+    <h1 class="confirm-title">Merci, votre commande<br>est <em>validée</em></h1>
+    <p class="confirm-text">Votre paiement a bien été reçu. Vous allez recevoir un email de confirmation Stripe dans les prochaines minutes.</p>
+    <div class="confirm-ref" id="sessionRef">Référence en cours…</div>
+
+    <div class="confirm-next">
+      <div class="confirm-next-title">Prochaines étapes</div>
+      <ul class="confirm-next-list">
+        <li>Notre studio vous contacte sous 24h avec votre bon de commande détaillé</li>
+        <li>Validation du bon à tirer du packaging avec votre logo</li>
+        <li>Production, emballage et expédition sous 5 jours ouvrés</li>
+        <li>Suivi de livraison par email</li>
+      </ul>
+    </div>
+
+    <a href="/" class="confirm-cta">Retour à l'accueil &rarr;</a>
+  </div>
+</main>
+
+<footer class="footer">
+  &copy; 2026 Maison B — Paris · contact@maisonb.fr
+</footer>
+
+<script>
+/* Affiche la référence de session Stripe */
+var urlParams = new URLSearchParams(window.location.search);
+var sid = urlParams.get('session_id');
+var ref = document.getElementById('sessionRef');
+if (sid) {
+  ref.textContent = 'Réf. ' + sid.substring(0, 24) + '…';
+} else {
+  ref.style.display = 'none';
+}
+</script>
+</body>
+</html>

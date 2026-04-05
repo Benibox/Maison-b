@@ -3,17 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maison B — Coffrets & cadeaux sur mesure, personnalisés</title>
-<meta name="description" content="Coffrets cadeaux sur mesure : personnalisation du coffret et carte manuscrite incluse. Idéal pour vos cadeaux d'entreprise, événements, ou toute occasion spéciale.">
+<title>Coffrets cadeaux entreprise personnalisés sur-mesure — Maison B Paris</title>
+<meta name="description" content="Coffrets cadeaux d'entreprise personnalisés avec votre logo : packaging sur-mesure, carte manuscrite incluse. Cadeau d'affaires original pour clients et collaborateurs, livré partout en France. Devis sous 48h.">
+<meta name="keywords" content="coffret cadeau entreprise personnalisé, cadeau d'affaires original, coffret cadeau corporate sur-mesure France, gift box entreprise logo, coffret cadeau corporate, cadeau entreprise Paris">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Maison B">
+<link rel="canonical" href="https://maisonb.fr/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Maison B">
 <meta property="og:url" content="https://maisonb.fr/">
-<meta property="og:title" content="Maison B — Coffrets cadeaux sur mesure pour entreprises">
-<meta property="og:description" content="Coffrets cadeaux personnalisés : logo, carte manuscrite, packaging sur mesure. Idéal pour vos cadeaux d'entreprise.">
+<meta property="og:title" content="Coffrets cadeaux entreprise personnalisés sur-mesure — Maison B">
+<meta property="og:description" content="Coffrets cadeaux d'entreprise personnalisés avec votre logo. Cadeau d'affaires original pour clients et collaborateurs, livré partout en France.">
 <meta property="og:image" content="https://maisonb.fr/img/photos/IMG_6112A3E81A11-1.jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Coffrets cadeaux entreprise personnalisés — Maison B">
+<meta name="twitter:description" content="Coffrets cadeaux d'entreprise personnalisés avec votre logo. Cadeau d'affaires original. Devis sous 48h.">
+<meta name="twitter:image" content="https://maisonb.fr/img/photos/IMG_6112A3E81A11-1.jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/photos/IMG_6112A3E81A11-1.jpeg" fetchpriority="high">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Maison B",
+  "url": "https://maisonb.fr/",
+  "logo": "https://maisonb.fr/img/photos/IMG_6112A3E81A11-1.jpeg",
+  "description": "Coffrets cadeaux d'entreprise personnalisés sur-mesure. Cadeau d'affaires original pour clients et collaborateurs.",
+  "address": { "@type": "PostalAddress", "addressLocality": "Paris", "addressCountry": "FR" },
+  "areaServed": "FR",
+  "sameAs": []
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Maison B",
+  "url": "https://maisonb.fr/",
+  "inLanguage": "fr-FR"
+}
+</script>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -28,6 +62,9 @@ body { font-family: var(--sans); background: var(--blanc); color: var(--noir); l
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ===== A11Y / SEO — visually hidden ===== */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 /* ===== SCROLL PROGRESS BAR ===== */
 .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--or), var(--dore)); z-index: 200; width: 0%; transition: width 0.1s linear; }
@@ -54,30 +91,30 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .mobile-menu .mobile-cta { margin-top: 20px; padding: 14px 36px; border: 1px solid rgba(250,250,248,0.2); font-family: var(--sans); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--blanc); }
 
 /* ===== HERO CAROUSEL — fade, contained, refined ===== */
-.hero-carousel { background: var(--blanc); padding: 92px clamp(20px, 3vw, 48px) clamp(24px, 3vw, 48px); position: relative; overflow: hidden; }
+.hero-carousel { background: var(--blanc); padding: 92px clamp(20px, 3vw, 48px) clamp(16px, 2vw, 28px); position: relative; overflow: hidden; }
 .hero-carousel-track { position: relative; width: 100%; }
 .hero-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; pointer-events: none; transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1); }
 .hero-slide.active { position: relative; opacity: 1; pointer-events: all; z-index: 2; }
 
-/* --- Photo — contained, rounded --- */
-.hero-slide-img { position: relative; width: 100%; overflow: hidden; border-radius: 12px; aspect-ratio: 16/8; }
+/* --- Photo — contained, rounded, cinematic --- */
+.hero-slide-img { position: relative; width: 100%; overflow: hidden; border-radius: 10px; aspect-ratio: 21/9; max-height: calc(100dvh - 230px); }
 .hero-slide-img img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.03); transition: transform 10s ease-out; }
 .hero-slide.active .hero-slide-img img { transform: scale(1.0); }
-.hero-slide-img::after { content: ''; position: absolute; inset: 0; border-radius: 12px; background: linear-gradient(0deg, rgba(0,0,0,0.08) 0%, transparent 35%); pointer-events: none; }
+.hero-slide-img::after { content: ''; position: absolute; inset: 0; border-radius: 10px; background: linear-gradient(0deg, rgba(0,0,0,0.18) 0%, transparent 40%); pointer-events: none; }
 
-/* --- White card — overlapping bottom-right of the photo --- */
-.hero-slide-text { position: absolute; bottom: -24px; right: clamp(24px, 5%, 80px); z-index: 3; background: var(--blanc); border-radius: 14px; padding: clamp(28px, 3vw, 40px) clamp(32px, 3.5vw, 48px); text-align: center; max-width: 460px; width: clamp(320px, 40%, 460px); box-shadow: 0 4px 30px rgba(0,0,0,0.06); }
-.hero-slide-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--or); margin-bottom: 14px; opacity: 0; transform: translateY(10px); transition: all 0.6s 0.3s cubic-bezier(0.22,1,0.36,1); }
+/* --- White card — inset inside bottom-right of the photo, frosted --- */
+.hero-slide-text { position: absolute; bottom: clamp(16px, 2.2vw, 28px); right: clamp(16px, 2.2vw, 28px); z-index: 3; background: rgba(250,250,248,0.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 10px; padding: clamp(20px, 2vw, 26px) clamp(22px, 2.2vw, 30px); text-align: left; max-width: 380px; width: clamp(280px, 32%, 380px); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+.hero-slide-label { font-size: 9.5px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--or); margin-bottom: 10px; opacity: 0; transform: translateY(10px); transition: all 0.6s 0.3s cubic-bezier(0.22,1,0.36,1); }
 .hero-slide.active .hero-slide-label { opacity: 1; transform: translateY(0); }
-.hero-slide-title { font-family: var(--serif); font-size: clamp(24px, 2.8vw, 38px); font-weight: 300; color: var(--noir); line-height: 1.18; margin-bottom: 12px; opacity: 0; transform: translateY(14px); transition: all 0.7s 0.4s cubic-bezier(0.22,1,0.36,1); }
+.hero-slide-title { font-family: var(--serif); font-size: clamp(22px, 2vw, 30px); font-weight: 300; color: var(--noir); line-height: 1.2; margin-bottom: 10px; opacity: 0; transform: translateY(14px); transition: all 0.7s 0.4s cubic-bezier(0.22,1,0.36,1); }
 .hero-slide.active .hero-slide-title { opacity: 1; transform: translateY(0); }
 .hero-slide-title em { font-style: italic; color: var(--or); }
-.hero-slide-desc { font-size: 13px; color: var(--gris); line-height: 1.75; margin-bottom: 22px; opacity: 0; transform: translateY(10px); transition: all 0.6s 0.55s cubic-bezier(0.22,1,0.36,1); }
+.hero-slide-desc { font-size: 12.5px; color: var(--gris); line-height: 1.65; margin-bottom: 16px; opacity: 0; transform: translateY(10px); transition: all 0.6s 0.55s cubic-bezier(0.22,1,0.36,1); }
 .hero-slide.active .hero-slide-desc { opacity: 1; transform: translateY(0); }
-.hero-slide-cta { display: inline-flex; align-items: center; gap: 12px; padding: 14px 34px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; color: var(--blanc); background: var(--noir); border: none; transition: all 0.4s cubic-bezier(0.22,1,0.36,1); opacity: 0; transform: translateY(10px); }
+.hero-slide-cta { display: inline-flex; align-items: center; gap: 10px; padding: 11px 24px; font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500; color: var(--blanc); background: var(--noir); border: none; border-radius: 2px; transition: all 0.4s cubic-bezier(0.22,1,0.36,1); opacity: 0; transform: translateY(10px); }
 .hero-slide.active .hero-slide-cta { opacity: 1; transform: translateY(0); transition-delay: 0.7s; }
 .hero-slide-cta:hover { background: var(--brun); box-shadow: 0 6px 20px rgba(44,40,33,0.18); transform: translateY(-2px); }
-.hero-slide-cta .cta-arrow { font-size: 15px; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
+.hero-slide-cta .cta-arrow { font-size: 14px; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
 .hero-slide-cta:hover .cta-arrow { transform: translateX(4px); }
 
 /* --- Prev/Next arrows — on the sides of the photo --- */
@@ -87,7 +124,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .carousel-arrow svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
 
 /* --- Dots — below the carousel --- */
-.carousel-controls { display: flex; align-items: center; justify-content: center; gap: 16px; padding-top: clamp(36px, 4vw, 52px); position: relative; z-index: 5; }
+.carousel-controls { display: flex; align-items: center; justify-content: center; gap: 16px; padding-top: clamp(22px, 2.4vw, 32px); position: relative; z-index: 5; }
 .carousel-dots { display: flex; gap: 8px; align-items: center; }
 .carousel-dot { width: 28px; height: 2px; background: rgba(26,26,26,0.1); border-radius: 2px; cursor: pointer; transition: all 0.5s cubic-bezier(0.22,1,0.36,1); position: relative; overflow: hidden; }
 .carousel-dot.active { background: rgba(26,26,26,0.06); }
@@ -146,33 +183,21 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .social-proof-sep { width: 1px; height: 24px; background: rgba(250,250,248,0.1); }
 
 /* ===== UNIVERS GRID ===== */
-.univers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.univers-card { position: relative; aspect-ratio: 3/4; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 2vw, 28px); transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s; border-radius: 8px; }
-.univers-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.05) 70%, transparent 100%); z-index: 1; transition: opacity 0.5s; border-radius: 8px; }
-.univers-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
-.univers-card:hover::before { opacity: 0.9; }
-.univers-card h3 { font-family: var(--serif); font-size: clamp(22px, 2vw, 28px); font-weight: 600; color: var(--blanc); position: relative; z-index: 2; margin-bottom: 4px; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
-.univers-card p { font-size: 13px; color: rgba(255,255,255,0.85); position: relative; z-index: 2; line-height: 1.6; transform: translateY(8px); opacity: 0; transition: all 0.4s; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
-.univers-card:hover p { transform: translateY(0); opacity: 1; }
-.univers-card .card-price { font-size: 14px; font-weight: 600; color: var(--blanc); position: relative; z-index: 2; margin-bottom: 6px; letter-spacing: 0.5px; opacity: 1; text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
-.univers-card .card-arrow { position: absolute; top: 20px; right: 20px; font-size: 20px; color: rgba(255,255,255,0.3); z-index: 2; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s; }
-.univers-card:hover .card-arrow { transform: translateX(6px); color: rgba(255,255,255,0.8); }
-.univers-card .card-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; border-radius: 8px; transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
-.univers-card:hover .card-bg { transform: scale(1.08); }
-.univers-card .card-badge { position: absolute; top: 16px; left: 16px; background: var(--or); color: var(--blanc); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; z-index: 2; font-weight: 500; border-radius: 3px; }
+.univers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(24px, 2.5vw, 40px) clamp(18px, 2vw, 28px); }
+.univers-card { position: relative; display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+.univers-card:hover { transform: translateY(-4px); }
+.univers-card .card-img-wrap { position: relative; aspect-ratio: 4/5; overflow: hidden; background: var(--beige); border-radius: 3px; margin-bottom: 18px; }
+.univers-card .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+.univers-card:hover .card-img-wrap img { transform: scale(1.04); }
+.univers-card .card-caption { text-align: center; padding: 0 8px; }
+.univers-card h3 { font-family: var(--serif); font-size: 14px; font-weight: 400; letter-spacing: 2.5px; text-transform: uppercase; color: var(--noir); margin-bottom: 8px; line-height: 1.35; }
+.univers-card .card-price { font-family: var(--sans); font-size: 13px; font-weight: 400; color: var(--gris); letter-spacing: 0.3px; }
 
 /* ===== UNIVERS SECTION — first section ===== */
 .univers-section { background: var(--blanc); }
 .univers-section .section-header { margin-bottom: clamp(36px, 5vw, 52px); }
 
 /* ===== READY TO SHIP BADGE ===== */
-.ready-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; padding: 10px 22px; background: rgba(140,120,81,0.06); border: 1px solid rgba(140,120,81,0.12); border-radius: 100px; }
-.ready-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #4CAF50; position: relative; flex-shrink: 0; }
-.ready-badge-dot::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; background: rgba(76,175,80,0.3); animation: readyPulse 2s ease-in-out infinite; }
-@keyframes readyPulse { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.6); opacity: 0; } }
-.ready-badge-text { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; color: var(--noir); }
-.ready-badge-sep { color: var(--gris-clair); font-size: 14px; }
-.ready-badge-detail { font-size: 12px; color: var(--gris); letter-spacing: 0.3px; }
 
 /* ===== COFFRETS POPULAIRES ===== */
 .coffrets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
@@ -337,6 +362,24 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .guarantee::before { content: '\25C6'; font-size: 8px; }
 .form-card { background: var(--blanc); padding: clamp(28px, 3vw, 40px); box-shadow: 0 4px 30px rgba(0,0,0,0.04); border-radius: 8px; }
 .form-title { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 24px; }
+.devis-cta-card { background: var(--beige); padding: clamp(32px, 3.5vw, 48px); border-radius: 14px; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.5s cubic-bezier(0.22,1,0.36,1); position: relative; overflow: hidden; border: 1px solid var(--gris-clair); }
+.devis-cta-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--or), var(--dore)); transform: scaleX(0); transform-origin: left; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+.devis-cta-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); border-color: rgba(140,120,81,0.25); }
+.devis-cta-card:hover::before { transform: scaleX(1); }
+.devis-cta-icon { width: 46px; height: 46px; margin-bottom: 22px; color: var(--or); }
+.devis-cta-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.3; }
+.devis-cta-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--or); margin-bottom: 14px; font-weight: 500; }
+.devis-cta-heading { font-family: var(--serif); font-size: clamp(24px, 2.4vw, 30px); font-weight: 300; line-height: 1.22; color: var(--noir); margin-bottom: 16px; }
+.devis-cta-heading em { font-style: italic; color: var(--or); }
+.devis-cta-text { font-size: 14px; color: var(--gris); line-height: 1.75; margin-bottom: 28px; }
+.devis-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 16px 28px; background: var(--noir); color: var(--blanc); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500; border-radius: 8px; transition: all 0.4s cubic-bezier(0.22,1,0.36,1); align-self: stretch; margin-bottom: 18px; }
+.devis-cta-card:hover .devis-cta-btn { background: var(--brun); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(44,40,33,0.2); }
+.devis-cta-btn .arrow { font-size: 14px; transition: transform 0.3s; }
+.devis-cta-card:hover .devis-cta-btn .arrow { transform: translateX(4px); }
+.devis-cta-footer { display: flex; align-items: center; gap: 14px; font-size: 11px; color: var(--gris); letter-spacing: 0.3px; flex-wrap: wrap; justify-content: center; }
+.devis-cta-footer span.sep { opacity: 0.35; }
+.devis-cta-check { display: inline-flex; align-items: center; gap: 6px; }
+.devis-cta-check svg { width: 12px; height: 12px; stroke: var(--or); fill: none; stroke-width: 2.5; flex-shrink: 0; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .form-field { margin-bottom: 16px; }
 .form-field label { display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gris); margin-bottom: 6px; }
@@ -415,7 +458,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .coffret-card-body .coffret-price { font-size: 15px; }
 
   /* Other mobile overrides */
-  .univers-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .univers-grid { grid-template-columns: 1fr 1fr; gap: 22px 16px; }
   .galerie-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .galerie-item.featured { grid-column: span 1; grid-row: span 1; aspect-ratio: 4/5; }
   .steps-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -432,9 +475,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .sm-badge span { font-size: 16px; }
 }
 
+@media (max-width: 640px) {
+  .coffrets-grid { grid-template-columns: 1fr; gap: 16px; }
+}
 @media (max-width: 480px) {
-  .univers-grid { grid-template-columns: 1fr; }
-  .univers-card { aspect-ratio: 16/9; }
+  .univers-grid { grid-template-columns: 1fr; gap: 28px; }
+  .univers-card .card-img-wrap { aspect-ratio: 4/3; }
   .coffrets-grid { grid-template-columns: 1fr; gap: 16px; }
   .galerie-grid { grid-template-columns: 1fr; }
   .occasions-grid { grid-template-columns: 1fr; }
@@ -451,9 +497,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .cookie-accept:hover { background: rgba(250,250,248,0.2); border-color: rgba(250,250,248,0.4); }
 @media (max-width: 768px) { .cookie-banner-inner { flex-direction: column; text-align: center; gap: 12px; } }
 </style>
-<!-- Google Analytics — replace UA-XXXXXXXX with your tracking ID
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','UA-XXXXXXXX');</script>
+<!-- Google Analytics 4 — remplacer G-XXXXXXXXXX par votre Measurement ID GA4
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 -->
 </head>
 <body>
@@ -463,88 +509,63 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">MAISON B</a>
   <div class="nav-links">
-    <a href="about.html" class="nav-link">About us</a>
-    <a href="semi-custom.html" class="nav-link">Semi custom</a>
-    <a href="full-custom.html" class="nav-link">Full custom</a>
+    <a href="coffrets-semi-custom.html" class="nav-link">Semi custom</a>
+    <a href="coffrets-personnalises-entreprises.html" class="nav-link">Full custom</a>
+    <a href="a-propos.html" class="nav-link">About us</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
-  <a href="full-custom.html" class="nav-cta magnetic">Composer mon coffret</a>
+  <a href="coffrets-personnalises-entreprises.html" class="nav-cta magnetic">Composer mon coffret</a>
   <div class="nav-burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="about.html" onclick="toggleMenu()">About us</a>
-  <a href="semi-custom.html" onclick="toggleMenu()">Semi custom</a>
-  <a href="full-custom.html" onclick="toggleMenu()">Full custom</a>
+  <a href="coffrets-semi-custom.html" onclick="toggleMenu()">Semi custom</a>
+  <a href="coffrets-personnalises-entreprises.html" onclick="toggleMenu()">Full custom</a>
+  <a href="a-propos.html" onclick="toggleMenu()">About us</a>
   <a href="contact.html" onclick="toggleMenu()">Contact</a>
-  <a href="full-custom.html" class="mobile-cta" onclick="toggleMenu()">Composer mon coffret</a>
+  <a href="coffrets-personnalises-entreprises.html" class="mobile-cta" onclick="toggleMenu()">Composer mon coffret</a>
 </div>
 
 <!-- ===== HERO CAROUSEL ===== -->
 <section class="hero-carousel" id="hero">
+  <h1 class="sr-only">Coffrets cadeaux d'entreprise personnalisés sur-mesure — Maison B Paris</h1>
   <div class="hero-carousel-track" id="carouselTrack">
 
-    <!-- Slide 1 — Nos idées cadeaux -->
+    <!-- Slide 1 — À votre image -->
     <div class="hero-slide active" data-index="0">
       <div class="hero-slide-img">
-        <img src="img/photos/IMG_6112A3E81A11-1.jpeg" alt="Coffret Grand Gourmand Maison B">
+        <img src="img/photos/IMG_6112A3E81A11-1.jpeg" alt="Coffret cadeau entreprise personnalisé avec logo" fetchpriority="high">
       </div>
       <div class="hero-slide-text">
-        <div class="hero-slide-label">Nos idées cadeaux</div>
-        <h1 class="hero-slide-title">Le cadeau qui<br><em>marque</em> les esprits</h1>
-        <p class="hero-slide-desc">Coffrets sur mesure, carte manuscrite incluse, packaging à votre image. Pour vos clients, collaborateurs, ou toute occasion qui compte.</p>
-        <a href="#coffrets" class="hero-slide-cta">Découvrir nos coffrets <span class="cta-arrow">&rarr;</span></a>
+        <div class="hero-slide-label">À votre image</div>
+        <h2 class="hero-slide-title">Personnalisez votre coffret<br>à votre <em>image</em></h2>
+        <p class="hero-slide-desc">Logo, couleurs, produits sourcés pour vous. Un coffret unique, créé de zéro avec notre studio.</p>
+        <a href="coffrets-personnalises-entreprises.html" class="hero-slide-cta">Composer un coffret sur mesure <span class="cta-arrow">&rarr;</span></a>
       </div>
     </div>
 
     <!-- Slide 2 — L'art d'offrir -->
     <div class="hero-slide" data-index="1">
       <div class="hero-slide-img">
-        <img src="img/photos/IMG_7B487668FEB7-1.jpeg" alt="Coffret Provençal personnalisé">
+        <img src="img/photos/IMG_7B487668FEB7-1.jpeg" alt="Coffret cadeau premium pour collaborateurs" loading="lazy">
       </div>
       <div class="hero-slide-text">
         <div class="hero-slide-label">L'art d'offrir</div>
-        <h1 class="hero-slide-title">Chaque coffret<br>raconte une <em>histoire</em></h1>
-        <p class="hero-slide-desc">Produits artisanaux sélectionnés, packaging soigné, message personnalisé — un cadeau qui se vit autant qu'il se reçoit.</p>
-        <a href="#inspirations" class="hero-slide-cta">Voir nos réalisations <span class="cta-arrow">&rarr;</span></a>
+        <h2 class="hero-slide-title">Des cadeaux que vos<br>collaborateurs <em>garderont</em></h2>
+        <p class="hero-slide-desc">Produits artisanaux sélectionnés avec exigence. Des coffrets qui se vivent, pas qui s'oublient.</p>
+        <a href="coffrets-semi-custom.html" class="hero-slide-cta">Découvrir nos coffrets <span class="cta-arrow">&rarr;</span></a>
       </div>
     </div>
 
-    <!-- Slide 3 — Sur mesure -->
+    <!-- Slide 3 — Pour chaque occasion -->
     <div class="hero-slide" data-index="2">
       <div class="hero-slide-img">
-        <img src="img/photos/IMG_9E75D411269E-1.jpeg" alt="Coffret Fêtes personnalisé">
+        <img src="img/photos/IMG_9E75D411269E-1.jpeg" alt="Coffret cadeau fêtes de fin d'année entreprise" loading="lazy">
       </div>
       <div class="hero-slide-text">
-        <div class="hero-slide-label">Sur mesure</div>
-        <h1 class="hero-slide-title">Votre coffret,<br><em>votre</em> identité</h1>
-        <p class="hero-slide-desc">Logo, couleurs, choix des produits — composez un coffret unique en quelques clics.</p>
-        <a href="full-custom.html" class="hero-slide-cta">Composer mon coffret <span class="cta-arrow">&rarr;</span></a>
-      </div>
-    </div>
-
-    <!-- Slide 4 — Corporate -->
-    <div class="hero-slide" data-index="3">
-      <div class="hero-slide-img">
-        <img src="img/photos/IMG_F8B5700C6BAC-1.jpeg" alt="Coffret Corporate HaddadBrands">
-      </div>
-      <div class="hero-slide-text">
-        <div class="hero-slide-label">Entreprises</div>
-        <h1 class="hero-slide-title">Vos cadeaux<br>d'entreprise, <em>sublimés</em></h1>
-        <p class="hero-slide-desc">De 10 à 500 coffrets. Personnalisation totale, livraison clé en main, proposition sous 48h. Aucun engagement.</p>
-        <a href="contact.html" class="hero-slide-cta">Demander un devis <span class="cta-arrow">&rarr;</span></a>
-      </div>
-    </div>
-
-    <!-- Slide 5 — Bien-être -->
-    <div class="hero-slide" data-index="4">
-      <div class="hero-slide-img">
-        <img src="img/photos/IMG_C0595F288949-1.jpeg" alt="Coffret Bien-être bougie senteur">
-      </div>
-      <div class="hero-slide-text">
-        <div class="hero-slide-label">Bien-être & senteurs</div>
-        <h1 class="hero-slide-title">Des coffrets<br>qui éveillent les <em>sens</em></h1>
-        <p class="hero-slide-desc">Bougies artisanales, parfums d'ambiance, douceurs — des univers à découvrir et à offrir.</p>
-        <a href="#coffrets" class="hero-slide-cta">Découvrir nos coffrets <span class="cta-arrow">&rarr;</span></a>
+        <div class="hero-slide-label">Pour chaque occasion</div>
+        <h2 class="hero-slide-title">Pour vos fêtes, onboardings<br>et clients <em>VIP</em></h2>
+        <p class="hero-slide-desc">Des coffrets pensés pour chaque moment qui compte. Personnalisables avec votre identité, prêts sous 5 jours.</p>
+        <a href="coffrets-semi-custom.html" class="hero-slide-cta">Voir nos coffrets <span class="cta-arrow">&rarr;</span></a>
       </div>
     </div>
 
@@ -562,8 +583,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <div class="carousel-dot active" data-slide="0"></div>
       <div class="carousel-dot" data-slide="1"></div>
       <div class="carousel-dot" data-slide="2"></div>
-      <div class="carousel-dot" data-slide="3"></div>
-      <div class="carousel-dot" data-slide="4"></div>
     </div>
   </div>
 </section>
@@ -573,47 +592,38 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <section class="section univers-section" id="coffrets">
   <div class="section-inner">
     <div class="section-header reveal">
-      <div class="section-label">Nos coffrets</div>
-      <h2 class="section-heading">Découvrez nos coffrets prêts à offrir</h2>
-      <p class="section-sub">Des compositions prêtes à personnaliser avec votre logo. Carte manuscrite incluse dans chaque coffret.</p>
-      <div class="ready-badge reveal reveal-delay-2">
-        <span class="ready-badge-dot"></span>
-        <span class="ready-badge-text">Ready to ship</span>
-        <span class="ready-badge-sep">·</span>
-        <span class="ready-badge-detail">Expédition sous 5 jours ouvrés</span>
-      </div>
+      <div class="section-label">Semi custom</div>
+      <h2 class="section-heading">Nos coffrets signatures</h2>
+      <p class="section-sub">À personnaliser avec votre logo. Carte manuscrite incluse.</p>
     </div>
     <div class="univers-grid">
-      <a href="semi-custom.html" class="univers-card reveal-scale reveal-delay-1">
-        <img class="card-bg" src="img/photos/IMG_C0595F288949-1.jpeg" alt="Coffret Wellness & Bien-être" loading="lazy">
-        <span class="card-badge">Best-seller</span>
-        <span class="card-arrow">&rarr;</span>
-        <div class="card-price">À partir de 135 €</div>
-        <h3>Coffret Wellness & Bien-être</h3>
-        <p>Bougie parfumée, huiles essentielles bio, masque relaxant en soie, tisane détente</p>
+      <a href="coffrets-semi-custom.html#wellness" class="univers-card reveal reveal-delay-1">
+        <div class="card-img-wrap"><img src="img/photos/IMG_C0595F288949-1.jpeg" alt="Coffret Wellness & Bien-être" loading="lazy"></div>
+        <div class="card-caption">
+          <h3>Wellness &amp; Bien-être</h3>
+          <div class="card-price">135 € / coffret</div>
+        </div>
       </a>
-      <a href="semi-custom.html" class="univers-card reveal-scale reveal-delay-2">
-        <img class="card-bg" src="img/photos/IMG_6112A3E81A11-1.jpeg" alt="Coffret Gastronomie Française" loading="lazy">
-        <span class="card-badge">Populaire</span>
-        <span class="card-arrow">&rarr;</span>
-        <div class="card-price">À partir de 120 €</div>
-        <h3>Coffret Gastronomie Française</h3>
-        <p>Macarons artisanaux, crème de pistache de Sicile, chocolats Angelina Paris</p>
+      <a href="coffrets-semi-custom.html#gastronomie" class="univers-card reveal reveal-delay-2">
+        <div class="card-img-wrap"><img src="img/photos/IMG_6112A3E81A11-1.jpeg" alt="Coffret Gastronomie Française" loading="lazy"></div>
+        <div class="card-caption">
+          <h3>Gastronomie Française</h3>
+          <div class="card-price">120 € / coffret</div>
+        </div>
       </a>
-      <a href="semi-custom.html" class="univers-card reveal-scale reveal-delay-3">
-        <img class="card-bg" src="img/photos/IMG_F8B5700C6BAC-1.jpeg" alt="Coffret Bureau & Lifestyle" loading="lazy">
-        <span class="card-arrow">&rarr;</span>
-        <div class="card-price">À partir de 95 €</div>
-        <h3>Coffret Bureau & Lifestyle</h3>
-        <p>Carnet en cuir gravé, stylo premium, tasse en porcelaine, thé Grand Cru</p>
+      <a href="coffrets-semi-custom.html#bureau" class="univers-card reveal reveal-delay-3">
+        <div class="card-img-wrap"><img src="img/photos/IMG_F8B5700C6BAC-1.jpeg" alt="Coffret Bureau & Lifestyle" loading="lazy"></div>
+        <div class="card-caption">
+          <h3>Bureau &amp; Lifestyle</h3>
+          <div class="card-price">95 € / coffret</div>
+        </div>
       </a>
-      <a href="semi-custom.html" class="univers-card reveal-scale reveal-delay-4">
-        <img class="card-bg" src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=600&h=450&fit=crop&q=80" alt="Coffret Luxe & Prestige" loading="lazy">
-        <span class="card-badge">Premium</span>
-        <span class="card-arrow">&rarr;</span>
-        <div class="card-price">À partir de 155 €</div>
-        <h3>Coffret Luxe & Prestige</h3>
-        <p>Carafe en cristal, chocolats grand cru, vide-poche cuir logotypé, packaging premium</p>
+      <a href="coffrets-semi-custom.html#luxe" class="univers-card reveal reveal-delay-4">
+        <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=600&h=450&fit=crop&q=80" alt="Coffret Luxe & Prestige" loading="lazy"></div>
+        <div class="card-caption">
+          <h3>Luxe &amp; Prestige</h3>
+          <div class="card-price">155 € / coffret</div>
+        </div>
       </a>
     </div>
   </div>
@@ -721,7 +731,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
         <button class="showcase-scroll-btn" onclick="scrollShowcase(1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
       </div>
       <div class="showcase-see-all">
-        <a href="semi-custom.html" class="magnetic">Découvrir tous nos coffrets &rarr;</a>
+        <a href="coffrets-semi-custom.html" class="magnetic">Découvrir tous nos coffrets &rarr;</a>
       </div>
     </div>
   </div>
@@ -736,7 +746,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <h3 id="lightboxTitle"></h3>
       <p id="lightboxDesc"></p>
       <div class="lightbox-tags" id="lightboxTags"></div>
-      <a href="semi-custom.html" class="lightbox-cta" style="display:inline-flex;align-items:center;gap:10px;margin-top:20px;margin-bottom:20px;padding:12px 28px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;color:var(--blanc);background:var(--or);border:none;transition:all 0.3s;border-radius:2px;text-decoration:none;">Commander un coffret similaire &rarr;</a>
+      <a href="coffrets-semi-custom.html" class="lightbox-cta" style="display:inline-flex;align-items:center;gap:10px;margin-top:20px;margin-bottom:20px;padding:12px 28px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;color:var(--blanc);background:var(--or);border:none;transition:all 0.3s;border-radius:2px;text-decoration:none;">Commander un coffret similaire &rarr;</a>
       <div class="lightbox-nav">
         <button onclick="prevSlide()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
         <button onclick="nextSlide()"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
@@ -765,14 +775,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
             <div class="mc-step" onmouseenter="activateStep(this)"><div class="mc-step-num">3</div><div><h4>Ajoutez votre message</h4><p>Carte personnalisée dans chaque coffret</p></div></div>
             <div class="mc-step" onmouseenter="activateStep(this)"><div class="mc-step-num">4</div><div><h4>On s'occupe de tout</h4><p>Production, emballage, livraison</p></div></div>
           </div>
-          <a href="full-custom.html" class="mc-cta magnetic">Demander un devis sur mesure &rarr;</a>
+          <a href="coffrets-personnalises-entreprises.html" class="mc-cta magnetic">Demander un devis sur mesure &rarr;</a>
         </div>
       </div>
       <div class="sm-right reveal-right reveal-delay-2">
         <div class="sm-preview">
-          <div class="sm-preview-img"><img src="img/photos/IMG_C0595F288949-1.jpeg" alt="Coffret personnalisé vue 1"></div>
-          <div class="sm-preview-img"><img src="img/photos/IMG_9E75D411269E-1.jpeg" alt="Coffret personnalisé vue 2"></div>
-          <div class="sm-preview-img"><img src="img/photos/IMG_7B487668FEB7-1.jpeg" alt="Coffret personnalisé vue 3"></div>
+          <div class="sm-preview-img"><img src="img/photos/IMG_C0595F288949-1.jpeg" alt="Coffret personnalisé vue 1" loading="lazy"></div>
+          <div class="sm-preview-img"><img src="img/photos/IMG_9E75D411269E-1.jpeg" alt="Coffret personnalisé vue 2" loading="lazy"></div>
+          <div class="sm-preview-img"><img src="img/photos/IMG_7B487668FEB7-1.jpeg" alt="Coffret personnalisé vue 3" loading="lazy"></div>
         </div>
         <div class="sm-badge"><span>100%</span><small>Sur mesure</small></div>
       </div>
@@ -796,21 +806,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
           <div class="guarantee">Livraison partout en France</div>
         </div>
       </div>
-      <div class="form-card reveal-right reveal-delay-2">
-        <div class="form-title">Votre demande</div>
-        <!-- Replace YOUR_FORM_ID with your Formspree form ID from https://formspree.io -->
-        <form id="devisForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <input type="hidden" name="_subject" value="Nouvelle demande de devis — Maison B">
-          <input type="hidden" name="_next" value="https://maisonb.fr/index.html?sent=1">
-          <div class="form-row"><div class="form-field"><label>Votre nom</label><input type="text" name="name" placeholder="Marie Dupont" required></div><div class="form-field"><label>Email</label><input type="email" name="email" placeholder="marie@dupont-associes.fr" required></div></div>
-          <div class="form-field"><label>Décrivez votre projet en quelques mots</label><textarea name="message" placeholder="On cherche un cadeau pour nos 50 meilleurs clients pour les fêtes de fin d'année, budget autour de 100-150€ par coffret..."></textarea></div>
-          <button type="submit" class="form-submit magnetic">Recevoir une proposition sous 48h →</button>
-        </form>
-        <div id="formSuccess" style="display:none; text-align:center; padding: 40px 20px;">
-          <div style="font-family: var(--serif); font-size: 28px; font-weight: 300; margin-bottom: 12px;">Merci !</div>
-          <p style="font-size: 14px; color: var(--gris); line-height: 1.7;">Votre demande a bien été envoyée.<br>On vous revient avec une proposition sous 48h.</p>
+      <a href="coffrets-personnalises-entreprises.html#devis" class="devis-cta-card reveal-right reveal-delay-2">
+        <div class="devis-cta-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
         </div>
-      </div>
+        <div class="devis-cta-label">Demande de devis</div>
+        <h3 class="devis-cta-heading">Un brief en 2 minutes,<br>une proposition sous <em>48h</em></h3>
+        <p class="devis-cta-text">Remplissez notre formulaire détaillé — nombre de coffrets, budget, occasion, vos envies. On revient avec une proposition chiffrée, sur mesure.</p>
+        <span class="devis-cta-btn">Démarrer mon devis <span class="arrow">&rarr;</span></span>
+        <div class="devis-cta-footer">
+          <span class="devis-cta-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Aucun engagement</span>
+          <span class="sep">·</span>
+          <span class="devis-cta-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Réponse sous 48h</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -819,8 +828,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <footer class="footer">
   <div class="footer-inner">
     <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Coffrets & cadeaux sur mesure,<br>personnalisés, depuis Paris.</p></div>
-    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="semi-custom.html">Catalogue</a></div></div>
-    <div><h5>Explorer</h5><div class="footer-links"><a href="about.html">About us</a><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="contact.html">Contact</a></div></div>
+    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="coffrets-semi-custom.html">Semi custom</a><a href="coffrets-personnalises-entreprises.html">Full custom</a><a href="coffrets-semi-custom.html">Catalogue</a></div></div>
+    <div><h5>Explorer</h5><div class="footer-links"><a href="a-propos.html">About us</a><a href="coffrets-semi-custom.html">Semi custom</a><a href="coffrets-personnalises-entreprises.html">Full custom</a><a href="contact.html">Contact</a></div></div>
     <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@maisonb.fr">contact@maisonb.fr</a><a href="tel:+33100000000">+33 1 XX XX XX XX</a><a>Paris, France</a></div></div>
     <div><h5>Suivez-nous</h5><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div>
   </div>
@@ -983,7 +992,7 @@ window.addEventListener('scroll', function() {
   var docH = document.documentElement.scrollHeight - window.innerHeight;
   progressBar.style.width = (st/docH*100)+'%';
   if(st>80) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
-  if(st>lastScroll && st>400) nav.classList.add('hidden'); else nav.classList.remove('hidden');
+  nav.classList.remove('hidden');
   lastScroll = st;
 });
 

@@ -3,14 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maison B — About us</title>
-<meta name="description" content="Découvrez Maison B : née de 25 ans de savoir-faire Bubble's Paris en création sur mesure. Coffrets cadeaux personnalisés pour entreprises, pensés et réalisés depuis Paris.">
+<title>À propos — Cadeaux d'affaires originaux made in Paris | Maison B</title>
+<meta name="description" content="Maison B : 25 ans de savoir-faire Bubble's Paris au service du cadeau d'affaires original. Coffrets cadeaux d'entreprise personnalisés, pensés et réalisés à Paris, pour clients et collaborateurs.">
+<meta name="keywords" content="cadeau d'affaires original, coffret cadeau entreprise personnalisé, cadeau entreprise Paris, Bubble's Paris">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Maison B">
+<link rel="canonical" href="https://maisonb.fr/a-propos">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://maisonb.fr/about.html">
-<meta property="og:title" content="Maison B — About us">
-<meta property="og:description" content="Découvrez Maison B : née de 25 ans de savoir-faire Bubble's Paris. Coffrets cadeaux personnalisés pour entreprises.">
+<meta property="og:site_name" content="Maison B">
+<meta property="og:url" content="https://maisonb.fr/a-propos">
+<meta property="og:title" content="À propos — Cadeaux d'affaires originaux made in Paris">
+<meta property="og:description" content="25 ans de savoir-faire Bubble's Paris au service du cadeau d'affaires original. Coffrets cadeaux entreprise pensés et réalisés à Paris.">
 <meta property="og:image" content="https://maisonb.fr/img/photos/IMG_6112A3E81A11-1.jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="À propos — Cadeaux d'affaires originaux made in Paris">
+<meta name="twitter:description" content="25 ans de savoir-faire Bubble's Paris. Coffrets cadeaux entreprise pensés et réalisés à Paris.">
+<meta name="twitter:image" content="https://maisonb.fr/img/photos/IMG_6112A3E81A11-1.jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -70,10 +81,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .story-block:last-child { margin-bottom: 0; }
 .story-block.reverse .story-img { order: 2; }
 .story-block.reverse .story-text { order: 1; }
-.story-img { position: relative; border-radius: 12px; overflow: hidden; }
-.story-img img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
-.story-img:hover img { transform: scale(1.03); }
-.story-img-caption { position: absolute; bottom: 16px; left: 16px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.6); background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 6px 14px; border-radius: 100px; }
+.story-img { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5; background: var(--beige); border: 1px dashed var(--gris-clair); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px; transition: background 0.4s; }
+.story-img:hover { background: rgba(140,120,81,0.05); }
+.story-img-icon { width: 44px; height: 44px; color: var(--gris); opacity: 0.55; }
+.story-img-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; }
+.story-img-placeholder-text { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); font-weight: 500; }
 .story-text .story-label { font-size: 10px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--or); margin-bottom: 16px; }
 .story-text h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; line-height: 1.15; margin-bottom: 20px; color: var(--noir); }
 .story-text h2 em { font-style: italic; color: var(--or); }
@@ -155,9 +167,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .cookie-accept:hover { background: rgba(250,250,248,0.2); border-color: rgba(250,250,248,0.4); }
 @media (max-width: 768px) { .cookie-banner-inner { flex-direction: column; text-align: center; gap: 12px; } }
 </style>
-<!-- Google Analytics — replace UA-XXXXXXXX with your tracking ID
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','UA-XXXXXXXX');</script>
+<!-- Google Analytics 4 — remplacer G-XXXXXXXXXX par votre Measurement ID GA4
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 -->
 </head>
 <body>
@@ -167,20 +179,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">MAISON B</a>
   <div class="nav-links">
-    <a href="about.html" class="nav-link active">About us</a>
-    <a href="semi-custom.html" class="nav-link">Semi custom</a>
-    <a href="full-custom.html" class="nav-link">Full custom</a>
+    <a href="coffrets-semi-custom.html" class="nav-link">Semi custom</a>
+    <a href="coffrets-personnalises-entreprises.html" class="nav-link">Full custom</a>
+    <a href="a-propos.html" class="nav-link active">About us</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
-  <a href="full-custom.html" class="nav-cta">Composer mon coffret</a>
+  <a href="coffrets-personnalises-entreprises.html" class="nav-cta">Composer mon coffret</a>
   <div class="nav-burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="about.html" onclick="toggleMenu()">About us</a>
-  <a href="semi-custom.html" onclick="toggleMenu()">Semi custom</a>
-  <a href="full-custom.html" onclick="toggleMenu()">Full custom</a>
+  <a href="coffrets-semi-custom.html" onclick="toggleMenu()">Semi custom</a>
+  <a href="coffrets-personnalises-entreprises.html" onclick="toggleMenu()">Full custom</a>
+  <a href="a-propos.html" onclick="toggleMenu()">About us</a>
   <a href="contact.html" onclick="toggleMenu()">Contact</a>
-  <a href="full-custom.html" class="mobile-cta" onclick="toggleMenu()">Composer mon coffret</a>
+  <a href="coffrets-personnalises-entreprises.html" class="mobile-cta" onclick="toggleMenu()">Composer mon coffret</a>
 </div>
 
 <!-- ===== HERO — compact, avec héritage Bubble's intégré ===== -->
@@ -205,7 +217,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
     <div class="story-block reveal-left">
       <div class="story-img">
-        <img src="img/photos/IMG_6112A3E81A11-1.jpeg" alt="Coffret cadeau Maison B" loading="lazy">
+        <div class="story-img-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="story-img-placeholder-text">Photo de l'équipe</div>
       </div>
       <div class="story-text reveal-right">
         <div class="story-label">Notre savoir-faire</div>
@@ -216,7 +231,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
     <div class="story-block reverse">
       <div class="story-img reveal-right">
-        <img src="img/photos/IMG_7B487668FEB7-1.jpeg" alt="Coffret provençal Maison B" loading="lazy">
+        <div class="story-img-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="story-img-placeholder-text">Photo de l'équipe</div>
       </div>
       <div class="story-text reveal-left">
         <div class="story-label">Notre approche</div>
@@ -272,8 +290,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <footer class="footer">
   <div class="footer-inner">
     <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Coffrets & cadeaux sur mesure,<br>personnalisés, depuis Paris.</p></div>
-    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="semi-custom.html">Catalogue</a></div></div>
-    <div><h5>Explorer</h5><div class="footer-links"><a href="about.html">About us</a><a href="semi-custom.html">Semi custom</a><a href="full-custom.html">Full custom</a><a href="contact.html">Contact</a></div></div>
+    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="coffrets-semi-custom.html">Semi custom</a><a href="coffrets-personnalises-entreprises.html">Full custom</a><a href="coffrets-semi-custom.html">Catalogue</a></div></div>
+    <div><h5>Explorer</h5><div class="footer-links"><a href="a-propos.html">About us</a><a href="coffrets-semi-custom.html">Semi custom</a><a href="coffrets-personnalises-entreprises.html">Full custom</a><a href="contact.html">Contact</a></div></div>
     <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@maisonb.fr">contact@maisonb.fr</a><a href="tel:+33100000000">+33 1 XX XX XX XX</a><a>Paris, France</a></div></div>
     <div><h5>Suivez-nous</h5><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div>
   </div>
@@ -288,7 +306,7 @@ window.addEventListener('scroll', function() {
   var st = window.scrollY;
   var docH = document.documentElement.scrollHeight - window.innerHeight;
   if (docH > 0) progressBar.style.width = (st/docH*100)+'%';
-  if(st>lastScroll && st>400) nav.classList.add('hidden'); else nav.classList.remove('hidden');
+  nav.classList.remove('hidden');
   lastScroll = st;
 });
 
