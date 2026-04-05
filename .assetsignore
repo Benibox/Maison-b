@@ -2,3 +2,8 @@
 .wrangler
 wrangler.toml
 .assetsignore
+_worker.js
+functions/
+node_modules/
+package.json
+package-lock.json
