@@ -46,7 +46,32 @@
         name: String(item.name || item.slug),
         price: Number(item.price) || 0,
         qty: 1,
-        img: String(item.img || '')
+        img: String(item.img || ''),
+        config: {}
+      });
+    }
+    save();
+    render();
+    pulseBadge();
+  }
+  function setItem(item) {
+    /* Replaces (or creates) — used after tunnel config flow to persist qty + extras */
+    if (!item || !item.slug) return;
+    var existing = findItem(item.slug);
+    if (existing) {
+      existing.qty = Number(item.qty) || 1;
+      existing.price = Number(item.price) || 0;
+      existing.img = String(item.img || existing.img || '');
+      existing.name = String(item.name || existing.name || item.slug);
+      existing.config = item.config || {};
+    } else {
+      state.items.push({
+        slug: String(item.slug),
+        name: String(item.name || item.slug),
+        price: Number(item.price) || 0,
+        qty: Number(item.qty) || 1,
+        img: String(item.img || ''),
+        config: item.config || {}
       });
     }
     save();
@@ -326,16 +351,18 @@
   // ===== CHECKOUT =====
   function startCheckout() {
     if (state.items.length === 0) return;
-    var firstSlug = state.items[0].slug;
     var here = window.location.pathname;
-    if (here.indexOf('coffrets-semi-custom.html') !== -1) {
-      window.location.hash = firstSlug;
-      if (typeof window.openCoffret === 'function') {
-        close();
-        window.openCoffret(firstSlug);
-      }
+    if (typeof window.openTunnelForCheckout === 'function') {
+      close();
+      setTimeout(function() { window.openTunnelForCheckout(state.items.slice()); }, 250);
+      return;
+    }
+    /* Tunnel function lives only on coffrets-semi-custom — navigate there with intent flag */
+    try { sessionStorage.setItem('mb_open_checkout', '1'); } catch (e) {}
+    if (here.indexOf('coffrets-semi-custom') !== -1) {
+      window.location.reload();
     } else {
-      window.location.href = 'coffrets-semi-custom.html#' + firstSlug;
+      window.location.href = 'coffrets-semi-custom.html#checkout';
     }
   }
 
@@ -384,6 +411,7 @@
   // ===== PUBLIC API =====
   window.MaisonBCart = {
     add: add,
+    setItem: setItem,
     remove: remove,
     updateQty: updateQty,
     open: open,
