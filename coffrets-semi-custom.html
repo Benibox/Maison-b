@@ -244,6 +244,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .product-cta-arrow { font-size: 15px; transition: transform 0.3s; }
 .product-cta:hover .product-cta-arrow { transform: translateX(4px); }
 .product-cta-sub { font-size: 11.5px; color: var(--gris); text-align: center; margin-top: 12px; }
+.product-cta-link { display: block; text-align: center; margin-top: 14px; font-family: var(--sans); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; color: var(--noir); cursor: pointer; padding-bottom: 3px; transition: color 0.3s, opacity 0.3s; }
+.product-cta-link:hover { color: var(--or); opacity: 0.85; }
 .product-overlay.open .product-univers { animation: prodFade 0.7s 0.1s cubic-bezier(0.22,1,0.36,1) backwards; }
 .product-overlay.open .product-title { animation: prodFade 0.7s 0.18s cubic-bezier(0.22,1,0.36,1) backwards; }
 .product-overlay.open .product-price { animation: prodFade 0.7s 0.24s cubic-bezier(0.22,1,0.36,1) backwards; }
@@ -437,6 +439,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 -->
+<script src="js/cart.js" defer></script>
 </head>
 <body>
 
@@ -771,6 +774,16 @@ function closeProduct() {
   currentSlug = null;
 }
 
+function addCurrentToCart() {
+  if (!currentSlug || !coffrets[currentSlug]) return;
+  var c = coffrets[currentSlug];
+  if (window.MaisonBCart) {
+    window.MaisonBCart.add({ slug: currentSlug, name: c.name, price: c.price, img: c.img });
+    closeProduct();
+    setTimeout(function() { window.MaisonBCart.open(); }, 200);
+  }
+}
+
 function startOrder() {
   if (!currentSlug) return;
   var c = coffrets[currentSlug];
@@ -1011,14 +1024,14 @@ window.addEventListener('load', function() {
           <div class="product-included-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Restrictions respectées</div>
         </div>
       </div>
-      <button class="product-cta" onclick="startOrder()" type="button">Composer ma commande <span class="product-cta-arrow">&rarr;</span></button>
-      <p class="product-cta-sub">Devis sous 48h · Aucun engagement</p>
+      <button class="product-cta" onclick="addCurrentToCart()" type="button">Ajouter au panier</button>
+      <a class="product-cta-link" onclick="startOrder()" role="button" tabindex="0">Commander directement &rarr;</a>
     </div>
   </div>
   <!-- Sticky CTA mobile uniquement -->
   <div class="product-sticky-cta">
     <div class="product-sticky-price"><span id="prod-sticky-price">—</span></div>
-    <button class="product-sticky-btn" onclick="startOrder()" type="button">Composer →</button>
+    <button class="product-sticky-btn" onclick="addCurrentToCart()" type="button">Ajouter au panier</button>
   </div>
 </div>
 
