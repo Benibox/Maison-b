@@ -46,14 +46,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ===== NAV ===== */
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 clamp(24px, 5vw, 70px); height: 72px; display: flex; align-items: center; justify-content: space-between; transition: background 0.4s, box-shadow 0.4s, border-color 0.4s, transform 0.4s; border-bottom: 1px solid transparent; background: rgba(250,250,248,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--gris-clair); box-shadow: 0 1px 20px rgba(0,0,0,0.04); }
 .nav.hidden { transform: translateY(-100%); }
-.nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: var(--noir); }
+.nav-logo { font-family: var(--serif); font-size: 26px; font-weight: 300; letter-spacing: 8px; text-transform: uppercase; color: var(--noir); }
 .nav-links { display: flex; align-items: center; gap: 36px; }
 .nav-link { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); transition: color 0.3s; }
 .nav-link:hover { color: var(--noir); }
 .nav-link.active { color: var(--noir); font-weight: 500; }
-.nav-cta-nav { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; padding: 10px 24px; background: var(--noir); border: 1px solid var(--noir); color: var(--blanc); transition: all 0.3s; }
-.nav-cta-nav:hover { background: var(--brun); }
-.nav-cta-short { display: none; }
+.nav-cart { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: var(--noir); transition: color 0.3s, transform 0.3s; }
+.nav-cart:hover { color: var(--or); transform: scale(1.1); }
+.nav-cart svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; }
 .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 110; }
 .nav-burger span { display: block; width: 24px; height: 1.5px; background: var(--noir); transition: all 0.3s; }
 .mobile-menu { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--noir); z-index: 105; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
@@ -73,6 +73,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .fc-hero-cta:hover { background: var(--brun); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(44,40,33,0.25); }
 .fc-hero-cta .arrow { font-size: 14px; transition: transform 0.3s; }
 .fc-hero-cta:hover .arrow { transform: translateX(4px); }
+.fc-hero-photo { margin: 40px auto 24px; max-width: 880px; }
+.fc-hero-photo img { width: 100%; border-radius: 10px; box-shadow: 0 12px 40px rgba(0,0,0,0.08); opacity: 0; animation: fadeUp 0.8s 0.55s cubic-bezier(0.22,1,0.36,1) forwards; }
+.fc-hero-mix { display: flex; align-items: center; justify-content: center; gap: clamp(8px, 1.5vw, 24px); flex-wrap: nowrap; }
+.fc-hero-mix .fc-mix-item { flex: 1 1 0; display: flex; align-items: center; justify-content: center; opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards; }
+.fc-hero-mix .fc-mix-item img { width: 100%; height: auto; max-height: 240px; object-fit: contain; border-radius: 0; box-shadow: none; filter: drop-shadow(0 22px 32px rgba(0,0,0,0.10)) drop-shadow(0 8px 14px rgba(0,0,0,0.06)); animation: none; opacity: 1; }
+.fc-hero-mix .fc-mix-item:nth-child(1) { animation-delay: 0.45s; transform: translateY(8px); }
+.fc-hero-mix .fc-mix-item:nth-child(2) { animation-delay: 0.55s; transform: translateY(-12px); }
+.fc-hero-mix .fc-mix-item:nth-child(3) { animation-delay: 0.65s; transform: translateY(6px); }
+.fc-hero-mix .fc-mix-item:nth-child(4) { animation-delay: 0.75s; transform: translateY(-10px); }
+.fc-hero-mix .fc-mix-item:nth-child(2) img,
+.fc-hero-mix .fc-mix-item:nth-child(3) img { max-height: 260px; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ===== HOW IT WORKS ===== */
@@ -170,14 +181,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .fc-photo-client { font-family: var(--serif); font-size: 15px; color: var(--noir); font-weight: 400; margin-bottom: 4px; }
 
 /* ===== FOOTER ===== */
-.footer { background: var(--noir); padding: clamp(40px, 5vw, 70px) clamp(24px, 5vw, 70px); }
-.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 40px; color: rgba(250,250,248,0.4); font-size: 13px; }
-.footer-logo { font-family: var(--serif); font-size: 22px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: rgba(250,250,248,0.7); margin-bottom: 12px; }
-.footer-tagline { line-height: 1.7; }
-.footer h5 { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(250,250,248,0.2); margin-bottom: 16px; font-weight: 500; }
-.footer-links a { display: block; padding: 4px 0; transition: color 0.3s, transform 0.3s; }
-.footer-links a:hover { color: rgba(250,250,248,0.7); transform: translateX(4px); }
-.footer-bottom { max-width: 1200px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(250,250,248,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: rgba(250,250,248,0.15); letter-spacing: 1px; }
+.footer { background: var(--creme); padding: clamp(50px, 6vw, 80px) clamp(24px, 5vw, 70px) clamp(30px, 4vw, 50px); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr 1.2fr; gap: 40px; color: var(--tabac); font-size: 13px; }
+.footer-logo { font-family: var(--serif); font-size: 24px; font-weight: 300; letter-spacing: 8px; text-transform: uppercase; color: var(--noir); margin-bottom: 12px; }
+.footer-tagline { line-height: 1.7; color: var(--gris); font-style: italic; font-family: var(--serif); font-size: 14px; }
+.footer h5 { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--sable); margin-bottom: 16px; font-weight: 500; }
+.footer-links a { display: block; padding: 4px 0; color: var(--tabac); transition: color 0.3s, transform 0.3s; }
+.footer-links a:hover { color: var(--noir); transform: translateX(4px); }
+.footer-newsletter { margin-top: 4px; }
+.footer-newsletter p { font-size: 12px; color: var(--gris); line-height: 1.6; margin-bottom: 12px; }
+.footer-newsletter-form { display: flex; gap: 0; }
+.footer-newsletter-form input { flex: 1; padding: 10px 14px; font-size: 12px; font-family: var(--sans); border: 1px solid var(--sable); border-right: none; border-radius: 4px 0 0 4px; background: var(--blanc); color: var(--noir); outline: none; transition: border-color 0.3s; }
+.footer-newsletter-form input::placeholder { color: var(--sable); }
+.footer-newsletter-form input:focus { border-color: var(--or); }
+.footer-newsletter-form button { padding: 10px 16px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-family: var(--sans); font-weight: 500; background: var(--noir); color: var(--blanc); border: 1px solid var(--noir); border-radius: 0 4px 4px 0; cursor: pointer; transition: background 0.3s; white-space: nowrap; }
+.footer-newsletter-form button:hover { background: var(--brun); }
+.footer-bottom { max-width: 1200px; margin: 32px auto 0; padding-top: 20px; border-top: 1px solid var(--sable); display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--sable); letter-spacing: 1px; }
 
 /* ===== REVEAL ===== */
 .reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
@@ -193,12 +212,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 @media (max-width: 768px) {
   .nav-links { display: none; }
-  .nav-cta-nav { padding: 9px 14px; font-size: 10px; letter-spacing: 1.5px; margin-left: auto; margin-right: 12px; }
-  .nav-cta-long { display: none; }
-  .nav-cta-short { display: inline; }
+  .nav-cart { margin-left: auto; margin-right: 12px; }
   .nav-burger { display: flex; }
   .fc-hero { padding: 140px 24px 60px; }
   .fc-hero h1 { font-size: clamp(34px, 10vw, 52px); }
+  .fc-hero-mix { gap: 6px; }
+  .fc-hero-mix .fc-mix-item img,
+  .fc-hero-mix .fc-mix-item:nth-child(2) img,
+  .fc-hero-mix .fc-mix-item:nth-child(3) img { max-height: 110px; }
+  .fc-hero-mix .fc-mix-item:nth-child(1) { transform: translateY(4px); }
+  .fc-hero-mix .fc-mix-item:nth-child(2) { transform: translateY(-6px); }
+  .fc-hero-mix .fc-mix-item:nth-child(3) { transform: translateY(3px); }
+  .fc-hero-mix .fc-mix-item:nth-child(4) { transform: translateY(-5px); }
   .fc-diff { grid-template-columns: 1fr; }
   .fc-diff-card { border-radius: 0; }
   .fc-photo-img { border-radius: 0; }
@@ -237,30 +262,33 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">MAISON B</a>
   <div class="nav-links">
-    <a href="coffrets-semi-custom.html" class="nav-link">Semi custom</a>
-    <a href="coffrets-personnalises-entreprises.html" class="nav-link active">Full custom</a>
-    <a href="a-propos.html" class="nav-link">About us</a>
+    <a href="coffrets-semi-custom.html" class="nav-link">Nos coffrets</a>
+    <a href="a-propos.html" class="nav-link">Notre histoire</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
-  <a href="coffrets-personnalises-entreprises.html" class="nav-cta-nav"><span class="nav-cta-long">Composer mon coffret</span><span class="nav-cta-short">Devis</span></a>
+  <a href="#" class="nav-cart" aria-label="Panier"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></a>
   <div class="nav-burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="coffrets-semi-custom.html" onclick="toggleMenu()">Semi custom</a>
-  <a href="coffrets-personnalises-entreprises.html" onclick="toggleMenu()">Full custom</a>
-  <a href="a-propos.html" onclick="toggleMenu()">About us</a>
+  <a href="coffrets-semi-custom.html" onclick="toggleMenu()">Nos coffrets</a>
+  <a href="a-propos.html" onclick="toggleMenu()">Notre histoire</a>
   <a href="contact.html" onclick="toggleMenu()">Contact</a>
-  <a href="coffrets-personnalises-entreprises.html" class="mobile-cta" onclick="toggleMenu()">Composer mon coffret</a>
 </div>
 
 <!-- ===== HERO + INTRO (fusionnés) ===== -->
 <section class="fc-hero">
   <div class="fc-hero-inner">
-    <div class="fc-hero-label">Full custom</div>
-    <h1>À votre image,<br>de A à <em>Z</em></h1>
-    <p class="fc-hero-sub">Le full custom, c'est une page blanche. Vous nous décrivez votre projet — pour qui, pour quand, quel budget, quelle ambiance — et notre studio compose un coffret qui n'existe nulle part ailleurs.</p>
-    <p class="fc-hero-sub">Produits sourcés sur mesure, packaging dessiné pour vous, carte manuscrite de votre message. Un accompagnement créatif dédié, plutôt qu'une simple commande.</p>
-    <button class="fc-hero-cta" onclick="openModal()" type="button">Composer mon coffret <span class="arrow">&rarr;</span></button>
+    <div class="fc-hero-label">Personnalisation complète</div>
+    <h1>Votre coffret 100%<br>à votre <em>image</em></h1>
+    <p class="fc-hero-sub">Vous souhaitez personnaliser entièrement votre coffret ? Boîte aux couleurs de votre marque, stickers avec votre logo sur chaque produit, carte de vœux personnalisée, objet pérenne à votre effigie… Tout est possible.</p>
+    <p class="fc-hero-sub" style="font-weight:500;color:var(--noir);">À partir de 30 coffrets. Décrivez-nous votre projet et on vous envoie une proposition sous 48h.</p>
+    <div class="fc-hero-photo fc-hero-mix">
+      <div class="fc-mix-item"><img src="img/photos/coffret-signature-douceurs.png" alt="Coffret personnalisé Maison B — Douceurs" loading="eager"></div>
+      <div class="fc-mix-item"><img src="img/photos/coffret-signature-estoublon.png" alt="Coffret personnalisé Maison B — Estoublon" loading="eager"></div>
+      <div class="fc-mix-item"><img src="img/photos/coffret-signature-shabbat.png" alt="Coffret personnalisé Maison B — Shabbat" loading="eager"></div>
+      <div class="fc-mix-item"><img src="img/photos/coffret-signature-floral.png" alt="Coffret personnalisé Maison B — Floral" loading="eager"></div>
+    </div>
+    <button class="fc-hero-cta" onclick="openModal()" type="button">Demander un devis <span class="arrow">&rarr;</span></button>
   </div>
 </section>
 
@@ -270,7 +298,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     <!-- Différences Semi vs Full -->
     <div class="fc-diff">
       <div class="fc-diff-card reveal reveal-delay-1">
-        <div class="diff-label">Semi custom</div>
+        <div class="diff-label">Nos coffrets</div>
         <h3>Prêt à personnaliser</h3>
         <p>Vous choisissez parmi nos 8 coffrets pré-composés et on y ajoute votre identité.</p>
         <ul>
@@ -337,39 +365,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   <p class="fc-cta-sub">Proposition sous 48h · Aucun engagement</p>
 </div>
 
-<!-- ===== PHOTOS ===== -->
-<section class="fc-photos reveal">
-  <div class="fc-photos-inner">
-    <div class="fc-photos-head">
-      <div class="fc-photos-label">Projets réalisés</div>
-      <h3>Ils nous ont déjà fait confiance</h3>
-    </div>
-    <div class="fc-photos-grid">
-      <figure class="fc-photo">
-        <div class="fc-photo-img"><img src="img/photos/IMG_6112A3E81A11-1.jpeg" alt="Coffret Maison B pour FILLMED — 200 coffrets" loading="lazy"></div>
-        <figcaption class="fc-photo-caption">
-          <div class="fc-photo-client">FILLMED</div>
-          200 coffrets · fin d'année
-        </figcaption>
-      </figure>
-      <figure class="fc-photo">
-        <div class="fc-photo-img"><img src="img/photos/IMG_C0595F288949-1.jpeg" alt="Coffret Maison B bien-être — Sweet Home" loading="lazy"></div>
-        <figcaption class="fc-photo-caption">
-          <div class="fc-photo-client">Sweet Home</div>
-          50 coffrets · clients VIP
-        </figcaption>
-      </figure>
-      <figure class="fc-photo">
-        <div class="fc-photo-img"><img src="img/photos/IMG_F8B5700C6BAC-1.jpeg" alt="Coffret Maison B corporate — HaddadBrands" loading="lazy"></div>
-        <figcaption class="fc-photo-caption">
-          <div class="fc-photo-client">HaddadBrands</div>
-          500 coffrets · onboarding
-        </figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
 <!-- ===== MODAL FORM ===== -->
 <div class="modal-overlay" id="formModal">
   <div class="modal">
@@ -379,9 +374,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
     <div id="modalFormContent">
       <div class="modal-header">
-        <div class="modal-label">Full custom</div>
+        <div class="modal-label">Personnalisation complète</div>
         <h2>Décrivez-nous votre projet</h2>
-        <p>On vous revient avec une proposition sur mesure sous 48h. Aucun engagement.</p>
+        <p>Minimum 30 coffrets. Personnalisation boîte, stickers, cartes, objets. Proposition sous 48h, aucun engagement.</p>
       </div>
       <div class="modal-body">
         <form id="fullCustomForm" action="https://formspree.io/f/xzdkypbe" method="POST">
@@ -446,7 +441,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
           </div>
           <div class="form-field">
             <label>Décrivez votre projet</label>
-            <textarea name="message" placeholder="On cherche un cadeau pour nos 50 meilleurs clients pour les fêtes de fin d'année. On aimerait quelque chose d'élégant avec des produits du terroir français..."></textarea>
+            <textarea name="message" placeholder="Bonjour, j'ai beaucoup aimé votre coffret whisky mais je souhaiterai qu'il soit totalement personnalisé à l'effigie de mon entreprise. J'en voudrais 150 avec une livraison chez chacun de mes clients. Serait-il possible d'en savoir plus ?"></textarea>
           </div>
           <a href="https://calendar.app.google/hcjWAdWfo1weWcTW8" target="_blank" rel="noopener" class="form-meet-btn">
             <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -471,11 +466,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="footer-inner">
-    <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Coffrets & cadeaux sur mesure,<br>personnalisés, depuis Paris.</p></div>
-    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="coffrets-semi-custom.html">Semi custom</a><a href="coffrets-personnalises-entreprises.html">Full custom</a><a href="coffrets-semi-custom.html">Catalogue</a></div></div>
-    <div><h5>Explorer</h5><div class="footer-links"><a href="a-propos.html">About us</a><a href="coffrets-semi-custom.html">Semi custom</a><a href="coffrets-personnalises-entreprises.html">Full custom</a><a href="contact.html">Contact</a></div></div>
+    <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Cadeaux d'affaires &amp; coffrets sur mesure,<br>depuis Paris.</p></div>
+    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="coffrets-semi-custom.html">Catalogue</a><a href="coffrets-personnalises-entreprises.html">Sur mesure</a></div></div>
+    <div><h5>Explorer</h5><div class="footer-links"><a href="a-propos.html">Notre histoire</a><a href="contact.html">Contact</a></div></div>
     <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@maisonb.fr">contact@maisonb.fr</a><a href="tel:+33100000000">+33 1 XX XX XX XX</a><a>Paris, France</a></div></div>
-    <div><h5>Suivez-nous</h5><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div>
+    <div><h5>Newsletter</h5><div class="footer-newsletter"><p>Recevez nos idées cadeaux et nos nouveautés.</p><form class="footer-newsletter-form" onsubmit="return false;"><input type="email" placeholder="Votre email" required><button type="submit">OK</button></form></div></div>
   </div>
   <div class="footer-bottom"><span>&copy; 2026 Maison B — Tous droits réservés</span><span>Ethan Benamram</span></div>
 </footer>

@@ -46,14 +46,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ===== NAV ===== */
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 clamp(24px, 5vw, 70px); height: 72px; display: flex; align-items: center; justify-content: space-between; transition: background 0.4s, box-shadow 0.4s, border-color 0.4s, transform 0.4s; border-bottom: 1px solid transparent; background: rgba(250,250,248,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--gris-clair); box-shadow: 0 1px 20px rgba(0,0,0,0.04); }
 .nav.hidden { transform: translateY(-100%); }
-.nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: var(--noir); }
+.nav-logo { font-family: var(--serif); font-size: 26px; font-weight: 300; letter-spacing: 8px; text-transform: uppercase; color: var(--noir); }
 .nav-links { display: flex; align-items: center; gap: 36px; }
 .nav-link { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); transition: color 0.3s; }
 .nav-link:hover { color: var(--noir); }
 .nav-link.active { color: var(--noir); font-weight: 500; }
-.nav-cta { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; padding: 10px 24px; background: var(--noir); border: 1px solid var(--noir); color: var(--blanc); transition: all 0.3s; }
-.nav-cta:hover { background: var(--brun); }
-.nav-cta-short { display: none; }
+.nav-cart { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: var(--noir); transition: color 0.3s, transform 0.3s; }
+.nav-cart:hover { color: var(--or); transform: scale(1.1); }
+.nav-cart svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; }
 .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 110; }
 .nav-burger span { display: block; width: 24px; height: 1.5px; background: var(--noir); transition: all 0.3s; }
 .mobile-menu { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--noir); z-index: 105; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
@@ -118,14 +118,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .about-cta-btn:hover { background: rgba(250,250,248,0.12); border-color: rgba(250,250,248,0.5); box-shadow: 0 8px 36px rgba(0,0,0,0.3); transform: translateY(-2px); }
 
 /* ===== FOOTER ===== */
-.footer { background: var(--noir); padding: clamp(40px, 5vw, 70px) clamp(24px, 5vw, 70px); }
-.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 40px; color: rgba(250,250,248,0.4); font-size: 13px; }
-.footer-logo { font-family: var(--serif); font-size: 22px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: rgba(250,250,248,0.7); margin-bottom: 12px; }
-.footer-tagline { line-height: 1.7; }
-.footer h5 { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(250,250,248,0.2); margin-bottom: 16px; font-weight: 500; }
-.footer-links a { display: block; padding: 4px 0; transition: color 0.3s, transform 0.3s; }
-.footer-links a:hover { color: rgba(250,250,248,0.7); transform: translateX(4px); }
-.footer-bottom { max-width: 1200px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(250,250,248,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: rgba(250,250,248,0.15); letter-spacing: 1px; }
+.footer { background: var(--creme); padding: clamp(50px, 6vw, 80px) clamp(24px, 5vw, 70px) clamp(30px, 4vw, 50px); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr 1.2fr; gap: 40px; color: var(--tabac); font-size: 13px; }
+.footer-logo { font-family: var(--serif); font-size: 24px; font-weight: 300; letter-spacing: 8px; text-transform: uppercase; color: var(--noir); margin-bottom: 12px; }
+.footer-tagline { line-height: 1.7; color: var(--gris); font-style: italic; font-family: var(--serif); font-size: 14px; }
+.footer h5 { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--sable); margin-bottom: 16px; font-weight: 500; }
+.footer-links a { display: block; padding: 4px 0; color: var(--tabac); transition: color 0.3s, transform 0.3s; }
+.footer-links a:hover { color: var(--noir); transform: translateX(4px); }
+.footer-newsletter { margin-top: 4px; }
+.footer-newsletter p { font-size: 12px; color: var(--gris); line-height: 1.6; margin-bottom: 12px; }
+.footer-newsletter-form { display: flex; gap: 0; }
+.footer-newsletter-form input { flex: 1; padding: 10px 14px; font-size: 12px; font-family: var(--sans); border: 1px solid var(--sable); border-right: none; border-radius: 4px 0 0 4px; background: var(--blanc); color: var(--noir); outline: none; transition: border-color 0.3s; }
+.footer-newsletter-form input::placeholder { color: var(--sable); }
+.footer-newsletter-form input:focus { border-color: var(--or); }
+.footer-newsletter-form button { padding: 10px 16px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-family: var(--sans); font-weight: 500; background: var(--noir); color: var(--blanc); border: 1px solid var(--noir); border-radius: 0 4px 4px 0; cursor: pointer; transition: background 0.3s; white-space: nowrap; }
+.footer-newsletter-form button:hover { background: var(--brun); }
+.footer-bottom { max-width: 1200px; margin: 32px auto 0; padding-top: 20px; border-top: 1px solid var(--sable); display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--sable); letter-spacing: 1px; }
 
 /* ===== REVEAL ===== */
 .reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
@@ -147,9 +155,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 @media (max-width: 768px) {
   .nav-links { display: none; }
-  .nav-cta { padding: 9px 14px; font-size: 10px; letter-spacing: 1.5px; margin-left: auto; margin-right: 12px; }
-  .nav-cta-long { display: none; }
-  .nav-cta-short { display: inline; }
+  .nav-cart { margin-left: auto; margin-right: 12px; }
   .nav-burger { display: flex; }
   .about-hero { padding: 120px 24px 48px; }
   .about-hero h1 { font-size: clamp(30px, 9vw, 44px); }
@@ -183,20 +189,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">MAISON B</a>
   <div class="nav-links">
-    <a href="coffrets-semi-custom.html" class="nav-link">Semi custom</a>
-    <a href="coffrets-personnalises-entreprises.html" class="nav-link">Full custom</a>
-    <a href="a-propos.html" class="nav-link active">About us</a>
+    <a href="coffrets-semi-custom.html" class="nav-link">Nos coffrets</a>
+    <a href="a-propos.html" class="nav-link active">Notre histoire</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
-  <a href="coffrets-personnalises-entreprises.html" class="nav-cta"><span class="nav-cta-long">Composer mon coffret</span><span class="nav-cta-short">Devis</span></a>
+  <a href="#" class="nav-cart" aria-label="Panier"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></a>
   <div class="nav-burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="coffrets-semi-custom.html" onclick="toggleMenu()">Semi custom</a>
-  <a href="coffrets-personnalises-entreprises.html" onclick="toggleMenu()">Full custom</a>
-  <a href="a-propos.html" onclick="toggleMenu()">About us</a>
+  <a href="coffrets-semi-custom.html" onclick="toggleMenu()">Nos coffrets</a>
+  <a href="a-propos.html" onclick="toggleMenu()">Notre histoire</a>
   <a href="contact.html" onclick="toggleMenu()">Contact</a>
-  <a href="coffrets-personnalises-entreprises.html" class="mobile-cta" onclick="toggleMenu()">Composer mon coffret</a>
 </div>
 
 <!-- ===== HERO — compact, avec héritage Bubble's intégré ===== -->
@@ -293,11 +296,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="footer-inner">
-    <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Coffrets & cadeaux sur mesure,<br>personnalisés, depuis Paris.</p></div>
-    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="coffrets-semi-custom.html">Semi custom</a><a href="coffrets-personnalises-entreprises.html">Full custom</a><a href="coffrets-semi-custom.html">Catalogue</a></div></div>
-    <div><h5>Explorer</h5><div class="footer-links"><a href="a-propos.html">About us</a><a href="coffrets-semi-custom.html">Semi custom</a><a href="coffrets-personnalises-entreprises.html">Full custom</a><a href="contact.html">Contact</a></div></div>
+    <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Cadeaux d'affaires &amp; coffrets sur mesure,<br>depuis Paris.</p></div>
+    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="coffrets-semi-custom.html">Catalogue</a><a href="coffrets-personnalises-entreprises.html">Sur mesure</a></div></div>
+    <div><h5>Explorer</h5><div class="footer-links"><a href="a-propos.html">Notre histoire</a><a href="contact.html">Contact</a></div></div>
     <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@maisonb.fr">contact@maisonb.fr</a><a href="tel:+33100000000">+33 1 XX XX XX XX</a><a>Paris, France</a></div></div>
-    <div><h5>Suivez-nous</h5><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div>
+    <div><h5>Newsletter</h5><div class="footer-newsletter"><p>Recevez nos idées cadeaux et nos nouveautés.</p><form class="footer-newsletter-form" onsubmit="return false;"><input type="email" placeholder="Votre email" required><button type="submit">OK</button></form></div></div>
   </div>
   <div class="footer-bottom"><span>&copy; 2026 Maison B — Tous droits réservés</span><span>Ethan Benamram</span></div>
 </footer>

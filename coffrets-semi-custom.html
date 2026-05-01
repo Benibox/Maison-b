@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>8 coffrets cadeaux entreprise à personnaliser — Semi custom | Maison B</title>
-<meta name="description" content="8 coffrets cadeaux d'entreprise personnalisables avec votre logo : bien-être, gastronomie, bureau, voyage, luxe. Gift box entreprise logo, carte manuscrite incluse, expédition sous 5 jours en France.">
+<title>8 coffrets cadeaux entreprise à personnaliser — Nos coffrets | Maison B</title>
+<meta name="description" content="8 coffrets cadeaux d'entreprise personnalisables avec votre logo : bien-être, gastronomie, bureau, voyage, luxe. Gift box entreprise logo, carte manuscrite incluse, livraison sous 4 à 5 semaines en France.">
 <meta name="keywords" content="coffret cadeau entreprise personnalisé, gift box entreprise logo, coffret cadeau corporate, cadeau entreprise personnalisé">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Maison B">
@@ -12,8 +12,8 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Maison B">
 <meta property="og:url" content="https://maisonb.fr/coffrets-semi-custom">
-<meta property="og:title" content="8 coffrets cadeaux entreprise à personnaliser — Semi custom">
-<meta property="og:description" content="8 coffrets cadeaux d'entreprise personnalisables avec votre logo. Carte manuscrite incluse, expédition sous 5 jours.">
+<meta property="og:title" content="8 coffrets cadeaux entreprise à personnaliser — Nos coffrets">
+<meta property="og:description" content="8 coffrets cadeaux d'entreprise personnalisables avec votre logo. Carte manuscrite incluse, livraison sous 4 à 5 semaines.">
 <meta property="og:image" content="https://maisonb.fr/img/photos/IMG_6112A3E81A11-1.jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -47,14 +47,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ===== NAV ===== */
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 clamp(24px, 5vw, 70px); height: 72px; display: flex; align-items: center; justify-content: space-between; transition: background 0.4s, box-shadow 0.4s, border-color 0.4s, transform 0.4s; border-bottom: 1px solid transparent; background: rgba(250,250,248,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--gris-clair); box-shadow: 0 1px 20px rgba(0,0,0,0.04); }
 .nav.hidden { transform: translateY(-100%); }
-.nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: var(--noir); }
+.nav-logo { font-family: var(--serif); font-size: 26px; font-weight: 300; letter-spacing: 8px; text-transform: uppercase; color: var(--noir); }
 .nav-links { display: flex; align-items: center; gap: 36px; }
 .nav-link { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); transition: color 0.3s; }
 .nav-link:hover { color: var(--noir); }
 .nav-link.active { color: var(--noir); font-weight: 500; }
-.nav-cta { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; padding: 10px 24px; background: var(--noir); border: 1px solid var(--noir); color: var(--blanc); transition: all 0.3s; }
-.nav-cta:hover { background: var(--brun); }
-.nav-cta-short { display: none; }
+.nav-cart { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: var(--noir); transition: color 0.3s, transform 0.3s; }
+.nav-cart:hover { color: var(--or); transform: scale(1.1); }
+.nav-cart svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; }
 .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 110; }
 .nav-burger span { display: block; width: 24px; height: 1.5px; background: var(--noir); transition: all 0.3s; }
 .mobile-menu { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--noir); z-index: 105; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
@@ -63,39 +63,48 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .mobile-menu .mobile-cta { margin-top: 20px; padding: 14px 36px; border: 1px solid rgba(250,250,248,0.2); font-family: var(--sans); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--blanc); }
 
 /* ===== PAGE HERO ===== */
-.page-hero { padding: 160px clamp(24px, 5vw, 70px) 60px; text-align: center; background: var(--blanc); }
-.page-hero-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--or); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.8s 0.2s cubic-bezier(0.22,1,0.36,1) forwards; }
-.page-hero h1 { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.12; color: var(--noir); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.8s 0.35s cubic-bezier(0.22,1,0.36,1) forwards; }
-.page-hero h1 em { font-style: italic; color: var(--or); }
-.page-hero p { font-size: 16px; color: var(--gris); max-width: 580px; margin: 0 auto; line-height: 1.8; opacity: 0; animation: fadeUp 0.8s 0.5s cubic-bezier(0.22,1,0.36,1) forwards; }
-.page-hero-shipping { font-family: var(--serif); font-size: 15px; font-style: italic; color: var(--sable); margin-top: 18px; letter-spacing: 0.5px; opacity: 0; animation: fadeUp 0.8s 0.65s cubic-bezier(0.22,1,0.36,1) forwards; }
+.page-hero { position: relative; width: 100%; overflow: hidden; margin-top: 72px; background: #fff; }
+.page-hero-bg { width: 100%; height: clamp(420px, 46vw, 600px); object-fit: cover; object-position: center; display: block; background: #fff; filter: brightness(1.08) contrast(1.03) saturate(1.05); }
+.page-hero-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.12) 100%); }
+.page-hero-card { position: relative; background: rgba(250,250,248,0.55); backdrop-filter: blur(24px) saturate(1.1); -webkit-backdrop-filter: blur(24px) saturate(1.1); border: none; padding: clamp(36px, 4.5vw, 56px) clamp(40px, 5.5vw, 80px); text-align: center; max-width: 560px; width: 72%; opacity: 0; animation: fadeUp 0.8s 0.3s cubic-bezier(0.22,1,0.36,1) forwards; box-shadow: 0 8px 60px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(255,255,255,0.55); }
+.page-hero-card::before { content: ''; position: absolute; top: 12px; left: 12px; right: 12px; bottom: 12px; border: 1px solid rgba(140,120,81,0.22); pointer-events: none; }
+.page-hero-card h1 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300; line-height: 1.2; color: var(--noir); margin-bottom: 8px; text-shadow: 0 1px 2px rgba(255,255,255,0.4); }
+.page-hero-card h1 em { font-style: italic; color: var(--or); }
+.page-hero-card .card-separator { width: 40px; height: 1px; background: var(--or); margin: 16px auto; }
+.page-hero-card p { font-size: 13.5px; color: var(--noir); max-width: 380px; margin: 0 auto 24px; line-height: 1.8; text-shadow: 0 1px 2px rgba(255,255,255,0.5); }
+.page-hero-card .hero-tagline { font-size: 12.5px; color: var(--or); margin-top: -8px; margin-bottom: 28px; letter-spacing: 0.3px; font-style: italic; }
+.page-hero-card .hero-cta { display: inline-flex; align-items: center; gap: 10px; padding: 14px 36px; font-size: 10.5px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; color: var(--blanc); background: var(--noir); border-radius: 0; transition: all 0.4s; }
+.page-hero-card .hero-cta:hover { background: var(--brun); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(44,40,33,0.18); }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ===== INFO BANNER (volume message) ===== */
-.info-banner { max-width: 1200px; margin: 0 auto 0; padding: 0 clamp(24px, 5vw, 70px); opacity: 0; animation: fadeUp 0.8s 0.65s cubic-bezier(0.22,1,0.36,1) forwards; }
-.info-banner-inner { display: flex; align-items: center; gap: 20px; padding: 22px 32px; background: linear-gradient(135deg, rgba(140,120,81,0.06) 0%, rgba(140,120,81,0.02) 100%); border: 1px solid rgba(140,120,81,0.12); border-radius: 14px; }
-.info-banner-icon { width: 44px; height: 44px; min-width: 44px; border-radius: 12px; background: rgba(140,120,81,0.1); display: flex; align-items: center; justify-content: center; }
-.info-banner-icon svg { width: 20px; height: 20px; stroke: var(--or); fill: none; stroke-width: 1.5; }
-.info-banner-text { flex: 1; }
-.info-banner-text strong { font-size: 14px; font-weight: 600; color: var(--noir); display: block; margin-bottom: 2px; }
-.info-banner-text span { font-size: 13px; color: var(--gris); line-height: 1.6; }
-.info-banner-text a { color: var(--or); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; transition: color 0.3s; }
-.info-banner-text a:hover { color: var(--noir); }
+/* ===== INFO BANNER (volume message — editorial callout) ===== */
+.info-banner { max-width: 1200px; margin: clamp(28px, 3vw, 40px) auto 0; padding: 0 clamp(24px, 5vw, 70px); opacity: 0; animation: fadeUp 0.8s 0.65s cubic-bezier(0.22,1,0.36,1) forwards; }
+.info-banner-inner { display: flex; align-items: center; justify-content: space-between; gap: clamp(20px, 3vw, 40px); padding: clamp(22px, 2.6vw, 30px) clamp(28px, 3vw, 40px); background: var(--blanc); border-top: 1px solid rgba(140,120,81,0.22); border-bottom: 1px solid rgba(140,120,81,0.22); }
+.info-banner-text { flex: 1; min-width: 0; }
+.info-banner-title { font-family: var(--serif); font-size: clamp(18px, 1.8vw, 22px); font-weight: 400; font-style: italic; color: var(--noir); margin: 0 0 4px; line-height: 1.3; }
+.info-banner-desc { font-family: var(--sans); font-size: 13px; color: var(--gris); line-height: 1.6; margin: 0; }
+.info-banner-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; color: var(--noir); padding-bottom: 4px; border-bottom: 1px solid var(--noir); white-space: nowrap; transition: color 0.3s, border-color 0.3s; flex-shrink: 0; }
+.info-banner-link .arrow { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); display: inline-block; }
+.info-banner-link:hover { color: var(--or); border-color: var(--or); }
+.info-banner-link:hover .arrow { transform: translateX(4px); }
 
 /* ===== COFFRETS GRID ===== */
 .coffrets-section { padding: clamp(48px, 6vw, 80px) clamp(24px, 5vw, 70px) clamp(60px, 8vw, 120px); }
 .coffrets-section-inner { max-width: 1200px; margin: 0 auto; }
-.coffrets-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-.coffret-card { background: var(--blanc); border-radius: 12px; overflow: hidden; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s; cursor: pointer; border: 1px solid rgba(0,0,0,0.06); text-decoration: none; color: inherit; display: flex; flex-direction: column; }
-.coffret-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
-.coffret-card-img { position: relative; aspect-ratio: 4/3; overflow: hidden; }
-.coffret-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
-.coffret-card:hover .coffret-card-img img { transform: scale(1.06); }
+.coffrets-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(18px, 2vw, 28px); }
+.coffret-card { background: none; border-radius: 0; overflow: visible; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); cursor: pointer; border: none; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+.coffret-card:hover { transform: translateY(-4px); }
+.coffret-card-img { position: relative; aspect-ratio: 4/5; overflow: hidden; border-radius: 8px; }
+.coffret-card-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.coffret-card:hover .coffret-card-img img { transform: scale(1.04); }
+/* Detoured (transparent) PNG products: float on section bg with soft shadow */
+.coffret-card-img:has(img[src$=".png"]) { background: transparent; border-radius: 0; overflow: visible; display: flex; align-items: center; justify-content: center; padding: 18px; }
+.coffret-card-img img[src$=".png"] { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 0; filter: drop-shadow(0 18px 28px rgba(0,0,0,0.08)) drop-shadow(0 6px 10px rgba(0,0,0,0.05)); }
 .coffret-tag { position: absolute; top: 12px; left: 12px; background: rgba(26,26,26,0.85); color: var(--blanc); font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; backdrop-filter: blur(6px); border-radius: 100px; font-weight: 500; }
 .coffret-tag.tag-popular { background: var(--or); }
 .coffret-tag.tag-new { background: rgba(76,175,80,0.9); }
 .coffret-univers-tag { position: absolute; bottom: 12px; right: 12px; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.35); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 4px 12px; border-radius: 100px; }
-.coffret-card-body { padding: 20px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+.coffret-card-body { padding: 14px 0 0; flex: 1; display: flex; flex-direction: column; }
 .coffret-card-body h3 { font-family: var(--serif); font-size: 21px; font-weight: 400; margin-bottom: 8px; color: var(--noir); }
 .coffret-desc { font-size: 13px; color: var(--gris); line-height: 1.65; margin-bottom: 16px; flex: 1; }
 .coffret-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--gris-clair); }
@@ -127,14 +136,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .cta-btn:hover { background: rgba(250,250,248,0.12); border-color: rgba(250,250,248,0.5); box-shadow: 0 8px 36px rgba(0,0,0,0.3); transform: translateY(-2px); }
 
 /* ===== FOOTER ===== */
-.footer { background: var(--noir); padding: clamp(40px, 5vw, 70px) clamp(24px, 5vw, 70px); }
-.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 40px; color: rgba(250,250,248,0.4); font-size: 13px; }
-.footer-logo { font-family: var(--serif); font-size: 22px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: rgba(250,250,248,0.7); margin-bottom: 12px; }
-.footer-tagline { line-height: 1.7; }
-.footer h5 { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(250,250,248,0.2); margin-bottom: 16px; font-weight: 500; }
-.footer-links a { display: block; padding: 4px 0; transition: color 0.3s, transform 0.3s; }
-.footer-links a:hover { color: rgba(250,250,248,0.7); transform: translateX(4px); }
-.footer-bottom { max-width: 1200px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(250,250,248,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: rgba(250,250,248,0.15); letter-spacing: 1px; }
+.footer { background: var(--creme); padding: clamp(50px, 6vw, 80px) clamp(24px, 5vw, 70px) clamp(30px, 4vw, 50px); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr 1.2fr; gap: 40px; color: var(--tabac); font-size: 13px; }
+.footer-logo { font-family: var(--serif); font-size: 24px; font-weight: 300; letter-spacing: 8px; text-transform: uppercase; color: var(--noir); margin-bottom: 12px; }
+.footer-tagline { line-height: 1.7; color: var(--gris); font-style: italic; font-family: var(--serif); font-size: 14px; }
+.footer h5 { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--sable); margin-bottom: 16px; font-weight: 500; }
+.footer-links a { display: block; padding: 4px 0; color: var(--tabac); transition: color 0.3s, transform 0.3s; }
+.footer-links a:hover { color: var(--noir); transform: translateX(4px); }
+.footer-newsletter { margin-top: 4px; }
+.footer-newsletter p { font-size: 12px; color: var(--gris); line-height: 1.6; margin-bottom: 12px; }
+.footer-newsletter-form { display: flex; gap: 0; }
+.footer-newsletter-form input { flex: 1; padding: 10px 14px; font-size: 12px; font-family: var(--sans); border: 1px solid var(--sable); border-right: none; border-radius: 4px 0 0 4px; background: var(--blanc); color: var(--noir); outline: none; transition: border-color 0.3s; }
+.footer-newsletter-form input::placeholder { color: var(--sable); }
+.footer-newsletter-form input:focus { border-color: var(--or); }
+.footer-newsletter-form button { padding: 10px 16px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-family: var(--sans); font-weight: 500; background: var(--noir); color: var(--blanc); border: 1px solid var(--noir); border-radius: 0 4px 4px 0; cursor: pointer; transition: background 0.3s; white-space: nowrap; }
+.footer-newsletter-form button:hover { background: var(--brun); }
+.footer-bottom { max-width: 1200px; margin: 32px auto 0; padding-top: 20px; border-top: 1px solid var(--sable); display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--sable); letter-spacing: 1px; }
 
 /* ===== REVEAL ===== */
 .reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
@@ -150,21 +167,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 @media (max-width: 768px) {
   .nav-links { display: none; }
-  .nav-cta { padding: 9px 14px; font-size: 10px; letter-spacing: 1.5px; margin-left: auto; margin-right: 12px; }
-  .nav-cta-long { display: none; }
-  .nav-cta-short { display: inline; }
+  .nav-cart { margin-left: auto; margin-right: 12px; }
   .nav-burger { display: flex; }
-  .page-hero { padding: 130px 24px 48px; }
-  .page-hero h1 { font-size: clamp(30px, 9vw, 48px); }
-  .coffrets-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .coffret-card { border-radius: 0; }
+  .page-hero { margin-top: 72px; }
+  .page-hero-bg { height: 280px; object-fit: cover; }
+  .page-hero-card { width: 88%; padding: 24px 20px; }
+  .page-hero-card h1 { font-size: 24px; }
+  .page-hero-card p { font-size: 13px; }
+  .coffrets-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .inclus-inner { border-radius: 0; }
   .inclus-icon { border-radius: 0; }
-  .coffret-card-body { padding: 16px 16px 18px; }
+  .coffret-card-body { padding: 12px 0 0; }
   .coffret-card-body h3 { font-size: 17px; }
   .coffret-desc { font-size: 12px; }
   .coffret-price { font-size: 15px; }
-  .info-banner-inner { flex-direction: column; text-align: center; gap: 14px; padding: 20px 24px; }
+  .info-banner-inner { flex-direction: column; align-items: flex-start; text-align: left; gap: 16px; padding: 22px 24px; }
+  .info-banner-link { align-self: flex-start; }
   .inclus-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
 }
@@ -189,9 +207,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ===== PRODUCT OVERLAY (fiche coffret) ===== */
 .product-overlay { position: fixed; inset: 0; z-index: 1001; background: var(--blanc); opacity: 0; pointer-events: none; transition: opacity 0.5s cubic-bezier(0.22,1,0.36,1); overflow-y: auto; }
 .product-overlay.open { opacity: 1; pointer-events: all; }
-.product-grid { display: grid; grid-template-columns: 1.15fr 1fr; min-height: 100dvh; }
-.product-img-col { position: relative; background: var(--beige); overflow: hidden; }
-.product-img-col img { width: 100%; height: 100%; object-fit: cover; min-height: 100dvh; display: block; }
+.product-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 100dvh; }
+.product-img-col { position: sticky; top: 0; height: 100dvh; background: var(--beige); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 40px 40px; }
+.product-img-col .product-main-img { max-width: 82%; max-height: 62vh; object-fit: contain; display: block; border-radius: 6px; transition: opacity 0.3s ease; }
+.product-thumbs { display: flex; gap: 12px; margin-top: 24px; }
+.product-thumb { width: 68px; height: 68px; border-radius: 4px; overflow: hidden; cursor: pointer; border: 1.5px solid transparent; opacity: 0.45; transition: all 0.25s ease; background: var(--blanc); }
+.product-thumb.active { border-color: var(--or); opacity: 1; box-shadow: 0 2px 8px rgba(140,120,81,0.15); }
+.product-thumb:hover { opacity: 0.85; }
+.product-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.product-thumb img[src$=".png"] { object-fit: contain; padding: 6px; background: var(--beige); }
 .product-info-col { padding: clamp(32px, 4vw, 64px) clamp(28px, 5vw, 72px) clamp(32px, 4vw, 56px); display: flex; flex-direction: column; position: relative; }
 .product-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: clamp(28px, 4vw, 48px); }
 .product-back { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); font-weight: 500; cursor: pointer; transition: color 0.3s, transform 0.3s; background: none; border: none; padding: 0; font-family: inherit; }
@@ -228,14 +252,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .product-overlay.open .product-included { animation: prodFade 0.7s 0.42s cubic-bezier(0.22,1,0.36,1) backwards; }
 .product-overlay.open .product-cta { animation: prodFade 0.7s 0.48s cubic-bezier(0.22,1,0.36,1) backwards; }
 .product-overlay.open .product-cta-sub { animation: prodFade 0.7s 0.54s cubic-bezier(0.22,1,0.36,1) backwards; }
-.product-overlay.open .product-img-col img { animation: prodImgZoom 1.4s cubic-bezier(0.22,1,0.36,1) backwards; }
+.product-overlay.open .product-main-img { animation: prodImgZoom 1.4s cubic-bezier(0.22,1,0.36,1) backwards; }
 @keyframes prodFade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes prodImgZoom { from { transform: scale(1.06); } to { transform: scale(1); } }
 .product-sticky-cta { display: none; }
 @media (max-width: 900px) {
   .product-grid { grid-template-columns: 1fr; min-height: auto; }
-  .product-img-col { aspect-ratio: 4/3; min-height: auto; }
-  .product-img-col img { min-height: auto; height: 100%; }
+  .product-img-col { position: relative; height: auto; padding: 80px 20px 20px; }
+  .product-img-col .product-main-img { max-width: 90%; max-height: 44vh; }
+  .product-thumbs { gap: 8px; margin-top: 16px; }
+  .product-thumb { width: 54px; height: 54px; }
   .product-info-col { padding: 24px 20px 100px; }
   .product-topbar { margin-bottom: 22px; }
   .product-divider { margin: 22px 0; }
@@ -250,6 +276,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .product-title { font-size: clamp(26px, 7vw, 34px); }
   .product-included-list { grid-template-columns: 1fr; }
 }
+
+/* ===== POPUP CUSTOM SUGGESTION ===== */
+.custom-suggest-overlay { position: fixed; inset: 0; z-index: 1100; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; padding: 24px; }
+.custom-suggest-overlay.open { opacity: 1; pointer-events: all; }
+.custom-suggest { background: var(--blanc); border-radius: 14px; max-width: 440px; width: 100%; padding: 36px 32px 28px; position: relative; text-align: center; transform: translateY(20px) scale(0.97); transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); box-shadow: 0 20px 60px rgba(0,0,0,0.18); }
+.custom-suggest-overlay.open .custom-suggest { transform: translateY(0) scale(1); }
+.custom-suggest-close { position: absolute; top: 14px; right: 14px; width: 32px; height: 32px; border-radius: 50%; background: var(--beige); display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; transition: background 0.3s, transform 0.3s; }
+.custom-suggest-close:hover { background: var(--gris-clair); transform: rotate(90deg); }
+.custom-suggest-close svg { width: 12px; height: 12px; stroke: var(--noir); fill: none; stroke-width: 2.5; }
+.custom-suggest h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 12px; color: var(--noir); }
+.custom-suggest p { font-size: 14px; color: var(--gris); line-height: 1.6; margin-bottom: 24px; }
+.custom-suggest-actions { display: flex; flex-direction: column; gap: 10px; }
+.custom-suggest-cta { display: inline-block; padding: 14px 28px; background: var(--noir); color: var(--blanc); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; font-family: var(--sans); text-decoration: none; }
+.custom-suggest-cta:hover { background: var(--or); }
+.custom-suggest-skip { background: none; border: none; font-size: 13px; color: var(--gris); cursor: pointer; padding: 8px; font-family: var(--sans); transition: color 0.3s; }
+.custom-suggest-skip:hover { color: var(--noir); }
 
 /* ===== TUNNEL COMMANDE (3 étapes) ===== */
 .tunnel-overlay { position: fixed; inset: 0; z-index: 1002; background: rgba(0,0,0,0.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1); padding: 24px; }
@@ -288,10 +330,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .tunnel-qty-input { width: 100px; height: 44px; text-align: center; border: 1px solid var(--gris-clair); border-radius: 8px; font-family: var(--sans); font-size: 16px; font-weight: 500; color: var(--noir); -moz-appearance: textfield; outline: none; }
 .tunnel-qty-input:focus { border-color: var(--or); box-shadow: 0 0 0 3px rgba(140,120,81,0.08); }
 .tunnel-qty-input::-webkit-outer-spin-button, .tunnel-qty-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-.tunnel-qty-presets { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-.tunnel-qty-preset { padding: 8px 16px; border: 1px solid var(--gris-clair); background: var(--blanc); border-radius: 6px; font-size: 12px; color: var(--gris); cursor: pointer; transition: all 0.2s; font-family: var(--sans); }
-.tunnel-qty-preset:hover { border-color: var(--noir); color: var(--noir); }
-.tunnel-qty-preset.active { border-color: var(--noir); background: var(--noir); color: var(--blanc); }
+.tunnel-custom-notice { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; background: rgba(140,120,81,0.06); border: 1px solid rgba(140,120,81,0.15); border-radius: 8px; margin-bottom: 24px; font-size: 13px; color: var(--tabac); line-height: 1.6; }
+.tunnel-custom-notice svg { flex-shrink: 0; margin-top: 2px; }
+.tunnel-sticker-option { margin-bottom: 24px; }
+.tunnel-sticker-toggle { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border: 1px solid var(--gris-clair); border-radius: 8px; cursor: pointer; transition: border-color 0.3s, background 0.3s; }
+.tunnel-sticker-toggle:hover { border-color: var(--or); }
+.tunnel-sticker-toggle input { display: none; }
+.tunnel-sticker-check { width: 20px; height: 20px; min-width: 20px; border: 1.5px solid var(--gris-clair); border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.tunnel-sticker-toggle input:checked ~ .tunnel-sticker-check { background: var(--or); border-color: var(--or); }
+.tunnel-sticker-toggle input:checked ~ .tunnel-sticker-check::after { content: '✓'; color: #fff; font-size: 12px; font-weight: 700; }
+.tunnel-sticker-toggle input:checked ~ .tunnel-sticker-text strong { color: var(--noir); }
+.tunnel-sticker-text { flex: 1; }
+.tunnel-sticker-text strong { font-size: 13px; font-weight: 600; color: var(--gris); display: block; margin-bottom: 2px; transition: color 0.2s; }
+.tunnel-sticker-text span { font-size: 11.5px; color: var(--gris); }
+.tunnel-sticker-price { font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--or); white-space: nowrap; }
 .tunnel-subtotal { padding: 16px 18px; background: var(--beige); border-radius: 10px; display: flex; justify-content: space-between; align-items: center; }
 .tunnel-subtotal-label { font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); font-weight: 500; }
 .tunnel-subtotal-value { font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--noir); font-variant-numeric: lining-nums; }
@@ -315,6 +367,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .tunnel-form-field input:focus, .tunnel-form-field textarea:focus { border-color: var(--or); box-shadow: 0 0 0 3px rgba(140,120,81,0.08); }
 .tunnel-form-field input::placeholder, .tunnel-form-field textarea::placeholder { color: #C4C0B8; }
 .tunnel-form-field textarea { height: 80px; resize: vertical; font-family: var(--sans); line-height: 1.5; }
+.tunnel-form-field select { width: 100%; padding: 12px 14px; border: 1px solid var(--gris-clair); background: var(--blanc); font-family: var(--sans); font-size: 16px; color: var(--noir); transition: border-color 0.3s, box-shadow 0.3s; outline: none; border-radius: 8px; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B6B6B' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; }
+.tunnel-form-field select:focus { border-color: var(--or); box-shadow: 0 0 0 3px rgba(140,120,81,0.08); }
+.tunnel-substep { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--gris-clair); }
+.tunnel-substep:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.tunnel-substep-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-size: 14px; font-weight: 500; color: var(--noir); }
+.tunnel-substep-num { width: 26px; height: 26px; border-radius: 50%; background: rgba(140,120,81,0.1); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 14px; color: var(--or); flex-shrink: 0; }
 .tunnel-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
 /* Aperçu logo */
@@ -368,8 +426,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .tunnel-coffret { flex-direction: row; gap: 10px; padding: 10px; }
   .tunnel-coffret-img { width: 48px; height: 48px; }
   .tunnel-coffret-name { font-size: 14px; }
-  .tunnel-qty-presets { gap: 6px; }
-  .tunnel-qty-preset { padding: 7px 12px; font-size: 11px; }
+  .tunnel-custom-notice { font-size: 12px; padding: 12px 14px; }
+  .tunnel-sticker-toggle { padding: 14px 14px; gap: 10px; }
   .tunnel-subtotal-value { font-size: 22px; }
   .tunnel-form-row { grid-template-columns: 1fr; }
   .tunnel-btn { padding: 11px 18px; font-size: 10.5px; letter-spacing: 2px; }
@@ -387,40 +445,41 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">MAISON B</a>
   <div class="nav-links">
-    <a href="coffrets-semi-custom.html" class="nav-link active">Semi custom</a>
-    <a href="coffrets-personnalises-entreprises.html" class="nav-link">Full custom</a>
-    <a href="a-propos.html" class="nav-link">About us</a>
+    <a href="coffrets-semi-custom.html" class="nav-link active">Nos coffrets</a>
+    <a href="a-propos.html" class="nav-link">Notre histoire</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
-  <a href="coffrets-personnalises-entreprises.html" class="nav-cta"><span class="nav-cta-long">Composer mon coffret</span><span class="nav-cta-short">Devis</span></a>
+  <a href="#" class="nav-cart" aria-label="Panier"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></a>
   <div class="nav-burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="coffrets-semi-custom.html" onclick="toggleMenu()">Semi custom</a>
-  <a href="coffrets-personnalises-entreprises.html" onclick="toggleMenu()">Full custom</a>
-  <a href="a-propos.html" onclick="toggleMenu()">About us</a>
+  <a href="coffrets-semi-custom.html" onclick="toggleMenu()">Nos coffrets</a>
+  <a href="a-propos.html" onclick="toggleMenu()">Notre histoire</a>
   <a href="contact.html" onclick="toggleMenu()">Contact</a>
-  <a href="coffrets-personnalises-entreprises.html" class="mobile-cta" onclick="toggleMenu()">Composer mon coffret</a>
 </div>
 
 <!-- ===== HERO ===== -->
 <section class="page-hero">
-  <div class="page-hero-label">Semi custom</div>
-  <h1>Nos coffrets prêts<br>à <em>personnaliser</em></h1>
-  <p>Des compositions pensées par notre studio, prêtes à offrir. Ajoutez votre logo,<br>vos couleurs, votre carte manuscrite.<br>Carte incluse — on s'occupe du reste.</p>
-  <p class="page-hero-shipping">Expédition sous 5 jours ouvrés · Partout en France</p>
+  <img class="page-hero-bg" src="img/photos/coffret-haddad-hero.jpeg" alt="Collection de coffrets cadeaux Maison B" fetchpriority="high">
+  <div class="page-hero-overlay">
+    <div class="page-hero-card">
+      <h1>Nos coffrets prêts<br>à <em>personnaliser</em></h1>
+      <div class="card-separator"></div>
+      <p>Des compositions pensées par notre studio, prêtes à offrir. Ajoutez votre logo, vos couleurs, votre carte manuscrite.</p>
+      <p class="hero-tagline"><em>Carte incluse — on s'occupe du reste.</em></p>
+      <a href="#devis" class="hero-cta">Demander un devis &rarr;</a>
+    </div>
+  </div>
 </section>
 
 <!-- ===== INFO BANNER — volume message ===== -->
 <div class="info-banner">
   <div class="info-banner-inner">
-    <div class="info-banner-icon">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    </div>
     <div class="info-banner-text">
-      <strong>Commande de plus de 30 coffrets ?</strong>
-      <span>Pour les commandes en volume, nous développons une offre entièrement personnalisée avec des tarifs adaptés. <a href="contact.html">Contactez-nous directement</a> pour recevoir une proposition sur mesure sous 48h.</span>
+      <h3 class="info-banner-title">Besoin de plus de 30 coffrets&nbsp;?</h3>
+      <p class="info-banner-desc">Tarifs adaptés aux grandes commandes — la quantité est libre.</p>
     </div>
+    <a href="coffrets-personnalises-entreprises.html" class="info-banner-link">Découvrir le sur-mesure <span class="arrow">&rarr;</span></a>
   </div>
 </div>
 
@@ -432,7 +491,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <!-- 1 — Wellness & Bien-être -->
       <a href="javascript:void(0)" class="coffret-card reveal reveal-delay-1" onclick="openCoffret('wellness')">
         <div class="coffret-card-img">
-          <img src="img/photos/IMG_C0595F288949-1.jpeg" alt="Coffret Wellness & Bien-être" loading="lazy">
+          <img src="img/photos/coffret-signature-floral.png" alt="Coffret Wellness & Bien-être" loading="lazy">
           <span class="coffret-tag tag-popular">Best-seller</span>
           <span class="coffret-univers-tag">Bien-être</span>
         </div>
@@ -440,7 +499,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
           <h3>Coffret Wellness & Bien-être</h3>
           <div class="coffret-desc">Bougie parfumée, huiles essentielles bio, masque relaxant en soie, tisane détente artisanale</div>
           <div class="coffret-bottom">
-            <span class="coffret-price">135 €<small> / coffret</small></span>
+            <span class="coffret-price">135 €</span>
             <span class="coffret-cta-link">Voir <span class="arrow">&rarr;</span></span>
           </div>
         </div>
@@ -449,7 +508,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <!-- 2 — Gastronomie Française -->
       <a href="javascript:void(0)" class="coffret-card reveal reveal-delay-2" onclick="openCoffret('gastronomie')">
         <div class="coffret-card-img">
-          <img src="img/photos/IMG_6112A3E81A11-1.jpeg" alt="Coffret Gastronomie Française" loading="lazy">
+          <img src="img/photos/coffret-signature-estoublon.png" alt="Coffret Gastronomie Française" loading="lazy">
           <span class="coffret-tag tag-popular">Populaire</span>
           <span class="coffret-univers-tag">Gastronomie</span>
         </div>
@@ -457,7 +516,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
           <h3>Coffret Gastronomie Française</h3>
           <div class="coffret-desc">Macarons artisanaux, crème de pistache de Sicile, chocolats Angelina Paris, confiture bio</div>
           <div class="coffret-bottom">
-            <span class="coffret-price">120 €<small> / coffret</small></span>
+            <span class="coffret-price">120 €</span>
             <span class="coffret-cta-link">Voir <span class="arrow">&rarr;</span></span>
           </div>
         </div>
@@ -466,14 +525,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <!-- 3 — Bureau & Lifestyle -->
       <a href="javascript:void(0)" class="coffret-card reveal reveal-delay-3" onclick="openCoffret('bureau')">
         <div class="coffret-card-img">
-          <img src="img/photos/IMG_F8B5700C6BAC-1.jpeg" alt="Coffret Bureau & Lifestyle" loading="lazy">
+          <img src="img/photos/coffret-signature-douceurs.png" alt="Coffret Bureau & Lifestyle" loading="lazy">
           <span class="coffret-univers-tag">Bureau</span>
         </div>
         <div class="coffret-card-body">
           <h3>Coffret Bureau & Lifestyle</h3>
           <div class="coffret-desc">Carnet en cuir gravé, stylo premium, tasse en porcelaine, thé Grand Cru, carte manuscrite</div>
           <div class="coffret-bottom">
-            <span class="coffret-price">95 €<small> / coffret</small></span>
+            <span class="coffret-price">95 €</span>
             <span class="coffret-cta-link">Voir <span class="arrow">&rarr;</span></span>
           </div>
         </div>
@@ -482,7 +541,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <!-- 4 — Découverte & Voyage -->
       <a href="javascript:void(0)" class="coffret-card reveal reveal-delay-4" onclick="openCoffret('voyage')">
         <div class="coffret-card-img">
-          <img src="img/photos/IMG_7B487668FEB7-1.jpeg" alt="Coffret Découverte & Voyage" loading="lazy">
+          <img src="img/photos/coffret-signature-floral.png" alt="Coffret Découverte & Voyage" loading="lazy">
           <span class="coffret-tag tag-new">Nouveau</span>
           <span class="coffret-univers-tag">Voyage</span>
         </div>
@@ -490,7 +549,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
           <h3>Coffret Découverte & Voyage</h3>
           <div class="coffret-desc">Trousse en cuir, carnet de voyage artisanal, douceurs du monde, carte manuscrite personnalisée</div>
           <div class="coffret-bottom">
-            <span class="coffret-price">125 €<small> / coffret</small></span>
+            <span class="coffret-price">125 €</span>
             <span class="coffret-cta-link">Voir <span class="arrow">&rarr;</span></span>
           </div>
         </div>
@@ -499,14 +558,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <!-- 5 — Maison & Déco -->
       <a href="javascript:void(0)" class="coffret-card reveal reveal-delay-1" onclick="openCoffret('maison')">
         <div class="coffret-card-img">
-          <img src="img/photos/IMG_9E75D411269E-1.jpeg" alt="Coffret Maison & Déco" loading="lazy">
+          <img src="img/photos/coffret-signature-shabbat.png" alt="Coffret Maison & Déco" loading="lazy">
           <span class="coffret-univers-tag">Maison</span>
         </div>
         <div class="coffret-card-body">
           <h3>Coffret Maison & Déco</h3>
           <div class="coffret-desc">Bougie architecte, vide-poche en cuir, diffuseur bâtonnets bois, savon artisanal surgras</div>
           <div class="coffret-bottom">
-            <span class="coffret-price">110 €<small> / coffret</small></span>
+            <span class="coffret-price">110 €</span>
             <span class="coffret-cta-link">Voir <span class="arrow">&rarr;</span></span>
           </div>
         </div>
@@ -515,14 +574,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <!-- 6 — Sport & Vitalité -->
       <a href="javascript:void(0)" class="coffret-card reveal reveal-delay-2" onclick="openCoffret('sport')">
         <div class="coffret-card-img">
-          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=450&fit=crop&q=80" alt="Coffret Sport & Vitalité" loading="lazy">
+          <img src="img/photos/coffret-signature-douceurs.png" alt="Coffret Sport & Vitalité" loading="lazy">
           <span class="coffret-univers-tag">Sport</span>
         </div>
         <div class="coffret-card-body">
           <h3>Coffret Sport & Vitalité</h3>
           <div class="coffret-desc">Gourde isotherme gravée, serviette brodée, mélange énergétique bio, barre protéinée artisanale</div>
           <div class="coffret-bottom">
-            <span class="coffret-price">105 €<small> / coffret</small></span>
+            <span class="coffret-price">105 €</span>
             <span class="coffret-cta-link">Voir <span class="arrow">&rarr;</span></span>
           </div>
         </div>
@@ -531,14 +590,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <!-- 7 — Culture & Créativité -->
       <a href="javascript:void(0)" class="coffret-card reveal reveal-delay-3" onclick="openCoffret('culture')">
         <div class="coffret-card-img">
-          <img src="https://images.unsplash.com/photo-1524578271613-d550eacf6090?w=600&h=450&fit=crop&q=80" alt="Coffret Culture & Créativité" loading="lazy">
+          <img src="img/photos/coffret-signature-estoublon.png" alt="Coffret Culture & Créativité" loading="lazy">
           <span class="coffret-univers-tag">Culture</span>
         </div>
         <div class="coffret-card-body">
           <h3>Coffret Culture & Créativité</h3>
           <div class="coffret-desc">Livre d'art sélectionné, carnet croquis premium, crayons artisanaux, carte manuscrite</div>
           <div class="coffret-bottom">
-            <span class="coffret-price">115 €<small> / coffret</small></span>
+            <span class="coffret-price">115 €</span>
             <span class="coffret-cta-link">Voir <span class="arrow">&rarr;</span></span>
           </div>
         </div>
@@ -547,7 +606,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <!-- 8 — Luxe & Prestige -->
       <a href="javascript:void(0)" class="coffret-card reveal reveal-delay-4" onclick="openCoffret('luxe')">
         <div class="coffret-card-img">
-          <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=600&h=450&fit=crop&q=80" alt="Coffret Luxe & Prestige" loading="lazy">
+          <img src="img/photos/coffret-signature-shabbat.png" alt="Coffret Luxe & Prestige" loading="lazy">
           <span class="coffret-tag tag-popular">Premium</span>
           <span class="coffret-univers-tag">Luxe</span>
         </div>
@@ -555,7 +614,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
           <h3>Coffret Luxe & Prestige</h3>
           <div class="coffret-desc">Carafe en cristal, chocolats grand cru, vide-poche cuir logotypé, packaging premium aux couleurs de votre marque</div>
           <div class="coffret-bottom">
-            <span class="coffret-price">155 €<small> / coffret</small></span>
+            <span class="coffret-price">155 €</span>
             <span class="coffret-cta-link">Voir <span class="arrow">&rarr;</span></span>
           </div>
         </div>
@@ -612,11 +671,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="footer-inner">
-    <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Coffrets & cadeaux sur mesure,<br>personnalisés, depuis Paris.</p></div>
-    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="coffrets-semi-custom.html">Semi custom</a><a href="coffrets-personnalises-entreprises.html">Full custom</a><a href="coffrets-semi-custom.html">Catalogue</a></div></div>
-    <div><h5>Explorer</h5><div class="footer-links"><a href="a-propos.html">About us</a><a href="coffrets-semi-custom.html">Semi custom</a><a href="coffrets-personnalises-entreprises.html">Full custom</a><a href="contact.html">Contact</a></div></div>
+    <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Cadeaux d'affaires &amp; coffrets sur mesure,<br>depuis Paris.</p></div>
+    <div><h5>Nos coffrets</h5><div class="footer-links"><a href="coffrets-semi-custom.html">Catalogue</a><a href="coffrets-personnalises-entreprises.html">Sur mesure</a></div></div>
+    <div><h5>Explorer</h5><div class="footer-links"><a href="a-propos.html">Notre histoire</a><a href="contact.html">Contact</a></div></div>
     <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@maisonb.fr">contact@maisonb.fr</a><a href="tel:+33100000000">+33 1 XX XX XX XX</a><a>Paris, France</a></div></div>
-    <div><h5>Suivez-nous</h5><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div>
+    <div><h5>Newsletter</h5><div class="footer-newsletter"><p>Recevez nos idées cadeaux et nos nouveautés.</p><form class="footer-newsletter-form" onsubmit="return false;"><input type="email" placeholder="Votre email" required><button type="submit">OK</button></form></div></div>
   </div>
   <div class="footer-bottom"><span>&copy; 2026 Maison B — Tous droits réservés</span><span>Ethan Benamram</span></div>
 </footer>
@@ -651,27 +710,49 @@ function acceptCookies() { localStorage.setItem('cookiesAccepted', '1'); documen
 
 /* ===== DATA COFFRETS (source unique) ===== */
 var coffrets = {
-  'wellness':    { name: 'Coffret Wellness & Bien-être',    price: 135, img: 'img/photos/IMG_C0595F288949-1.jpeg', univers: 'Bien-être',   desc: "Une vraie parenthèse bien-être, composée avec soin pour offrir un moment de pause et de sérénité.", items: ['Bougie parfumée artisanale', 'Huiles essentielles bio', 'Masque relaxant en soie', 'Tisane détente artisanale'] },
-  'gastronomie': { name: 'Coffret Gastronomie Française',   price: 120, img: 'img/photos/IMG_6112A3E81A11-1.jpeg', univers: 'Gastronomie', desc: "L'art du goût rassemblé dans un écrin. Des maisons françaises d'exception sélectionnées avec exigence.", items: ['Macarons artisanaux', 'Crème de pistache de Sicile', 'Chocolats Angelina Paris', 'Confiture bio du verger'] },
-  'bureau':      { name: 'Coffret Bureau & Lifestyle',       price: 95,  img: 'img/photos/IMG_F8B5700C6BAC-1.jpeg', univers: 'Bureau',      desc: "Les indispensables du quotidien professionnel, pensés pour accompagner le rythme avec élégance.", items: ['Carnet en cuir gravé', 'Stylo premium', 'Tasse en porcelaine fine', 'Thé Grand Cru', 'Carte manuscrite'] },
-  'voyage':      { name: 'Coffret Découverte & Voyage',      price: 125, img: 'img/photos/IMG_7B487668FEB7-1.jpeg', univers: 'Voyage',      desc: "Une invitation au départ, à glisser dans la valise ou à offrir avant le grand voyage.", items: ['Trousse en cuir', 'Carnet de voyage artisanal', 'Douceurs du monde', 'Carte manuscrite personnalisée'] },
-  'maison':      { name: 'Coffret Maison & Déco',            price: 110, img: 'img/photos/IMG_9E75D411269E-1.jpeg', univers: 'Maison',      desc: "Les essentiels qui habitent un lieu avec élégance, de l'entrée au salon.", items: ['Bougie architecte', 'Vide-poche en cuir', 'Diffuseur bâtonnets bois', 'Savon artisanal surgras'] },
-  'sport':       { name: 'Coffret Sport & Vitalité',         price: 105, img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&h=1500&fit=crop&q=85', univers: 'Sport',       desc: "Pour les équipes qui bougent, un coffret qui accompagne énergie et récupération.", items: ['Gourde isotherme gravée', 'Serviette brodée', 'Mélange énergétique bio', 'Barre protéinée artisanale'] },
-  'culture':     { name: 'Coffret Culture & Créativité',     price: 115, img: 'https://images.unsplash.com/photo-1524578271613-d550eacf6090?w=1200&h=1500&fit=crop&q=85', univers: 'Culture',     desc: "Un hommage au regard et à la main qui crée. Pour les esprits inspirés.", items: ['Livre d\'art sélectionné', 'Carnet croquis premium', 'Crayons artisanaux', 'Carte manuscrite'] },
-  'luxe':        { name: 'Coffret Luxe & Prestige',          price: 155, img: 'https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=1200&h=1500&fit=crop&q=85', univers: 'Luxe',        desc: "Le plus grand soin pour vos destinataires d'exception. Un coffret qui marque les esprits.", items: ['Carafe en cristal', 'Chocolats grand cru', 'Vide-poche cuir logotypé', 'Packaging premium aux couleurs de votre marque'] }
+  'wellness':    { name: 'Coffret Wellness & Bien-être',    price: 135, img: 'img/photos/coffret-signature-floral.png',    images: ['img/photos/coffret-signature-floral.png','img/photos/coffret-signature-estoublon.png','img/photos/coffret-signature-douceurs.png','img/photos/coffret-signature-shabbat.png'],    univers: 'Bien-être',   desc: "Une vraie parenthèse bien-être, composée avec soin pour offrir un moment de pause et de sérénité.", items: ['Carte manuscrite', 'À définir', 'À définir', 'À définir'] },
+  'gastronomie': { name: 'Coffret Gastronomie Française',   price: 120, img: 'img/photos/coffret-signature-estoublon.png', images: ['img/photos/coffret-signature-estoublon.png','img/photos/coffret-signature-douceurs.png','img/photos/coffret-signature-shabbat.png','img/photos/coffret-signature-floral.png'],    univers: 'Gastronomie', desc: "L'art du goût rassemblé dans un écrin. Des maisons françaises d'exception sélectionnées avec exigence.", items: ['Carte manuscrite', 'À définir', 'À définir', 'À définir'] },
+  'bureau':      { name: 'Coffret Bureau & Lifestyle',       price: 95,  img: 'img/photos/coffret-signature-douceurs.png',  images: ['img/photos/coffret-signature-douceurs.png','img/photos/coffret-signature-shabbat.png','img/photos/coffret-signature-floral.png','img/photos/coffret-signature-estoublon.png'], univers: 'Bureau',      desc: "Les indispensables du quotidien professionnel, pensés pour accompagner le rythme avec élégance.", items: ['Carte manuscrite', 'À définir', 'À définir', 'À définir'] },
+  'voyage':      { name: 'Coffret Découverte & Voyage',      price: 125, img: 'img/photos/coffret-signature-floral.png',    images: ['img/photos/coffret-signature-floral.png','img/photos/coffret-signature-shabbat.png','img/photos/coffret-signature-estoublon.png','img/photos/coffret-signature-douceurs.png'],    univers: 'Voyage',      desc: "Une invitation au départ, à glisser dans la valise ou à offrir avant le grand voyage.", items: ['Carte manuscrite', 'À définir', 'À définir', 'À définir'] },
+  'maison':      { name: 'Coffret Maison & Déco',            price: 110, img: 'img/photos/coffret-signature-shabbat.png',   images: ['img/photos/coffret-signature-shabbat.png','img/photos/coffret-signature-floral.png','img/photos/coffret-signature-estoublon.png','img/photos/coffret-signature-douceurs.png'],   univers: 'Maison',      desc: "Les essentiels qui habitent un lieu avec élégance, de l'entrée au salon.", items: ['Carte manuscrite', 'À définir', 'À définir', 'À définir'] },
+  'sport':       { name: 'Coffret Sport & Vitalité',         price: 105, img: 'img/photos/coffret-signature-douceurs.png',  images: ['img/photos/coffret-signature-douceurs.png','img/photos/coffret-signature-estoublon.png','img/photos/coffret-signature-shabbat.png','img/photos/coffret-signature-floral.png'],  univers: 'Sport',       desc: "Pour les équipes qui bougent, un coffret qui accompagne énergie et récupération.", items: ['Carte manuscrite', 'À définir', 'À définir', 'À définir'] },
+  'culture':     { name: 'Coffret Culture & Créativité',     price: 115, img: 'img/photos/coffret-signature-estoublon.png', images: ['img/photos/coffret-signature-estoublon.png','img/photos/coffret-signature-shabbat.png','img/photos/coffret-signature-floral.png','img/photos/coffret-signature-douceurs.png'], univers: 'Culture',     desc: "Un hommage au regard et à la main qui crée. Pour les esprits inspirés.", items: ['Carte manuscrite', 'À définir', 'À définir', 'À définir'] },
+  'luxe':        { name: 'Coffret Luxe & Prestige',          price: 155, img: 'img/photos/coffret-signature-shabbat.png',   images: ['img/photos/coffret-signature-shabbat.png','img/photos/coffret-signature-douceurs.png','img/photos/coffret-signature-floral.png','img/photos/coffret-signature-estoublon.png'],   univers: 'Luxe',        desc: "Le plus grand soin pour vos destinataires d'exception. Un coffret qui marque les esprits.", items: ['Carte manuscrite', 'À définir', 'À définir', 'À définir'] }
 };
 var currentSlug = null;
 
 /* ===== PRODUCT OVERLAY (fiche coffret) ===== */
+function switchProductImg(src, thumbEl) {
+  document.getElementById('prod-img').src = src;
+  var thumbs = document.querySelectorAll('.product-thumb');
+  thumbs.forEach(function(t) { t.classList.remove('active'); });
+  if (thumbEl) thumbEl.classList.add('active');
+}
+function buildThumbs(images) {
+  var container = document.getElementById('prod-thumbs');
+  container.textContent = '';
+  if (!images) return;
+  images.forEach(function(src, i) {
+    var div = document.createElement('div');
+    div.className = 'product-thumb' + (i === 0 ? ' active' : '');
+    div.onclick = function() { switchProductImg(src, div); };
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = 'Vue ' + (i + 1);
+    div.appendChild(img);
+    container.appendChild(div);
+  });
+}
 function openCoffret(slug) {
   var c = coffrets[slug];
   if (!c) return;
   currentSlug = slug;
   document.getElementById('prod-img').src = c.img;
   document.getElementById('prod-img').alt = c.name;
+  buildThumbs(c.images);
   document.getElementById('prod-univers').textContent = c.univers;
   document.getElementById('prod-title').textContent = c.name;
-  document.getElementById('prod-price').innerHTML = c.price + ' €<small>/ coffret</small>';
+  document.getElementById('prod-price').textContent = c.price + ' €';
   document.getElementById('prod-sticky-price').textContent = c.price + ' €';
   document.getElementById('prod-desc').textContent = c.desc;
   document.getElementById('prod-items').innerHTML = c.items.map(function(i) { return '<li>' + i + '</li>'; }).join('');
@@ -707,21 +788,16 @@ function openTunnel(name, price, img, univers) {
   document.getElementById('tc-img').src = img;
   document.getElementById('tc-img').alt = name;
   document.getElementById('tc-name').textContent = name;
-  document.getElementById('tc-price').textContent = price + ' € / coffret';
+  document.getElementById('tc-price').textContent = price + ' €';
   document.getElementById('tc-univers').textContent = univers;
   document.getElementById('tf-coffret').value = name;
   document.getElementById('tf-prix').value = price;
   document.getElementById('tf-univers').value = univers;
-  /* Aperçu coffret */
-  document.getElementById('tp-coffret').src = img;
-  document.getElementById('tp-coffret').alt = name;
-  /* Reset preview logo */
-  var tpLogo = document.getElementById('tp-logo');
-  tpLogo.src = ''; tpLogo.classList.add('hidden');
-  document.getElementById('tunnelPreview').classList.remove('has-logo');
+  /* Reset upload */
   document.getElementById('tunnel').classList.remove('done');
   tunnelGoto(1);
-  setQty(10);
+  setQty(1);
+  customSuggestShown = false;
   document.getElementById('tunnelOverlay').classList.add('open');
   document.getElementById('tunnelOverlay').setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
@@ -777,7 +853,7 @@ function tunnelNext() {
 function validateStep(step) {
   if (step === 1) {
     var q = parseInt(document.getElementById('tq-input').value, 10);
-    if (isNaN(q) || q < 5) { alert('Quantité minimum : 5 coffrets.'); return false; }
+    if (isNaN(q) || q < 1) { alert('Quantité minimum : 1 coffret.'); return false; }
   }
   if (step === 3) {
     var form = document.getElementById('tunnelForm');
@@ -791,31 +867,31 @@ function validateStep(step) {
   return true;
 }
 
+var customSuggestShown = false;
 function setQty(q) { document.getElementById('tq-input').value = q; updateQty(); }
 function changeQty(d) {
   var inp = document.getElementById('tq-input');
-  var v = Math.max(5, (parseInt(inp.value, 10) || 5) + d);
+  var v = Math.max(1, (parseInt(inp.value, 10) || 1) + d);
   inp.value = v; updateQty();
 }
 function updateQty() {
   var q = parseInt(document.getElementById('tq-input').value, 10) || 0;
-  var total = q * tunnelCoffret.price;
+  var stickerChecked = document.getElementById('tq-sticker') && document.getElementById('tq-sticker').checked;
+  var total = q * tunnelCoffret.price + (stickerChecked ? 10 : 0);
   document.getElementById('tq-total').textContent = total ? (total.toLocaleString('fr-FR') + ' €') : '—';
   document.getElementById('tf-total').value = total;
-  document.querySelectorAll('.tunnel-qty-preset').forEach(function(p) {
-    p.classList.toggle('active', parseInt(p.textContent, 10) === q);
-  });
 }
+function closeCustomSuggest() {
+  document.getElementById('customSuggestOverlay').classList.remove('open');
+}
+document.getElementById('customSuggestOverlay').addEventListener('click', function(e) { if (e.target === this) closeCustomSuggest(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && document.getElementById('customSuggestOverlay').classList.contains('open')) closeCustomSuggest(); });
 
 function handleLogoUpload(input) {
   var wrap = document.getElementById('tunnelUpload');
-  var preview = document.getElementById('tunnelPreview');
-  var tpLogo = document.getElementById('tp-logo');
   var file = input.files && input.files[0];
   if (!file) {
     wrap.classList.remove('has-file');
-    preview.classList.remove('has-logo');
-    tpLogo.classList.add('hidden'); tpLogo.src = '';
     return;
   }
   if (file.size > 5 * 1024 * 1024) { alert('Fichier trop volumineux (max 5 Mo).'); input.value = ''; return; }
@@ -824,17 +900,10 @@ function handleLogoUpload(input) {
     var reader = new FileReader();
     reader.onload = function(e) {
       document.getElementById('tu-thumb').src = e.target.result;
-      /* Aperçu sur le coffret */
-      tpLogo.src = e.target.result;
-      tpLogo.classList.remove('hidden');
-      preview.classList.add('has-logo');
     };
     reader.readAsDataURL(file);
   } else {
-    /* PDF ou autre : pas d'aperçu visuel, juste indiquer fichier reçu */
     document.getElementById('tu-thumb').src = '';
-    tpLogo.classList.add('hidden');
-    preview.classList.remove('has-logo');
   }
   wrap.classList.add('has-file');
 }
@@ -868,10 +937,10 @@ function submitTunnel() {
       quantity: String(q),
       prix_unitaire: String(tunnelCoffret.price),
       total: String(total),
-      couleur: (fd.get('couleur') || '').toString().slice(0, 200),
       date_souhaitee: (fd.get('date_souhaitee') || '').toString().slice(0, 100),
       message_carte: (fd.get('message_carte') || '').toString().slice(0, 500),
-      demandes: (fd.get('demandes') || '').toString().slice(0, 500),
+      occasion: (fd.get('occasion') || '').toString().slice(0, 200),
+      stickers_logo: fd.get('stickers_logo') ? 'oui' : 'non',
       nom: customerName
     }
   };
@@ -914,7 +983,8 @@ window.addEventListener('load', function() {
 <div class="product-overlay" id="productOverlay" aria-hidden="true">
   <div class="product-grid">
     <div class="product-img-col">
-      <img id="prod-img" src="" alt="">
+      <img id="prod-img" class="product-main-img" src="" alt="">
+      <div class="product-thumbs" id="prod-thumbs"></div>
     </div>
     <div class="product-info-col">
       <div class="product-topbar">
@@ -936,7 +1006,7 @@ window.addEventListener('load', function() {
         <div class="product-included-title">Inclus dans chaque coffret</div>
         <div class="product-included-list">
           <div class="product-included-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Carte manuscrite</div>
-          <div class="product-included-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Votre logo & couleurs</div>
+          <div class="product-included-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Carte de vœux avec votre logo</div>
           <div class="product-included-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Livraison clé en main</div>
           <div class="product-included-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Restrictions respectées</div>
         </div>
@@ -947,8 +1017,23 @@ window.addEventListener('load', function() {
   </div>
   <!-- Sticky CTA mobile uniquement -->
   <div class="product-sticky-cta">
-    <div class="product-sticky-price"><span id="prod-sticky-price">—</span> <small>/ coffret</small></div>
+    <div class="product-sticky-price"><span id="prod-sticky-price">—</span></div>
     <button class="product-sticky-btn" onclick="startOrder()" type="button">Composer →</button>
+  </div>
+</div>
+
+<!-- ===== POPUP SUGGESTION CUSTOM ===== -->
+<div class="custom-suggest-overlay" id="customSuggestOverlay">
+  <div class="custom-suggest">
+    <button class="custom-suggest-close" onclick="closeCustomSuggest()" aria-label="Fermer">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3>Plus de 30 coffrets ?</h3>
+    <p>Pour les grandes commandes, on peut créer une formule entièrement sur mesure avec des tarifs adaptés. Parlons de votre projet.</p>
+    <div class="custom-suggest-actions">
+      <a href="coffrets-personnalises-entreprises.html" class="custom-suggest-cta">Découvrir la formule custom &rarr;</a>
+      <button type="button" class="custom-suggest-skip" onclick="closeCustomSuggest()">Non merci, je continue ma commande</button>
+    </div>
   </div>
 </div>
 
@@ -977,7 +1062,7 @@ window.addEventListener('load', function() {
       </div>
       <form id="tunnelForm" action="https://formspree.io/f/mojpyaqw" method="POST" enctype="multipart/form-data" onsubmit="return false;">
         <input type="hidden" name="_subject" value="Commande Semi-Custom — Maison B">
-        <input type="hidden" name="_autoresponse" value="Bonjour, merci pour votre commande semi-custom chez Maison B ! Vos informations de personnalisation sont bien arrivées. Notre studio vous contacte sous 24h pour valider le bon à tirer (packaging avec votre logo) avant production. Expédition sous 5 jours ouvrés après validation.&#10;&#10;À très vite,&#10;L'équipe Maison B&#10;contact@maisonb.fr">
+        <input type="hidden" name="_autoresponse" value="Bonjour, merci pour votre commande semi-custom chez Maison B ! Vos informations de personnalisation sont bien arrivées. Notre studio vous contacte sous 24h pour valider le bon à tirer (packaging avec votre logo) avant production. Livraison sous 4 à 5 semaines après validation.&#10;&#10;À très vite,&#10;L'équipe Maison B&#10;contact@maisonb.fr">
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <input type="hidden" name="coffret" id="tf-coffret">
         <input type="hidden" name="prix_unitaire" id="tf-prix">
@@ -985,19 +1070,25 @@ window.addEventListener('load', function() {
         <input type="hidden" name="total_indicatif" id="tf-total">
 
         <div class="tunnel-panel active" data-panel="1">
-          <h3>Combien de coffrets ?</h3>
-          <p class="tunnel-panel-sub">Minimum 5 coffrets. Tarif dégressif au-delà de 50.</p>
+          <div class="tunnel-custom-notice">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="var(--or)" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Plus de 30 coffrets ? <a href="coffrets-personnalises-entreprises.html" style="color:var(--or);text-decoration:underline;font-weight:600;">Demandez un devis personnalisé</a> avec des tarifs adaptés et une personnalisation complète.</span>
+          </div>
           <div class="tunnel-quantity">
             <button type="button" class="tunnel-qty-btn" onclick="changeQty(-1)" aria-label="Diminuer">−</button>
-            <input type="number" class="tunnel-qty-input" id="tq-input" name="quantite" min="5" value="10" oninput="updateQty()">
+            <input type="number" class="tunnel-qty-input" id="tq-input" name="quantite" min="1" value="1" oninput="updateQty()">
             <button type="button" class="tunnel-qty-btn" onclick="changeQty(1)" aria-label="Augmenter">+</button>
           </div>
-          <div class="tunnel-qty-presets">
-            <button type="button" class="tunnel-qty-preset" onclick="setQty(10)">10</button>
-            <button type="button" class="tunnel-qty-preset" onclick="setQty(25)">25</button>
-            <button type="button" class="tunnel-qty-preset" onclick="setQty(50)">50</button>
-            <button type="button" class="tunnel-qty-preset" onclick="setQty(100)">100</button>
-            <button type="button" class="tunnel-qty-preset" onclick="setQty(250)">250</button>
+          <div class="tunnel-sticker-option">
+            <label class="tunnel-sticker-toggle">
+              <input type="checkbox" name="stickers_logo" id="tq-sticker" onchange="updateQty()">
+              <span class="tunnel-sticker-check"></span>
+              <div class="tunnel-sticker-text">
+                <strong>Stickers personnalisés avec votre logo</strong>
+                <span>Sur les produits du coffret (bougies, chocolats, etc.)</span>
+              </div>
+              <span class="tunnel-sticker-price">+ 10 €</span>
+            </label>
           </div>
           <div class="tunnel-subtotal">
             <div class="tunnel-subtotal-label">Sous-total indicatif</div>
@@ -1007,50 +1098,54 @@ window.addEventListener('load', function() {
 
         <div class="tunnel-panel" data-panel="2">
           <h3>Votre personnalisation</h3>
-          <p class="tunnel-panel-sub">Logo, couleurs, message — tout pour donner vie à votre marque.</p>
-          <div class="tunnel-form-field">
-            <label>Logo de votre entreprise</label>
-            <label class="tunnel-upload" id="tunnelUpload">
-              <input type="file" name="logo" accept="image/png,image/jpeg,image/svg+xml,application/pdf" onchange="handleLogoUpload(this)">
-              <div class="tunnel-upload-placeholder">
-                <div class="tunnel-upload-icon">
-                  <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                </div>
-                <div class="tunnel-upload-text">Déposer votre logo</div>
-                <div class="tunnel-upload-hint">PNG, JPG, SVG ou PDF — 5 Mo max</div>
-              </div>
-              <div class="tunnel-upload-preview">
-                <div class="tunnel-upload-thumb"><img id="tu-thumb" src="" alt=""></div>
-                <div class="tunnel-upload-filename" id="tu-filename"></div>
-              </div>
-            </label>
-          </div>
-          <div class="tunnel-preview" id="tunnelPreview">
-            <div class="tunnel-preview-label">Aperçu avec votre logo</div>
-            <div class="tunnel-preview-canvas">
-              <img class="tunnel-preview-coffret" id="tp-coffret" src="" alt="">
-              <img class="tunnel-preview-logo hidden" id="tp-logo" src="" alt="">
-              <div class="tunnel-preview-empty" id="tp-empty">Votre logo apparaîtra ici</div>
-            </div>
-            <p class="tunnel-preview-hint">Emplacement approximatif — le rendu final sera ajusté par notre studio.</p>
-          </div>
-          <div class="tunnel-form-row">
+          <p class="tunnel-panel-sub">Personnalisation en 3 étapes — logo, message et occasion.</p>
+
+          <div class="tunnel-substep">
+            <div class="tunnel-substep-header"><span class="tunnel-substep-num">1</span><span>Ajouter votre logo</span></div>
             <div class="tunnel-form-field">
-              <label>Couleur principale</label>
-              <input type="text" name="couleur" placeholder="#C4A46C ou « bleu marine »">
+              <label>Logo de votre entreprise (optionnel)</label>
+              <label class="tunnel-upload" id="tunnelUpload">
+                <input type="file" name="logo" accept="image/png,image/jpeg,image/svg+xml,application/pdf" onchange="handleLogoUpload(this)">
+                <div class="tunnel-upload-placeholder">
+                  <div class="tunnel-upload-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  </div>
+                  <div class="tunnel-upload-text">Déposer votre logo</div>
+                  <div class="tunnel-upload-hint">PNG, JPG, SVG ou PDF — 5 Mo max</div>
+                </div>
+                <div class="tunnel-upload-preview">
+                  <div class="tunnel-upload-thumb"><img id="tu-thumb" src="" alt=""></div>
+                  <div class="tunnel-upload-filename" id="tu-filename"></div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="tunnel-substep">
+            <div class="tunnel-substep-header"><span class="tunnel-substep-num">2</span><span>Message &amp; date</span></div>
+            <div class="tunnel-form-field">
+              <label>Message carte manuscrite</label>
+              <textarea name="message_carte" placeholder="Merci, joyeuses fêtes, bonne année…"></textarea>
             </div>
             <div class="tunnel-form-field">
               <label>Date souhaitée</label>
               <input type="text" name="date_souhaitee" placeholder="JJ/MM/AAAA">
             </div>
           </div>
-          <div class="tunnel-form-field">
-            <label>Message carte manuscrite</label>
-            <textarea name="message_carte" placeholder="Joyeuses fêtes, merci pour cette belle année…"></textarea>
-          </div>
-          <div class="tunnel-form-field">
-            <label>Demandes particulières (optionnel)</label>
-            <textarea name="demandes" placeholder="Allergies, adresses multiples, contraintes de livraison…"></textarea>
+
+          <div class="tunnel-substep">
+            <div class="tunnel-substep-header"><span class="tunnel-substep-num">3</span><span>Occasion</span></div>
+            <div class="tunnel-form-field">
+              <label>Occasion / Contexte</label>
+              <select name="occasion">
+                <option value="">Sélectionner</option>
+                <option value="fin_annee">Cadeaux de fin d'année</option>
+                <option value="onboarding">Onboarding collaborateurs</option>
+                <option value="clients_vip">Clients VIP</option>
+                <option value="evenement">Événement d'entreprise</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
           </div>
         </div>
 
