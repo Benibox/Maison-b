@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison B — Cartographie du site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --creme:#E8E2D9; --blanc:#FAFAF8; --beige:#F4ECE0; --sable:#C9BFAE;
+  --or:#8C7851; --or-soft:rgba(140,120,81,0.12); --or-strong:#73633F;
+  --noir:#1A1A1A; --brun:#2C2821; --tabac:#3D362C; --gris:#6B6258; --gris-clair:#E5E0D7;
+  --serif:'Cormorant Garamond',serif; --sans:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);color:var(--noir);background:var(--blanc);line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased}
+.section{padding:clamp(60px,8vw,120px) clamp(24px,5vw,80px);position:relative}
+.section-inner{max-width:1280px;margin:0 auto}
+.eyebrow{display:inline-block;font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--or);font-weight:500;margin-bottom:18px}
+h1,h2,h3{font-family:var(--serif);font-weight:300;color:var(--noir);line-height:1.1;letter-spacing:-0.005em}
+h1{font-size:clamp(48px,7vw,88px);font-weight:300}
+h1 em{font-style:italic;font-weight:300}
+h2{font-size:clamp(36px,4.5vw,56px);margin-bottom:24px}
+h2 em{font-style:italic;color:var(--or)}
+h3{font-size:clamp(22px,2.4vw,30px);margin-bottom:14px}
+.lede{font-family:var(--serif);font-size:clamp(17px,1.5vw,22px);font-weight:300;line-height:1.55;color:var(--tabac);max-width:640px;margin-bottom:36px}
+p{font-size:14.5px;line-height:1.75;color:var(--gris);margin-bottom:14px}
+.muted{color:var(--gris);font-size:13px}
+hr.thin{border:none;border-top:1px solid var(--gris-clair);margin:48px 0}
+
+/* COVER */
+.cover{min-height:100vh;background:var(--creme);display:flex;flex-direction:column;justify-content:space-between;padding:60px clamp(24px,5vw,80px)}
+.cover-top{display:flex;justify-content:space-between;align-items:flex-start}
+.cover-logo{font-family:var(--serif);font-size:18px;font-weight:300;letter-spacing:8px;text-transform:uppercase;color:var(--noir)}
+.cover-meta{font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);text-align:right;line-height:1.8}
+.cover-center{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:900px}
+.cover-title{font-family:var(--serif);font-size:clamp(56px,9vw,120px);font-weight:300;line-height:.98;letter-spacing:-0.015em;margin-bottom:36px}
+.cover-title em{font-style:italic}
+.cover-sub{font-family:var(--serif);font-size:clamp(18px,1.8vw,24px);font-weight:300;color:var(--tabac);max-width:580px;line-height:1.5}
+.cover-bottom{display:flex;justify-content:space-between;align-items:flex-end;font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gris)}
+.cover-num{font-family:var(--serif);font-size:64px;font-style:italic;font-weight:300;color:var(--or);line-height:1;letter-spacing:0}
+
+/* SECTION HEADERS */
+.section-head{margin-bottom:64px;max-width:780px}
+.section-head .eyebrow-num{display:flex;align-items:center;gap:18px;margin-bottom:24px}
+.section-head .num{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--or);font-weight:300}
+.section-head .num::after{content:'';display:inline-block;width:48px;height:1px;background:var(--or);margin-left:18px;vertical-align:middle}
+
+/* OVERVIEW DIAGRAM */
+.section-overview{background:var(--blanc)}
+.flow-diagram{background:var(--creme);border-radius:0;padding:clamp(40px,5vw,72px);position:relative}
+.flow-grid{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+.flow-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.flow-node{background:var(--blanc);border:1px solid var(--gris-clair);padding:18px 24px;text-align:center;min-width:170px;position:relative;transition:transform .3s}
+.flow-node.primary{background:var(--noir);color:var(--blanc);border-color:var(--noir)}
+.flow-node.accent{background:var(--or);color:var(--blanc);border-color:var(--or)}
+.flow-node.dashed{border-style:dashed;background:transparent}
+.flow-node-label{font-family:var(--sans);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:inherit;opacity:.6;margin-bottom:4px;font-weight:500}
+.flow-node-name{font-family:var(--serif);font-size:16px;font-weight:400}
+.flow-arrow{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--or);text-align:center;margin:8px 0;letter-spacing:.05em}
+.flow-arrow svg{width:20px;height:20px;display:block;margin:0 auto;stroke:var(--or);fill:none;stroke-width:1.2}
+
+/* PAGES SECTION */
+.section-pages{background:var(--creme)}
+.page-card{background:var(--blanc);margin-bottom:64px;overflow:hidden;display:grid;grid-template-columns:1.1fr 1fr;align-items:stretch}
+.page-card:last-child{margin-bottom:0}
+.page-card-img{background:var(--gris-clair);position:relative;overflow:hidden;min-height:480px}
+.page-card-img img{width:100%;height:100%;object-fit:cover;object-position:top}
+.page-card-content{padding:clamp(32px,4vw,56px);display:flex;flex-direction:column;justify-content:center}
+.page-card-eyebrow{display:flex;align-items:baseline;gap:14px;margin-bottom:14px}
+.page-card-num{font-family:var(--serif);font-size:42px;font-style:italic;font-weight:300;color:var(--or);line-height:1}
+.page-card-tag{font-family:var(--sans);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gris);font-weight:500}
+.page-card h3{font-size:clamp(26px,3vw,36px);margin-bottom:8px}
+.page-card-url{font-family:var(--sans);font-size:12px;color:var(--or);margin-bottom:18px;letter-spacing:.5px;font-weight:500}
+.page-card-desc{font-family:var(--serif);font-size:16px;font-weight:300;color:var(--tabac);margin-bottom:24px;line-height:1.55}
+.cta-list{list-style:none;padding:0;margin:0}
+.cta-list li{display:flex;align-items:flex-start;gap:14px;padding:11px 0;border-bottom:1px solid var(--gris-clair);font-size:13px;color:var(--noir)}
+.cta-list li:last-child{border-bottom:none}
+.cta-list .cta-name{font-family:var(--sans);font-weight:600;color:var(--noir);min-width:180px;flex-shrink:0}
+.cta-list .cta-arrow{font-family:var(--serif);font-style:italic;color:var(--or);font-size:14px}
+.cta-list .cta-target{color:var(--gris);font-size:12.5px;line-height:1.5;flex:1}
+.cta-list .cta-target code{font-family:'SF Mono','Menlo',monospace;font-size:11.5px;background:var(--beige);padding:1px 6px;color:var(--noir);border-radius:2px}
+
+/* FLOW SECTIONS */
+.section-flow{background:var(--blanc)}
+.section-flow.alt{background:var(--creme)}
+.flow-sequence{display:flex;gap:clamp(16px,2vw,32px);overflow-x:auto;padding-bottom:24px;margin-bottom:32px;scroll-snap-type:x mandatory}
+.flow-step{flex-shrink:0;width:clamp(280px,28vw,360px);scroll-snap-align:start}
+.flow-step-num{display:inline-flex;align-items:center;gap:12px;font-family:var(--sans);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--or);font-weight:500;margin-bottom:14px}
+.flow-step-num::before{content:'';display:inline-block;width:24px;height:24px;border:1px solid var(--or);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--or)}
+.flow-step-num .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border:1px solid var(--or);border-radius:50%;font-family:var(--serif);font-style:italic;font-size:14px;font-weight:400}
+.flow-step-num .n::before{content:none}
+.flow-step-num{display:flex;align-items:center;gap:12px}
+.flow-step-img{background:var(--beige);overflow:hidden;border:1px solid var(--gris-clair);margin-bottom:18px;aspect-ratio:16/10}
+.flow-step-img img{width:100%;height:100%;object-fit:cover;object-position:top}
+.flow-step h4{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--noir);margin-bottom:8px;line-height:1.3}
+.flow-step p{font-size:13px;color:var(--gris);line-height:1.6;margin-bottom:0}
+.flow-step .badge{display:inline-block;font-family:var(--sans);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--or);font-weight:500;background:var(--or-soft);padding:3px 10px;border-radius:100px;margin-top:10px}
+
+/* INTEGRATIONS */
+.section-integ{background:var(--creme)}
+.integ-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.integ-card{background:var(--blanc);padding:28px;border:1px solid var(--gris-clair)}
+.integ-card-tag{font-family:var(--sans);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--or);font-weight:500;margin-bottom:10px}
+.integ-card h4{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:10px;color:var(--noir)}
+.integ-card p{font-size:13px;color:var(--gris);line-height:1.7;margin-bottom:10px}
+.integ-card code{font-family:'SF Mono','Menlo',monospace;font-size:11.5px;background:var(--beige);padding:2px 8px;color:var(--noir);display:inline-block;margin-top:6px;border-radius:2px;word-break:break-all;max-width:100%}
+
+/* TBD */
+.section-tbd{background:var(--brun);color:var(--blanc)}
+.section-tbd .eyebrow{color:var(--sable)}
+.section-tbd h2{color:var(--blanc)}
+.section-tbd h2 em{color:var(--or)}
+.section-tbd .lede{color:rgba(250,250,248,.65)}
+.tbd-list{list-style:none;padding:0;margin:0;border-top:1px solid rgba(250,250,248,.15)}
+.tbd-list li{padding:24px 0;border-bottom:1px solid rgba(250,250,248,.15);display:grid;grid-template-columns:80px 1fr;gap:24px;align-items:baseline}
+.tbd-list .num{font-family:var(--serif);font-style:italic;font-size:32px;color:var(--or);font-weight:300}
+.tbd-list .body strong{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--blanc);display:block;margin-bottom:6px}
+.tbd-list .body span{font-size:13.5px;color:rgba(250,250,248,.7);line-height:1.7}
+
+/* OUTRO */
+.section-outro{background:var(--blanc);padding:120px clamp(24px,5vw,80px) 80px;text-align:center}
+.outro-logo{font-family:var(--serif);font-size:14px;font-weight:300;letter-spacing:8px;text-transform:uppercase;color:var(--noir);margin-bottom:32px}
+.outro-msg{font-family:var(--serif);font-style:italic;font-size:32px;font-weight:300;line-height:1.3;color:var(--noir);max-width:680px;margin:0 auto 32px}
+.outro-meta{font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gris);font-weight:500}
+
+/* RESPONSIVE */
+@media (max-width:880px){
+  .page-card{grid-template-columns:1fr}
+  .page-card-img{min-height:280px}
+  .cta-list .cta-name{min-width:auto;display:block;margin-bottom:4px}
+  .cta-list li{flex-wrap:wrap}
+  .cover-top{flex-direction:column;gap:24px}
+  .cover-meta{text-align:left}
+  .tbd-list li{grid-template-columns:50px 1fr;gap:14px}
+}
+
+/* PRINT */
+@media print{
+  body{font-size:11pt}
+  .section{page-break-inside:avoid;padding:30px 24px}
+  .page-card{page-break-inside:avoid}
+  .flow-step{page-break-inside:avoid}
+  .cover{min-height:100vh;page-break-after:always}
+  .section{page-break-before:auto}
+  h2{page-break-after:avoid}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="cover">
+  <div class="cover-top">
+    <div class="cover-logo">Maison B</div>
+    <div class="cover-meta">
+      Cartographie du site<br>
+      v1 · Mai 2026
+    </div>
+  </div>
+  <div class="cover-center">
+    <div class="cover-num">01</div>
+    <h1 class="cover-title">Le site,<br><em>de bout en bout.</em></h1>
+    <p class="cover-sub">Chaque page, chaque bouton, chaque parcours utilisateur — visualisés et documentés en un seul document.</p>
+  </div>
+  <div class="cover-bottom">
+    <span>Présentation client</span>
+    <span>maisonb.fr</span>
+  </div>
+</section>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="section section-overview">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-num"><span class="num">02</span></div>
+      <span class="eyebrow">Vue d'ensemble</span>
+      <h2>L'architecture en <em>un coup d'œil</em></h2>
+      <p class="lede">7 pages publiques, 1 panier persistant cross-pages, 3 modes de tunnel de commande, 1 paiement Stripe sécurisé. Le client navigue, configure, paie — sans friction.</p>
+    </div>
+
+    <div class="flow-diagram">
+      <div class="flow-grid">
+        <div class="flow-row">
+          <div class="flow-node primary"><div class="flow-node-label">Entrée</div><div class="flow-node-name">Page d'accueil</div></div>
+        </div>
+        <div class="flow-arrow"><svg viewBox="0 0 24 24"><path d="M12 4v16m0 0l-6-6m6 6l6-6"/></svg></div>
+        <div class="flow-row">
+          <div class="flow-node"><div class="flow-node-label">Récit</div><div class="flow-node-name">Notre histoire</div></div>
+          <div class="flow-node accent"><div class="flow-node-label">Catalogue</div><div class="flow-node-name">Nos coffrets</div></div>
+          <div class="flow-node"><div class="flow-node-label">Sur-mesure</div><div class="flow-node-name">100% personnalisé</div></div>
+          <div class="flow-node"><div class="flow-node-label">Lien</div><div class="flow-node-name">Contact</div></div>
+        </div>
+        <div class="flow-arrow"><svg viewBox="0 0 24 24"><path d="M12 4v16m0 0l-6-6m6 6l6-6"/></svg></div>
+        <div class="flow-row">
+          <div class="flow-node dashed"><div class="flow-node-label">État interne</div><div class="flow-node-name">Fiche coffret</div></div>
+          <div class="flow-node dashed"><div class="flow-node-label">État interne</div><div class="flow-node-name">Tunnel config</div></div>
+          <div class="flow-node dashed"><div class="flow-node-label">État interne</div><div class="flow-node-name">Panier</div></div>
+        </div>
+        <div class="flow-arrow"><svg viewBox="0 0 24 24"><path d="M12 4v16m0 0l-6-6m6 6l6-6"/></svg></div>
+        <div class="flow-row">
+          <div class="flow-node primary"><div class="flow-node-label">Paiement</div><div class="flow-node-name">Stripe Checkout</div></div>
+          <div class="flow-arrow" style="align-self:center;margin:0 8px">→</div>
+          <div class="flow-node accent"><div class="flow-node-label">Confirmation</div><div class="flow-node-name">Commande validée</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGES ============ -->
+<section class="section section-pages">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-num"><span class="num">03</span></div>
+      <span class="eyebrow">Les pages</span>
+      <h2>7 pages, <em>chacune avec un rôle</em></h2>
+      <p class="lede">Une grammaire commune (nav, footer, panier) et un rôle dédié par page. Le client suit un fil narratif clair sans jamais se perdre.</p>
+    </div>
+
+    <!-- Page 1 — Home -->
+    <div class="page-card">
+      <div class="page-card-img"><img src="screens/01-home-desktop.png" alt="Page d'accueil"></div>
+      <div class="page-card-content">
+        <div class="page-card-eyebrow"><span class="page-card-num">01</span><span class="page-card-tag">Page d'accueil</span></div>
+        <h3>Qui sommes-nous & ce que nous proposons</h3>
+        <div class="page-card-url">/ &nbsp;·&nbsp; index.html</div>
+        <p class="page-card-desc">L'entrée principale. Carousel hero avec 4 narratives, vitrine des 4 coffrets signatures, showcase des réalisations clients, CTA sur-mesure.</p>
+        <ul class="cta-list">
+          <li><span class="cta-name">Slide 1 → Histoire</span><span class="cta-arrow">→</span><span class="cta-target"><code>a-propos.html</code></span></li>
+          <li><span class="cta-name">Slide 2 → Catalogue</span><span class="cta-arrow">→</span><span class="cta-target"><code>coffrets-semi-custom.html</code></span></li>
+          <li><span class="cta-name">Slide 3 → Sur-mesure</span><span class="cta-arrow">→</span><span class="cta-target"><code>coffrets-personnalises-entreprises.html</code></span></li>
+          <li><span class="cta-name">Slide 4 → Réalisations</span><span class="cta-arrow">→</span><span class="cta-target">Anchor <code>#inspirations</code></span></li>
+          <li><span class="cta-name">4 cards coffrets</span><span class="cta-arrow">→</span><span class="cta-target">Ouvre la fiche détaillée du coffret</span></li>
+          <li><span class="cta-name">CTA bas de page</span><span class="cta-arrow">→</span><span class="cta-target">Demander un devis sur-mesure</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Page 2 — Catalogue -->
+    <div class="page-card">
+      <div class="page-card-img"><img src="screens/02-semi-custom-desktop.png" alt="Catalogue coffrets"></div>
+      <div class="page-card-content">
+        <div class="page-card-eyebrow"><span class="page-card-num">02</span><span class="page-card-tag">Catalogue</span></div>
+        <h3>Nos coffrets prêts à personnaliser</h3>
+        <div class="page-card-url">/coffrets-semi-custom.html</div>
+        <p class="page-card-desc">8 coffrets pré-composés avec ratio prix transparent. Chaque card ouvre une fiche produit immersive ; chaque fiche permet d'ajouter au panier ou de commander direct.</p>
+        <ul class="cta-list">
+          <li><span class="cta-name">Card coffret (×8)</span><span class="cta-arrow">→</span><span class="cta-target">Ouvre la fiche produit (overlay)</span></li>
+          <li><span class="cta-name">Hero "Demander devis"</span><span class="cta-arrow">→</span><span class="cta-target">Anchor <code>#devis</code></span></li>
+          <li><span class="cta-name">"30+ coffrets ?"</span><span class="cta-arrow">→</span><span class="cta-target">Page sur-mesure entreprises</span></li>
+          <li><span class="cta-name">CTA bas "Full custom"</span><span class="cta-arrow">→</span><span class="cta-target">Page sur-mesure entreprises</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Page 3 — Entreprises -->
+    <div class="page-card">
+      <div class="page-card-img"><img src="screens/03-entreprises-desktop.png" alt="100% personnalisé entreprises"></div>
+      <div class="page-card-content">
+        <div class="page-card-eyebrow"><span class="page-card-num">03</span><span class="page-card-tag">Sur-mesure</span></div>
+        <h3>Votre coffret 100% à votre image</h3>
+        <div class="page-card-url">/coffrets-personnalises-entreprises.html</div>
+        <p class="page-card-desc">La proposition entreprise haut de gamme. Hero éditorial en 4 coffrets, comparaison vs catalogue, méthode 4 étapes, modal de demande de devis.</p>
+        <ul class="cta-list">
+          <li><span class="cta-name">Hero "Demander devis"</span><span class="cta-arrow">→</span><span class="cta-target">Ouvre modal formulaire</span></li>
+          <li><span class="cta-name">CTA bas "Devis"</span><span class="cta-arrow">→</span><span class="cta-target">Ouvre modal formulaire</span></li>
+          <li><span class="cta-name">Submit modal</span><span class="cta-arrow">→</span><span class="cta-target">Envoi vers Formspree (équipe Maison B)</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Page 4 — A propos -->
+    <div class="page-card">
+      <div class="page-card-img"><img src="screens/04-apropos-desktop.png" alt="Notre histoire"></div>
+      <div class="page-card-content">
+        <div class="page-card-eyebrow"><span class="page-card-num">04</span><span class="page-card-tag">Notre histoire</span></div>
+        <h3>Le récit Maison B</h3>
+        <div class="page-card-url">/a-propos.html</div>
+        <p class="page-card-desc">Page éditoriale narrative. Construit la confiance et l'attachement à la marque. Pas de form, pas d'action commerciale — juste de la lecture.</p>
+        <ul class="cta-list">
+          <li><span class="cta-name">Nav + footer</span><span class="cta-arrow">→</span><span class="cta-target">Renvoie vers les autres pages</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Page 5 — Contact -->
+    <div class="page-card">
+      <div class="page-card-img"><img src="screens/05-contact-desktop.png" alt="Contact"></div>
+      <div class="page-card-content">
+        <div class="page-card-eyebrow"><span class="page-card-num">05</span><span class="page-card-tag">Contact</span></div>
+        <h3>Échanger avec le studio</h3>
+        <div class="page-card-url">/contact.html</div>
+        <p class="page-card-desc">Form de contact pour les demandes générales. Email et téléphone directs en alternative.</p>
+        <ul class="cta-list">
+          <li><span class="cta-name">Form contact</span><span class="cta-arrow">→</span><span class="cta-target">Envoi vers Formspree</span></li>
+          <li><span class="cta-name">Email cliquable</span><span class="cta-arrow">→</span><span class="cta-target"><code>contact@bubbles-paris.com</code></span></li>
+          <li><span class="cta-name">Téléphone</span><span class="cta-arrow">→</span><span class="cta-target">Click-to-call mobile</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Page 6 + 7 — Légal & Confirmation (combined card) -->
+    <div class="page-card">
+      <div class="page-card-img"><img src="screens/07-confirmee-desktop.png" alt="Commande confirmée"></div>
+      <div class="page-card-content">
+        <div class="page-card-eyebrow"><span class="page-card-num">06·07</span><span class="page-card-tag">Pages utilitaires</span></div>
+        <h3>Mentions légales · Commande confirmée</h3>
+        <div class="page-card-url">/mentions-legales.html · /commande-confirmee.html</div>
+        <p class="page-card-desc">Mentions légales (RGPD, CGV, cookies). Page post-paiement Stripe avec récap et lien retour accueil.</p>
+        <ul class="cta-list">
+          <li><span class="cta-name">Mentions légales</span><span class="cta-arrow">→</span><span class="cta-target">Anchor <code>#cookies</code> linkée depuis footer</span></li>
+          <li><span class="cta-name">Commande confirmée</span><span class="cta-arrow">→</span><span class="cta-target">Reçoit <code>?session_id=cs_xxx</code> de Stripe</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLOW : DECOUVRIR + AJOUTER ============ -->
+<section class="section section-flow">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-num"><span class="num">04</span></div>
+      <span class="eyebrow">Parcours utilisateur</span>
+      <h2>Ajouter un coffret <em>au panier</em></h2>
+      <p class="lede">L'utilisateur découvre un coffret, le configure (quantité, logo, message), et l'ajoute au panier. Tout est persisté localement.</p>
+    </div>
+
+    <div class="flow-sequence">
+      <div class="flow-step">
+        <div class="flow-step-num"><span class="n">1</span><span>Découverte</span></div>
+        <div class="flow-step-img"><img src="screens/02-semi-custom-desktop.png" alt="Catalogue"></div>
+        <h4>Page catalogue</h4>
+        <p>L'utilisateur parcourt les 8 coffrets disponibles, lit le titre, le prix, l'aperçu visuel. Il choisit celui qui l'intéresse.</p>
+        <span class="badge">Click sur card</span>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-num"><span class="n">2</span><span>Fiche produit</span></div>
+        <div class="flow-step-img"><img src="screens/11-product-overlay-desktop.png" alt="Fiche produit"></div>
+        <h4>Détails du coffret</h4>
+        <p>Carousel 4 photos, description, liste de ce qui est inclus. Deux choix : ajouter au panier (config) ou commander directement.</p>
+        <span class="badge">"Ajouter au panier"</span>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-num"><span class="n">3</span><span>Configuration · qté</span></div>
+        <div class="flow-step-img"><img src="screens/12-tunnel-step1-desktop.png" alt="Tunnel étape 1"></div>
+        <h4>Quantité & extras</h4>
+        <p>Réglage de la quantité, option stickers logo (+10€). Sous-total calculé en direct.</p>
+        <span class="badge">"Continuer"</span>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-num"><span class="n">4</span><span>Personnalisation</span></div>
+        <div class="flow-step-img"><img src="screens/13-tunnel-step2-desktop.png" alt="Tunnel étape 2"></div>
+        <h4>Logo · message · occasion</h4>
+        <p>Upload du logo entreprise, message manuscrit, date souhaitée, occasion (fin d'année, onboarding, VIP…).</p>
+        <span class="badge">"Ajouter au panier"</span>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-num"><span class="n">5</span><span>Confirmation</span></div>
+        <div class="flow-step-img"><img src="screens/15-cart-filled-desktop.png" alt="Panier rempli"></div>
+        <h4>Le panier</h4>
+        <p>Drawer s'ouvre depuis la droite. Récap visuel des coffrets configurés, total, possibilité de modifier les quantités ou retirer.</p>
+        <span class="badge">Persisté localStorage</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLOW : COMMANDER ============ -->
+<section class="section section-flow alt">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-num"><span class="num">05</span></div>
+      <span class="eyebrow">Parcours utilisateur</span>
+      <h2>Finaliser <em>sa commande</em></h2>
+      <p class="lede">Depuis le panier, l'utilisateur passe en checkout direct, paie sécurisé via Stripe, et reçoit sa confirmation.</p>
+    </div>
+
+    <div class="flow-sequence">
+      <div class="flow-step">
+        <div class="flow-step-num"><span class="n">1</span><span>Panier rempli</span></div>
+        <div class="flow-step-img"><img src="screens/15-cart-filled-desktop.png" alt="Panier"></div>
+        <h4>Click "Commander"</h4>
+        <p>Le panier affiche le récap et le total. Bouton noir "Commander →" dans le footer du drawer.</p>
+        <span class="badge">Tunnel mode checkout</span>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-num"><span class="n">2</span><span>Récap & paiement</span></div>
+        <div class="flow-step-img"><img src="screens/14-tunnel-step3-desktop.png" alt="Tunnel étape paiement"></div>
+        <h4>Coordonnées</h4>
+        <p>Récap pré-rempli depuis le panier. L'utilisateur saisit nom + email. Click "Payer X € par carte →".</p>
+        <span class="badge">→ /api/create-checkout-session</span>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-num"><span class="n">3</span><span>Stripe Checkout</span></div>
+        <div class="flow-step-img" style="background:#635BFF;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--serif);font-style:italic;font-size:48px;font-weight:300">stripe</div>
+        <h4>Paiement hébergé</h4>
+        <p>Redirection vers Stripe Checkout (page hébergée). Adresse de livraison FR/BE/LU/CH/MC, téléphone, méthodes : Visa, Mastercard, Amex, Apple Pay, Google Pay.</p>
+        <span class="badge">PCI compliant</span>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-num"><span class="n">4</span><span>Confirmation</span></div>
+        <div class="flow-step-img"><img src="screens/07-confirmee-desktop.png" alt="Commande confirmée"></div>
+        <h4>Page de retour</h4>
+        <p>Stripe redirige vers <code>/commande-confirmee?session_id=cs_xxx</code>. Le studio Maison B reçoit le brief complet par email.</p>
+        <span class="badge">Email équipe + client</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLOW : DEVIS ============ -->
+<section class="section section-flow">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-num"><span class="num">06</span></div>
+      <span class="eyebrow">Parcours utilisateur</span>
+      <h2>Demander un devis <em>sur-mesure</em></h2>
+      <p class="lede">Pour les commandes 100% personnalisées (30+ coffrets), un parcours alternatif via formulaire — l'équipe répond sous 48h.</p>
+    </div>
+
+    <div class="flow-sequence">
+      <div class="flow-step">
+        <div class="flow-step-num"><span class="n">1</span><span>Page sur-mesure</span></div>
+        <div class="flow-step-img"><img src="screens/03-entreprises-desktop.png" alt="Page sur-mesure"></div>
+        <h4>Page sur-mesure</h4>
+        <p>L'utilisateur découvre la proposition entreprise, comprend la différence avec le catalogue, et clique sur "Demander un devis".</p>
+        <span class="badge">CTA principal hero</span>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-num"><span class="n">2</span><span>Modal devis</span></div>
+        <div class="flow-step-img"><img src="screens/16-devis-modal-desktop.png" alt="Modal devis"></div>
+        <h4>Formulaire détaillé</h4>
+        <p>Modal centré : nom, entreprise, email, téléphone, quantité, occasion, budget, message, contraintes. Validation client puis submit.</p>
+        <span class="badge">Submit → Formspree</span>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-num"><span class="n">3</span><span>Suivi équipe</span></div>
+        <div class="flow-step-img" style="background:var(--noir);display:flex;align-items:center;justify-content:center;color:var(--blanc);font-family:var(--serif);font-style:italic;font-size:24px;text-align:center;padding:24px;font-weight:300">Devis sous 48h<br><span style="font-size:13px;font-style:normal;letter-spacing:0.18em;text-transform:uppercase;color:var(--or);font-family:var(--sans);font-weight:500;margin-top:14px;display:block">Réponse personnalisée</span></div>
+        <h4>Brief envoyé</h4>
+        <p>L'équipe Maison B reçoit le brief complet par email (Formspree). Réponse personnalisée sous 48h avec une proposition détaillée.</p>
+        <span class="badge">Aucun engagement</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTEGRATIONS ============ -->
+<section class="section section-integ">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-num"><span class="num">07</span></div>
+      <span class="eyebrow">Backend &amp; intégrations</span>
+      <h2>Les services <em>connectés</em></h2>
+      <p class="lede">Le site est statique, mais s'appuie sur des services tiers pour le paiement, la collecte de leads et les rendez-vous.</p>
+    </div>
+
+    <div class="integ-grid">
+      <div class="integ-card">
+        <div class="integ-card-tag">Paiement</div>
+        <h4>Stripe Checkout</h4>
+        <p>Page de paiement hébergée, certifiée PCI. Géré via une Cloudflare Function qui crée la session de paiement.</p>
+        <code>/api/create-checkout-session</code>
+      </div>
+      <div class="integ-card">
+        <div class="integ-card-tag">Leads</div>
+        <h4>Formspree</h4>
+        <p>3 endpoints distincts pour les forms : tunnel commande (brief), modal devis entreprise, contact général. Réception par email.</p>
+        <code>formspree.io/f/...</code>
+      </div>
+      <div class="integ-card">
+        <div class="integ-card-tag">Booking</div>
+        <h4>Google Calendar</h4>
+        <p>Lien de prise de RDV studio depuis la page sur-mesure. Le client réserve son créneau directement.</p>
+        <code>calendar.app.google/...</code>
+      </div>
+      <div class="integ-card">
+        <div class="integ-card-tag">Hosting</div>
+        <h4>Cloudflare Workers</h4>
+        <p>Hosting du site statique + Cloudflare Functions pour le backend Stripe. Performance + sécurité réseau.</p>
+        <code>site-maison-b-v2.workers.dev</code>
+      </div>
+      <div class="integ-card">
+        <div class="integ-card-tag">Persistance</div>
+        <h4>Local Storage</h4>
+        <p>Le panier est sauvegardé localement dans le navigateur de l'utilisateur. Persiste entre les sessions, sans serveur.</p>
+        <code>maisonb_cart_v1</code>
+      </div>
+      <div class="integ-card">
+        <div class="integ-card-tag">Typo</div>
+        <h4>Google Fonts</h4>
+        <p>Cormorant Garamond (serif éditorial) pour les titres et accents italiques. DM Sans (sans-serif moderne) pour le corps.</p>
+        <code>Cormorant Garamond + DM Sans</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TBD ============ -->
+<section class="section section-tbd">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-num"><span class="num" style="color:var(--or)">08</span></div>
+      <span class="eyebrow">Roadmap</span>
+      <h2>Ce qui <em>reste à faire</em></h2>
+      <p class="lede">Le site est fonctionnel et déployé. Quelques optimisations identifiées pour les prochaines itérations.</p>
+    </div>
+
+    <ol class="tbd-list">
+      <li>
+        <span class="num">i.</span>
+        <div class="body">
+          <strong>Checkout multi-coffrets</strong>
+          <span>Le backend Stripe traite actuellement un coffret par session. Pour un panier avec plusieurs coffrets différents, refactor de la fonction Cloudflare nécessaire pour passer un tableau de line_items à Stripe.</span>
+        </div>
+      </li>
+      <li>
+        <span class="num">ii.</span>
+        <div class="body">
+          <strong>Lien "Sur-mesure" dans la nav</strong>
+          <span>La page <code>coffrets-personnalises-entreprises</code> est accessible via les CTAs internes mais absente de la nav top. Ajouter un 4e item de nav pour visibilité directe.</span>
+        </div>
+      </li>
+      <li>
+        <span class="num">iii.</span>
+        <div class="body">
+          <strong>Quantité minimum cohérente</strong>
+          <span>Le tunnel UI accepte quantité ≥ 1. Le backend Stripe exige minimum 5. Aligner les deux validations pour éviter une erreur silencieuse au paiement.</span>
+        </div>
+      </li>
+      <li>
+        <span class="num">iv.</span>
+        <div class="body">
+          <strong>Persistance du logo en panier</strong>
+          <span>Le fichier logo uploadé (PNG/PDF) n'est pas sauvegardé localement avec le coffret (limite localStorage). À chaque commande, l'utilisateur doit re-uploader. Solution : upload immédiat vers un service de stockage et persistance de l'URL.</span>
+        </div>
+      </li>
+      <li>
+        <span class="num">v.</span>
+        <div class="body">
+          <strong>Newsletter footer</strong>
+          <span>Le formulaire newsletter dans le footer est cosmétique (submit handler retourne false). À brancher sur un service email (Mailchimp, Brevo, Resend, etc.).</span>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ OUTRO ============ -->
+<section class="section-outro">
+  <div class="outro-logo">Maison B</div>
+  <p class="outro-msg">Un site qui raconte,<br>qui guide, et qui <em>convertit.</em></p>
+  <div class="outro-meta">Cartographie · Mai 2026</div>
+</section>
+
+</body>
+</html>
