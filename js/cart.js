@@ -141,7 +141,12 @@
       '.mb-cart-badge.visible{display:flex}' +
       '.mb-cart-badge.pulse{animation:mbCartPulse .55s cubic-bezier(.22,1,.36,1)}' +
       '@keyframes mbCartPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}' +
-      '@media (max-width:768px){.mb-cart-panel{width:100vw}.mb-cart-header{padding:18px 24px 16px}.mb-cart-header h2{font-size:22px}.mb-cart-body{padding:20px 24px}.mb-cart-footer{padding:18px 24px 24px}.mb-cart-empty h3{font-size:24px}.mb-cart-item-img{width:68px;height:68px}}';
+      '@media (max-width:768px){.mb-cart-panel{width:100vw}.mb-cart-header{padding:18px 24px 16px}.mb-cart-header h2{font-size:22px}.mb-cart-body{padding:20px 24px}.mb-cart-footer{padding:18px 24px 24px}.mb-cart-empty h3{font-size:24px}.mb-cart-item-img{width:68px;height:68px}}' +
+      /* Footer-bottom social icons (Insta + LinkedIn) — applied site-wide */
+      '.footer-social-bottom{display:inline-flex;gap:14px;align-items:center}' +
+      '.footer-social-bottom a{display:inline-flex;align-items:center;justify-content:center;color:var(--sable,#C9BFAE);transition:color .3s,transform .3s}' +
+      '.footer-social-bottom a:hover{color:var(--noir,#1A1A1A);transform:translateY(-2px)}' +
+      '.footer-social-bottom svg{display:block}';
     var style = document.createElement('style');
     style.id = 'mb-cart-styles';
     style.textContent = css;
