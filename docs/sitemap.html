@@ -13,57 +13,61 @@
   --or:#8C7851; --or-soft:rgba(140,120,81,0.15); --or-strong:#73633F;
   --noir:#1A1A1A; --brun:#2C2821; --tabac:#3D362C; --gris:#6B6258; --gris-clair:#E5E0D7;
   --serif:'Cormorant Garamond',serif; --sans:'DM Sans',sans-serif;
+  --frame-fill:rgba(250,250,248,0.55); --frame-stroke:rgba(140,120,81,0.22);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden;font-family:var(--sans);color:var(--noir);background:var(--creme);-webkit-font-smoothing:antialiased}
 
-/* ========== TOP BAR ========== */
 .topbar{position:fixed;top:0;left:0;right:0;height:56px;background:rgba(250,250,248,0.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--gris-clair)}
 .topbar-left{display:flex;align-items:center;gap:18px}
 .topbar-logo{font-family:var(--serif);font-size:14px;font-weight:300;letter-spacing:6px;text-transform:uppercase;color:var(--noir)}
 .topbar-divider{width:1px;height:18px;background:var(--gris-clair)}
 .topbar-title{font-family:var(--serif);font-size:14px;font-style:italic;color:var(--gris);font-weight:300}
 .topbar-right{display:flex;align-items:center;gap:8px}
-
 .legend{display:flex;align-items:center;gap:14px;font-family:var(--sans);font-size:11px;color:var(--gris);margin-right:16px}
 .legend-item{display:inline-flex;align-items:center;gap:6px;letter-spacing:.05em}
 .legend-dot{width:9px;height:9px;border-radius:2px}
 .legend-dot.public{background:var(--noir)}
+.legend-dot.section{background:#5e5546}
 .legend-dot.state{background:var(--or)}
 .legend-dot.external{background:var(--sable)}
-
 .btn{background:var(--blanc);border:1px solid var(--gris-clair);color:var(--noir);font-family:var(--sans);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;padding:8px 14px;cursor:pointer;transition:all .25s;border-radius:0}
 .btn:hover{border-color:var(--noir);background:var(--noir);color:var(--blanc)}
 .btn.icon{width:34px;height:34px;padding:0;display:inline-flex;align-items:center;justify-content:center;font-size:16px;line-height:1}
 .zoom-level{font-family:var(--sans);font-size:11px;color:var(--gris);font-weight:500;min-width:48px;text-align:center;letter-spacing:.05em}
 
-/* ========== VIEWPORT ========== */
 .viewport{position:fixed;top:56px;left:0;right:0;bottom:0;overflow:hidden;cursor:grab;background:var(--creme);background-image:radial-gradient(circle at 1px 1px,rgba(140,120,81,0.18) 1px,transparent 0);background-size:32px 32px}
 .viewport.dragging{cursor:grabbing}
 .viewport.dragging *{cursor:grabbing!important}
-.canvas{position:absolute;top:0;left:0;transform-origin:0 0;width:3000px;height:3400px;will-change:transform}
+.canvas{position:absolute;top:0;left:0;transform-origin:0 0;width:3800px;height:3400px;will-change:transform}
 
-/* ========== ARROWS (SVG) ========== */
-.arrows{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+/* FRAMES (zone backgrounds) */
+.frames{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
+.frame{position:absolute;background:var(--frame-fill);border:1px dashed var(--frame-stroke);border-radius:8px}
+.frame-label{position:absolute;font-family:var(--serif);font-style:italic;font-size:24px;font-weight:300;color:var(--or);letter-spacing:.5px;background:var(--creme);padding:0 14px;top:-16px;left:24px}
+
+/* ARROWS */
+.arrows{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:5}
 .arrows .arrow-path{fill:none;stroke:var(--or);stroke-width:1.5;opacity:.55;transition:opacity .3s,stroke-width .3s,stroke .3s}
 .canvas.highlighting .arrows .arrow-path{opacity:.08}
 .canvas.highlighting .arrows .arrow-path.highlighted{opacity:1;stroke-width:2.4;stroke:var(--noir)}
-.arrows .arrow-label{font-family:var(--sans);font-size:11px;font-weight:500;fill:var(--gris);letter-spacing:.02em}
+.arrows .arrow-label{font-family:var(--sans);font-size:10.5px;font-weight:500;fill:var(--gris);letter-spacing:.02em}
 .arrows .arrow-label-bg{fill:var(--creme);stroke:var(--or-soft);stroke-width:1}
 .canvas.highlighting .arrow-label-group{opacity:.2;transition:opacity .3s}
 .canvas.highlighting .arrow-label-group.highlighted{opacity:1}
 .canvas.highlighting .arrow-label-group.highlighted .arrow-label-bg{fill:var(--noir);stroke:var(--noir)}
 .canvas.highlighting .arrow-label-group.highlighted .arrow-label{fill:var(--blanc)}
 
-/* ========== CARDS ========== */
-.card{position:absolute;background:var(--blanc);border:1px solid var(--gris-clair);box-shadow:0 1px 3px rgba(26,26,26,.04),0 8px 24px rgba(26,26,26,.06);transition:box-shadow .3s,transform .3s,border-color .3s;cursor:pointer;overflow:hidden;border-radius:0}
+/* CARDS */
+.card{position:absolute;background:var(--blanc);border:1px solid var(--gris-clair);box-shadow:0 1px 3px rgba(26,26,26,.04),0 8px 24px rgba(26,26,26,.06);transition:box-shadow .3s,transform .3s,border-color .3s;cursor:pointer;overflow:hidden;border-radius:0;z-index:10}
 .card:hover{box-shadow:0 4px 12px rgba(26,26,26,.08),0 16px 40px rgba(26,26,26,.12);transform:translateY(-2px);border-color:var(--or)}
 .canvas.highlighting .card{opacity:.32;transition:opacity .3s}
 .canvas.highlighting .card.highlighted{opacity:1}
 .canvas.highlighting .card.source-of-hover{border-color:var(--noir);box-shadow:0 4px 12px rgba(26,26,26,.12),0 16px 40px rgba(26,26,26,.18)}
 
-.card-tag{display:inline-block;font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:3px 8px;color:var(--blanc);position:absolute;top:14px;right:14px;z-index:2;border-radius:0}
+.card-tag{display:inline-block;font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:3px 8px;color:var(--blanc);position:absolute;top:12px;right:12px;z-index:2;border-radius:0}
 .card-tag.public{background:var(--noir)}
+.card-tag.section{background:#5e5546}
 .card-tag.state{background:var(--or)}
 .card-tag.external{background:var(--sable);color:var(--noir)}
 
@@ -71,31 +75,27 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);color:var(--noir);
 .card-thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .card-thumb-icon{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--brun);color:var(--blanc);font-family:var(--serif);font-size:48px;font-style:italic;font-weight:300}
 
-.card-body{padding:14px 18px 18px}
-.card-title{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--noir);line-height:1.25;margin-bottom:4px}
-.card-url{font-family:'SF Mono','Menlo',monospace;font-size:10.5px;color:var(--or);letter-spacing:.02em}
-.card-url.dim{color:var(--gris);font-style:italic;font-family:var(--sans)}
+.card-body{padding:12px 16px 14px}
+.card-title{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--noir);line-height:1.25;margin-bottom:3px}
+.card-meta{font-family:var(--sans);font-size:10px;color:var(--gris);letter-spacing:.05em;text-transform:uppercase;font-weight:500}
 
-/* ========== MODAL ========== */
+/* MODAL */
 .modal{position:fixed;inset:0;background:rgba(26,26,26,0.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:48px;cursor:zoom-out}
 .modal.open{display:flex}
 .modal-inner{position:relative;max-width:1280px;max-height:90vh;background:var(--blanc);box-shadow:0 30px 80px rgba(0,0,0,.4);overflow:hidden;cursor:default}
-.modal-header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--gris-clair)}
-.modal-title{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--noir)}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--gris-clair)}
+.modal-title{font-family:var(--serif);font-size:20px;font-weight:300;color:var(--noir)}
 .modal-close{background:none;border:none;cursor:pointer;font-size:24px;line-height:1;color:var(--gris);padding:4px 8px;transition:color .2s}
 .modal-close:hover{color:var(--noir)}
 .modal-body{overflow:auto;max-height:calc(90vh - 60px)}
 .modal-body img{width:100%;height:auto;display:block}
 
-/* ========== HINT ========== */
-.hint{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(26,26,26,.88);color:var(--blanc);font-family:var(--sans);font-size:11px;letter-spacing:.1em;padding:10px 18px;text-transform:uppercase;font-weight:500;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:50;pointer-events:none;opacity:1;transition:opacity .8s 3s}
+/* HINT */
+.hint{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(26,26,26,.88);color:var(--blanc);font-family:var(--sans);font-size:11px;letter-spacing:.1em;padding:10px 18px;text-transform:uppercase;font-weight:500;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:50;pointer-events:none;opacity:1;transition:opacity .8s 4s}
 .hint.fade{opacity:0}
 .hint kbd{display:inline-block;background:rgba(250,250,248,.18);padding:2px 6px;margin:0 4px;border-radius:2px;font-family:'SF Mono',monospace;font-size:10px;letter-spacing:0}
 
-@media (max-width:768px){
-  .legend{display:none}
-  .topbar-title{display:none}
-}
+@media (max-width:768px){.legend{display:none}.topbar-title{display:none}}
 </style>
 </head>
 <body>
@@ -104,13 +104,14 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);color:var(--noir);
   <div class="topbar-left">
     <span class="topbar-logo">Maison B</span>
     <span class="topbar-divider"></span>
-    <span class="topbar-title">Sitemap interactif</span>
+    <span class="topbar-title">Sitemap interactif · sections</span>
   </div>
   <div class="topbar-right">
     <div class="legend">
-      <span class="legend-item"><span class="legend-dot public"></span>Page publique</span>
-      <span class="legend-item"><span class="legend-dot state"></span>État interne</span>
-      <span class="legend-item"><span class="legend-dot external"></span>Service externe</span>
+      <span class="legend-item"><span class="legend-dot public"></span>Page</span>
+      <span class="legend-item"><span class="legend-dot section"></span>Section</span>
+      <span class="legend-item"><span class="legend-dot state"></span>État</span>
+      <span class="legend-item"><span class="legend-dot external"></span>Externe</span>
     </div>
     <button class="btn icon" id="zoomOut" title="Dézoomer">−</button>
     <span class="zoom-level" id="zoomLevel">50%</span>
@@ -121,7 +122,8 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);color:var(--noir);
 
 <div class="viewport" id="viewport">
   <div class="canvas" id="canvas">
-    <svg class="arrows" id="arrows" width="3000" height="3400" xmlns="http://www.w3.org/2000/svg">
+    <div class="frames" id="frames"></div>
+    <svg class="arrows" id="arrows" width="3800" height="3400" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
           <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--or)"/>
@@ -131,106 +133,153 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);color:var(--noir);
         </marker>
       </defs>
     </svg>
-    <!-- Cards rendered by JS -->
   </div>
 </div>
 
 <div class="modal" id="modal">
-  <div class="modal-inner" id="modalInner">
+  <div class="modal-inner">
     <div class="modal-header">
       <h3 class="modal-title" id="modalTitle"></h3>
       <button class="modal-close" id="modalClose">×</button>
     </div>
-    <div class="modal-body">
-      <img id="modalImg" src="" alt="">
-    </div>
+    <div class="modal-body"><img id="modalImg" src="" alt=""></div>
   </div>
 </div>
 
 <div class="hint" id="hint">
-  <kbd>Glisser</kbd> pour naviguer · <kbd>Molette</kbd> pour zoomer · <kbd>Click</kbd> pour agrandir
+  <kbd>Glisser</kbd> pour naviguer · <kbd>Molette</kbd> pour zoomer · <kbd>Hover card</kbd> pour voir les chemins · <kbd>Click</kbd> pour agrandir
 </div>
 
 <script>
-/* ============ DATA ============ */
 const CARD_W = 380, CARD_H = 320;
 
-const CARDS = [
-  // ROW 0 — entrée
-  { id:'home',         title:"Page d'accueil",       tag:'public',   url:'index.html',                                  x:1310, y:80,   img:'screens/01-home-desktop.png' },
-
-  // ROW 1 — pages publiques
-  { id:'a-propos',     title:'Notre histoire',       tag:'public',   url:'a-propos.html',                                x:80,   y:580,  img:'screens/04-apropos-desktop.png' },
-  { id:'catalogue',    title:'Nos coffrets',         tag:'public',   url:'coffrets-semi-custom.html',                    x:560,  y:580,  img:'screens/02-semi-custom-desktop.png' },
-  { id:'sur-mesure',   title:'100% sur-mesure',      tag:'public',   url:'coffrets-personnalises-entreprises.html',      x:1310, y:580,  img:'screens/03-entreprises-desktop.png' },
-  { id:'contact',      title:'Contact',              tag:'public',   url:'contact.html',                                 x:2050, y:580,  img:'screens/05-contact-desktop.png' },
-  { id:'cart-empty',   title:'Panier (vide)',        tag:'state',                                                       x:2530, y:80,   img:'screens/10-cart-empty-desktop.png' },
-
-  // ROW 2 — overlays / states
-  { id:'product',      title:'Fiche coffret',        tag:'state',                                                       x:560,  y:1080, img:'screens/11-product-overlay-desktop.png' },
-  { id:'modal-devis',  title:'Modal devis',          tag:'state',                                                       x:1310, y:1080, img:'screens/16-devis-modal-desktop.png' },
-
-  // ROW 3 — config flow
-  { id:'tunnel-1',     title:'Tunnel · Quantité',    tag:'state',                                                       x:560,  y:1580, img:'screens/12-tunnel-step1-desktop.png' },
-  { id:'formspree-devis', title:'Brief studio',      tag:'external',                                                    x:1310, y:1580, img:null, icon:'@' },
-
-  // ROW 4 — config & cart
-  { id:'tunnel-2',     title:'Tunnel · Personnalisation', tag:'state',                                                  x:560,  y:2080, img:'screens/13-tunnel-step2-desktop.png' },
-  { id:'cart-filled',  title:'Panier (rempli)',      tag:'state',                                                       x:1310, y:2080, img:'screens/15-cart-filled-desktop.png' },
-
-  // ROW 5 — checkout
-  { id:'tunnel-3',     title:'Tunnel · Paiement',    tag:'state',                                                       x:1310, y:2580, img:'screens/14-tunnel-step3-desktop.png' },
-
-  // ROW 6 — Stripe + confirmed
-  { id:'stripe',       title:'Stripe Checkout',      tag:'external',                                                    x:1310, y:3080, img:null, icon:'$' },
-  { id:'confirmed',    title:'Commande confirmée',   tag:'public',   url:'commande-confirmee.html',                     x:2050, y:3080, img:'screens/07-confirmee-desktop.png' },
-
-  // misc
-  { id:'mentions',     title:'Mentions légales',     tag:'public',   url:'mentions-legales.html',                        x:80,   y:2580, img:'screens/06-mentions-desktop.png' }
+/* ============ FRAMES (zones) ============ */
+const FRAMES = [
+  { label:"PAGE D'ACCUEIL",       x:80,   y:80,   w:2280, h:920 },
+  { label:"CATALOGUE",            x:80,   y:1040, w:480,  h:1500 },
+  { label:"SUR-MESURE",           x:600,  y:1040, w:480,  h:1500 },
+  { label:"FICHE PRODUIT · TUNNEL · PANIER", x:1120, y:1040, w:2280, h:880 },
+  { label:"PAIEMENT & CONFIRMATION", x:1120, y:1960, w:2280, h:580 },
+  { label:"AUTRES PAGES",         x:80,   y:2580, w:1760, h:420 },
+  { label:"SERVICES EXTERNES",    x:1880, y:2580, w:1520, h:420 }
 ];
 
+/* ============ CARDS ============ */
+const CARDS = [
+  // ZONE 1 — Page d'accueil
+  { id:'h-slide-0', title:'Slide 1 — Qui sommes-nous',  meta:'Hero · CTA Notre histoire',     tag:'section', x:140,  y:160, img:'screens/section-home-slide0.png' },
+  { id:'h-slide-1', title:'Slide 2 — Cadeaux durables', meta:'Hero · CTA Découvrir coffrets', tag:'section', x:660,  y:160, img:'screens/section-home-slide1.png' },
+  { id:'h-slide-2', title:'Slide 3 — Personnalisable',  meta:'Hero · CTA Personnaliser',      tag:'section', x:1180, y:160, img:'screens/section-home-slide2.png' },
+  { id:'h-slide-3', title:'Slide 4 — Confiance',        meta:'Hero · CTA Voir réalisations',  tag:'section', x:1700, y:160, img:'screens/section-home-slide3.png' },
+  { id:'h-coffrets', title:'Section "Coffrets signatures"', meta:'4 cards · CTA Voir tous',   tag:'section', x:400,  y:560, img:'screens/section-home-coffrets.png' },
+  { id:'h-showcase', title:'Section "Inspirations"',    meta:'Showcase clients · scroll',     tag:'section', x:920,  y:560, img:'screens/section-home-showcase.png' },
+  { id:'h-cta-sm',   title:'Section CTA "Sur-mesure"',  meta:'Bandeau bas · CTA Devis',       tag:'section', x:1440, y:560, img:'screens/section-home-cta-surmesure.png' },
+
+  // ZONE 2 — Catalogue
+  { id:'cat-hero',         title:'Hero catalogue',         meta:'CTA Demander devis (anchor)',     tag:'section', x:140, y:1100, img:'screens/section-cat-hero.png' },
+  { id:'cat-info-banner',  title:'Banner "30+ coffrets"',  meta:'Lien sur-mesure',                 tag:'section', x:140, y:1460, img:'screens/section-cat-info-banner.png' },
+  { id:'cat-grille',       title:'Grille 8 coffrets',      meta:'Click → fiche produit',           tag:'section', x:140, y:1820, img:'screens/section-cat-grille.png' },
+  { id:'cat-cta-bas',      title:'CTA "Découvrir le full custom"', meta:'Bandeau bas',             tag:'section', x:140, y:2180, img:'screens/section-cat-cta-bas.png' },
+
+  // ZONE 3 — Sur-mesure
+  { id:'sm-hero',         title:'Hero sur-mesure',          meta:'CTA Demander devis',             tag:'section', x:660, y:1100, img:'screens/section-sm-hero.png' },
+  { id:'sm-comparison',   title:'Comparaison Semi vs Full', meta:'Différences + méthode',          tag:'section', x:660, y:1460, img:'screens/section-sm-comparison.png' },
+  { id:'sm-cta-bas',      title:'CTA bas devis',            meta:'2e bouton Devis',                tag:'section', x:660, y:1820, img:'screens/section-sm-comparison.png' },
+  { id:'modal-devis',     title:'Modal devis',              meta:'Form complet · Submit',          tag:'state',   x:660, y:2180, img:'screens/16-devis-modal-desktop.png' },
+
+  // ZONE 4 — Fiche produit / Tunnel / Panier
+  { id:'product-overlay', title:'Fiche coffret',            meta:'Overlay · 4 photos · CTAs',      tag:'state',   x:1180, y:1100, img:'screens/11-product-overlay-desktop.png' },
+  { id:'tunnel-1',        title:'Tunnel · Quantité',        meta:'Step 1 · Qty + sticker',         tag:'state',   x:1640, y:1100, img:'screens/12-tunnel-step1-desktop.png' },
+  { id:'tunnel-2',        title:'Tunnel · Personnalisation',meta:'Step 2 · Logo + message',        tag:'state',   x:2100, y:1100, img:'screens/13-tunnel-step2-desktop.png' },
+  { id:'cart-empty',      title:'Panier (vide)',            meta:'Drawer · Universel',             tag:'state',   x:2560, y:1100, img:'screens/10-cart-empty-desktop.png' },
+  { id:'cart-filled',     title:'Panier (rempli)',          meta:'Drawer · Items + Total',         tag:'state',   x:3020, y:1100, img:'screens/15-cart-filled-desktop.png' },
+
+  // ZONE 5 — Paiement
+  { id:'tunnel-3',        title:'Tunnel · Paiement',        meta:'Step 3 · Récap + Pay',           tag:'state',   x:1180, y:2020, img:'screens/14-tunnel-step3-desktop.png' },
+  { id:'stripe',          title:'Stripe Checkout',          meta:'Page hébergée Stripe',           tag:'external', x:1640, y:2020, img:null, icon:'$' },
+  { id:'confirmed',       title:'Commande confirmée',       meta:'Page de retour',                 tag:'public',  x:2100, y:2020, img:'screens/07-confirmee-desktop.png' },
+
+  // ZONE 6 — Autres pages
+  { id:'a-propos',  title:'Notre histoire',  meta:'Page narrative',                                tag:'public', x:140,  y:2640, img:'screens/04-apropos-desktop.png' },
+  { id:'contact',   title:'Contact',         meta:'Form + email + tel + socials',                  tag:'public', x:580,  y:2640, img:'screens/05-contact-desktop.png' },
+  { id:'mentions',  title:'Mentions légales',meta:'Légal · cookies anchor',                        tag:'public', x:1020, y:2640, img:'screens/06-mentions-desktop.png' },
+  { id:'sitemap',   title:'Sitemap (vous êtes ici)', meta:'Cartographie interactive',              tag:'public', x:1460, y:2640, img:null, icon:'☰' },
+
+  // ZONE 7 — Externes
+  { id:'email-equipe', title:'Email équipe Maison B',  meta:'Formspree · 3 endpoints',            tag:'external', x:1940, y:2640, img:null, icon:'@' },
+  { id:'gcal',         title:'Google Calendar',        meta:'Booking RDV studio',                 tag:'external', x:2400, y:2640, img:null, icon:'📅' }
+];
+
+/* ============ CONNECTIONS ============ */
 const CONNECTIONS = [
-  // Home → public pages
-  { from:'home', to:'a-propos',   label:'Slide 1 + nav',                src:'bottom', dst:'top' },
-  { from:'home', to:'catalogue',  label:'Slide 2 + nav + cards',        src:'bottom', dst:'top' },
-  { from:'home', to:'sur-mesure', label:'Slide 3 + CTA bas',            src:'bottom', dst:'top' },
-  { from:'home', to:'contact',    label:'Nav contact',                  src:'bottom', dst:'top' },
-  { from:'home', to:'cart-empty', label:'Click icône panier 🛒',         src:'right',  dst:'left' },
+  // Carousel slides → next page
+  { from:'h-slide-0', to:'a-propos',     label:'"Découvrir notre histoire →"',       src:'bottom', dst:'top' },
+  { from:'h-slide-1', to:'cat-hero',     label:'"Découvrir nos coffrets →"',         src:'bottom', dst:'top' },
+  { from:'h-slide-2', to:'sm-hero',      label:'"Personnaliser un coffret →"',       src:'bottom', dst:'top' },
+  { from:'h-slide-3', to:'h-showcase',   label:'"Voir nos réalisations →" (anchor)', src:'bottom', dst:'top' },
 
-  // Cart vide → catalogue
-  { from:'cart-empty', to:'catalogue', label:'"Découvrir nos coffrets"', src:'bottom', dst:'right' },
+  // Home middle sections
+  { from:'h-coffrets', to:'cat-grille',  label:'Click 1 des 4 cards (deep link slug)', src:'bottom', dst:'top' },
+  { from:'h-coffrets', to:'cat-hero',    label:'"Voir tous nos coffrets →"',         src:'bottom', dst:'top' },
+  { from:'h-showcase', to:'cat-hero',    label:'"Découvrir tous nos coffrets →"',    src:'bottom', dst:'top' },
+  { from:'h-cta-sm',   to:'sm-hero',     label:'"Demander un devis →"',              src:'bottom', dst:'top' },
 
-  // Catalogue → product / sur-mesure
-  { from:'catalogue', to:'product',   label:'Click card coffret',       src:'bottom', dst:'top' },
-  { from:'catalogue', to:'sur-mesure', label:'Banner "30+ coffrets"',    src:'right',  dst:'left' },
+  // Catalogue internal flow
+  { from:'cat-hero', to:'cat-cta-bas',   label:'"Demander devis" anchor #devis',     src:'bottom', dst:'top' },
+  { from:'cat-info-banner', to:'sm-hero',label:'"formule entièrement personnalisée"', src:'right', dst:'left' },
+  { from:'cat-grille', to:'product-overlay', label:'Click coffret card',             src:'right',  dst:'left' },
+  { from:'cat-cta-bas', to:'sm-hero',    label:'"Découvrir le full custom →"',       src:'right',  dst:'left' },
 
-  // Product → tunnel
-  { from:'product', to:'tunnel-1', label:'"Ajouter au panier"',         src:'bottom', dst:'top' },
+  // Sur-mesure flow
+  { from:'sm-hero',     to:'modal-devis', label:'"Demander un devis →"',             src:'bottom', dst:'top' },
+  { from:'sm-cta-bas',  to:'modal-devis', label:'"Demander un devis →"',             src:'bottom', dst:'top' },
+  { from:'modal-devis', to:'email-equipe',label:'Submit form → Formspree',           src:'right',  dst:'top' },
 
-  // Tunnel flow
-  { from:'tunnel-1', to:'tunnel-2',    label:'"Continuer"',              src:'bottom', dst:'top' },
-  { from:'tunnel-2', to:'cart-filled', label:'"Ajouter au panier" (mode addToCart)', src:'right', dst:'left' },
-  { from:'tunnel-2', to:'tunnel-3',    label:'"Continuer" (mode full)',  src:'right',  dst:'left' },
+  // Product → Tunnel
+  { from:'product-overlay', to:'tunnel-1', label:'"Ajouter au panier"',              src:'right',  dst:'left' },
+  { from:'product-overlay', to:'tunnel-3', label:'"Commander direct" (mode full)',   src:'bottom', dst:'top' },
 
-  // Cart → checkout
-  { from:'cart-filled', to:'tunnel-3', label:'"Commander →"',            src:'bottom', dst:'top' },
+  // Tunnel chain
+  { from:'tunnel-1', to:'tunnel-2',      label:'"Continuer →"',                      src:'right',  dst:'left' },
+  { from:'tunnel-2', to:'cart-filled',   label:'"Ajouter au panier" (addToCart)',    src:'right',  dst:'left' },
+  { from:'tunnel-2', to:'tunnel-3',      label:'"Continuer" (mode full)',            src:'bottom', dst:'top' },
 
-  // Checkout → Stripe → Confirmed
-  { from:'tunnel-3', to:'stripe',     label:'POST /api/create-checkout-session', src:'bottom', dst:'top' },
-  { from:'stripe',   to:'confirmed',  label:'success_url',              src:'right',  dst:'left' },
+  // Cart
+  { from:'cart-empty', to:'cat-grille',  label:'"Découvrir nos coffrets"',           src:'left',   dst:'top' },
+  { from:'cart-filled', to:'tunnel-3',   label:'"Commander →"',                      src:'bottom', dst:'top' },
 
-  // Sur-mesure → modal → email
-  { from:'sur-mesure', to:'modal-devis', label:'"Demander un devis"',   src:'bottom', dst:'top' },
-  { from:'modal-devis', to:'formspree-devis', label:'Submit form',       src:'bottom', dst:'top' },
+  // Checkout chain
+  { from:'tunnel-3', to:'stripe',        label:'POST /api/create-checkout-session', src:'right',  dst:'left' },
+  { from:'tunnel-3', to:'email-equipe',  label:'Brief commande (parallèle)',         src:'bottom', dst:'left' },
+  { from:'stripe',   to:'confirmed',     label:'success_url',                        src:'right',  dst:'left' },
 
-  // Mentions
-  { from:'a-propos', to:'mentions', label:'Footer "Cookies"',            src:'bottom', dst:'top' }
+  // Contact
+  { from:'contact',  to:'email-equipe',  label:'Submit form contact',                src:'right',  dst:'left' },
+  // Sur-mesure → Google Cal (optionnel sur la page)
+  { from:'sm-hero',  to:'gcal',          label:'"Réserver un appel"',                src:'right',  dst:'top' }
 ];
 
 /* ============ RENDER ============ */
 const canvas = document.getElementById('canvas');
 const svg = document.getElementById('arrows');
+const framesEl = document.getElementById('frames');
 
+/* Frames */
+FRAMES.forEach(f => {
+  const fd = document.createElement('div');
+  fd.className = 'frame';
+  fd.style.left = f.x+'px';
+  fd.style.top = f.y+'px';
+  fd.style.width = f.w+'px';
+  fd.style.height = f.h+'px';
+  const lbl = document.createElement('div');
+  lbl.className = 'frame-label';
+  lbl.textContent = f.label;
+  fd.appendChild(lbl);
+  framesEl.appendChild(fd);
+});
+
+/* Cards */
 function makeCard(c){
   const el = document.createElement('div');
   el.className = 'card';
@@ -241,7 +290,7 @@ function makeCard(c){
 
   const tag = document.createElement('span');
   tag.className = 'card-tag '+c.tag;
-  tag.textContent = c.tag === 'public' ? 'Page' : (c.tag === 'state' ? 'État' : 'Externe');
+  tag.textContent = ({public:'Page', section:'Section', state:'État', external:'Externe'})[c.tag] || c.tag;
   el.appendChild(tag);
 
   const thumb = document.createElement('div');
@@ -265,16 +314,11 @@ function makeCard(c){
   const title = document.createElement('div');
   title.className = 'card-title';
   title.textContent = c.title;
-  const url = document.createElement('div');
-  url.className = 'card-url';
-  if (c.url) {
-    url.textContent = '/'+c.url;
-  } else {
-    url.classList.add('dim');
-    url.textContent = c.tag === 'state' ? 'overlay sur la page' : 'service tiers';
-  }
+  const meta = document.createElement('div');
+  meta.className = 'card-meta';
+  meta.textContent = c.meta || '';
   body.appendChild(title);
-  body.appendChild(url);
+  body.appendChild(meta);
   el.appendChild(body);
 
   el.addEventListener('mouseenter', () => onHover(c.id, true));
@@ -288,7 +332,7 @@ function makeCard(c){
 
 CARDS.forEach(c => canvas.appendChild(makeCard(c)));
 
-/* ============ ARROW PATHS ============ */
+/* Arrows */
 function anchor(card, side){
   const x = card.x, y = card.y, w = CARD_W, h = CARD_H;
   switch(side){
@@ -308,17 +352,14 @@ function offset(side, d){
 }
 function bezier(a, b, c1, c2, t){
   const u = 1-t;
-  return {
-    x: u*u*u*a.x + 3*u*u*t*c1.x + 3*u*t*t*c2.x + t*t*t*b.x,
-    y: u*u*u*a.y + 3*u*u*t*c1.y + 3*u*t*t*c2.y + t*t*t*b.y
-  };
+  return { x: u*u*u*a.x + 3*u*u*t*c1.x + 3*u*t*t*c2.x + t*t*t*b.x,
+           y: u*u*u*a.y + 3*u*u*t*c1.y + 3*u*t*t*c2.y + t*t*t*b.y };
 }
-
 const cardById = id => CARDS.find(c => c.id === id);
 
-CONNECTIONS.forEach((conn, i) => {
+CONNECTIONS.forEach(conn => {
   const A = cardById(conn.from), B = cardById(conn.to);
-  if (!A || !B) return;
+  if (!A || !B) { console.warn('Missing card', conn); return; }
   const p1 = anchor(A, conn.src), p2 = anchor(B, conn.dst);
   const dist = Math.hypot(p2.x-p1.x, p2.y-p1.y);
   const ctrlD = Math.min(Math.max(dist*0.35, 80), 220);
@@ -334,7 +375,6 @@ CONNECTIONS.forEach((conn, i) => {
   path.dataset.to = conn.to;
   svg.appendChild(path);
 
-  // Label at midpoint
   const m = bezier(p1, p2, c1, c2, 0.5);
   const g = document.createElementNS('http://www.w3.org/2000/svg','g');
   g.setAttribute('class','arrow-label-group');
@@ -347,11 +387,10 @@ CONNECTIONS.forEach((conn, i) => {
   text.setAttribute('text-anchor','middle');
   text.setAttribute('dominant-baseline','middle');
   text.textContent = conn.label;
-  // Provisional add to measure
   g.appendChild(text);
   svg.appendChild(g);
   const bbox = text.getBBox();
-  const padX = 8, padY = 4;
+  const padX = 7, padY = 3;
   const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
   rect.setAttribute('class','arrow-label-bg');
   rect.setAttribute('x', bbox.x - padX);
@@ -362,19 +401,17 @@ CONNECTIONS.forEach((conn, i) => {
   g.insertBefore(rect, text);
 });
 
-/* ============ HOVER HIGHLIGHT ============ */
+/* HOVER HIGHLIGHT */
 function onHover(id, on){
   if (on) {
     canvas.classList.add('highlighting');
     const cardEl = canvas.querySelector(`.card[data-id="${id}"]`);
     if (cardEl) cardEl.classList.add('highlighted', 'source-of-hover');
-    // Highlight all paths IN/OUT + their labels + connected cards
     const related = new Set([id]);
     canvas.querySelectorAll(`.arrow-path[data-from="${id}"], .arrow-path[data-to="${id}"]`).forEach(p => {
       p.classList.add('highlighted');
       p.setAttribute('marker-end','url(#arrowhead-bold)');
-      related.add(p.dataset.from);
-      related.add(p.dataset.to);
+      related.add(p.dataset.from); related.add(p.dataset.to);
     });
     canvas.querySelectorAll(`.arrow-label-group[data-from="${id}"], .arrow-label-group[data-to="${id}"]`).forEach(g => g.classList.add('highlighted'));
     related.forEach(rid => {
@@ -388,12 +425,12 @@ function onHover(id, on){
   }
 }
 
-/* ============ MODAL ============ */
+/* MODAL */
 const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modalImg');
 const modalTitle = document.getElementById('modalTitle');
 function openModal(c){
-  modalTitle.textContent = c.title + (c.url ? ' — /'+c.url : '');
+  modalTitle.textContent = c.title + (c.meta ? ' · '+c.meta : '');
   modalImg.src = c.img;
   modalImg.alt = c.title;
   modal.classList.add('open');
@@ -402,47 +439,37 @@ modal.addEventListener('click', e => { if (e.target === modal) modal.classList.r
 document.getElementById('modalClose').addEventListener('click', () => modal.classList.remove('open'));
 document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('open'); });
 
-/* ============ PAN + ZOOM ============ */
+/* PAN + ZOOM */
 const viewport = document.getElementById('viewport');
 const zoomLevel = document.getElementById('zoomLevel');
-let zoom = 0.5, panX = 0, panY = 0;
-const MIN_Z = 0.15, MAX_Z = 2.5;
+let zoom = 0.4, panX = 0, panY = 0;
+const MIN_Z = 0.1, MAX_Z = 2.5;
+const CANVAS_W = 3800, CANVAS_H = 3400;
 
 function apply(){
   canvas.style.transform = `translate(${panX}px, ${panY}px) scale(${zoom})`;
   zoomLevel.textContent = Math.round(zoom*100)+'%';
 }
-
 function fitView(){
-  const cw = 3000, ch = 3400;
   const vw = viewport.offsetWidth, vh = viewport.offsetHeight;
-  zoom = Math.min(vw/cw, vh/ch) * 0.92;
-  panX = (vw - cw*zoom) / 2;
-  panY = (vh - ch*zoom) / 2 + 20;
+  zoom = Math.min(vw/CANVAS_W, vh/CANVAS_H) * 0.92;
+  panX = (vw - CANVAS_W*zoom) / 2;
+  panY = (vh - CANVAS_H*zoom) / 2;
   apply();
 }
 
 let dragging = false, sx, sy, spx, spy;
 viewport.addEventListener('mousedown', e => {
-  if (e.target.closest('.card') && e.button === 0) {
-    // primary button on a card → don't start drag yet, but track for click vs drag
-  }
   if (e.button !== 0) return;
-  dragging = true;
-  viewport.classList.add('dragging');
+  dragging = true; viewport.classList.add('dragging');
   sx = e.clientX; sy = e.clientY; spx = panX; spy = panY;
 });
 window.addEventListener('mousemove', e => {
   if (!dragging) return;
-  panX = spx + (e.clientX - sx);
-  panY = spy + (e.clientY - sy);
+  panX = spx + (e.clientX - sx); panY = spy + (e.clientY - sy);
   apply();
 });
-window.addEventListener('mouseup', e => {
-  if (!dragging) return;
-  dragging = false;
-  viewport.classList.remove('dragging');
-});
+window.addEventListener('mouseup', () => { dragging = false; viewport.classList.remove('dragging'); });
 
 viewport.addEventListener('wheel', e => {
   e.preventDefault();
@@ -450,44 +477,38 @@ viewport.addEventListener('wheel', e => {
   const newZoom = Math.max(MIN_Z, Math.min(MAX_Z, zoom * (1 + delta)));
   if (newZoom === zoom) return;
   const r = viewport.getBoundingClientRect();
-  const mx = e.clientX - r.left;
-  const my = e.clientY - r.top;
+  const mx = e.clientX - r.left, my = e.clientY - r.top;
   panX = mx - (mx - panX) * (newZoom / zoom);
   panY = my - (my - panY) * (newZoom / zoom);
-  zoom = newZoom;
-  apply();
+  zoom = newZoom; apply();
 }, { passive:false });
 
-/* Touch — basic 1-finger pan + 2-finger pinch */
-let lastTouchDist = 0, touchPanStart = null;
+/* Touch */
+let lastDist = 0, touchStart = null;
 viewport.addEventListener('touchstart', e => {
-  if (e.touches.length === 1) {
-    touchPanStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, panX, panY };
-  } else if (e.touches.length === 2) {
-    lastTouchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-  }
+  if (e.touches.length === 1) touchStart = { x:e.touches[0].clientX, y:e.touches[0].clientY, panX, panY };
+  else if (e.touches.length === 2) lastDist = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
 });
 viewport.addEventListener('touchmove', e => {
   e.preventDefault();
-  if (e.touches.length === 1 && touchPanStart) {
-    panX = touchPanStart.panX + (e.touches[0].clientX - touchPanStart.x);
-    panY = touchPanStart.panY + (e.touches[0].clientY - touchPanStart.y);
+  if (e.touches.length === 1 && touchStart) {
+    panX = touchStart.panX + (e.touches[0].clientX - touchStart.x);
+    panY = touchStart.panY + (e.touches[0].clientY - touchStart.y);
     apply();
   } else if (e.touches.length === 2) {
-    const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-    const factor = d / lastTouchDist;
+    const d = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+    const factor = d / lastDist;
     const newZoom = Math.max(MIN_Z, Math.min(MAX_Z, zoom * factor));
     const r = viewport.getBoundingClientRect();
-    const mx = (e.touches[0].clientX + e.touches[1].clientX)/2 - r.left;
-    const my = (e.touches[0].clientY + e.touches[1].clientY)/2 - r.top;
+    const mx = (e.touches[0].clientX+e.touches[1].clientX)/2 - r.left;
+    const my = (e.touches[0].clientY+e.touches[1].clientY)/2 - r.top;
     panX = mx - (mx - panX) * (newZoom / zoom);
     panY = my - (my - panY) * (newZoom / zoom);
-    zoom = newZoom;
-    apply();
-    lastTouchDist = d;
+    zoom = newZoom; apply();
+    lastDist = d;
   }
 }, { passive:false });
-viewport.addEventListener('touchend', () => { touchPanStart = null; lastTouchDist = 0; });
+viewport.addEventListener('touchend', () => { touchStart = null; lastDist = 0; });
 
 /* Buttons */
 document.getElementById('zoomIn').addEventListener('click', () => {
@@ -508,7 +529,6 @@ document.getElementById('zoomOut').addEventListener('click', () => {
 });
 document.getElementById('fitView').addEventListener('click', fitView);
 
-/* Initial fit */
 window.addEventListener('load', () => {
   fitView();
   setTimeout(() => document.getElementById('hint').classList.add('fade'), 100);
