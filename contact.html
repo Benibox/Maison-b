@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nous contacter — Maison B</title>
-<meta name="description" content="Contactez Maison B : téléphone, email, horaires d'atelier. Une expérience client luxueuse, personnelle et réactive.">
+<meta name="description" content="Contactez Maison B : téléphone, email, horaires d'atelier. Une équipe à votre écoute, basée à Paris.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Maison B">
 <link rel="canonical" href="https://maisonb.fr/contact">
@@ -12,12 +12,12 @@
 <meta property="og:site_name" content="Maison B">
 <meta property="og:url" content="https://maisonb.fr/contact">
 <meta property="og:title" content="Nous contacter — Maison B">
-<meta property="og:description" content="Téléphone, email, horaires de l'atelier. Réponse sous 48h.">
+<meta property="og:description" content="Téléphone, email, horaires de l'atelier.">
 <meta property="og:image" content="https://maisonb.fr/img/photos/coffret-signature-shabbat.jpeg">
 <meta property="og:locale" content="fr_FR">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <script src="js/cart.js" defer></script>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,7 +27,6 @@
   --beige: #F5F4F0;
   --serif: 'Cormorant Garamond', Georgia, serif;
   --sans: 'DM Sans', -apple-system, sans-serif;
-  --script: 'Allura', cursive;
 }
 html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 body { font-family: var(--sans); background: var(--blanc); color: var(--noir); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
@@ -35,7 +34,7 @@ a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-/* ===== NAV ===== */
+/* ===== NAV (identique aux autres pages) ===== */
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 clamp(24px, 5vw, 70px); height: 72px; display: flex; align-items: center; justify-content: space-between; background: rgba(250,250,248,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--gris-clair); transition: transform 0.4s; }
 .nav.hidden { transform: translateY(-100%); }
 .nav-logo { font-family: var(--serif); font-size: 26px; font-weight: 300; letter-spacing: 8px; text-transform: uppercase; color: var(--noir); }
@@ -52,45 +51,41 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .mobile-menu.open { opacity: 1; pointer-events: all; }
 .mobile-menu a { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--blanc); letter-spacing: 4px; text-transform: uppercase; }
 
-/* ===== HERO ÉDITORIAL — script handwritten ===== */
-.contact-hero { padding: 180px clamp(24px, 5vw, 70px) clamp(80px, 10vw, 140px); text-align: center; background: var(--blanc); position: relative; }
-.contact-hero-leaf { width: 56px; height: 56px; margin: 0 auto 22px; opacity: 0.55; }
-.contact-hero-leaf svg { width: 100%; height: 100%; stroke: var(--sable); fill: none; stroke-width: 1; }
-.contact-hero-script { font-family: var(--script); font-size: clamp(72px, 12vw, 140px); font-weight: 400; color: var(--gris); line-height: 1; letter-spacing: -0.02em; margin-bottom: clamp(40px, 6vw, 80px); }
-.contact-hero-body { max-width: 680px; margin: 0 auto; }
-.contact-hero-body p { font-family: var(--sans); font-size: 16px; color: var(--gris); line-height: 1.85; margin-bottom: 22px; font-weight: 300; }
-.contact-hero-body p:last-child { margin-bottom: 0; }
-.contact-hero-body .accent-link { color: var(--or); border-bottom: 1px solid var(--or); padding-bottom: 1px; transition: color 0.3s; }
-.contact-hero-body .accent-link:hover { color: var(--noir); border-color: var(--noir); }
+/* ===== PHOTO HEADER (Shabbat coffret en haut) ===== */
+.contact-photo { padding: 110px clamp(24px, 5vw, 70px) 0; background: var(--blanc); }
+.contact-photo-inner { max-width: 1100px; margin: 0 auto; background: var(--beige); padding: clamp(40px, 5vw, 80px) clamp(24px, 4vw, 60px); display: flex; align-items: center; justify-content: center; }
+.contact-photo-inner img { width: 100%; max-width: 720px; height: auto; max-height: 440px; object-fit: contain; filter: drop-shadow(0 22px 40px rgba(0,0,0,0.10)) drop-shadow(0 8px 16px rgba(0,0,0,0.06)); }
 
-/* ===== PHONE / MAIL block ===== */
-.contact-info-block { padding: clamp(40px, 5vw, 80px) clamp(24px, 5vw, 70px) clamp(60px, 8vw, 120px); text-align: center; background: var(--blanc); }
-.contact-info-leaf { width: 36px; height: 60px; margin: 0 auto 28px; opacity: 0.4; }
-.contact-info-leaf svg { width: 100%; height: 100%; stroke: var(--gris); fill: none; stroke-width: 1; }
-.contact-info-stack { display: flex; flex-direction: column; align-items: center; gap: clamp(32px, 4vw, 56px); }
-.contact-info-stack > div { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.contact-info-stack h2 { font-family: var(--serif); font-size: clamp(22px, 2vw, 28px); font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gris); }
-.contact-info-stack p { font-family: var(--serif); font-size: clamp(20px, 1.8vw, 24px); font-weight: 400; color: var(--or); line-height: 1.5; }
-.contact-info-stack p.muted { color: var(--gris); }
-.contact-info-stack a { transition: color 0.3s; }
-.contact-info-stack a:hover { color: var(--noir); }
+/* ===== HERO ÉDITORIAL (style Maison B classique) ===== */
+.page-hero { padding: clamp(60px, 7vw, 100px) clamp(24px, 5vw, 70px) clamp(40px, 5vw, 60px); text-align: center; background: var(--blanc); position: relative; }
+.page-hero::after { content: ''; position: absolute; bottom: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, var(--gris-clair), transparent); }
+.page-hero-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--or); margin-bottom: 16px; font-weight: 500; }
+.page-hero h1 { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.12; color: var(--noir); margin-bottom: 20px; }
+.page-hero h1 em { font-style: italic; color: var(--or); }
+.page-hero p { font-size: 16px; color: var(--gris); max-width: 600px; margin: 0 auto 14px; line-height: 1.85; }
+.page-hero p:last-child { margin-bottom: 0; }
+.page-hero a.accent { color: var(--or); border-bottom: 1px solid var(--or); padding-bottom: 1px; transition: color 0.3s, border-color 0.3s; }
+.page-hero a.accent:hover { color: var(--noir); border-color: var(--noir); }
+
+/* ===== COORDONNÉES (Téléphone / Email / Atelier en grid) ===== */
+.contact-coords { padding: clamp(60px, 8vw, 110px) clamp(24px, 5vw, 70px); background: var(--blanc); }
+.contact-coords-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 60px); text-align: center; }
+.contact-coord { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.contact-coord-label { font-family: var(--sans); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--or); font-weight: 500; }
+.contact-coord-value { font-family: var(--serif); font-size: clamp(20px, 1.7vw, 24px); font-weight: 400; color: var(--noir); line-height: 1.5; font-variant-numeric: lining-nums; }
+.contact-coord-value a { transition: color 0.3s; }
+.contact-coord-value a:hover { color: var(--or); }
+.contact-coord-value .second-line { display: block; margin-top: 4px; }
 
 /* ===== HORAIRES ===== */
-.contact-hours { padding: 0 clamp(24px, 5vw, 70px) clamp(60px, 8vw, 100px); text-align: center; background: var(--blanc); }
+.contact-hours { padding: 0 clamp(24px, 5vw, 70px) clamp(70px, 8vw, 110px); background: var(--blanc); text-align: center; }
 .contact-hours-inner { max-width: 580px; margin: 0 auto; padding-top: clamp(40px, 5vw, 60px); border-top: 1px solid var(--gris-clair); }
-.contact-hours-inner h3 { font-family: var(--serif); font-size: clamp(22px, 2vw, 28px); font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gris); margin-bottom: 18px; }
-.contact-hours-inner p { font-family: var(--sans); font-size: 15px; color: var(--gris); line-height: 1.85; font-weight: 300; }
+.contact-hours-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--or); margin-bottom: 16px; font-weight: 500; }
+.contact-hours h2 { font-family: var(--serif); font-size: clamp(24px, 2.6vw, 32px); font-weight: 300; color: var(--noir); margin-bottom: 18px; }
+.contact-hours h2 em { font-style: italic; color: var(--or); }
+.contact-hours p { font-family: var(--sans); font-size: 15px; color: var(--gris); line-height: 1.85; }
 
-/* ===== SECTION SHABBAT (coffret + script "Shabbat Shalom") ===== */
-.shabbat-section { background: var(--beige); padding: clamp(60px, 8vw, 120px) clamp(24px, 5vw, 70px); position: relative; overflow: hidden; }
-.shabbat-inner { max-width: 900px; margin: 0 auto; position: relative; display: flex; align-items: center; justify-content: center; min-height: 420px; }
-.shabbat-img-wrap { position: relative; width: 100%; max-width: 720px; }
-.shabbat-img-wrap img { width: 100%; height: auto; filter: drop-shadow(0 22px 40px rgba(0,0,0,0.12)) drop-shadow(0 8px 16px rgba(0,0,0,0.06)); }
-.shabbat-script { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -52%); font-family: var(--script); font-size: clamp(56px, 9vw, 120px); color: var(--noir); line-height: 0.9; text-align: center; pointer-events: none; text-shadow: 0 2px 12px rgba(250,250,248,0.7); white-space: nowrap; }
-.shabbat-script .line2 { display: block; margin-top: -8px; }
-.shabbat-credit { display: block; margin-top: clamp(20px, 3vw, 32px); font-family: var(--sans); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gris); text-align: center; font-weight: 500; }
-
-/* ===== FOOTER (same as other pages) ===== */
+/* ===== FOOTER (identique aux autres pages) ===== */
 .footer { background: var(--creme); padding: clamp(50px, 6vw, 80px) clamp(24px, 5vw, 70px) clamp(30px, 4vw, 50px); }
 .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr 1.2fr; gap: 40px; color: var(--tabac); font-size: 13px; }
 .footer-logo { font-family: var(--serif); font-size: 24px; font-weight: 300; letter-spacing: 8px; text-transform: uppercase; color: var(--noir); margin-bottom: 12px; }
@@ -113,10 +108,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav-links { display: none; }
   .nav-cart { margin-left: auto; margin-right: 12px; }
   .nav-burger { display: flex; }
-  .contact-hero { padding: 130px 24px 60px; }
-  .contact-hero-script { font-size: clamp(64px, 18vw, 90px); margin-bottom: 36px; }
-  .contact-hero-body p { font-size: 15px; }
-  .shabbat-script { font-size: clamp(48px, 14vw, 72px); }
+  .contact-photo { padding: 90px 16px 0; }
+  .contact-photo-inner { padding: 28px 16px; }
+  .contact-photo-inner img { max-height: 280px; }
+  .page-hero h1 { font-size: clamp(28px, 9vw, 44px); }
+  .contact-coords-inner { grid-template-columns: 1fr; gap: 36px; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 480px) {
@@ -134,6 +130,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     <a href="coffrets-semi-custom.html" class="nav-link">Nos coffrets</a>
     <a href="a-propos.html" class="nav-link">Notre histoire</a>
     <a href="contact.html" class="nav-link active">Contact</a>
+    <a href="devis.html" class="nav-link">Devis</a>
   </div>
   <a href="#" class="nav-cart" aria-label="Panier"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></a>
   <div class="nav-burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
@@ -144,39 +141,41 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   <a href="coffrets-semi-custom.html" onclick="toggleMenu()">Nos coffrets</a>
   <a href="a-propos.html" onclick="toggleMenu()">Notre histoire</a>
   <a href="contact.html" onclick="toggleMenu()">Contact</a>
-  <a href="devis.html" onclick="toggleMenu()">Demander un devis</a>
+  <a href="devis.html" onclick="toggleMenu()">Devis</a>
 </div>
 
-<!-- ===== HERO ÉDITORIAL ===== -->
-<section class="contact-hero">
-  <div class="contact-hero-leaf">
-    <svg viewBox="0 0 64 64"><path d="M32 8 C20 14, 14 26, 14 38 C14 50, 22 56, 32 56 C42 56, 50 50, 50 38 C50 26, 44 14, 32 8 Z M32 14 C32 14, 32 50, 32 56 M22 24 L32 28 M22 32 L32 36 M22 40 L32 44 M42 24 L32 28 M42 32 L32 36 M42 40 L32 44"/></svg>
-  </div>
-  <h1 class="contact-hero-script">nous contacter</h1>
-  <div class="contact-hero-body">
-    <p>Nous mettons un point d'honneur à offrir une expérience client haut-de-gamme, à la fois personnelle, accessible et réactive. Notre équipe vous répond rapidement.</p>
-    <p>Pour une demande de projet détaillée et un devis personnalisé, rendez-vous sur notre <a href="devis.html" class="accent-link">page devis</a>.</p>
+<!-- ===== PHOTO HEADER (Shabbat coffret) ===== -->
+<section class="contact-photo">
+  <div class="contact-photo-inner">
+    <img src="img/photos/coffret-signature-shabbat.png" alt="Coffret signature Maison B — Édition Shabbat">
   </div>
 </section>
 
-<!-- ===== PHONE / MAIL ===== -->
-<section class="contact-info-block">
-  <div class="contact-info-leaf">
-    <svg viewBox="0 0 36 60"><path d="M18 4 C18 4, 18 56, 18 56 M18 12 L8 16 M18 18 L8 22 M18 24 L8 28 M18 30 L8 34 M18 36 L8 40 M18 42 L8 46 M18 12 L28 16 M18 18 L28 22 M18 24 L28 28 M18 30 L28 34 M18 36 L28 40 M18 42 L28 46"/></svg>
-  </div>
-  <div class="contact-info-stack">
-    <div>
-      <h2>Téléphone</h2>
-      <p><a href="tel:+33143805085">01 43 80 50 85</a></p>
-      <p><a href="tel:+33744833090">07 44 83 30 90</a></p>
+<!-- ===== HERO ÉDITORIAL ===== -->
+<section class="page-hero">
+  <div class="page-hero-label">Contact</div>
+  <h1>Une équipe<br>à votre <em>écoute</em></h1>
+  <p>Nous mettons un point d'honneur à offrir une expérience client haut-de-gamme, à la fois personnelle, accessible et réactive.</p>
+  <p>Pour une demande de projet détaillée et un devis personnalisé, rendez-vous sur notre <a href="devis.html" class="accent">page devis</a>.</p>
+</section>
+
+<!-- ===== COORDONNÉES ===== -->
+<section class="contact-coords">
+  <div class="contact-coords-inner">
+    <div class="contact-coord">
+      <span class="contact-coord-label">Téléphone</span>
+      <span class="contact-coord-value">
+        <a href="tel:+33143805085">01 43 80 50 85</a>
+        <span class="second-line"><a href="tel:+33744833090">07 44 83 30 90</a></span>
+      </span>
     </div>
-    <div>
-      <h2>Email</h2>
-      <p><a href="mailto:contact@bubbles-paris.com">contact@bubbles-paris.com</a></p>
+    <div class="contact-coord">
+      <span class="contact-coord-label">Email</span>
+      <span class="contact-coord-value"><a href="mailto:contact@bubbles-paris.com">contact@bubbles-paris.com</a></span>
     </div>
-    <div>
-      <h2>Atelier</h2>
-      <p class="muted">Paris, France</p>
+    <div class="contact-coord">
+      <span class="contact-coord-label">Atelier</span>
+      <span class="contact-coord-value">Paris, France</span>
     </div>
   </div>
 </section>
@@ -184,20 +183,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 <!-- ===== HORAIRES ===== -->
 <section class="contact-hours">
   <div class="contact-hours-inner">
-    <h3>Horaires</h3>
-    <p>Nous répondons aux emails et aux appels<br>du lundi au vendredi, de 9h à 18h, hors jours fériés.<br>Les visites au studio se font uniquement sur rendez-vous.</p>
+    <div class="contact-hours-label">Horaires</div>
+    <h2>Du lundi au vendredi,<br>de <em>9h à 18h</em></h2>
+    <p>Nous répondons aux emails et aux appels durant nos horaires d'atelier, hors jours fériés. Les visites au studio se font uniquement sur rendez-vous.</p>
   </div>
-</section>
-
-<!-- ===== SHABBAT COFFRET ===== -->
-<section class="shabbat-section">
-  <div class="shabbat-inner">
-    <div class="shabbat-img-wrap">
-      <img src="img/photos/coffret-signature-shabbat.png" alt="Coffret Shabbat Shalom">
-      <div class="shabbat-script">Shabbat<span class="line2">Shalom</span></div>
-    </div>
-  </div>
-  <span class="shabbat-credit">Coffret signature · Édition Shabbat</span>
 </section>
 
 <!-- ===== FOOTER ===== -->
@@ -205,7 +194,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   <div class="footer-inner">
     <div><div class="footer-logo">MAISON B</div><p class="footer-tagline">Cadeaux d'affaires &amp; coffrets sur mesure,<br>depuis Paris.</p></div>
     <div><h5>Nos coffrets</h5><div class="footer-links"><a href="coffrets-semi-custom.html">Catalogue</a><a href="coffrets-personnalises-entreprises.html">Sur mesure</a></div></div>
-    <div><h5>Explorer</h5><div class="footer-links"><a href="a-propos.html">Notre histoire</a><a href="contact.html">Contact</a><a href="devis.html">Demander un devis</a></div></div>
+    <div><h5>Explorer</h5><div class="footer-links"><a href="a-propos.html">Notre histoire</a><a href="contact.html">Contact</a><a href="devis.html">Devis</a></div></div>
     <div><h5>Contact</h5><div class="footer-links"><a href="mailto:contact@bubbles-paris.com">contact@bubbles-paris.com</a><a href="tel:+33143805085">01 43 80 50 85</a><a>Paris, France</a></div></div>
     <div><h5>Newsletter</h5><div class="footer-newsletter"><p>Recevez nos idées cadeaux et nos nouveautés.</p><form class="footer-newsletter-form" onsubmit="return false;"><input type="email" placeholder="Votre email" required><button type="submit">OK</button></form></div></div>
   </div>
